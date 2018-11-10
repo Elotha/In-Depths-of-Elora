@@ -1,0 +1,67 @@
+ÖNEMLÝ DÝPNOT*** : NPC'lerle konuþurken 2 seçeneðimiz olur. Seçtiðimiz cümleye veya soruya göre bilgi alýp alamayacaðýmýz deðiþkenlik gösterecektir.
+
+Yaþlý Adam Gonzola** (65*) : Kambur, elleri arkada, hilekar (çýkarlarý olmadýðý sürece hep yalan söyler), dýþ görünüþ olarak sempatik ama dýþ 
+görünüþünü karakterine yansýtamayan bir adam. 
+Özellikleri : 
+- Çevre elementleri hakkýnda yalan yanlýþ bilgiler verir (Çýkarý yoksa [Örn: Çiçeðin zararsýz olduðunu söyler ama çiçek bize zarar verir.])
+- Seslendirme þekli ; Gruba atýlmýþ ("I'll tear you apart!" repliðinin söylendiði ses kaydý)
+- Bize zarar veren yaratýklarý evcil (kendi beslediði hayvaný) olarak görür, onlarýn bazýlarýnýn içinden anahtar çýktýðýný bildiði halde öldürmememiz için bizi uyarýr.
+
+Küçük Çocuk (Cinsiyeti tartýþýlacak) (6*) : Abur cubur düþkünü, yabancýlarla pek konuþmayan, dünya hakkýnda kendi çocuk görüþüyle bilgi veren bir çocuk
+Tartýþýlacak Taným : Lava Rising bölümünde çýkmasý Büþra tarafýndan önerilmiþtir. Çocuðun hýzý, bizim hýzýmýza eþittir fakat koþarken bacaklarýnýn hýzý, bizden
+2x fazladýr. Öldürücü sývý yükselirken o da bizimle birlikte kaçmaya baþlar ve ara sýra korkudan baðýrýr.
+Özellikleri :
+- Korkaktýr ama iyi huyludur, bize yardým etmeye meðillidir.
+- Seslendirme þekli : Tolga ya da Büþra seslendirecek.
+- Hafýzasý çok kuvvetlidir, bir olay görmüþse, bize bunu hemen aktaracaktýr.
+
+Botanik Profesörü Damien** (43*) : Okumuþ, bilgili, mütevazý bir bilgedir. 
+Özellikleri : 
+- Oyun içerisindeki en elle tutulur bilgilerin bir kýsmý, bu adamda gizlidir.
+- Seslendirme þekli ; Gruba atýlmýþ ("Act like something important" repliðinin söylendiði) ses kaydý
+
+Yaþlý Cadý Hazel** (60*) : Kötülük abidesidir, Gonzola'nýn eþidir. (Kötülüðü, leveldaki canavar ya da çevre elementlerine göre karar verilir.)
+Özellikleri :
+- Tehditkardýr, Gonzola'yý çok kýskanýr. Onunla konuþulmasýna dahi katlanamaz.
+- Çýkarý uðruna oyundaki NPC'lere bile zarar verebilir.
+
+Asker-Gardiyan Chaz** (37*) : Tam bir vatanseverdir, yurdu için canýný hiç düþünmeden verebilir. Görevi varsa onu caný pahasýna yapar/korur.
+Özellikleri :
+- Mistik Dünya'daki son bölümün sonundaki taþýn koruyucusudur, bize gerçekleri anlatýr.
+
+Sarhoþ Kadýn Briana** (28*) : Eðlence düþkünü, tek derdi içki olan ama sarhoþken dahi bilinci açýk olan zeki bir kadýn.
+Özellikleri :
+- Bilinci açýktýr ve þaþýrtýcý halde oyunun elle tutulur diðer bilgilerini bu kadýn bize saðlar.
+- Kolay kandýrýlabilir eðer ki sözkonusu içkiyse.
+- Gizli bilgi : (Geçmiþ zamanda bu dünya'ya gelen bir adam ile bir aþk iliþkisi yaþamýþtýr hatta karþýlaþtýðýmýz çocuðun da o adamdan olduðu düþünülür.)
+
+Deli Adam Kenta** (40*) : Adý üstünde, delidir, ne yapsa yeridir.
+Özellikleri :
+- Saçma sapan konuþur ama dikkatle dinlenirse belki en önemli bilgi, bu adam tarafýndan saðlanacaktýr.
+
+Optimist Doktor Tina** (31*) : Ýyilik uðruna görevini aþkla yapan bir kadýn doktor.
+Özellikleri :
+- Güvenini saðladýðýmýz halde bize 1 can (yanma hakký) verir.
+
+Falcý Kadýn Rosemary** (44*) : Genellikle iyi karakterli bir kadýndýr.
+Özellikleri :
+- Bize fal bakar, falda gördüðü þeyin gerçekliði yarý yarýya doðrudur. Gelecek hakkýnda ipucu verir.
+
+Dedikoducu Nineler Martha & Hannah** (79* & 82*) : Susmak bilmeyen, tonton, aþýrý sevimli ama mütemadiyen dedikodu yapan nineler.
+Özellikleri :
+- Susmak bilmedikleri için her konudan ufak tefek de olsa bilgi almamýz çok olasý bir ihtimaldir.
+- Bazý dedikodularý abartý þeklinde anlatýp bizi yanýltabilirler.
+
+* : Yaþý
+** : Ýsmi 
+*** : Tartýþýlmaya açýk bir konu
+
+
+
+
+
+
+
+
+
+

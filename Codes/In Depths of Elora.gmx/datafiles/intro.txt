@@ -1,0 +1,3 @@
+ERROR SETTING POINTER[E:0]
+Use space to interact.
+Use arrow keys to move.[E:0]

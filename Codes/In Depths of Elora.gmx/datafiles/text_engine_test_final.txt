@@ -1,0 +1,20 @@
+ERROR SETTING POINTER[E:0]
+[N:nacho_chicken]Welcome to the sixth version of my textbox engine.
+Thanks to many small demos that highlight individual features,[P:15]#there's no need for a huge rundown of features like there was#in previous versions of this engine.
+Try out the demos provided,[P:10] and enjoy!
+PS: Trying to advance text while it's still typing#shows all text at once.[E:0]
+Text speed can be normal.[P:45]#[S:S]Text speed can be slow.[S:N][P:45]#Text speed can be [S:R]very slow[S:N].[E:0]
+You want to see pausing?[P:45]#Too bad.[P:20] Not going to happen.
+Wait a second[P:5].[P:10].[P:10].[P:30] I already did it![E:0]
+[C:1]Red[C:C] [C:2]Green [C:3]Blue [C:4]Gray [C:C]Normal#If textbox_maxcolors is default,#[C:1]this will not be red[C:C].[E:0]
+[N:Namebox]Hey, I have a namebox!
+[N:0]I don't...[P:35]#Wait,[P:15] [N:Namebox 2]now I do![E:0]
+I've got a gun![V:0]
+[F:0,0]BANG![P:30] [F:0,0]BANG![E:0]
+[IN:0,0,Y,96][IA:0,1,Y,Y][IA:0,2,Y,Y][IN:1,1,N,224][IA:1,2,Y,Y][S:S][V:M]How are you today?[IS:0,1]
+[IA:1,1,Y,Y][V:L]Beat it, kid.[IS:1,1]
+[IO:0,1,Y][IA:0,1,Y,Y][IA:0,2,Y,Y][V:M]Fine, then![IS:0,1][P:30][IC:0][IW:1,0] [E:0]
+[V:H]This is the high voice[P:20]#[V:M]This is the medium voice[P:20]#[V:L]This is the low voice[P:20]#[V:T]This is the thought voice
+[V:0]And text with no voice[E:0]
+Your level is currently [X:test_level].#Setting level variable to 7...
+[XS:test_level,7]Whoops![P:15]#Now it's [X:test_level].[E:0]

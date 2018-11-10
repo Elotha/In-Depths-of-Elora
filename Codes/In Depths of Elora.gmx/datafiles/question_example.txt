@@ -1,0 +1,6 @@
+ERROR SETTING POINTER[E:0]
+Would you like to see the text speed demonstration?[QP:0,1][QP:1,2][Q:Y][E:0]
+Then what about the pausing demonstration?[QT:0,I guess][QT:1,I said no][QP:0,3][QP:1,4][Q:Y][E:0]
+Fine then,[P:15] be that way![E:0]
+Which of these would you like to see demonstrated?[QT:0,Colored text][QT:1,Namebox][QT:2,Sound effects][QT:3,Cut-ins][QT:4,Voices][QT:5,Nothing][QP:0,5][QP:1,6][QP:2,7][QP:3,8][QP:4,9][QP:5,10][Q:6][E:0]
+Be on your way.[E:0]

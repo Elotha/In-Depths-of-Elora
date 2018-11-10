@@ -1,0 +1,157 @@
+  Dynamic Textbox Engine v6
+Created by nacho_chicken
+
+Contents:
+(1) Text Engine Command Listing
+(2) Syntax, Examples, and Various Notes
+
+
+
+(1) Text Engine Command Listing
+
+-- Text Speed:
+[S:N] Normal (if a speed command is not called, the textbox defaults to normal)
+[S:S] Slow
+[S:R] Slower
+
+-- Typing Voices:
+[V:0] No voice (if a voice command is not called, the textbox defaults to no voice)
+[V:L] Low
+[V:M] Medium
+[V:H] High
+[V:T] Thought
+
+-- Pauses:
+[P:(x)] Pause for x steps
+
+-- In-text Variables:
+[X:(x)] Prints the value of variable at pointer x to the text
+[XS:(x),(y)] Sets the value of variable at pointer x to y
+
+-- Effects:
+[F:C] Clear current effect (only works if the effect is continuous)
+[F:0,(x)] Plays sound effect x
+
+-- Colors:
+[C:C] Clear the current color
+[C:(x)] Text after this until the next call is color x (defaults to color 0)
+
+-- Name:
+[N:(x)] Displays name x or 0/null (if this is not called, the textbox defaults to null)
+
+-- Questions:
+[Q:Y] Polls a yes/no question
+[Q:(x)] Polls a question with x number of answers (minimum is 2, default max is 6)
+[QT:(x),(y)] Changes the answer text for option number x to the text at y (if this is not called, options 1 and 2 default to "Yes" and "No")
+[QP:(x),(y)] Changes which text appears after selecting option x to the text at pointer y
+
+-- Cut-ins:
+[IC:(x)] Clears a specific cut-in or A - All.
+[IN:(x),(y),(z),(q)] Creates cut-in x with the sprite at pointer y and Y/N xscale flip z, with starting position q
+[IO:(x),(y),(z)] Changes cut-in x to sprite pointer y with Y/N xscale flip z
+[IM:(x),(y)] Moves Cut-in x to position y
+[IA:(x),(y),(z),(q)] Animates part y of cut-in x with looping Y/N z (q is a Y/N whether to continue typing text while animating)
+[IS:(x),(y)] Stops the looping animation of part y (or A - All parts) of cut-in x
+[IW:(x),(y)] Moves all data from cut-in x to cut-in y
+
+-- End:
+[E:0] Shows the textbox where to stop (for use in merged text files)
+
+
+
+
+(2) Syntax, Examples, and Various Notes
+
+-- Text Speed:
+These commands should be placed wherever you want the speed to be changed.  Note that you need to revert the speed manually.
+
+Usage Example:
+UGH!  This is [S:R]SOOOOOOO[S:N] annoying!#Why can't anybody speak like a [S:S]"normal"[S:N] person?
+
+
+-- Typing Voices:
+These commands should be placed wherever you want the voice to be changed.
+
+Usage Example:
+[V:0]After looking at the strange picture, he was moved to tears.
+[V:M]"The Funyarinpa!  It's so beautiful!  Wait, what's tha-[V:H] AIIEEEEEE!!"
+
+
+-- Pauses:
+These commands should be placed wherever you want a pause.  Get creative; use pauses where the character would pause in speech.
+"You're a big,[P:10] fat[P:10] liar!" has a completely different feel than "You're a big,[P:10] fat liar!", just like in actual speech.
+Trying to use this command right before a [E:0] command will result in no pause.
+
+Usage Example:
+After I took a long,[P:5] hard look at the painting,[P:15] I came to discover there was nothing wrong with it.
+Well,[P:10] the actual artwork was terrible,[P:15] but I expect nothing less from the great, big idiot that is Frank.
+
+
+--In-text Variables:
+This is here mainly due to the limitations of the .txt file system, but using pointers is always good.  You can add pointers or change the existing
+ones in the scripts "textbox_var_get" and "textbox_var_set".  The commands themselves can be placed anywhere.  [X:(...)] commands should be placed
+wherever in the text you want the variable printed.  The text parser does not know whether a variable is a real or a string when using [XS:(...)].
+This can be set in "textbox_var_set".  The [XS:(...)] command can be very helpful.  One example: after answering a question, you can change a
+variable and make the player's answer affect the gameplay later.
+
+Usage Example:
+You gained [X:0] Experience Points!
+You have gained a level!#Your level is now [X:1].
+Strength is now [XS:2,38][X:player_strength]!
+
+
+-- Effects:
+Only one effect comes built-in to the engine, and that is the sound effect player.  It should be placed wherever you want the effect.
+
+Usage Example:
+Hello, how are y...[F:0,0]!#What is wrong with your face?
+
+
+-- Colors:
+Color commands should be placed wherever you want the text color changed, and you should call the clear command whenever you're finished.
+You can nest colors without needing to clear, as well.  The maximum number of colors per box can be changed by altering "textbox_maxcolors" in
+the alarm[0] event of obj_textbox.  If you want to change/add colors, just modify the script "textbox_color_get".
+
+Usage Example:
+This text is [C:1]Red[C:C].
+This one word has [C:1]f[C:2]o[C:3]u[C:4]r[C:C] colors!
+
+
+-- Name:
+This should generally be placed at the very beginning of the box.  However, it will work just fine anywhere.
+
+Usage Example:
+[N:Strange man]Welcome, young one.  My name is Hingel Dinglehausen[N:Hingel].
+[N:0](PFFT!  HAHAAHA)
+
+
+-- Questions:
+The [Q:(...)] command should be placed as the very last thing in the text.  The [QT:(...)] commands should be placed before the [Q:(...)] command.
+The [QP:(...)] commands could be placed anywhere, but should be placed before the [Q:(...)] command for safety.
+
+Usage Example:
+Hello.  I love to wear pants.
+How about you?[QT:0,All day long][QT:1,Pants are terrible][QP:0,1][QP:1,2][Q:Y]
+
+
+-- Cut-ins:
+All of these can be called whenever you need them.  Remember to [IC:(...)] a cut-in whenever you're finished with it.
+You should use [IW:(...)] whenever you have an empty slot in your cut-in data, like in the following example:
+(assuming cut-ins 0, 1, and 2 are all active) "[IC:1][IW:2,1]"
+If you don't do this, it could cause one or more of your cut-ins to disappear.  This is because after you clear a cut-in, it will reduce the
+total number of active cut-ins.  If this number is smaller than the highest-number active cut-in, then any cut-in past that point will disappear.
+
+Usage Example:
+[IN:0,0,N,80][IA:0,1,Y,Y][IA:0,2,Y,Y]I don't like this one bit[IS:0,1].
+[IO:0,1][IM:0,180][IN:1,5,N,120][IA:0,1,Y,Y][IA:0,2,Y,Y]Still, it's better than that one time[IS:0,1]...
+[IC:A]And he proceeded to think about what happened that time.
+
+
+-- End:
+Whenever you're finished with your game's script, you can merge all the text files into one massive script file.  If you don't call this command,
+the textbox will just keep going and going.  Call it at the end of every section.
+
+Usage Example:
+UGH!  This is SOOOOOOO annoying!#Why can't anybody speak like a "normal" person?[E:0]
+Welcome, young one.  My name is Hingel Dinglehausen.
+(PFFT!  HAHAAHA)[E:0]
