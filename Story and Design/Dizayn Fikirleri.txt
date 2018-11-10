@@ -1,0 +1,42 @@
+Pixo, yeraltý dünyasýna gitsin. Böylece arkaplan ile uðraþmak daha kolay olur. Yeraltýný seviye seviye yapmak da iþimizi kolaylaþtýrýr, platformlar daha mantýklý görünür.
+
+Score pointler, oyunun sonunda ekstra bölümleri açmak için kullanýlacak. Belirli miktar bir skora gelirsek ve oyun sonunda deðerli taþý çalmayý reddedersek, yerli halktan birileri bizimle konuþacak. Bize yeni bir görev verecekler ve üç bölüm daha oynama þansýný elde edeceðiz. Bu iþ sonunda belki oyunun yapýmcýlarý ile tanýþýlabilir.
+
+Ana karakterimiz yeþil pelerin ve siyah sade kýyafetler giyecek.
+
+
+------ Çevresel Element Fikirleri ------
+
+Yukardan damlayan sývý yapabiliriz. Bu sývý yaratýklara da zarar verir. Damlayan sývý, damladýðý yerde birikinti oluþturmuþtur.++
+
+Bir çeþit çiçek olacak. Bu çiçek platformun zemininde, aðzý kapalý halde duruyor. Düzenli aralýklarla yukarý doðru bir þey fýþkýrtýyor.++
+
+Gayzer tarzý bir fýskiye olacak. Mor bir sývý fýþkýrtýyor. Sadece canavarlarý öldürüyor.++
+
+Bir kristal olacak. Kristal ýþýk saçýyor. Dokunduðumuz zaman ýþýðý söner. Tekrar dokunulunca öldürür.++
+
+Iþýk böcekleri bir sürü etrafta uçuþur. Etkileþime girilemez.++
+
+Anahtarlarý topladýðýmýz zaman açýlacak bir kapý olacak.++
+
+
+------ Düþman Fikirleri ------
+
+Normalde saða ve sola devriye gezen bir yaratýk, bizi gördüðü zaman üstümüze koþmaya baþlar.++
+
+Bir çeþit solucan. Aþaðýsýna geldiðimiz zaman platformun içinden geçerek aþaðý düþüyor. Iþýnlanma sýrasýnda ýþýk çýkartýr.
+
+Iþýnlanarak devriye gezen hortlak kadýn. Iþýnlanma sýrasýnda ýþýk çýkartýr.
+
+Golem olacak. Bizi görünce zýplayýp yere vurarak deprem yaratacak.
+
+Sabit bir þekilde platformun altýnda duran ýþýk saçan ateþ böceði. Altýndan geçersek bizi takip eder. Kýsa bir süre sonra patlar. ++
+
+Buharlý, zehirli sývýda bir ahtapot olur. Üç saniyede bir dokungaçý yüzerken görünür. Üstünden geçerken fýrlayýp bizi öldürmeye çalýþýr.++
+
+
+------ Genel ------
+
+Save point olarak kapalý çiçek kullanabiliriz. Biz önünden geçince açýlýr. Ýçinde büyük parlayan bir kristal vardýr.++
+
+Health bar upgrade noktalarý olabilir.

@@ -1,0 +1,19 @@
+1) Oyunda ana karakter olarak "Reserve of Lightium" oyununun ana karakteri giydirilip kullanýlacak. Giysilere henüz karar verilmedi.
+
+2) Oyun 10 bölüm olarak tasarlanacak. Oyunun gameplay süresi kýsa kalýrsa 20 bölüme kadar uzatýlabilir.
+
+3) Mistik bir dünyadayýz. Humanoid yerli bir ýrk var. Humanoid ýrkýn görünüþüne karar verilmedi.
+
+4) Yeraltýnda ýþýk kaynaklarý konulacak. Iþýk kaynaklarý olarak çevresel elementler kullanýlacak. Mantar, sarmaþýk, ateþ böceði, kristal gibi ýþýk veren þeyler kullanýlabilir.
+
+5) Karakterlerin seslendirilmesi Tolga tarafýndan yapýlacak.
+
+6) Oyunun temel mekaniði ayný kalacak. Çifte zýplama ve saða sola gidebilme özelliðimiz bulunuyor. Bunun dýþýnda hiçbir þeye sahip deðiliz. Canavarlarla savaþýrken çevresel elementleri kullanmak zorundayýz. Bölümleri geçebilmek için her bölümde yeterli miktarda anahtarý toplamamýz gerekiyor.
+
+------ Hikaye Özeti ------
+
+Dünyamýz eski / orta çaðlarý yaþýyor. Ancak hayat þartlarý oldukça zorlaþmýþ. Dünya bir þekilde adým adým yok oluþa yaklaþýyor. Büyücüler toplaþýyor, beraber baþka bir dünyaya portal açýyorlar. Ana karakterimiz bu portaldan geçerek mistik dünyaya ulaþýyor. Ana karakterimize onun seçilmiþ olduðunu, dünyayý kurtarmak için bir göreve çýkmasý gerektiði söyleniyor. Görevi ise, mistik dünyanýn derinliklerinde bulunan büyülü bir taþý bulup dünyaya getirmek.
+
+Portaldan geçtikten sonra bir yaþlý / yaþlýlar bizimle konuþuyor ve görevimizi anlatýyorlar. Bizi bu hayati görev için seçilmiþ kiþi olduðumuzu söyleyerek pohpohluyorlar. Bize, görevimizde kritik bir öneme sahip olduðunu söyledikleri gizemli, büyülü bir eþya da veriyorlar. Söylediklerine göre, bu eþya sayesinde büyülü taþa eriþebilmemiz mümkün olacakmýþ. Ardýndan mistik dünyada bir maceraya atýlýyoruz. Canavarlar ve çevresel öðeler ile mücadele ederek sonraki bölüme geçebilmek için anahtarlarý topluyoruz. Her bölümde gerekli miktarda anahtarý toplayarak bölümü geçebiliyoruz. Ara sýra yerli halktan birileriyle karþýlaþýp sohbet edebiliyoruz.
+
+Son bölüme geldiðimiz zaman büyülü taþý görüyoruz; ancak önünde yerli halktan onu koruyan bir gardiyan bulunuyor. Gardiyan bize görevimiz hakkýndaki gerçeði anlatýyor. O taþýn, içinde bulunduðu dünyaya güç verdiðini ve o olmadan o dünyanýn donacaðýný söylüyor. Ancak oyuncunun kendi dünyasý da tehlike altýnda. Burada oyuncu bir seçim yapmak zorunda býrakýlýyor. Ya içinde bulunduðu dünyanýn varlýðýný koruyabilmesi için taþý çalmaktan vazgeçecek, ya da görevinin baþýnda ona verilen gizemli büyülü eþyayý kullanarak, gardiyaný boðarak öldürecektir. Gardiyaný öldürürse, taþý çalýp dünyaya dönebilir. Ardýndan oyun biter.

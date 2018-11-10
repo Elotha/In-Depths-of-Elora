@@ -1,0 +1,62 @@
+Sol tarafta bir kutuçuk olacak. Bu kutuçuk, kategorileri yazacak. Kategoriler: Platformlar, Ýtemler, Çevre, Canavarlar, Çeþitli.
+
+
+Platformlar:
+	Block parent. (8x8 snap)
+	Tona göre platform tile maker (birkaç tane). (32x32)
+	Platform timing. (32x32)
+		Koyduðumuz zaman bir pencerede bize 1 ila 2 arasýnda bir sayý seçmemizi 				gerektirecek. Böylece zamanlamayý belirleyebileceðiz.
+	Platform collapsing. (32x32)
+
+Ýtemler:
+	Puan. (32x32)
+	Life stone. (32x32)
+	Key. (32x32)
+	Potion. (32x32)
+		Potion koyduðumuz zaman beþ farklý seçenek çýkacak. Dört tanesi 				sprite_index seçimi, bir tanesi rastgele seçim.
+
+Çevre:
+	Spikes. (32x32)
+		Lethal olup olmadýðýný girdiðimiz bir checkbox ile konuluyor.
+	Liquid. (32x32)
+		Liquid, platform tile maker gibi tilelar þeklinde konulacak.
+	Plant. (32x32)
+	Stalactite. (32x32)
+	Geyser. (32x32)
+	Crystal. (32x32)
+	Door. (32x32)
+	
+Canavarlar: (Bütün canavarlarý yerleþtirirken drop'larý sorulacak.)
+	Damast. (32x32)
+	Palpus. (32x32)
+	Beulian. (32x32)
+		Range bilgisi girilecek.
+	Zodax. (32x32)
+		Teleport x ve y deðeri girilecek ya da yerleþtirilecek. Ayný zamanda kaç tur 				hareket edeceði ve range'i girilecek.
+	Minyoo. (32x32)
+
+------
+
+Bölümün genel özellikleri sorulacak.
+	How many light bugs?
+	Name of the room?
+	Music?
+
+------
+
+Bir play tuþu olacak.
+Play tuþuna bastýðýmýz zaman bölümle ilgili kontroller yapýlacak. Herhangi bir þeyi unutup unutmadýðýmýzý anlamak adýna.
+
+------
+
+Snap seçenekleri olacak. 8x8, 16x16, 32x32.
+
+------
+
+Giriþ ekraný:
+
+Odalarýn bir listesi olan kýsým var. Buradan bir oda seçip o odayý açabiliyoruz. Yeni oda yaratma seçeneði var. Öncelikle odanýn adýný giriyoruz. Odanýn büyüklüðünü belirttiðimiz iki adet parametre var. Odanýn ismini sonradan deðiþtirebiliyoruz. Odanýn sýrasýný da deðiþtirebiliyoruz.
+
+------
+
+Sað taraftaki bölmede konulan þeylerin listesi bulunabilir.
