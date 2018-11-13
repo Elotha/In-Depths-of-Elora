@@ -27,9 +27,13 @@
             <kind>1</kind>
             <string>///Drop
 
+//Bu obje, canavarların ortak atasıdır. Bir objenin atası, bu obje olarak belirlenirse, bu objeye yazılan bütün kodlar, o obje için de geçerli olur.
+//drop = 0 ise canavar öldüğü zaman hiçbir şey düşürmez.
+//drop = 1 ise rastgele bir potion düşürür.
+
 {
     if object_index = obj_palpus then drop = 0; else drop = 1;
-    alarm[11] = 1;
+    alarm[11] = 1; //obj_key_monster oluşturma işi
 }
 </string>
           </argument>
@@ -54,6 +58,8 @@
           <argument>
             <kind>1</kind>
             <string>///Drop
+
+//Burada canavar öldüğü zaman drop değerine göre ne düşüreceğini belirleyen kodlar var.
 
 {
     switch(drop)
@@ -86,9 +92,9 @@
         case "Key":
             with(obj_key_monster)
                 {
-                if monster_id = other.id
+                if monster_id = other.id //monster_id değeri, obj_key_monster'ın hangi canavara ait olduğunu tutar.
                     {
-                    var key = instance_create(x-16,y-32,obj_key);
+                    var key = instance_create(x-16,y-16,obj_key);
                     with(key) 
                         {
                         vspeed = 1.4;

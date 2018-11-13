@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>///Speed
 
+//Bu parent objesinin tek amacı, itemlerin yukarı aşağı sallanmasıdır.
+
 {
     if !global.room_start
         {
@@ -120,7 +122,7 @@
             <string>///Speed
 
 {
-    alarm[0] = irandom_range(1,60);
+    alarm[0] = irandom_range(1,60); //Bölüm başladığı zaman bütün itemler aynı anda aynı şekilde sallanmasın, rastgelelik oluşsun diye böyle bir kod var.
 }
 </string>
           </argument>

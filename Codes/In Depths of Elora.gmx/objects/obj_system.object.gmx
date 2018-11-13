@@ -28,12 +28,13 @@
             <string>///Room Start
 
 {
+    randomize();
     global.checkpoint = -1; //Henüz bir checkpoint almadık
     global.room_start = true; //Oda yeni başladı
     alarm[0] = 1;
     
-    global.falling_speed = 0.25; //Yerçekimi
-    global.falling_limit = 15; //Aşağı doğru maksimum kazanılabilecek hız
+    global.falling_speed = 0.25; //Global yerçekimi değeri
+    global.falling_limit = 15; //Maksimum düşme hızı
     global.draw = false; //Debug Draw modu
     global.frame_rate = 1/6; //Genel animasyon hızı
 }

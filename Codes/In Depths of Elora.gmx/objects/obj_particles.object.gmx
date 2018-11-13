@@ -28,7 +28,7 @@
             <string>///Game Start
 
 {
-    randomize();
+    //globalvar fonksiyonu, bir değeri global yapar.
     globalvar key_effect;
     key_effect[0] = -1;
     globalvar scorepoint_effect;

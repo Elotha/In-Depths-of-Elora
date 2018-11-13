@@ -1,0 +1,23 @@
+A ya da sol tuþu -> sola gitmeyi saðlar.
+
+D ya da sað tuþu -> saða gitmeyi saðlar.
+
+Space tuþu -> zýplamayý ve ikincil zýplamayý saðlar.
+
+Yukarý - aþaðý tuþlarý ya da W / S tuþlarý -> kamerayý yukarý-aþaðý hareket ettirmenizi saðlar.
+
+
+------
+Editör modu (mecbur kalmadýkça kullanmayýn):
+
+Ctrl + F1 -> editör modunu açar ya da kapatýr.
+M tuþu -> müziði açar ya da kapatýr.
+Alt tuþu -> oyunu 30 kat yavaþlatýr ya da hýzlandýrýr.
+Shift tuþu -> bölümü yeniden baþlatýr.
+F12 tuþu -> oyunu kapatýr.
+F11 tuþu -> screenshot alýr.
+L tuþu -> can barýnýzý fuller ve bir hak verir.
+K tuþuna basýlý tutmak -> ýþýðýnýzý arttýrýr.
+V tuþu -> bloklarýn sistemini görünür kýlar.
+X tuþu -> oyunun hitbox sistemini görünür kýlar.
++ ve - tuþlarý -> bölümler arasýnda geçiþ yapmanýzý saðlar.

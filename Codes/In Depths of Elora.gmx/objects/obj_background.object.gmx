@@ -27,25 +27,21 @@
             <kind>1</kind>
             <string>///Background
 
+//Burada backgroundların kameraya göre oranlı olarak hareket etmesi var.
+
 {
     background_x[0] = view_xview[0] * 0.325;
     background_y[0] = view_yview[0] * 0.325;
     
-    background_x[1] = (view_xview[0] * 0.250)-64;
-    background_y[1] = (view_yview[0] * 0.250)-64;
+    background_x[1] = (view_xview[0] * 0.250);
+    background_y[1] = (view_yview[0] * 0.250);
     
-    background_x[2] = (view_xview[0] * 0.175)-128;
-    background_y[2] = (view_yview[0] * 0.175)-128;
+    background_x[2] = (view_xview[0] * 0.175);
+    background_y[2] = (view_yview[0] * 0.175);
     
    
 }
 
-/*
-    background_x[3] = view_xview[0] * 0.2;
-    background_y[3] = view_yview[0] * 0.2;
-    
-    background_x[4] = view_xview[0] * 0.2;
-    background_y[4] = view_yview[0] * 0.2;
 </string>
           </argument>
         </arguments>

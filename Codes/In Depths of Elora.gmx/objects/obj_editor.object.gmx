@@ -28,7 +28,7 @@
             <string>///Create
 
 {
-    global.editor_mode = true;
+    global.editor_mode = false;
 }
 </string>
           </argument>
@@ -55,10 +55,12 @@
             <string>///Light
 
 {
+    //K tuşuna basılı tuttuğumuz sürece ana karakterin etrafındaki ışık artar.
+    //light_size_new sadece light potion alındığı zaman geçerli olan bir değer.
     with(obj_character_parent) 
         {
         light_size++;
-        light_Size_new++;
+        light_size_new++;
         }
 }
 </string>
@@ -103,6 +105,9 @@
 
 {
     if !global.editor_mode then exit;
+    
+    //burada hangi isim verileceği kontrol ediliyor. "screenshot_" kısmından sonra verilecek olan
+    //numaranın sıradaki son numara olması gerekiyor, o sebeple.
     var i = 0;
     while file_exists("screenshot_" + string(i) + ".png") i++;
         
@@ -134,6 +139,8 @@
 
 {
     if keyboard_check(vk_control) then global.editor_mode = scr_reverse(global.editor_mode);
+    //scr_reverse ya da reverse, bana ait bir fonksiyon. yaptığı şey ise boolean amaçlı bir değeri
+    //(boolean demek true false tutan değer demek) tersine çevirmek.
 }
 </string>
           </argument>
@@ -219,6 +226,7 @@
 
 {
     if !global.editor_mode then exit;
+    //visible değeri bir objenin görünür olup olmadığını belirten değerdir.
     with(obj_block_parent) visible = reverse(visible);
 }
 </string>
@@ -277,6 +285,7 @@
 {
     if !global.editor_mode then exit;
     
+    //room_speed değeri, odanın saniyede kaç step işlediğini belirten değerdir.
     if room_speed = 60 then room_speed = 2; else room_speed = 60;
 }
 </string>
@@ -306,6 +315,10 @@
 {
     if !global.editor_mode then exit;
     
+    //destroy, benim kendi ürettiğim bir fonksiyon. instance_destroy ile aynı işi görüyor.
+    //ancak içine ne yazarsam onu yok ediyor.
+    //burada yok ettiğim efektler, partikül efektleri. partikül efektlerini yok etmeden 
+    //bölümü yeniden başlatırsan efektler yok olmayıp bug yaratıyor bu yüzden yazdım.
     destroy(obj_key_effect2);
     destroy(obj_key_effect3);
     destroy(obj_zodax_effect);

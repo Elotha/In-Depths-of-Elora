@@ -61,7 +61,7 @@
     switch(monster_type)
         {
         case "obj_beulian":
-            follow_y = -32;
+            follow_y = -8;
             break;
             
         case "obj_minyoo":

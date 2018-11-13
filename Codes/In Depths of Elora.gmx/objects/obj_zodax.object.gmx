@@ -26,6 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>///Create
+//
+//times_max değeri kaç kez git gel yapacağını belirtir
+//range değeri kaç kere 32'lik tile boyunca yürüyeceğini belirtir
+//tel_x değeri ışınlanacağı yerin x koordinatını belirtir
+//tel_y değeri ışınlanacağı yerin y koordinatını belirtir
 
 {
     image_speed = 1/6;

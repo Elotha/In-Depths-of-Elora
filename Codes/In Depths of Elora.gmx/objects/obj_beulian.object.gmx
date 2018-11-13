@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Create
+//
+//range değeri beulian'ın ne kadar uzağa gidip geri döneceğini belirtir.
 
 {
     image_speed = 1/6;
@@ -35,9 +37,9 @@
     motion_set(0,1);
     alarm[0] = range/speed;
     xx1 = 24;
-    yy1 = -36;
+    yy1 = -20;
     xx2 = 128;
-    yy2 = 8;
+    yy2 = 32;
     damage = 20;
     event_inherited();
 }

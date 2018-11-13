@@ -1,9 +1,0 @@
-Ýstediðin birkaç kelime.
-
-Baþka kelimeler.
-
-<<<<<<< HEAD
-Biþiyler falan.
-=======
-Biþiyler.
->>>>>>> a07b3891c83ea216c962e0f1410980b24196bd96

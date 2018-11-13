@@ -53,4 +53,5 @@
                 }
             }
         }
+    if sprite_index != last_sprite then sprite_change = true; else sprite_change = false;
 }

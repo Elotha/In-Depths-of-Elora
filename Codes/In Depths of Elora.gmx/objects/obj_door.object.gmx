@@ -179,7 +179,7 @@
             
         if sprite_index = spr_door_formation
             {
-            if !distant &amp;&amp; global.key_number = global.key_max
+            if !distant &amp;&amp; global.key_number &gt;= global.key_max
                 {
                 sprite_index = spr_door_opening;
                 }

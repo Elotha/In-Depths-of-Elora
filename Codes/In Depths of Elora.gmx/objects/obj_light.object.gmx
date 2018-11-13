@@ -27,9 +27,11 @@
             <kind>1</kind>
             <string>///Create
 
+//Surface'ler ileri seviye kodlardır, hiç girişmeyelim.
+
 {
-    globalvar light;
-    light = surface_create(view_wview,view_hview);
+    globalvar light; //"light" isimli değeri global yapar.
+    light = surface_create(view_wview,view_hview); 
 }
 </string>
           </argument>

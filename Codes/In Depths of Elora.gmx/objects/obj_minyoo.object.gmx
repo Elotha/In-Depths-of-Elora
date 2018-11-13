@@ -29,7 +29,7 @@
 
 {
     teleport = false;
-    hspeed = -1;
+    hspeed = sign(image_xscale);
     left_x = -36;
     right_x = 36;
     detect_y = 80;

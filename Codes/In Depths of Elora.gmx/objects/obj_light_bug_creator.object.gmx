@@ -28,6 +28,8 @@
             <string>///Light Bugs
 
 {
+    //ww ve hh değerleri, odanın toplam alanının 32'de birini elde etmek için kullanılıyor.
+    //Ardından bu sayının 1/12 katı kadar ışık böceği yaratılıyor. Bu sayı ileride bölümlere özel hale getirilecek.
     ww = floor(room_width/32);
     hh = floor(room_height/32);
     repeat(ww*hh/12)

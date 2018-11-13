@@ -210,12 +210,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_background</room>
+    <room>rooms\rm_test</room>
+    <room>rooms\rm_tolga</room>
     <room>rooms\rm_main</room>
-    <room>rooms\room2</room>
-    <room>rooms\rm_level1</room>
-    <room>rooms\rm_level2</room>
-    <room>rooms\rm_level3</room>
     <room>rooms\rm_dup</room>
     <room>rooms\rm_base</room>
   </rooms>

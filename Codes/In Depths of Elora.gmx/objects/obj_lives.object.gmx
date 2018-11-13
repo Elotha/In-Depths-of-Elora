@@ -28,9 +28,9 @@
             <string>///Lives
 
 {
-    lives = 5;
-    health = 100;
-    global.health_max = 100;
+    lives = 5; //Hak sayımız
+    health = 100; //Mevcut canımız
+    global.health_max = 100; //Maksimum canımız
 }
 </string>
           </argument>
@@ -38,20 +38,6 @@
       </action>
     </event>
     <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -69,6 +55,8 @@
           <argument>
             <kind>1</kind>
             <string>///Draw GUI
+
+//Burada HUD kodlaması var.
 
 {
     draw_set_colour(c_dkgray);

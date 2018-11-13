@@ -46,6 +46,8 @@
     light_potion = 0; //Kaç tane light potion içtik?
     resistance = 1; //Direnç
     step_count[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
+    sprite_change = false; //Sprite'ın değişip değişmediğini kontrol eden değer
+    last_sprite = spr_character_idle; //Step başında hangi sprite'a sahip olduğunu kaydeden değer
     
     with(obj_camera)
         {
@@ -271,6 +273,7 @@
             <string>///Scripts
 
 {
+    last_sprite = sprite_index;
     if sprite_index = spr_character_door then exit;
     scr_jump();
     scr_keyboard_inputs();

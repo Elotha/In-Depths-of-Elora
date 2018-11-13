@@ -127,6 +127,7 @@
     <instance objName="obj_minyoo" x="704" y="160" name="inst_A9777D4E" locked="0" code="drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign" x="224" y="608" name="inst_2D45638D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_background" x="288" y="0" name="inst_E76BB1DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_beulian" x="864" y="576" name="inst_48FF577C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tileset_platforms" x="96" y="608" w="32" h="32" xo="128" yo="0" id="10001284" name="inst_282BEB60" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
