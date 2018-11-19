@@ -1,0 +1,20 @@
+Koþma (Foley)
+
+Yere düþme (Foley)
+
+Zýplama ve ikincil zýplama (Foley)
+
+Can yanmasý (Foley)
+
+Öldükten sonra çýkan animasyonun sesi (Foley - dijital ayrý ayrý olabilir ya da karýþýk olabilir)
+
+
+Mavi taþ toplama efekti (Foley olmasý tercihtir)
+
+Hak kristalini toplama efekti (Dijital)
+
+Ýksir melodileri (Dijital)
+
+Zamanlama platformlarýnýn gidip gelme sesleri (Dijital)
+
+Anahtar alma sesi (Dijital)
