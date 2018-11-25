@@ -3,12 +3,12 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="2">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,12 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Lives
+            <string>///Score
 
 {
-    lives = 5; //Hak sayımız
-    health = 100; //Mevcut canımız
-    global.health_max = 100; //Maksimum canımız
+    score = 0;
 }
 </string>
           </argument>
@@ -54,15 +52,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw GUI
-
-//Burada hak kodlaması var.
+            <string>///Score
 
 {
-    draw_set_font(fnt_Calibri_HUD);
-    draw_set_valign(fa_top);
+    draw_set_font(fnt_Calibri_HUD2);
     draw_set_colour(global.hud_color);
-    draw_text(66,52,"X " + string(lives));
+    draw_set_valign(fa_top);
+    draw_text(140,80,string(1547));
 }
 </string>
           </argument>

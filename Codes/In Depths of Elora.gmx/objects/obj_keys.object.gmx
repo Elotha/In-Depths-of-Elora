@@ -30,7 +30,7 @@
 {
     global.key_number = 0; //Mevcut anahtar sayımız
     global.key_max = instance_number(obj_key)+instance_number(obj_key_monster); //Bölümün toplam anahtar sayısı
-    display_set_gui_size(512,384); //Oyunda iki kat yakınlaştırma kullandığımız için Draw kodlarının da buna uygun bir ölçeklendirmeye sahip olması gerek. Bu kod o işe yarıyor.
+    //display_set_gui_size(512,384); //Oyunda iki kat yakınlaştırma kullandığımız için Draw kodlarının da buna uygun bir ölçeklendirmeye sahip olması gerek. Bu kod o işe yarıyor.
     
     alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
 }
@@ -86,11 +86,10 @@
             <string>///Keys
 
 {
-    draw_sprite(spr_key_hud,0,10,48);
-    draw_set_font(fnt_calibri_10);
-    draw_set_colour(c_white);
+    draw_set_font(fnt_Calibri_HUD2);
+    draw_set_colour(global.hud_color);
     draw_set_valign(fa_top);
-    draw_text(44,56,string(global.key_number) + " / " + string(global.key_max));
+    draw_text(166,56,string(global.key_number) + " / " + string(global.key_max));
 }
 </string>
           </argument>

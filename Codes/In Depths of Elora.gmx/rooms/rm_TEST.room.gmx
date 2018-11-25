@@ -344,6 +344,8 @@
     <instance objName="obj_block_parent" x="4000" y="168" name="inst_F06288D4" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_character" x="96" y="608" name="inst_DC91E4E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block_parent" x="424" y="200" name="inst_2438AD1C" locked="0" code="" scaleX="12" scaleY="16" colour="4294967295" rotation="0"/>
+    <instance objName="obj_score" x="320" y="0" name="inst_3DB5697F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_HUD" x="352" y="0" name="inst_ED1EA061" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tileset_platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

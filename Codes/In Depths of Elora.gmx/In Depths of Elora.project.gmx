@@ -82,6 +82,7 @@
       <sprite>sprites\spr_life_stone</sprite>
     </sprites>
     <sprites name="HUD &amp; Effects">
+      <sprite>sprites\spr_HealthBar</sprite>
       <sprite>sprites\spr_key_hud</sprite>
       <sprite>sprites\spr_key_effect</sprite>
       <sprite>sprites\spr_lives</sprite>
@@ -136,7 +137,8 @@
     </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\fnt_calibri_10</font>
+    <font>fonts\fnt_Calibri_HUD2</font>
+    <font>fonts\fnt_Calibri_HUD</font>
     <font>fonts\fnt_calibri_8</font>
     <font>fonts\fnt_interact</font>
   </fonts>
@@ -148,8 +150,10 @@
       <object>objects\obj_background</object>
       <object>objects\obj_music</object>
       <object>objects\obj_light</object>
+      <object>objects\obj_HUD</object>
       <object>objects\obj_lives</object>
       <object>objects\obj_keys</object>
+      <object>objects\obj_score</object>
       <object>objects\obj_particles</object>
       <object>objects\obj_light_bug_creator</object>
       <object>objects\obj_block_parent</object>
