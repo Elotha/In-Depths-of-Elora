@@ -8,37 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Create
-
-{
-    global.key_number = 0; //Mevcut anahtar sayımız
-    global.key_max = instance_number(obj_key)+instance_number(obj_key_monster); //Bölümün toplam anahtar sayısı
-    //display_set_gui_size(512,384); //Oyunda iki kat yakınlaştırma kullandığımız için Draw kodlarının da buna uygun bir ölçeklendirmeye sahip olması gerek. Bu kod o işe yarıyor.
-    
-    alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -60,6 +29,37 @@
 
 {
     global.key_max = instance_number(obj_key)+instance_number(obj_key_monster);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Room Start
+
+{
+    global.key_number = 0; //Mevcut anahtar sayımız
+    global.key_max = instance_number(obj_key)+instance_number(obj_key_monster); //Bölümün toplam anahtar sayısı
+    //display_set_gui_size(512,384); //Oyunda iki kat yakınlaştırma kullandığımız için Draw kodlarının da buna uygun bir ölçeklendirmeye sahip olması gerek. Bu kod o işe yarıyor.
+    
+    alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
 }
 </string>
           </argument>

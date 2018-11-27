@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Game Start
+            <string>///Room Start
 
 {
     randomize();
@@ -33,6 +33,9 @@
     global.falling_speed = 0.25; //Global yerçekimi değeri
     global.falling_limit = 15; //Maksimum düşme hızı
     global.frame_rate = 1/6; //Genel animasyon hızı
+    
+    window_set_cursor(cr_none);
+    cursor_sprite = spr_Cursor;
 }
 </string>
           </argument>

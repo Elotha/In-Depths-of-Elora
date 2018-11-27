@@ -96,6 +96,7 @@
       <sprite>sprites\spr_keyboard_arrow</sprite>
       <sprite>sprites\spr_keyboard_space</sprite>
       <sprite>sprites\spr_item_effect</sprite>
+      <sprite>sprites\spr_Cursor</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
