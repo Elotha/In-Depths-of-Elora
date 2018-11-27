@@ -10,6 +10,10 @@
   <sounds name="sound">
     <sound>sound\snd_music</sound>
     <sound>sound\snd_footstep</sound>
+    <sound>sound\snd_Potion_Light</sound>
+    <sound>sound\snd_Potion_BigHP</sound>
+    <sound>sound\snd_Potion_Resistance</sound>
+    <sound>sound\snd_Potion_SmallHP</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Character">
@@ -145,7 +149,7 @@
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_editor</object>
-      <object>objects\obj_system</object>
+      <object>objects\obj_GameStart</object>
       <object>objects\obj_camera</object>
       <object>objects\obj_background</object>
       <object>objects\obj_music</object>
@@ -214,11 +218,13 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
-    <room>rooms\rm_tolga</room>
-    <room>rooms\rm_main</room>
-    <room>rooms\rm_dup</room>
-    <room>rooms\rm_base</room>
+    <room>rooms\rm_Gorkem</room>
+    <room>rooms\rm_TestChamber</room>
+    <room>rooms\rm_Tolga1</room>
+    <room>rooms\rm_Tolga_Level1</room>
+    <room>rooms\rm_Tolga_Level2</room>
+    <room>rooms\rm_Tolga_Level3</room>
+    <room>rooms\rm_Base</room>
   </rooms>
   <constants number="1">
     <constant name="RUN_STEP">0</constant>

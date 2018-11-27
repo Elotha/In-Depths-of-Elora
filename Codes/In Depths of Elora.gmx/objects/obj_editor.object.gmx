@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>-10</depth>
+  <depth>-100</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,7 +28,9 @@
             <string>///Create
 
 {
-    global.editor_mode = false;
+    global.editor_mode = true;
+    global.immortality = false;
+    global.draw = false; //Debug Draw modu
 }
 </string>
           </argument>
@@ -257,6 +259,33 @@
     if !global.editor_mode then exit;
     lives++;
     health = 100;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Immortality
+
+{
+    global.immortality = reverse(global.immortality);
 }
 </string>
           </argument>

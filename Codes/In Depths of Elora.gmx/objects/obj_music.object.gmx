@@ -3,12 +3,26 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <depth>-100</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -98,7 +112,8 @@
 //Burası bölümler hazırlanınca düzenlenecek. Böylece doğru bölümde doğru müziğin çalması sağlanacak.
 
 {
-    if audio_is_playing(snd_music) then audio_stop_sound(snd_music); else audio_play_sound(snd_music,0,true);
+    sound_volume(snd_music,0.7);
+    if audio_is_playing(snd_music) then audio_stop_sound(snd_music); else audio_play_sound(snd_music,2,true);
     exit;
     
     switch(room)

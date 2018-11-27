@@ -311,17 +311,20 @@
     switch(other.sprite_index)
         {
         case spr_potion_health_big:
+            audio_play_sound(snd_Potion_BigHP,1,false);
             health = global.health_max;
             with(effect) image_blend = c_red;
             break;
             
         case spr_potion_health_little:
+            audio_play_sound(snd_Potion_SmallHP,1,false);
             health += 20;
             if health &gt; global.health_max then health = global.health_max;
             with(effect) image_blend = c_red;
             break;
             
         case spr_potion_light:
+            audio_play_sound(snd_Potion_Light,1,false);
             light_size_new += 150;
             light_potion++;
             alarm[3] = 1;
@@ -330,6 +333,7 @@
             break;
             
         case spr_potion_resistance:
+            audio_play_sound(snd_Potion_Resistance,1,false);
             with(effect) image_blend = c_teal;
             switch(resistance)
                 {
@@ -514,6 +518,7 @@
             <string>///Death
 
 {
+    if global.immortality then exit;
     if other.object_index = obj_geyser then exit;
     var type = "Default";
     if invincibility then exit;
@@ -582,6 +587,7 @@
             <string>///Death
 
 {
+    if global.immortality then exit;
     var type = "Default";
     if invincibility then exit;
     switch(other.object_index)
