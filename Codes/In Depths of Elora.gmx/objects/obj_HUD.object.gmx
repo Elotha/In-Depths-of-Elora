@@ -58,7 +58,7 @@
 //Burada HUD kodlaması var.
 
 {
-    draw_sprite_ext(spr_HealthBar,-1,4,4,2,2,0,c_white,1);
+    draw_sprite_ext(spr_HUD,-1,4,4,2,2,0,c_white,1);
 }
 </string>
           </argument>

@@ -59,7 +59,7 @@
 {
     //K tuşuna basılı tuttuğumuz sürece ana karakterin etrafındaki ışık artar.
     //light_size_new sadece light potion alındığı zaman geçerli olan bir değer.
-    with(obj_character_parent) 
+    with(obj_CharacterParent) 
         {
         light_size++;
         light_size_new++;
@@ -229,7 +229,7 @@
 {
     if !global.editor_mode then exit;
     //visible değeri bir objenin görünür olup olmadığını belirten değerdir.
-    with(obj_block_parent) visible = reverse(visible);
+    with(obj_Block) visible = reverse(visible);
 }
 </string>
           </argument>
@@ -348,9 +348,9 @@
     //ancak içine ne yazarsam onu yok ediyor.
     //burada yok ettiğim efektler, partikül efektleri. partikül efektlerini yok etmeden 
     //bölümü yeniden başlatırsan efektler yok olmayıp bug yaratıyor bu yüzden yazdım.
-    destroy(obj_key_effect2);
-    destroy(obj_key_effect3);
-    destroy(obj_zodax_effect);
+    destroy(obj_KeyEffect2);
+    destroy(obj_KeyEffect3);
+    destroy(obj_ZodaxEffect);
     room_restart();
 }
 </string>

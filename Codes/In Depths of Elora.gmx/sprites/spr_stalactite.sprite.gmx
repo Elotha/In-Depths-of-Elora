@@ -20,18 +20,18 @@
   <width>16</width>
   <height>32</height>
   <frames>
-    <frame index="0">images\spr_stalactite_0.png</frame>
-    <frame index="1">images\spr_stalactite_1.png</frame>
-    <frame index="2">images\spr_stalactite_2.png</frame>
-    <frame index="3">images\spr_stalactite_3.png</frame>
-    <frame index="4">images\spr_stalactite_4.png</frame>
-    <frame index="5">images\spr_stalactite_5.png</frame>
-    <frame index="6">images\spr_stalactite_6.png</frame>
-    <frame index="7">images\spr_stalactite_7.png</frame>
-    <frame index="8">images\spr_stalactite_8.png</frame>
-    <frame index="9">images\spr_stalactite_9.png</frame>
-    <frame index="10">images\spr_stalactite_10.png</frame>
-    <frame index="11">images\spr_stalactite_11.png</frame>
-    <frame index="12">images\spr_stalactite_12.png</frame>
+    <frame index="0">images\spr_Stalactite_0.png</frame>
+    <frame index="1">images\spr_Stalactite_1.png</frame>
+    <frame index="2">images\spr_Stalactite_2.png</frame>
+    <frame index="3">images\spr_Stalactite_3.png</frame>
+    <frame index="4">images\spr_Stalactite_4.png</frame>
+    <frame index="5">images\spr_Stalactite_5.png</frame>
+    <frame index="6">images\spr_Stalactite_6.png</frame>
+    <frame index="7">images\spr_Stalactite_7.png</frame>
+    <frame index="8">images\spr_Stalactite_8.png</frame>
+    <frame index="9">images\spr_Stalactite_9.png</frame>
+    <frame index="10">images\spr_Stalactite_10.png</frame>
+    <frame index="11">images\spr_Stalactite_11.png</frame>
+    <frame index="12">images\spr_Stalactite_12.png</frame>
   </frames>
 </sprite>

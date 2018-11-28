@@ -20,10 +20,10 @@
   <width>80</width>
   <height>128</height>
   <frames>
-    <frame index="0">images\spr_checkpoint_0.png</frame>
-    <frame index="1">images\spr_checkpoint_1.png</frame>
-    <frame index="2">images\spr_checkpoint_2.png</frame>
-    <frame index="3">images\spr_checkpoint_3.png</frame>
-    <frame index="4">images\spr_checkpoint_4.png</frame>
+    <frame index="0">images\spr_Checkpoint_0.png</frame>
+    <frame index="1">images\spr_Checkpoint_1.png</frame>
+    <frame index="2">images\spr_Checkpoint_2.png</frame>
+    <frame index="3">images\spr_Checkpoint_3.png</frame>
+    <frame index="4">images\spr_Checkpoint_4.png</frame>
   </frames>
 </sprite>

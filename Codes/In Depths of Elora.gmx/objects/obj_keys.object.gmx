@@ -28,7 +28,7 @@
             <string>///Number of Keys
 
 {
-    global.key_max = instance_number(obj_key)+instance_number(obj_key_monster);
+    global.key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster);
 }
 </string>
           </argument>
@@ -56,7 +56,7 @@
 
 {
     global.key_number = 0; //Mevcut anahtar sayımız
-    global.key_max = instance_number(obj_key)+instance_number(obj_key_monster); //Bölümün toplam anahtar sayısı
+    global.key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
     //display_set_gui_size(512,384); //Oyunda iki kat yakınlaştırma kullandığımız için Draw kodlarının da buna uygun bir ölçeklendirmeye sahip olması gerek. Bu kod o işe yarıyor.
     
     alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.

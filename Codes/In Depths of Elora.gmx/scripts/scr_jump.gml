@@ -12,10 +12,10 @@
                     jump_count++;
                     alarm[1] = -1;
                     v_speed = jump_speed;
-                    sprite_index = spr_character_doublejump;
+                    sprite_index = spr_CharacterDoubleJump;
                     image_index = 0;
                     image_speed = 1/6;
-                    var effect = instance_create(x+(-8*image_xscale),y+26+v_speed+global.falling_speed,obj_doublejump_effect);
+                    var effect = instance_create(x+(-8*image_xscale),y+26+v_speed+global.falling_speed,obj_DoubleJump_Effect);
                     with(effect) image_xscale = other.image_xscale;
                     }
                     
