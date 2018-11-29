@@ -23,7 +23,7 @@
                 }
             y += distance_to_object(block_down)-1;
             v_speed = 0;
-            scr_sound_effect(-1,snd_FootStep,RUN_STEP);
+            //scr_sound_effect(-1,snd_FootStep,RUN_STEP);
             }
         }
         

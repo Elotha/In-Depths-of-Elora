@@ -58,7 +58,7 @@
     <instance objName="obj_Block" x="840" y="616" name="inst_EA2E9FCE" locked="0" code="" scaleX="22" scaleY="19" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="728" y="616" name="inst_860D78BB" locked="0" code="" scaleX="14" scaleY="19" colour="4294967295" rotation="0"/>
     <instance objName="obj_Character" x="576" y="576" name="inst_18CFD244" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Checkpoint" x="1440" y="64" name="inst_A59B657A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Checkpoint" x="1408" y="64" name="inst_A59B657A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1016" y="648" name="inst_8A749477" locked="0" code="" scaleX="10" scaleY="17.1428565979004" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1096" y="616" name="inst_4E3FFB2D" locked="0" code="" scaleX="20" scaleY="19" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1256" y="520" name="inst_8EF9B080" locked="0" code="" scaleX="20" scaleY="31" colour="4294967295" rotation="0"/>

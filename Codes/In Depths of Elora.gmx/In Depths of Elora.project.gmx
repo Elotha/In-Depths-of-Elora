@@ -53,7 +53,7 @@
       <sprite>sprites\spr_DoorFormation</sprite>
       <sprite>sprites\spr_DoorOpening</sprite>
       <sprite>sprites\spr_Door</sprite>
-      <sprite>sprites\spr_ZodaxSign</sprite>
+      <sprite>sprites\spr_ZodaxBush</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\spr_DamastIdle</sprite>

@@ -60,20 +60,20 @@
 {
     switch(monster_type)
         {
-        case "obj_beulian":
+        case "obj_Beulian":
             follow_y = -8;
             break;
             
-        case "obj_minyoo":
+        case "obj_Minyoo":
             follow_y = -12;
             break;
             
-        case "obj_damast":
+        case "obj_Damast":
             follow_x = 16;
             follow_y = -8;
             break;
             
-        case "obj_zodax":
+        case "obj_Zodax":
             follow_y = -28;
             break;
             

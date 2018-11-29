@@ -27,10 +27,12 @@
             <kind>1</kind>
             <string>///Create
 //
-//times_max değeri kaç kez git gel yapacağını belirtir
-//range değeri kaç kere 32'lik tile boyunca yürüyeceğini belirtir
-//tel_x değeri ışınlanacağı yerin x koordinatını belirtir
-//tel_y değeri ışınlanacağı yerin y koordinatını belirtir
+//times_max değeri kaç kez git gel yapacağını belirtir.
+//range değeri kaç kere 32'lik tile boyunca yürüyeceğini belirtir.
+//tel_x değeri ışınlanacağı yerin x koordinatını belirtir.
+//tel_y değeri ışınlanacağı yerin y koordinatını belirtir.
+//spd değeri, hspeed değerini belirtir.
+//image_xscale değeri, zodaxın hangi yöne bakacağını belirtir.
 
 {
     image_speed = 1/6;
@@ -44,7 +46,8 @@
     times_max = 4;
     teleport = false;
     coefficient = 1;
-    spd = -1;
+    spd = 1;
+    image_xscale = -1;
     alarm[0] = 1;
     damage = 20;
     event_inherited();
@@ -101,10 +104,9 @@
             <string>///Teleport
 
 {
-    teleport_x = tel_x-xstart;
+    teleport_x = tel_x-xstart+(range*16*(times_max mod 2));
     teleport_y = tel_y-ystart;
-    hspeed = spd;
-    image_xscale = sign(spd);
+    hspeed = sign(image_xscale);
 }
 </string>
           </argument>
@@ -142,6 +144,8 @@
             teleport = true;
             speed = 0;
             sprite_index = spr_ZodaxTeleportation;
+            image_index = 0;
+            image_speed = 1/6;
             instance_create(x,y,obj_ZodaxEffect);
             exit;
             }
@@ -194,7 +198,7 @@
             sprite_index = spr_ZodaxWalk;
             image_speed = 1/6;
             image_index = 0;
-            hspeed = spd;
+            hspeed = sign(image_xscale);
             teleport = false;
             times = 0;
             }

@@ -30,8 +30,8 @@
 {
     image_speed = 1/6;
     
-    var spikes_left = collision_point(x-16,y+16+12,obj_Spikes,false,true);
-    var spikes_right = collision_point(x+48,y+16+12,obj_Spikes,false,true);
+    var spikes_left = collision_point(x-16,y+48,obj_Spikes,false,true);
+    var spikes_right = collision_point(x+48,y+48,obj_Spikes,false,true);
     
     if spikes_left = noone &amp;&amp; spikes_right != noone then instance_create(x-32,y,obj_SpikesLeft);
     if spikes_left != noone &amp;&amp; spikes_right = noone then instance_create(x+32,y,obj_SpikesRight);
