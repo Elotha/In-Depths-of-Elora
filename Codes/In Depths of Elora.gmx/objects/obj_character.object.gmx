@@ -384,6 +384,7 @@
             <string>///Life
 
 {
+    audio_play_sound(snd_LifeStone,1,false);
     var effect = instance_create(other.x+16,other.y+16,obj_ItemEffect);
     with(effect) image_blend = c_red;
     lives++;
@@ -414,6 +415,7 @@
             <string>///Score
 
 {
+    //audio_play_sound(snd_ScoreStone,1,false);
     with(other)
         {
         instance_destroy();

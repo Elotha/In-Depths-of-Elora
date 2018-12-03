@@ -9,7 +9,7 @@
   <bboxmode>0</bboxmode>
   <bbox_left>8</bbox_left>
   <bbox_right>23</bbox_right>
-  <bbox_top>5</bbox_top>
+  <bbox_top>7</bbox_top>
   <bbox_bottom>20</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -27,5 +27,7 @@
     <frame index="4">images\spr_PotionResistance_4.png</frame>
     <frame index="5">images\spr_PotionResistance_5.png</frame>
     <frame index="6">images\spr_PotionResistance_6.png</frame>
+    <frame index="7">images\spr_PotionResistance_7.png</frame>
+    <frame index="8">images\spr_PotionResistance_8.png</frame>
   </frames>
 </sprite>
