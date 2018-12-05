@@ -58,7 +58,7 @@
     draw_set_font(fnt_Calibri_HUD2);
     draw_set_colour(global.hud_color);
     draw_set_valign(fa_top);
-    draw_text(140,80,string(1547));
+    draw_text(140,80,string(score));
 }
 </string>
           </argument>

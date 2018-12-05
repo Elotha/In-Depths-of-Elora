@@ -147,7 +147,7 @@
       <object>objects\obj_GameStart</object>
       <object>objects\obj_Camera</object>
       <object>objects\obj_Background</object>
-      <object>objects\obj_Music</object>
+      <object>objects\obj_Audio</object>
       <object>objects\obj_Light</object>
       <object>objects\obj_HUD</object>
       <object>objects\obj_Lives</object>

@@ -342,7 +342,7 @@
     <instance objName="obj_Block" x="424" y="200" name="inst_2438AD1C" locked="0" code="" scaleX="12" scaleY="16" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="520" y="520" name="inst_A892862F" locked="0" code="" scaleX="2" scaleY="20" colour="4294967295" rotation="0"/>
     <instance objName="obj_Camera" x="192" y="0" name="inst_1487628B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Music" x="224" y="0" name="inst_6BC4740E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Audio" x="224" y="0" name="inst_6BC4740E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_HUD" x="256" y="0" name="inst_FC4782D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Lives" x="288" y="0" name="inst_A71D7C3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Keys" x="320" y="0" name="inst_A273BB8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

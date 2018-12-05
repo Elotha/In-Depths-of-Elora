@@ -59,7 +59,7 @@
     instance_destroy();
     instance_create(x+16,y+16,obj_KeyEffect2);
     if global.key_sound != 4 then global.key_sound++; else global.key_sound = 1;
-    audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
+    if global.sounds then audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
     
     global.key_number++;
 }

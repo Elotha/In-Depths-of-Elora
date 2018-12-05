@@ -311,20 +311,20 @@
     switch(other.sprite_index)
         {
         case spr_PotionHP_Big:
-            audio_play_sound(snd_PotionHP_Big,1,false);
+            if global.sounds then audio_play_sound(snd_PotionHP_Big,1,false);
             health = global.health_max;
             with(effect) image_blend = c_red;
             break;
             
         case spr_PotionHP_Small:
-            audio_play_sound(snd_PotionHP_Small,1,false);
+            if global.sounds then audio_play_sound(snd_PotionHP_Small,1,false);
             health += 20;
             if health &gt; global.health_max then health = global.health_max;
             with(effect) image_blend = c_red;
             break;
             
         case spr_PotionLight:
-            audio_play_sound(snd_PotionLight,1,false);
+            if global.sounds then audio_play_sound(snd_PotionLight,1,false);
             light_size_new += 150;
             light_potion++;
             alarm[3] = 1;
@@ -333,7 +333,7 @@
             break;
             
         case spr_PotionResistance:
-            audio_play_sound(snd_PotionResistance,1,false);
+            if global.sounds then audio_play_sound(snd_PotionResistance,1,false);
             with(effect) image_blend = c_teal;
             switch(resistance)
                 {
@@ -384,7 +384,7 @@
             <string>///Life
 
 {
-    audio_play_sound(snd_LifeStone,1,false);
+    if global.sounds then audio_play_sound(snd_LifeStone,1,false);
     var effect = instance_create(other.x+16,other.y+16,obj_ItemEffect);
     with(effect) image_blend = c_red;
     lives++;
@@ -415,7 +415,8 @@
             <string>///Score
 
 {
-    //audio_play_sound(snd_ScoreStone,1,false);
+    if global.sounds then audio_play_sound(snd_ScoreStone,1,false);
+    score++;
     with(other)
         {
         instance_destroy();
