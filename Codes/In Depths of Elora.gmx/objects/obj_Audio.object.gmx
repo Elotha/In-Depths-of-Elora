@@ -11,20 +11,6 @@
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -42,7 +28,7 @@
             <string>///Room End
 
 {
-    audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
+    //audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
 }
 </string>
           </argument>
@@ -50,20 +36,6 @@
       </action>
     </event>
     <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -83,7 +55,11 @@
             <string>///Music
 
 {
-    if !audio_is_playing(snd_Music) then audio_play_sound(snd_Music,0,true);
+    if !audio_is_playing(snd_Music) &amp;&amp; global.music
+        {
+        audio_play_sound(snd_Music,0,true);
+        sound_volume(snd_Music,0.7);
+        }
 }
 </string>
           </argument>
@@ -110,8 +86,8 @@
             <string>///Audio
 
 {
-    global.music = false;
-    global.sounds = false;
+    global.music = true;
+    global.sounds = true;
 }
 </string>
           </argument>
@@ -141,7 +117,16 @@
 
 {
     sound_volume(snd_Music,0.7);
-    if audio_is_playing(snd_Music) then audio_stop_sound(snd_Music); else audio_play_sound(snd_Music,2,true);
+    if audio_is_playing(snd_Music)
+        {
+        audio_stop_sound(snd_Music); 
+        global.music = false;
+        }
+    else 
+        {
+        audio_play_sound(snd_Music,2,true);
+        global.music = true;
+        }
     exit;
     
     switch(room)

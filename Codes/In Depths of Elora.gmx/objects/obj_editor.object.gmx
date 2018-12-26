@@ -28,7 +28,7 @@
             <string>///Create
 
 {
-    global.editor_mode = true;
+    global.editor_mode = false;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
 }

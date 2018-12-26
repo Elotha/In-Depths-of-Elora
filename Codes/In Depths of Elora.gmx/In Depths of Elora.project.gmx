@@ -94,7 +94,8 @@
       <sprite>sprites\spr_HUD</sprite>
       <sprite>sprites\spr_PixelEffect</sprite>
       <sprite>sprites\spr_KeyboardKey</sprite>
-      <sprite>sprites\spr_KeyboardArrow</sprite>
+      <sprite>sprites\spr_KeyboardArrow1</sprite>
+      <sprite>sprites\spr_KeyboardArrow2</sprite>
       <sprite>sprites\spr_KeyboardSpace</sprite>
       <sprite>sprites\spr_ItemEffect</sprite>
       <sprite>sprites\spr_Cursor</sprite>
@@ -206,7 +207,9 @@
       <object>objects\obj_KeyEffect2</object>
       <object>objects\obj_KeyEffect3</object>
       <object>objects\obj_KeyboardKey</object>
+      <object>objects\obj_KeyboardSpace</object>
       <object>objects\obj_KeyboardArrow</object>
+      <object>objects\obj_KeyboardArrow2</object>
       <object>objects\obj_ItemEffect</object>
       <object>objects\obj_ZodaxEffect</object>
     </objects>

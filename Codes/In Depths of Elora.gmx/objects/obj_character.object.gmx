@@ -415,7 +415,7 @@
             <string>///Score
 
 {
-    if global.sounds then audio_play_sound(snd_ScoreStone,1,false);
+    //if global.sounds then audio_play_sound(snd_ScoreStone,1,false);
     score++;
     with(other)
         {
@@ -656,7 +656,12 @@
 {
     if sprite_index = spr_CharacterDoor
         {
-        if room_exists(room_next(room)) then room_goto_next();
+        //if room_exists(room_next(room)) then room_goto_next();
+        show_message("Congratulations!");
+        destroy(obj_KeyEffect2);
+        destroy(obj_KeyEffect3);
+        destroy(obj_ZodaxEffect);
+        room_restart();
         }
 }
 </string>
