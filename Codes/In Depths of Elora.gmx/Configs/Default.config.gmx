@@ -204,14 +204,14 @@
     <option_androidtv_use_test_ads>false</option_androidtv_use_test_ads>
     <option_argumenterrors>True</option_argumenterrors>
     <option_audioGroupCount>1</option_audioGroupCount>
-    <option_author>Görkem "Elotha" Küpeli</option_author>
+    <option_author>Görkem Küpeli, Ekin Can Akın, Tolga Acarkan, Büşra Uğurluay, Ege Kol, Batın Can Acar, Melisa Zeybecik</option_author>
     <option_backimage>nil</option_backimage>
     <option_borderless>False</option_borderless>
     <option_changed>false</option_changed>
     <option_changeresolution>false</option_changeresolution>
     <option_closeesc>true</option_closeesc>
     <option_colordepth>0</option_colordepth>
-    <option_display_name>Pixo: The Mystic World</option_display_name>
+    <option_display_name>In Depths of Elora</option_display_name>
     <option_displayerrors>True</option_displayerrors>
     <option_ecma>0</option_ecma>
     <option_facebook_app_display_name></option_facebook_app_display_name>
@@ -497,9 +497,9 @@
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
     <option_version>100</option_version>
-    <option_version_build>0</option_version_build>
+    <option_version_build>1</option_version_build>
     <option_version_company></option_version_company>
-    <option_version_copyright></option_version_copyright>
+    <option_version_copyright>Mert Görkem Küpeli</option_version_copyright>
     <option_version_description></option_version_description>
     <option_version_major>0</option_version_major>
     <option_version_minor>1</option_version_minor>
@@ -579,7 +579,7 @@
     <option_windows_alternate_sync_method>False</option_windows_alternate_sync_method>
     <option_windows_build_version>0</option_windows_build_version>
     <option_windows_company_info></option_windows_company_info>
-    <option_windows_copyright_info></option_windows_copyright_info>
+    <option_windows_copyright_info>Mert Görkem Küpeli</option_windows_copyright_info>
     <option_windows_create_textures_on_demand>False</option_windows_create_textures_on_demand>
     <option_windows_description_info></option_windows_description_info>
     <option_windows_enable_steam>0</option_windows_enable_steam>

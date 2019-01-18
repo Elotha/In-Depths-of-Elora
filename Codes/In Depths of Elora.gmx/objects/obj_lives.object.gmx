@@ -3,12 +3,12 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <depth>-100</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="2">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -56,20 +56,13 @@
             <kind>1</kind>
             <string>///Draw GUI
 
-//Burada HUD kodlaması var.
+//Burada hak kodlaması var.
 
 {
-    draw_set_colour(c_dkgray);
-    draw_rectangle(16,20,16+global.health_max,28,false);
-    
-    draw_set_colour(c_green);
-    draw_rectangle(17,19,16+health,27,false);
-    
-    draw_sprite(spr_lives2,0,16,36);
-    draw_set_font(fnt_calibri_10);
+    draw_set_font(fnt_Calibri_HUD);
     draw_set_valign(fa_top);
-    draw_set_colour(c_white);
-    draw_text(44,36,"X " + string(lives));
+    draw_set_colour(global.hud_color);
+    draw_text(66,52,"X " + string(lives));
 }
 </string>
           </argument>

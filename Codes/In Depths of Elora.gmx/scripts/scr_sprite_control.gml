@@ -3,9 +3,9 @@
 {
     if invincibility && !movement_permission && !jump_permission
         {
-        if sprite_index != spr_character_damaged
+        if sprite_index != spr_CharacterDamaged
             {
-            sprite_index = spr_character_damaged;
+            sprite_index = spr_CharacterDamaged;
             image_index = 0;
             image_speed = 1/6;
             }
@@ -18,16 +18,16 @@
             {
             if block_down.y > y
                 {
-                if h_speed = 0 && sprite_index != spr_character_idle
+                if h_speed = 0 && sprite_index != spr_CharacterIdle
                     {
-                    sprite_index = spr_character_idle;
+                    sprite_index = spr_CharacterIdle;
                     image_index = 0;
                     image_speed = 1/12;
                     }
                 
-                if h_speed != 0 && sprite_index != spr_character_run
+                if h_speed != 0 && sprite_index != spr_CharacterRun
                     {
-                    sprite_index = spr_character_run;
+                    sprite_index = spr_CharacterRun;
                     image_index = 0;
                     image_speed = 1/6;
                     }
@@ -35,18 +35,18 @@
             }
         else
             {
-            if (sprite_index = spr_character_jump && image_index = 5) || (sprite_index = spr_character_doublejump && image_index = 3) || (sign(v_speed) = 1 && sprite_index != spr_character_fly)
+            if (sprite_index = spr_CharacterJump && image_index = 5) || (sprite_index = spr_CharacterDoubleJump && image_index = 3) || (sign(v_speed) = 1 && sprite_index != spr_CharacterFly)
                 {
-                sprite_index = spr_character_fly;
+                sprite_index = spr_CharacterFly;
                 image_index = 0;
                 image_speed = 1/6;
                 }
                 
             if sign(v_speed) = -1
                 {
-                if jump_count = 1 && sprite_index != spr_character_jump  && sprite_index != spr_character_fly
+                if jump_count = 1 && sprite_index != spr_CharacterJump  && sprite_index != spr_CharacterFly
                     {
-                    sprite_index = spr_character_jump;
+                    sprite_index = spr_CharacterJump;
                     image_index = 0;
                     image_speed = 1/6;
                     }

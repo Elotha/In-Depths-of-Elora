@@ -20,6 +20,6 @@
   <width>3</width>
   <height>4</height>
   <frames>
-    <frame index="0">images\spr_drop_0.png</frame>
+    <frame index="0">images\spr_Drop_0.png</frame>
   </frames>
 </sprite>

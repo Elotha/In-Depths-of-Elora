@@ -7,7 +7,7 @@
         {
         health -= other.damage*resistance;
         invincibility = true;
-        sprite_index = spr_character_damaged;
+        sprite_index = spr_CharacterDamaged;
         image_index = 0;
         image_speed = 1/6;
         speed = 0;
@@ -20,7 +20,7 @@
         
     if health = 0
         {
-        var death = instance_create(x,y,obj_character_death);
+        var death = instance_create(x,y,obj_CharacterDeath);
         with(death) 
             {
             death_type = argument0;

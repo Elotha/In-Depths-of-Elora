@@ -2,28 +2,28 @@
 <sprite>
   <type>0</type>
   <xorig>0</xorig>
-  <yorigin>16</yorigin>
+  <yorigin>0</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>14</bbox_left>
-  <bbox_right>67</bbox_right>
-  <bbox_top>16</bbox_top>
-  <bbox_bottom>126</bbox_bottom>
+  <bbox_left>6</bbox_left>
+  <bbox_right>59</bbox_right>
+  <bbox_top>0</bbox_top>
+  <bbox_bottom>110</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>80</width>
-  <height>128</height>
+  <width>64</width>
+  <height>112</height>
   <frames>
-    <frame index="0">images\spr_checkpoint_0.png</frame>
-    <frame index="1">images\spr_checkpoint_1.png</frame>
-    <frame index="2">images\spr_checkpoint_2.png</frame>
-    <frame index="3">images\spr_checkpoint_3.png</frame>
-    <frame index="4">images\spr_checkpoint_4.png</frame>
+    <frame index="0">images\spr_Checkpoint_0.png</frame>
+    <frame index="1">images\spr_Checkpoint_1.png</frame>
+    <frame index="2">images\spr_Checkpoint_2.png</frame>
+    <frame index="3">images\spr_Checkpoint_3.png</frame>
+    <frame index="4">images\spr_Checkpoint_4.png</frame>
   </frames>
 </sprite>
