@@ -32,8 +32,8 @@
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="bcg_BackLayer" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="-1" foreground="0" name="bcg_Layer2" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="-1" foreground="0" name="bcg_Layer1" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="bcg_Layer2" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="bcg_Layer1" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -68,22 +68,9 @@
     <instance objName="obj_Block" x="200" y="360" name="inst_0F1A398A" locked="0" code="" scaleX="26" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="512" y="168" name="inst_C3B71F0A" locked="0" code="" scaleX="28" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="872" y="296" name="inst_3ADC53B6" locked="0" code="" scaleX="14" scaleY="16" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="800" y="512" name="inst_B366D191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="128" y="672" name="inst_F1141E72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="160" y="672" name="inst_6CB24950" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="120" y="712" name="inst_9613225F" locked="0" code="" scaleX="10" scaleY="7" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="416" y="512" name="inst_FC3250C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="384" y="512" name="inst_2759D737" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="352" y="512" name="inst_E506BD44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="320" y="512" name="inst_2FC2DEDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="320" y="544" name="inst_4E05C980" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="352" y="544" name="inst_B91E53B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="384" y="544" name="inst_086EA19E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="416" y="544" name="inst_8DC06A3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="416" y="576" name="inst_D2C8C538" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="384" y="576" name="inst_C8408019" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="352" y="576" name="inst_AC3861A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="320" y="576" name="inst_41A8AA44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Liquid" x="608" y="608" name="inst_34F5E024" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Liquid" x="640" y="608" name="inst_47B5FF2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="568" y="616" name="inst_DB3714BE" locked="0" code="" scaleX="4" scaleY="19" colour="4294967295" rotation="0"/>
@@ -98,22 +85,12 @@
     <instance objName="obj_Minyoo" x="640" y="160" name="inst_0572A13A" locked="0" code="drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Minyoo" x="704" y="160" name="inst_A9777D4E" locked="0" code="drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ZodaxSign" x="224" y="608" name="inst_2D45638D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="704" y="576" name="inst_ADC9096F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="736" y="576" name="inst_262F68F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="768" y="576" name="inst_C8F12EF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="704" y="512" name="inst_129C76BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="736" y="512" name="inst_B934A61C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="768" y="512" name="inst_66E2C545" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="896" y="512" name="inst_BC88FE7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="928" y="512" name="inst_8E25338D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="960" y="512" name="inst_3E278B44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="896" y="576" name="inst_7826FF07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="928" y="576" name="inst_AFCA5204" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="960" y="576" name="inst_824433D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_LifeStone" x="480" y="576" name="inst_30C9B60A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_LifeStone" x="480" y="512" name="inst_FC2F0E9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_LifeStone" x="480" y="448" name="inst_EA6128FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_LifeStone" x="544" y="448" name="inst_974B79CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Boulder" x="800" y="544" name="inst_D7A31066" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="992" y="320" name="inst_B90BC0FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="256" y="384" name="inst_07506399" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="480" y="352" name="inst_FC901238" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="704" y="352" name="inst_C8D635D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="1216" y="224" name="inst_06C96748" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="96" y="608" w="32" h="32" xo="128" yo="0" id="10001284" name="inst_282BEB60" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
