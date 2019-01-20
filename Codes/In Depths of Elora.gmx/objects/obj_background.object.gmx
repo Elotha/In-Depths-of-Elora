@@ -40,13 +40,25 @@
         }
     with(obj_Waterfall1)
         {
-        x = (view_xview[0] * 0.200)+xstart;
-        y = (view_yview[0] * 0.200)+ystart;
+        x = (view_xview[0] * 0.325)+xstart;
+        y = (view_yview[0] * 0.325)+ystart;
         }
     with(obj_Layer2)
         {
         x = (view_xview[0] * 0.250)+ww;
         y = (view_yview[0] * 0.250);
+        }
+    
+    with(obj_Waterfall2)
+        {
+        x = (view_xview[0] * 0.325)+xstart;
+        y = (view_yview[0] * 0.325)+ystart;
+        }
+    
+    with(obj_Waterfall3)
+        {
+        x = (view_xview[0] * 0.325)+xstart;
+        y = (view_yview[0] * 0.325)+ystart;
         }
    
 }

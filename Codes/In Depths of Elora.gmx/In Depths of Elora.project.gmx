@@ -104,16 +104,14 @@
     <sprites name="Backgrounds">
       <sprite>sprites\spr_Layer1</sprite>
       <sprite>sprites\spr_Layer2</sprite>
-      <sprite>sprites\spr_BackLayer</sprite>
       <sprite>sprites\spr_Waterfall1</sprite>
       <sprite>sprites\spr_Waterfall2</sprite>
+      <sprite>sprites\spr_Waterfall3</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\ts_Platforms</background>
     <background>background\ts_Liquid</background>
-    <background>background\bcg_Layer1</background>
-    <background>background\bcg_Layer2</background>
     <background>background\bcg_BackLayer</background>
   </backgrounds>
   <paths name="paths"/>
@@ -224,6 +222,8 @@
     </objects>
     <objects name="Backgrounds">
       <object>objects\obj_Waterfall1</object>
+      <object>objects\obj_Waterfall2</object>
+      <object>objects\obj_Waterfall3</object>
       <object>objects\obj_Layer1</object>
       <object>objects\obj_Layer2</object>
     </objects>
