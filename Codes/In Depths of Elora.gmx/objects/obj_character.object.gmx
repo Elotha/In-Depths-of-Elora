@@ -41,7 +41,7 @@
     h_speed = 0; //Yatay hız
     v_speed = 0; //Dikey hız
     dir_sign = 1; //X Scale
-    health = 100; //Can barı
+    health = 120; //Can barı
     run_speed = 4; //Koşma hızı
     light_potion = 0; //Kaç tane light potion içtik?
     resistance = 1; //Direnç
@@ -429,6 +429,70 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_Monster">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Death
+
+{
+    if global.immortality then exit;
+    var type = "Default";
+    if invincibility then exit;
+    switch(other.object_index)
+        {
+        case obj_Beulian:
+            if other.sprite_index = spr_BeulianDeath then exit;
+            type = "Beulian";
+            break;
+            
+        case obj_Minyoo:
+            if other.sprite_index = spr_MinyooDeath then exit;
+            type = "Minyoo";
+            break;
+            
+        case obj_Palpus:
+            if other.sprite_index = spr_PalpusDeath then exit;
+            type = "Palpus";
+            break;
+            
+        case obj_Zodax:
+            if other.sprite_index = spr_ZodaxDeath then exit;
+            type = "Zodax";
+            break;
+            
+        case obj_Damast:
+            type = "Damast";
+            with(other) 
+                {
+                if sprite_index = spr_DamastExplosion then exit;
+                scr_monster_death(spr_DamastExplosion);
+                speed = 0;
+                image_blend = blend_col;
+                alarm[0] = -1;
+                }
+            break;
+        }
+    scr_death(type);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_Door">
       <action>
         <libid>1</libid>
@@ -549,70 +613,6 @@
             type = "Drop";
             destroy(other);
             with (other) instance_create(x,y,obj_Stream);
-            break;
-            
-        case obj_Damast:
-            type = "Damast";
-            with(other) 
-                {
-                if sprite_index = spr_DamastExplosion then exit;
-                scr_monster_death(spr_DamastExplosion);
-                speed = 0;
-                image_blend = blend_col;
-                alarm[0] = -1;
-                }
-            break;
-        }
-    scr_death(type);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_Monster">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Death
-
-{
-    if global.immortality then exit;
-    var type = "Default";
-    if invincibility then exit;
-    switch(other.object_index)
-        {
-        case obj_Beulian:
-            if other.sprite_index = spr_BeulianDeath then exit;
-            type = "Beulian";
-            break;
-            
-        case obj_Minyoo:
-            if other.sprite_index = spr_MinyooDeath then exit;
-            type = "Minyoo";
-            break;
-            
-        case obj_Palpus:
-            if other.sprite_index = spr_PalpusDeath then exit;
-            type = "Palpus";
-            break;
-            
-        case obj_Zodax:
-            if other.sprite_index = spr_ZodaxDeath then exit;
-            type = "Zodax";
             break;
             
         case obj_Damast:

@@ -338,7 +338,7 @@
     <instance objName="obj_Block" x="3808" y="168" name="inst_2E11FBBE" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3904" y="168" name="inst_1675FDB6" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4000" y="168" name="inst_F06288D4" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Character" x="96" y="640" name="inst_DC91E4E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Character" x="1824" y="160" name="inst_DC91E4E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="424" y="200" name="inst_2438AD1C" locked="0" code="" scaleX="12" scaleY="16" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="520" y="520" name="inst_A892862F" locked="0" code="" scaleX="2" scaleY="20" colour="4294967295" rotation="0"/>
     <instance objName="obj_Camera" x="192" y="0" name="inst_1487628B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -352,11 +352,11 @@
     <instance objName="obj_KeyboardArrow2" x="768" y="288" name="inst_7B1C8643" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_KeyboardSpace" x="192" y="544" name="inst_49498AED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_KeyboardSpace" x="256" y="352" name="inst_6F0B7036" locked="0" code="text = &quot;DOUBLE JUMP&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Waterfall1" x="224" y="256" name="inst_3A5D8A67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Waterfall1" x="672" y="224" name="inst_E6852CB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="224" y="416" name="inst_3A5D8A67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="672" y="480" name="inst_E6852CB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall1" x="1920" y="416" name="inst_7D637883" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Waterfall1" x="2432" y="192" name="inst_E6F10366" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Waterfall1" x="3136" y="288" name="inst_AFA9A210" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="2432" y="448" name="inst_E6F10366" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="3136" y="448" name="inst_AFA9A210" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall1" x="3552" y="192" name="inst_26B1D5E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="704" y="128" name="inst_74DD637E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="256" y="288" name="inst_604654C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -364,7 +364,7 @@
     <instance objName="obj_Waterfall2" x="1088" y="192" name="inst_B79EBD44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="1408" y="512" name="inst_0926F1CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="1728" y="64" name="inst_4A639412" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Waterfall2" x="2336" y="-64" name="inst_19ED7579" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall2" x="2336" y="32" name="inst_19ED7579" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="2656" y="128" name="inst_32D98897" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="2880" y="352" name="inst_ADA2F130" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall2" x="2208" y="352" name="inst_E9253CFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

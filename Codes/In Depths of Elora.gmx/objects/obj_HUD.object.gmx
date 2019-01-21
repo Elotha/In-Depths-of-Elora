@@ -59,6 +59,11 @@
 
 {
     draw_sprite_ext(spr_HUD,-1,4,4,2,2,0,c_white,1);
+    draw_sprite_part_ext(spr_HealthBar2,0,0,0,min(health,9),sprite_get_height(spr_HealthBar2),96,32,2,2,c_white,1);
+    for(var i = 0; i &lt; health-8; i++)
+        {
+        draw_sprite_ext(spr_HealthBar,0,18+(45+i)*2,10+22,2,2,0,c_white,1);
+        }
 }
 </string>
           </argument>

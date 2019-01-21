@@ -118,7 +118,7 @@
     if pursuit &amp;&amp; instance_number(obj_Character) != 0 //İvme kazan
         {
         if speed &lt; 4 then speed += 0.25;
-        if abs(obj_Character.x-x) &lt; 64
+        if abs(obj_Character.x-x) &lt; 96
             {
             if sprite_index != spr_BeulianAttack
                 {

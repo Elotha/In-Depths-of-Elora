@@ -100,8 +100,8 @@
             <string>///Audio
 
 {
-    global.music = true;
-    global.sounds = true;
+    global.music = false;
+    global.sounds = false;
 }
 </string>
           </argument>

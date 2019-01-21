@@ -62,30 +62,58 @@
 //Burada canavar öldüğü zaman drop değerine göre ne düşüreceğini belirleyen kodlar var.
 
 {
+    switch(object_index)
+        {
+        case obj_Beulian:
+            xx = x-16;
+            yy = y-16;
+            break;
+            
+        case obj_Damast:
+            xx = x;
+            yy = y-8;
+            break;
+            
+        case obj_Minyoo:
+            xx = x-24;
+            yy = y-24;
+            break;
+            
+        case obj_Zodax:
+            xx = x-16;
+            yy = y-24;
+            break;
+            
+        default:
+            xx = x;
+            yy = y;
+            
+        }
+        
     switch(drop)
         {
         case 1:
             var rnd = irandom(100);
-            if rnd &lt; 100 then instance_create(x,y,obj_Potion);
+            if rnd &lt; 100 then instance_create(xx,yy,obj_Potion);
             break;
             
         case "HP Small":
-            var pot = instance_create(x,y,obj_Potion);
+            var pot = instance_create(xx,yy,obj_Potion);
             with(pot) sprite_index = spr_PotionHP_Small;
             break;
             
         case "HP Big":
-            var pot = instance_create(x,y,obj_Potion);
+            var pot = instance_create(xx,yy,obj_Potion);
             with(pot) sprite_index = spr_PotionHP_Big;
             break;
             
         case "Resistance":
-            var pot = instance_create(x,y,obj_Potion);
+            var pot = instance_create(xx,yy,obj_Potion);
             with(pot) sprite_index = spr_PotionResistance;
             break;
             
         case "Light":
-            var pot = instance_create(x,y,obj_Potion);
+            var pot = instance_create(xx,yy,obj_Potion);
             with(pot) sprite_index = spr_PotionLight;
             break;
             
@@ -94,7 +122,7 @@
                 {
                 if monster_id = other.id //monster_id değeri, obj_key_monster'ın hangi canavara ait olduğunu tutar.
                     {
-                    var key = instance_create(x-16,y-16,obj_Key);
+                    var key = instance_create(xx,yy,obj_Key);
                     with(key) 
                         {
                         vspeed = 1.4;

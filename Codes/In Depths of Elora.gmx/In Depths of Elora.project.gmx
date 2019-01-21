@@ -93,6 +93,8 @@
     </sprites>
     <sprites name="HUD &amp; Effects">
       <sprite>sprites\spr_HUD</sprite>
+      <sprite>sprites\spr_HealthBar</sprite>
+      <sprite>sprites\spr_HealthBar2</sprite>
       <sprite>sprites\spr_PixelEffect</sprite>
       <sprite>sprites\spr_KeyboardKey</sprite>
       <sprite>sprites\spr_KeyboardArrow1</sprite>
@@ -156,14 +158,12 @@
       <object>objects\obj_Background</object>
       <object>objects\obj_Audio</object>
       <object>objects\obj_Light</object>
-      <object>objects\obj_HUD</object>
       <object>objects\obj_Lives</object>
       <object>objects\obj_Keys</object>
       <object>objects\obj_Score</object>
       <object>objects\obj_Particles</object>
       <object>objects\obj_LightBug_Creator</object>
       <object>objects\obj_Block</object>
-      <object>objects\obj_Monster</object>
       <object>objects\obj_Item</object>
       <object>objects\obj_Environment</object>
     </objects>
@@ -195,6 +195,7 @@
       <object>objects\obj_Boulder</object>
     </objects>
     <objects name="Monsters">
+      <object>objects\obj_Monster</object>
       <object>objects\obj_Damast</object>
       <object>objects\obj_Palpus</object>
       <object>objects\obj_Beulian</object>
@@ -210,6 +211,7 @@
       <object>objects\obj_Potion</object>
     </objects>
     <objects name="HUD &amp; Effects">
+      <object>objects\obj_HUD</object>
       <object>objects\obj_KeyEffect</object>
       <object>objects\obj_KeyEffect2</object>
       <object>objects\obj_KeyEffect3</object>
