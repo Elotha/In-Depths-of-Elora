@@ -122,7 +122,7 @@
                 {
                 if monster_id = other.id //monster_id değeri, obj_key_monster'ın hangi canavara ait olduğunu tutar.
                     {
-                    var key = instance_create(xx,yy,obj_Key);
+                    var key = instance_create(x-16,y-16,obj_Key);
                     with(key) 
                         {
                         vspeed = 1.4;

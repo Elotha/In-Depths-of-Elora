@@ -31,6 +31,8 @@
     motion_set(90,0.4);
     image_speed = 1/6;
     alarm[0] = 15;
+    col = make_colour_hsv(irandom_range(20,55),irandom_range(200,255),255);
+    image_blend = col;
 }
 </string>
           </argument>
@@ -85,7 +87,7 @@
             <string>///Light
 
 {
-    scr_light(16,c_yellow,0,0);
+    scr_light(16,col,0,0);
 }
 </string>
           </argument>
