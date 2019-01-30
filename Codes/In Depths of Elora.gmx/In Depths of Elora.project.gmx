@@ -167,6 +167,7 @@
       <object>objects\obj_Block</object>
       <object>objects\obj_Item</object>
       <object>objects\obj_Environment</object>
+      <object>objects\obj_Finish</object>
     </objects>
     <objects name="Character">
       <object>objects\obj_CharacterParent</object>
@@ -234,6 +235,7 @@
   <rooms name="rooms">
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
+    <room>rooms\rm_Finish</room>
     <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Tolga1</room>
     <room>rooms\rm_Tolga_Level1</room>

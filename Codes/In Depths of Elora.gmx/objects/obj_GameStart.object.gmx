@@ -34,6 +34,8 @@
     global.falling_limit = 15; //Maksimum düşme hızı
     global.frame_rate = 1/6; //Genel animasyon hızı
     
+    display_set_gui_size(1024,768);
+    
     window_set_cursor(cr_none);
     //cursor_sprite = spr_Cursor;
 }

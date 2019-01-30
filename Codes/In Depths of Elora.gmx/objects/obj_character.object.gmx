@@ -656,18 +656,7 @@
 {
     if sprite_index = spr_CharacterDoor
         {
-        if room != rm_Gist2
-            {
-            if room_exists(room_next(room)) then room_goto_next();
-            }
-        else 
-            {
-            show_message("Congratulations!");
-            destroy(obj_KeyEffect2);
-            destroy(obj_KeyEffect3);
-            destroy(obj_ZodaxEffect);
-            room_goto(rm_Gist);
-            }
+        if room_exists(room_next(room)) then room_goto_next();
         }
 }
 </string>

@@ -252,7 +252,7 @@
     <instance objName="obj_Block" x="4200" y="616" name="inst_EB3F1149" locked="0" code="" scaleX="16" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="4128" y="608" name="inst_9DD973C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_LifeStone" x="2240" y="624" name="inst_0E5DAE1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Waterfall1" x="96" y="448" name="inst_B77478CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Waterfall1" x="96" y="384" name="inst_B77478CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall1" x="1024" y="416" name="inst_4C3053E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall1" x="1952" y="384" name="inst_09068140" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Waterfall1" x="2624" y="448" name="inst_0B1F28F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
