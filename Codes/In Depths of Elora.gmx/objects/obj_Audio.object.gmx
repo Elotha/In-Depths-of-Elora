@@ -70,10 +70,11 @@
             global.current_music = snd_Music;
             
         }
+        
     if global.music
         {
-        if !audio_is_playing(global.current_music) then audio_play_sound(global.current_music,0,true);
-        sound_volume(global.current_music,0.6);
+        audio_play_sound(global.current_music,0,true);
+        sound_volume(global.current_music,0.5);
         }
 }
 </string>
@@ -179,7 +180,7 @@
                 global.current_music = snd_Music;
             }
         if !audio_is_playing(global.current_music) then audio_play_sound(global.current_music,0,true);
-        sound_volume(global.current_music,0.6);
+        sound_volume(global.current_music,0.5);
         }
     global.music = reverse(global.music);
 }
