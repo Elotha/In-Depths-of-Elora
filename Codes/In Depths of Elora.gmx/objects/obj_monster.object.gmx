@@ -94,7 +94,7 @@
         {
         case 1:
             var rnd = irandom(100);
-            if rnd &lt; 100 then instance_create(xx,yy,obj_Potion);
+            if rnd &lt; 25 then instance_create(xx,yy,obj_Potion);
             break;
             
         case "HP Small":

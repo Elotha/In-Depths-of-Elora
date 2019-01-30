@@ -9,6 +9,7 @@
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_Music</sound>
+    <sound>sound\snd_Gist2</sound>
     <sound>sound\snd_FootStep</sound>
     <sound>sound\snd_PotionLight</sound>
     <sound>sound\snd_PotionResistance</sound>
@@ -231,7 +232,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_Gorkem</room>
+    <room>rooms\rm_Gist</room>
+    <room>rooms\rm_Gist2</room>
     <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Tolga1</room>
     <room>rooms\rm_Tolga_Level1</room>

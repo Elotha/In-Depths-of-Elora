@@ -32,10 +32,10 @@
 {
     image_speed = 1/6;
     range = 6;
+    alarm[1] = 1;
     pursuit = false;
     count = 0;
     motion_set(0,1);
-    alarm[0] = (range*16)/speed;
     xx1 = 24;
     yy1 = -20;
     xx2 = 128;
@@ -43,6 +43,30 @@
     damage = 20;
     event_inherited();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+    alarm[0] = (range*16)/speed;
 </string>
           </argument>
         </arguments>

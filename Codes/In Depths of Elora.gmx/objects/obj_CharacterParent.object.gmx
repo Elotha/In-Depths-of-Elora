@@ -31,7 +31,20 @@
 //Işık ile ilgili kodlar bu objeye yazıldı, böylece hem karakterin kendisine hem de ölüsüne ayrı ayrı ışık yazmaya gerek kalmadı.
 
 {
-    light_size = 400; //Işığın temel büyüklüğü.
+    switch(room)
+        {
+        case rm_Gist:
+            light_size = 352; //Işığın temel büyüklüğü.
+            break;
+        
+        case rm_Gist2:
+            light_size = 256; 
+            break;
+            
+        default:
+            light_size = 352;
+        }
+        
     light_size_new = light_size; //Bu kod sadece light potion aldığımız zaman gerek olan bir değer.
 }
 </string>

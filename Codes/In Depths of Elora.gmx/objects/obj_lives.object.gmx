@@ -29,8 +29,8 @@
 
 {
     lives = 5; //Hak sayımız
-    health = 120; //Mevcut canımız
-    global.health_max = 100; //Maksimum canımız
+    global.health_max = 120; //Maksimum canımız
+    health = global.health_max; //Mevcut canımız
 }
 </string>
           </argument>

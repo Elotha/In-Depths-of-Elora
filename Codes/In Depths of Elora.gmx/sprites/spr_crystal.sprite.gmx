@@ -2,15 +2,15 @@
 <sprite>
   <type>0</type>
   <xorig>0</xorig>
-  <yorigin>18</yorigin>
+  <yorigin>16</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>6</bbox_left>
+  <bbox_left>5</bbox_left>
   <bbox_right>41</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>27</bbox_bottom>
+  <bbox_bottom>25</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -21,5 +21,11 @@
   <height>32</height>
   <frames>
     <frame index="0">images\spr_Crystal_0.png</frame>
+    <frame index="1">images\spr_Crystal_1.png</frame>
+    <frame index="2">images\spr_Crystal_2.png</frame>
+    <frame index="3">images\spr_Crystal_3.png</frame>
+    <frame index="4">images\spr_Crystal_4.png</frame>
+    <frame index="5">images\spr_Crystal_5.png</frame>
+    <frame index="6">images\spr_Crystal_6.png</frame>
   </frames>
 </sprite>

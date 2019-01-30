@@ -3,7 +3,7 @@
   <spriteName>spr_DamastIdle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10000000</depth>
+  <depth>1000000</depth>
   <persistent>0</persistent>
   <parentName>obj_Monster</parentName>
   <maskName>&lt;undefined&gt;</maskName>

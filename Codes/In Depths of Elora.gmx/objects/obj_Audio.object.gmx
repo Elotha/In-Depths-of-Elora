@@ -28,7 +28,7 @@
             <string>///Room End
 
 {
-    //audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
+    audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
 }
 </string>
           </argument>
@@ -36,20 +36,6 @@
       </action>
     </event>
     <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -69,10 +55,24 @@
             <string>///Music
 
 {
-    if !audio_is_playing(snd_Music) &amp;&amp; global.music
+    if global.music
         {
-        audio_play_sound(snd_Music,0,true);
-        sound_volume(snd_Music,0.7);
+        switch(room)
+            {
+            case rm_Gist:
+                global.current_music = snd_Music;
+                break;
+                
+            case rm_Gist2:
+                global.current_music = snd_Gist2;
+                break;
+            
+            default:
+                global.current_music = snd_Music;
+                
+            }
+        audio_play_sound(global.current_music,0,true);
+        sound_volume(global.current_music,0.6);
         }
 }
 </string>
@@ -100,8 +100,9 @@
             <string>///Audio
 
 {
-    global.music = false;
-    global.sounds = false;
+    global.music = true;
+    global.sounds = true;
+    global.current_music = snd_Music;
 }
 </string>
           </argument>
@@ -157,36 +158,28 @@
 //Burası bölümler hazırlanınca düzenlenecek. Böylece doğru bölümde doğru müziğin çalması sağlanacak.
 
 {
-    sound_volume(snd_Music,0.7);
-    if audio_is_playing(snd_Music)
+    if global.music
         {
-        audio_stop_sound(snd_Music); 
+        audio_stop_sound(global.current_music);
         global.music = false;
         }
-    else 
+    else
         {
-        audio_play_sound(snd_Music,2,true);
-        global.music = true;
+        switch(room)
+            {
+            case rm_Gist:
+                global.current_music = snd_Music;
+                break;
+                
+            case rm_Gist2:
+                global.current_music = snd_Gist2;
+                break;
+                
+            default: 
+                global.current_music = snd_Music;
+            }
+        sound_volume(global.current_music,0.6);
         }
-    exit;
-    
-    switch(room)
-        {
-        case rm_Level1:
-            if audio_is_playing(snd_Music) then audio_stop_sound(snd_Music); else audio_play_sound(snd_Music,0,true);
-            break;
-            
-        case rm_level2:
-            if audio_is_playing(snd_Music2) then audio_stop_sound(snd_Music2); else audio_play_sound(snd_Music2,0,true);
-            break;
-            
-        case rm_level3:
-            if audio_is_playing(snd_Music3) then audio_stop_sound(snd_Music3); else audio_play_sound(snd_Music3,0,true);
-            break;
-            
-        }
-        
-    
 }
 </string>
           </argument>
