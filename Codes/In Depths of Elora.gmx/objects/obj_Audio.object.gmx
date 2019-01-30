@@ -55,23 +55,24 @@
             <string>///Music
 
 {
+    audio_stop_all();
+    switch(room)
+        {
+        case rm_Gist:
+            global.current_music = snd_Music;
+            break;
+            
+        case rm_Gist2:
+            global.current_music = snd_Gist2;
+            break;
+        
+        default:
+            global.current_music = snd_Music;
+            
+        }
     if global.music
         {
-        switch(room)
-            {
-            case rm_Gist:
-                global.current_music = snd_Music;
-                break;
-                
-            case rm_Gist2:
-                global.current_music = snd_Gist2;
-                break;
-            
-            default:
-                global.current_music = snd_Music;
-                
-            }
-        audio_play_sound(global.current_music,0,true);
+        if !audio_is_playing(global.current_music) then audio_play_sound(global.current_music,0,true);
         sound_volume(global.current_music,0.6);
         }
 }
@@ -161,7 +162,6 @@
     if global.music
         {
         audio_stop_sound(global.current_music);
-        global.music = false;
         }
     else
         {
@@ -178,8 +178,10 @@
             default: 
                 global.current_music = snd_Music;
             }
+        if !audio_is_playing(global.current_music) then audio_play_sound(global.current_music,0,true);
         sound_volume(global.current_music,0.6);
         }
+    global.music = reverse(global.music);
 }
 </string>
           </argument>
