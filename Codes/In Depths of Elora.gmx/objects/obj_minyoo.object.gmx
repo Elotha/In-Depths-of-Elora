@@ -62,7 +62,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alarm 0
+            <string>///Key Monster
 
 {
     with(obj_KeyMonster)

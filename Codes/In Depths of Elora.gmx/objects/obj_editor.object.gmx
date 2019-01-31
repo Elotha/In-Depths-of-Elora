@@ -31,6 +31,7 @@
     global.editor_mode = false;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
+    global.old_mode = false;
 }
 </string>
           </argument>
@@ -87,7 +88,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>health--;
+            <string>///Health
+
+{
+    health--;
+    with (obj_Character) if health &lt;= 0
+        {
+        var death = instance_create(x,y,obj_CharacterDeath);
+        lives--;
+        instance_destroy();
+        }
+}
 </string>
           </argument>
         </arguments>
@@ -168,6 +179,33 @@
     destroy(obj_ZodaxEffect);
     audio_stop_all();
     game_restart();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Old Mode
+
+{
+    global.old_mode = reverse(global.old_mode);
 }
 </string>
           </argument>
@@ -287,6 +325,34 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Global Draw
+
+{
+    if !global.editor_mode then exit;
+    global.draw = reverse(global.draw);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="86">
       <action>
         <libid>1</libid>
@@ -338,7 +404,7 @@
 {
     if !global.editor_mode then exit;
     lives++;
-    health = 120;
+    health = global.health_max;
 }
 </string>
           </argument>

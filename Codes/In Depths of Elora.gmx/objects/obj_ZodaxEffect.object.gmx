@@ -48,7 +48,7 @@
     part_emitter_region(zodax_effect,zodax_emitter,-32,32,-24,8,ps_shape_rectangle,ps_distr_gaussian);
     part_emitter_stream(zodax_effect,zodax_emitter,particle_zodax,1);
     
-    alarm[0] = 36;
+    alarm[0] = 48;
 
 }
 </string>
@@ -104,6 +104,9 @@
             <string>///Particles Destroy
 
 {
+    part_emitter_destroy(zodax_effect,zodax_emitter);
+    part_type_destroy(particle_zodax);
+    part_system_destroy(zodax_effect);
     instance_destroy();
 }
 </string>

@@ -1,0 +1,5 @@
+Kapıya yaklaşıp geri çekilip tekrar gelince kapı bug'a girebiliyor.
+
+Damast ile minyoo çarpışması bug yaratabiliyor.
+
+Ana karakter duvarlara sıkışabiliyor ya da duvarlardan geçebiliyor.

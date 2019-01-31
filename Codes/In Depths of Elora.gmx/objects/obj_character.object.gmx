@@ -41,13 +41,13 @@
     h_speed = 0; //Yatay hız
     v_speed = 0; //Dikey hız
     dir_sign = 1; //X Scale
-    health = 120; //Can barı
     run_speed = 4; //Koşma hızı
     light_potion = 0; //Kaç tane light potion içtik?
     resistance = 1; //Direnç
     step_count[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
     sprite_change = false; //Sprite'ın değişip değişmediğini kontrol eden değer
     last_sprite = spr_CharacterIdle; //Step başında hangi sprite'a sahip olduğunu kaydeden değer
+    health = global.health_max;
     
     with(obj_Camera)
         {
@@ -730,33 +730,6 @@
         draw_set_colour(c_yellow); //Dikey
         draw_rectangle(x-bottom_x,y-12,x+bottom_x,bbox_top+v_speed,true);
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="88">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Global Draw
-
-{
-    global.draw = reverse(global.draw);
 }
 </string>
           </argument>

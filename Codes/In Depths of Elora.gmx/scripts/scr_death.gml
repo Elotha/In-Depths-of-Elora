@@ -18,7 +18,7 @@
         alarm[2] = (1/image_speed)*image_number;
         }
         
-    if health = 0
+    if health <= 0
         {
         var death = instance_create(x,y,obj_CharacterDeath);
         with(death) 

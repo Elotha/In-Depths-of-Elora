@@ -3,7 +3,7 @@
 {
     if jump_permission //Zıplama iznimiz var mı?
         {
-        if keyboard_check_pressed(vk_space) //Inputlar
+        if keyboard_check_pressed(vk_space) || (global.old_mode && (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W'))))  //Inputlar
             {
             if jump_count < jump_max //Zıplama sayımız maksimum zıplama sayısından düşük mü?
                 {

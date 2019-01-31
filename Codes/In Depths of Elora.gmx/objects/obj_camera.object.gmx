@@ -29,8 +29,12 @@
 
 {
     //Burada aşağı ya da yukarı tuşlarına bastığımız zaman kamerada oluşan değişim uygulanıyor.
-    if keyboard_check(vk_up) or keyboard_check(ord('W')) then global.camera = "Up";
-    else if keyboard_check(vk_down) or keyboard_check(ord('S')) then global.camera = "Down";
+    if !global.old_mode 
+        {
+        if keyboard_check(vk_up) or keyboard_check(ord('W')) then global.camera = "Up";
+        else if keyboard_check(vk_down) or keyboard_check(ord('S')) then global.camera = "Down";
+        else global.camera = "Stable";
+        }
     else global.camera = "Stable";
     
     if global.camera = "Up" 
