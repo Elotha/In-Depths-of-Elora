@@ -374,7 +374,7 @@
     <instance objName="obj_Block" x="2120" y="200" name="inst_52D4694A" locked="0" code="" scaleX="26" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="3680" y="608" name="inst_1FFB6BD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Character" x="128" y="640" name="inst_F0718439" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Crystal" x="3409" y="672" name="inst_17161DEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Plant" x="3420" y="608" name="inst_80C856A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

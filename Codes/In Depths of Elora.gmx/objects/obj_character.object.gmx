@@ -597,8 +597,8 @@
             break;
             
         case obj_Spikes:
-            if other.type = "Lethal" then health = 0;
-            type = "Spikes";
+            //if other.type = "Lethal" then health = 0;
+            type = "Spike";
             break;
             
         case obj_Plant:
@@ -722,7 +722,7 @@
         //draw_rectangle(x,y-19,x+((abs(sprite_xoffset)+8)*dir_sign)+h_speed,y+abs(sprite_yoffset),true);
         
         draw_set_colour(c_red); //Yatay
-        draw_rectangle(x,y-19,x+(8*sign(h_speed))+h_speed,y+abs(sprite_yoffset),true);
+        draw_rectangle(x,y-15,x+(8*sign(h_speed))+h_speed,y+abs(sprite_yoffset),true);
         
         draw_set_colour(c_green); //Dikey
         draw_rectangle(x-bottom_x,y+32,x+bottom_x,y+32+v_speed+1,true);

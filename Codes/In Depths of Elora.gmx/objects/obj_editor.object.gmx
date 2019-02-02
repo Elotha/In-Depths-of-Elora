@@ -263,7 +263,14 @@
 {
     if !global.editor_mode then exit;
     
-    if room_exists(room_previous(room)) then room_goto_previous();
+    if room_exists(room_previous(room))
+       {
+       room_goto_previous();
+       destroy(obj_KeyEffect);
+       destroy(obj_KeyEffect2);
+       destroy(obj_KeyEffect3);
+       destroy(obj_ZodaxEffect);
+       }
 }
 </string>
           </argument>
@@ -292,7 +299,15 @@
 {
     if !global.editor_mode then exit;
     
-    if room_exists(room_next(room)) then room_goto_next();
+    if room_exists(room_next(room))
+       {
+       destroy(obj_KeyEffect);
+       destroy(obj_KeyEffect2);
+       destroy(obj_KeyEffect3);
+       destroy(obj_ZodaxEffect);
+       room_goto_next();
+       
+       }
 }
 </string>
           </argument>

@@ -30,6 +30,7 @@
 {
     image_speed = 1/6;
     alarm[0] = 1;
+    death_type = "default";
     event_inherited();
 }
 </string>
