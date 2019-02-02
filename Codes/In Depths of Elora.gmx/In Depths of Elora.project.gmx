@@ -148,6 +148,7 @@
   <fonts name="fonts">
     <font>fonts\fnt_Calibri_HUD2</font>
     <font>fonts\fnt_Calibri_HUD</font>
+    <font>fonts\fnt_Potion</font>
     <font>fonts\fnt_Calibri_8</font>
     <font>fonts\fnt_Interact</font>
   </fonts>
