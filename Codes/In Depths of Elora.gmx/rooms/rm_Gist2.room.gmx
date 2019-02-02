@@ -87,7 +87,7 @@
     <instance objName="obj_PlatformTiming" x="624" y="576" name="inst_57B49161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="576" y="672" name="inst_32FBB511" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="320" y="192" name="inst_49E8D012" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="208" y="288" name="inst_23D12AE0" locked="0" code="range = 14;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="176" y="288" name="inst_23D12AE0" locked="0" code="range = 14;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="48" y="96" name="inst_AB475438" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="72" y="96" name="inst_3EE0C253" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="48" y="72" name="inst_08D0D4C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -196,8 +196,7 @@
     <instance objName="obj_Potion" x="3040" y="608" name="inst_85BF6DEE" locked="0" code="sprite_index = spr_PotionResistance;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3112" y="520" name="inst_F01A4AE9" locked="0" code="" scaleX="46" scaleY="31" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3208" y="168" name="inst_3B6E6470" locked="0" code="" scaleX="26" scaleY="15" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Plant" x="3424" y="448" name="inst_12A0D658" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="3232" y="480" name="inst_4FDD77AB" locked="0" code="range = 8;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="3200" y="480" name="inst_4FDD77AB" locked="0" code="range = 7;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3072" y="72" name="inst_0A006EFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3096" y="72" name="inst_9F9F5C49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3096" y="96" name="inst_38998001" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -275,10 +274,10 @@
     <instance objName="obj_ScoreStone" x="2400" y="408" name="inst_53650658" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="2424" y="408" name="inst_B5F7EDA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Crystal" x="416" y="320" name="inst_EAB3B7A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Character" x="160" y="608" name="inst_4411D542" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Geyser" x="3744" y="32" name="inst_F2FCF29C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="3392" y="448" name="inst_3783E855" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="3360" y="448" name="inst_04A9ECCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Character" x="160" y="640" name="inst_58212640" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
