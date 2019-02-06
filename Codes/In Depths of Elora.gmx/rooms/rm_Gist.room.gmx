@@ -143,7 +143,7 @@
     <instance objName="obj_Spikes" x="1792" y="416" name="inst_4789CF67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="1648" y="368" name="inst_9D4C77F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="1664" y="288" name="inst_1032D000" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="2072" y="304" name="inst_DC248B93" locked="0" code="sprite_index = spr_PotionHP_Small;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="2072" y="304" name="inst_DC248B93" locked="0" code="sprite_index = spr_PotionHP_Small;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Beulian" x="2048" y="160" name="inst_E4D0AFE4" locked="0" code="range = 8;&#xA;drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Geyser" x="1856" y="128" name="inst_A5FA0112" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Checkpoint" x="1568" y="32" name="inst_29AF901C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -188,10 +188,9 @@
     <instance objName="obj_ScoreStone" x="2208" y="360" name="inst_55F8B246" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="2256" y="360" name="inst_B609F44B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="2232" y="360" name="inst_351DECFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ZodaxSign" x="2400" y="672" name="inst_63D2ED6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Plant" x="2656" y="608" name="inst_D3B172CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Plant" x="2720" y="608" name="inst_9B9A87F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="2688" y="640" name="inst_63A5FE93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Plant" x="2688" y="608" name="inst_D3B172CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Plant" x="2752" y="608" name="inst_9B9A87F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Key" x="2720" y="640" name="inst_63A5FE93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2200" y="288" name="inst_1B4A4454" locked="0" code="" scaleX="16" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2328" y="232" name="inst_528C8888" locked="0" code="" scaleX="36" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2504" y="200" name="inst_0461F50A" locked="0" code="" scaleX="14" scaleY="4" colour="4294967295" rotation="0"/>
@@ -200,8 +199,6 @@
     <instance objName="obj_Block" x="2760" y="0" name="inst_83FE8E37" locked="0" code="" scaleX="10" scaleY="61" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2280" y="488" name="inst_544697A2" locked="0" code="" scaleX="70" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2200" y="680" name="inst_C7A53BF6" locked="0" code="" scaleX="93" scaleY="11" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Zodax" x="3104" y="480" name="inst_92B5BAE4" locked="0" code="range = 7;&#xA;times_max = 2;&#xA;tel_x = 2560;&#xA;tel_y = 672;&#xA;spd = -1;&#xA;image_xscale = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ZodaxSign" x="3136" y="480" name="inst_0921F4EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Checkpoint" x="2976" y="224" name="inst_02EA0EF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="2880" y="192" name="inst_3F481266" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_LifeStone" x="3088" y="64" name="inst_FDA177F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -278,7 +275,7 @@
     <instance objName="obj_Spikes" x="3232" y="640" name="inst_EFBB6AB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="3232" y="288" name="inst_70B61DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="3312" y="192" name="inst_B83E5FAE" locked="0" code="alarm[0] = alarm[0] = 1.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="3344" y="48" name="inst_A1C9AE3F" locked="0" code="sprite_index = spr_PotionResistance;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="3344" y="48" name="inst_A1C9AE3F" locked="0" code="sprite_index = spr_PotionResistance;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2840" y="392" name="inst_5BD2002D" locked="0" code="" scaleX="4" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2840" y="0" name="inst_0A5FFF70" locked="0" code="" scaleX="70" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3400" y="0" name="inst_3631D48F" locked="0" code="" scaleX="6" scaleY="76" colour="4294967295" rotation="0"/>
@@ -293,7 +290,7 @@
     <instance objName="obj_Block" x="3176" y="424" name="inst_9BE530B5" locked="0" code="" scaleX="14" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="obj_Minyoo" x="3488" y="576" name="inst_C1A39444" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Minyoo" x="3584" y="576" name="inst_C6A927FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Potion" x="3216" y="368" name="inst_CED2684E" locked="0" code="sprite_index = spr_PotionHP_Small;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="3216" y="368" name="inst_CED2684E" locked="0" code="sprite_index = spr_PotionHP_Small;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3448" y="0" name="inst_A8E90417" locked="0" code="" scaleX="110" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3528" y="424" name="inst_2BAA7315" locked="0" code="" scaleX="28" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3448" y="232" name="inst_819BEBE5" locked="0" code="" scaleX="8" scaleY="11" colour="4294967295" rotation="0"/>
@@ -368,8 +365,6 @@
     <instance objName="obj_Block" x="4264" y="424" name="inst_B0787038" locked="0" code="" scaleX="8" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="696" y="328" name="inst_A2CF0360" locked="0" code="" scaleX="4" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_Geyser" x="2240" y="128" name="inst_70FBC049" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ZodaxSign" x="2592" y="672" name="inst_B1E058B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ZodaxSign" x="2944" y="480" name="inst_87148BC7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2120" y="200" name="inst_52D4694A" locked="0" code="" scaleX="26" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="3680" y="608" name="inst_1FFB6BD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Character" x="128" y="640" name="inst_F0718439" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

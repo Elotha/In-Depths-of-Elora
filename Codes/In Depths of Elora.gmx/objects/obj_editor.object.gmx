@@ -58,6 +58,7 @@
             <string>///Light
 
 {
+    if !global.editor_mode then exit;
     //K tuşuna basılı tuttuğumuz sürece ana karakterin etrafındaki ışık artar.
     //light_size_new sadece light potion alındığı zaman geçerli olan bir değer.
     with(obj_CharacterParent) 
@@ -317,6 +318,28 @@
     <event eventtype="9" enumb="89">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+    if !global.editor_mode then exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>611</id>
         <kind>6</kind>
         <userelative>-1</userelative>
@@ -369,6 +392,20 @@
       </action>
     </event>
     <event eventtype="9" enumb="86">
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -446,6 +483,7 @@
             <string>///Immortality
 
 {
+    if !global.editor_mode then exit;
     global.immortality = reverse(global.immortality);
 }
 </string>

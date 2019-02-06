@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = reverse(visible);
+            <string>
+    if !global.editor_mode then exit;
+    visible = reverse(visible);
 </string>
           </argument>
         </arguments>

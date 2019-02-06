@@ -235,10 +235,6 @@
     <instance objName="obj_Crystal" x="3680" y="672" name="inst_CCACDDB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Beulian" x="3776" y="640" name="inst_008B8818" locked="0" code="range = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="4224" y="288" name="inst_C0A310E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ScoreStone" x="4128" y="48" name="inst_AEBCFA5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ScoreStone" x="4152" y="48" name="inst_EF9DCD84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ScoreStone" x="4152" y="72" name="inst_1E9D8DEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ScoreStone" x="4128" y="72" name="inst_9D091E4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4120" y="392" name="inst_9095FCFF" locked="0" code="" scaleX="4" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4264" y="168" name="inst_C4CF5B28" locked="0" code="" scaleX="8" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4264" y="552" name="inst_FAF3178B" locked="0" code="" scaleX="8" scaleY="8" colour="4294967295" rotation="0"/>
@@ -278,6 +274,7 @@
     <instance objName="obj_Plant" x="3392" y="448" name="inst_3783E855" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="3360" y="448" name="inst_04A9ECCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Character" x="160" y="640" name="inst_58212640" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="64" y="256" name="inst_AA461412" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

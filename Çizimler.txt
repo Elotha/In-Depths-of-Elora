@@ -1,0 +1,11 @@
+Platformlara texture çeþitliliði eklenecek. (iç kýsýmlardaki düz taþ yýðýnlarýndan bahsediyorum)
+
+Kararan kristalin yeni versiyonu çizilecek.
+
+Beulian'ýn anatomisi geliþtirilebilir, þuanda gerçekçi durmuyor. Ayný þekilde animasyonundaki anatomi de geliþtirilmeli. Bir de beulian'ýn derisine biraz doku eklenmeli, þuanda fazla çizgi-filmvari gözüküyor. 
+
+Damlayan sývý belli olmuyor, büyütülmeli ve belirginleþtirilmeli. Sarkýttan düþme animasyonunda da damla buna uydurulmalý.
+
+Hak veren kristal düzeltilmeli. Animasyon kare sayýsý 5'i geçmemeli. Rengi, checkpoint çiçeðindeki kristal ile ayný renklerde olmalý.
+
+Health bar geliþtirilmeli.

@@ -1,0 +1,84 @@
+------ GERÝ DÖNÜTLER ------
+
+Her þey fazla mor, kontrast gerekiyor.
+
+Kapý animasyonu hýzlandýrýlmalý.
+
+Timing platformlarýn yeri belli edilecek.
+
+Health bar geliþtirilmeli.
+
+Platformlara texture çeþitliliði gerekiyor. 
+
+Zodax'ýn geldiðine dair ipucu gerekiyor.
+
+Mekanik çeþitliliði gerekiyor.
+
+Jump animation daha düz olmalý.
+
+Duvardan zýplama eklenebilir.
+
+Timing platformlarýn çýkýþ animasyonu hýzlandýrýlmalý.
+
+V-Sync.
+
+
+
+Bacaklarýn çizimi ortama uymuyor.
+
+Bir þeylerin ne olduðu belli olmuyor.
+
+Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý, hatta çözünürlüðü þuanda da düþük.
+
+Dikenlerde ýþýklar dalgalanabilir.
+
+Beulian'ýn animasyonu anatomik olarak güçlendirilebilir.
+
+Beulian'a doku eklenebilir.
+
+Fýþkýran çiçek pek belli olmuyor. Fýþkýrttýðý þey de kütük gibi görünüyor, sývý etkisi yaratmýyor.
+
+Zodax'ýn sanat dizayný oyuna yeterince oturmuyor gibi.
+
+Sývýdaki yeþil renk deðiþtirilebilir.
+
+Damlayan sývý büyütülmeli, belli olmuyor.
+
+Fullscreen modunda yanlarda siyah barlar olmamalý.
+
+Pixo'nun koþma animasyonu düzeltilmeli.
+
+Zodax ve aðaç iliþkisi netleþtirilmeli.
+
+Health bara doku katýlabilir.
+
+Arkaplan biraz düzenlenebilir.
+
+Oyunda gölgeler eksik.
+
+Daha dark müzikler
+Hikaye ve gameplay baðlantýsý
+Anahtar eksik uyarýsý
+
+
+------ EKLENEBÝLECEKLER ------
+
+Yan dikenler
+
+Sarkýtlar
+
+
+------ YAPILACAKLAR ------
+
+Gidip gelen platformlar için alttan yukarý çýkýlabilme.
+
+Wall jump. // Double jump kaldrýlabilir.
+
+Kontrol tuþlarý deðiþtirilebilmeli.
+
+Ana karakterin ölüm animasyonu düzeltilecek.
+
+
+------ DÜÞÜNÜLCEKLER ------
+
+Demo sonunda full sürüm için ipuçlarý veren bir oda yapýlabilir.

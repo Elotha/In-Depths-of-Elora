@@ -114,6 +114,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\ts_Platforms</background>
+    <background>background\ts_Platforms_Variations</background>
     <background>background\ts_Liquid</background>
     <background>background\bcg_BackLayer</background>
   </backgrounds>
@@ -236,8 +237,8 @@
   <rooms name="rooms">
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_Finish</room>
     <room>rooms\rm_TestChamber</room>
+    <room>rooms\rm_Finish</room>
     <room>rooms\rm_Tolga1</room>
     <room>rooms\rm_Tolga_Level1</room>
     <room>rooms\rm_Tolga_Level2</room>
