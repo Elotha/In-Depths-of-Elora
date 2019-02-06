@@ -37,6 +37,7 @@
     </sprites>
     <sprites name="Environmental Elements">
       <sprite>sprites\spr_Block</sprite>
+      <sprite>sprites\spr_WallJump</sprite>
       <sprite>sprites\spr_PlatformTiming</sprite>
       <sprite>sprites\spr_PlatformTiming2</sprite>
       <sprite>sprites\spr_PlatformCollapsing</sprite>
@@ -94,6 +95,7 @@
     </sprites>
     <sprites name="HUD &amp; Effects">
       <sprite>sprites\spr_HUD</sprite>
+      <sprite>sprites\spr_HP</sprite>
       <sprite>sprites\spr_HealthBar</sprite>
       <sprite>sprites\spr_HealthBar2</sprite>
       <sprite>sprites\spr_PixelEffect</sprite>
@@ -105,8 +107,14 @@
       <sprite>sprites\spr_Cursor</sprite>
     </sprites>
     <sprites name="Backgrounds">
-      <sprite>sprites\spr_Layer1</sprite>
-      <sprite>sprites\spr_Layer2</sprite>
+      <sprite>sprites\spr_Layer1_Up1</sprite>
+      <sprite>sprites\spr_Layer1_Up2</sprite>
+      <sprite>sprites\spr_Layer2_Up1</sprite>
+      <sprite>sprites\spr_Layer2_Up2</sprite>
+      <sprite>sprites\spr_Layer1_Down1</sprite>
+      <sprite>sprites\spr_Layer1_Down2</sprite>
+      <sprite>sprites\spr_Layer2_Down1</sprite>
+      <sprite>sprites\spr_Layer2_Down2</sprite>
       <sprite>sprites\spr_Waterfall1</sprite>
       <sprite>sprites\spr_Waterfall2</sprite>
       <sprite>sprites\spr_Waterfall3</sprite>
@@ -167,8 +175,7 @@
       <object>objects\obj_Particles</object>
       <object>objects\obj_LightBug_Creator</object>
       <object>objects\obj_Block</object>
-      <object>objects\obj_Item</object>
-      <object>objects\obj_Environment</object>
+      <object>objects\obj_WallJump</object>
       <object>objects\obj_Finish</object>
     </objects>
     <objects name="Character">
@@ -178,6 +185,7 @@
       <object>objects\obj_DoubleJump_Effect</object>
     </objects>
     <objects name="Environmental Elements">
+      <object>objects\obj_Environment</object>
       <object>objects\obj_PlatformTiming</object>
       <object>objects\obj_PlatformTiming2</object>
       <object>objects\obj_PlatformCollapsing</object>
@@ -208,6 +216,7 @@
       <object>objects\obj_MonsterCorpse</object>
     </objects>
     <objects name="Items">
+      <object>objects\obj_Item</object>
       <object>objects\obj_ScoreStone</object>
       <object>objects\obj_LifeStone</object>
       <object>objects\obj_Key</object>
@@ -230,8 +239,10 @@
       <object>objects\obj_Waterfall1</object>
       <object>objects\obj_Waterfall2</object>
       <object>objects\obj_Waterfall3</object>
-      <object>objects\obj_Layer1</object>
-      <object>objects\obj_Layer2</object>
+      <object>objects\obj_Layer1_Up</object>
+      <object>objects\obj_Layer1_Down</object>
+      <object>objects\obj_Layer2_Up</object>
+      <object>objects\obj_Layer2_Down</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -33,20 +33,32 @@
     background_x[0] = view_xview[0] * 0.325;
     background_y[0] = view_yview[0] * 0.325;
     
-    with(obj_Layer1)
+    with(obj_Layer1_Up)
         {
         x = (view_xview[0] * 0.150)+ww;
         y = (view_yview[0] * 0.150);
+        }
+    
+    with(obj_Layer1_Down)
+        {
+        x = (view_xview[0] * 0.150)+ww;
+        y = (view_yview[0] * 0.150)+room_height;
         }
     with(obj_Waterfall1)
         {
         x = (view_xview[0] * 0.325)+xstart;
         y = (view_yview[0] * 0.325)+ystart;
         }
-    with(obj_Layer2)
+    with(obj_Layer2_Up)
         {
         x = (view_xview[0] * 0.250)+ww;
         y = (view_yview[0] * 0.250);
+        }
+    
+    with(obj_Layer2_Down)
+        {
+        x = (view_xview[0] * 0.250)+ww;
+        y = (view_yview[0] * 0.250)+room_height;
         }
     
     with(obj_Waterfall2)
@@ -89,14 +101,18 @@
 
 {
     var i = -1;
-    var ww = sprite_get_width(spr_Layer1);
-    var ly1;
+    var ww = sprite_get_width(spr_Layer1_Up1);
+    var ly1_up, ly1_down, ly2_up, ly2_down;
     repeat(floor(room_width/ww)+2)
         {
-        ly1 = instance_create(0+(i*ww),0,obj_Layer1);
-        ly1.ww = i*ww;
-        ly2 = instance_create(0+(i*ww),0,obj_Layer2);
-        ly2.ww = i*ww;
+        ly1_up = instance_create(0+(i*ww),0,obj_Layer1_Up);
+        ly1_up.ww = i*ww;
+        ly1_down = instance_create(0+(i*ww),room_height,obj_Layer1_Down);
+        ly1_down.ww = i*ww;
+        ly2_up = instance_create(0+(i*ww),0,obj_Layer2_Up);
+        ly2_up.ww = i*ww;
+        ly2_down = instance_create(0+(i*ww),0,obj_Layer2_Down);
+        ly2_down.ww = i*ww;
         i++;
         }
 }

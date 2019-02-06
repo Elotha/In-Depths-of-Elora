@@ -62,7 +62,7 @@
     draw_set_font(fnt_Calibri_HUD);
     draw_set_valign(fa_top);
     draw_set_colour(global.hud_color);
-    draw_text(66,52,"X " + string(lives));
+    draw_text(obj_HUD.xy+51,obj_HUD.xy+34,"X " + string(lives));
 }
 </string>
           </argument>

@@ -56,24 +56,24 @@
 
 {
     audio_stop_all();
-    switch(room)
-        {
-        case rm_Gist:
-            global.current_music = snd_Music;
-            break;
-            
-        case rm_Gist2:
-            global.current_music = snd_Gist2;
-            break;
-        
-        default:
-            global.current_music = snd_Music;
-            
-        }
         
     if global.music
         {
-        audio_play_sound(global.current_music,0,true);
+        switch(room)
+            {
+            case rm_Gist:
+                global.current_music = audio_play_sound(snd_Music,10,true);
+                break;
+                
+            case rm_Gist2:
+                global.current_music = audio_play_sound(snd_Gist2,10,true);
+                break;
+            
+            default:
+                global.current_music = audio_play_sound(snd_Music,10,true);
+                
+            }
+        
         sound_volume(global.current_music,0.5);
         }
 }
@@ -102,7 +102,7 @@
             <string>///Audio
 
 {
-    global.music = true;
+    global.music = false;
     global.sounds = true;
     global.current_music = snd_Music;
 }
@@ -169,17 +169,13 @@
         switch(room)
             {
             case rm_Gist:
-                global.current_music = snd_Music;
+                global.current_music = audio_play_sound(snd_Music,10,true);
                 break;
                 
             case rm_Gist2:
-                global.current_music = snd_Gist2;
+                global.current_music = audio_play_sound(snd_Gist2,11,true);
                 break;
-                
-            default: 
-                global.current_music = snd_Music;
             }
-        if !audio_is_playing(global.current_music) then audio_play_sound(global.current_music,0,true);
         sound_volume(global.current_music,0.5);
         }
     global.music = reverse(global.music);

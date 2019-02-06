@@ -89,7 +89,7 @@
     draw_set_font(fnt_Calibri_HUD2);
     draw_set_colour(global.hud_color);
     draw_set_valign(fa_top);
-    draw_text(166,56,string(global.key_number) + " / " + string(global.key_max));
+    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(global.key_number) + " / " + string(global.key_max));
 }
 </string>
           </argument>

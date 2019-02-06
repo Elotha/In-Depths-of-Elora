@@ -98,6 +98,7 @@
     draw_set_halign(fa_center);
     display_set_gui_size(512,384);
     draw_text_transformed(512/2,384/2,"CONGRATULATIONS! #PRESS &lt;F5&gt; TO RESTART THE GAME!",1,1,0);
+    display_set_gui_size(view_wport[0],view_hport[0]);
 }
 </string>
           </argument>

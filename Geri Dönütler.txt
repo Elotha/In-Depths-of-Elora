@@ -4,13 +4,9 @@ Her þey fazla mor, kontrast gerekiyor.
 
 Kapý animasyonu hýzlandýrýlmalý.
 
-Timing platformlarýn yeri belli edilecek.
-
 Health bar geliþtirilmeli.
 
 Platformlara texture çeþitliliði gerekiyor. 
-
-Zodax'ýn geldiðine dair ipucu gerekiyor.
 
 Mekanik çeþitliliði gerekiyor.
 
@@ -18,17 +14,16 @@ Jump animation daha düz olmalý.
 
 Duvardan zýplama eklenebilir.
 
-Timing platformlarýn çýkýþ animasyonu hýzlandýrýlmalý.
-
 V-Sync.
-
 
 
 Bacaklarýn çizimi ortama uymuyor.
 
 Bir þeylerin ne olduðu belli olmuyor.
 
-Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý, hatta çözünürlüðü þuanda da düþük.
+Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý. // Þelaleler grileþtirilmeli.
+
+Arkaplan biraz düzenlenebilir. 
 
 Dikenlerde ýþýklar dalgalanabilir.
 
@@ -40,21 +35,16 @@ Fýþkýran çiçek pek belli olmuyor. Fýþkýrttýðý þey de kütük gibi görünüyor, sývý 
 
 Zodax'ýn sanat dizayný oyuna yeterince oturmuyor gibi.
 
+Zodax ve aðaç iliþkisi netleþtirilmeli.
+
 Sývýdaki yeþil renk deðiþtirilebilir.
 
 Damlayan sývý büyütülmeli, belli olmuyor.
 
-Fullscreen modunda yanlarda siyah barlar olmamalý.
-
 Pixo'nun koþma animasyonu düzeltilmeli.
 
-Zodax ve aðaç iliþkisi netleþtirilmeli.
-
-Health bara doku katýlabilir.
-
-Arkaplan biraz düzenlenebilir.
-
 Oyunda gölgeler eksik.
+
 
 Daha dark müzikler
 Hikaye ve gameplay baðlantýsý

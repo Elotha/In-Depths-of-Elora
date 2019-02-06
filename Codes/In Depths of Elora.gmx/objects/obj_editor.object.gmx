@@ -28,10 +28,10 @@
             <string>///Create
 
 {
-    global.editor_mode = false;
+    global.editor_mode = true;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
-    global.old_mode = false;
+    global.old_mode = true;
 }
 </string>
           </argument>

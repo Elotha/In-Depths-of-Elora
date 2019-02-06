@@ -5,6 +5,8 @@
         {
         if keyboard_check_pressed(vk_space) || (global.old_mode && (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W'))))  //Inputlar
             {
+            var last_count = jump_count;
+            if place_meeting(x,y,obj_WallJump) then jump_count = 0; else jump_count = last_count;
             if jump_count < jump_max //Zıplama sayımız maksimum zıplama sayısından düşük mü?
                 {
                 if jump_count = 1 //İkinci kez zıplıyoruz

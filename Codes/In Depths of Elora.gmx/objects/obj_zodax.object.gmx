@@ -40,13 +40,11 @@
     teleport_y = 0;
     tel_x = xstart;
     tel_y = ystart;
-    range = 2;
     count = 0;
     times = 0;
     times_max = 4;
     teleport = false;
     coefficient = 1;
-    spd = 1;
     image_xscale = -1;
     alarm[0] = 1;
     damage = 20;
@@ -104,7 +102,7 @@
             <string>///Teleport
 
 {
-    teleport_x = tel_x-xstart+(range*16*(times_max mod 2));
+    teleport_x = tel_x-xstart;
     teleport_y = tel_y-ystart;
     hspeed = sign(image_xscale);
 }
@@ -134,10 +132,8 @@
 
 {
     if teleport then exit;
-    count += abs(hspeed);
-    if count &gt;= range*16
+    if place_meeting(x+(16*sign(image_xscale)),y,obj_ZodaxSign)
         {
-        count = 0;
         times++;
         if times = times_max
             {
@@ -152,6 +148,35 @@
         hspeed = -hspeed;
         image_xscale = -image_xscale;
         }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Monster">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Monster Death
+
+{
+    if !other.object_index = obj_Damast then exit;
+    scr_monster_death(spr_ZodaxDeath);
+    alarm[0] = -1;
 }
 </string>
           </argument>
@@ -178,7 +203,6 @@
             <string>///Monster Death
 
 {
-    if other.object_index = obj_Zodax then exit;
     scr_monster_death(spr_ZodaxDeath);
     alarm[0] = -1;
 }
@@ -213,12 +237,21 @@
             {
             image_speed = 0;
             image_index = image_number-1;
-            x += teleport_x*coefficient;
-            y += teleport_y*coefficient;
+            if sign(coefficient) = 1
+                {
+                x += teleport_x*coefficient;
+                y += teleport_y*coefficient;
+                }
+            else
+                {
+                x = xstart;
+                y = ystart;
+                }
             coefficient = coefficient*-1;
             image_xscale = -image_xscale;
-            alarm[1] = 15;
+            alarm[1] = 60;
             var effect = instance_create(x,y,obj_ZodaxEffect);
+            effect.alarm[0] = effect.alarm[0]+60;
             }
             
         if sign(image_speed) = -1

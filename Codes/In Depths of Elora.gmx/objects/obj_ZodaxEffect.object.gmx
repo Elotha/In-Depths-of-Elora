@@ -102,7 +102,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Particles Destroy
+            <string>///Destroy
 
 {
     instance_destroy();
