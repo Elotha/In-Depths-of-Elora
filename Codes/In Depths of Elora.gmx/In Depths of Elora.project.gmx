@@ -250,10 +250,6 @@
     <room>rooms\rm_Gist2</room>
     <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Finish</room>
-    <room>rooms\rm_Tolga1</room>
-    <room>rooms\rm_Tolga_Level1</room>
-    <room>rooms\rm_Tolga_Level2</room>
-    <room>rooms\rm_Tolga_Level3</room>
     <room>rooms\rm_Base</room>
   </rooms>
   <constants number="1">

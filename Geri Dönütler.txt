@@ -12,8 +12,6 @@ Mekanik çeþitliliði gerekiyor.
 
 Jump animation daha düz olmalý.
 
-Duvardan zýplama eklenebilir.
-
 V-Sync.
 
 
@@ -21,15 +19,15 @@ Bacaklarýn çizimi ortama uymuyor.
 
 Bir þeylerin ne olduðu belli olmuyor.
 
-Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý. // Þelaleler grileþtirilmeli.
+Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý. // Þelalelerin sývýsý grileþtirilmeli.
 
 Arkaplan biraz düzenlenebilir. 
 
 Dikenlerde ýþýklar dalgalanabilir.
 
-Beulian'ýn animasyonu anatomik olarak güçlendirilebilir.
-
 Beulian'a doku eklenebilir.
+
+Beulian'ýn animasyonu anatomik olarak güçlendirilebilir.
 
 Fýþkýran çiçek pek belli olmuyor. Fýþkýrttýðý þey de kütük gibi görünüyor, sývý etkisi yaratmýyor.
 
