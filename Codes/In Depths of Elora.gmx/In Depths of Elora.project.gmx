@@ -53,9 +53,9 @@
       <sprite>sprites\spr_Stream</sprite>
       <sprite>sprites\spr_LightBug</sprite>
       <sprite>sprites\spr_Geyser</sprite>
-      <sprite>sprites\spr_Crystal</sprite>
-      <sprite>sprites\spr_CrystalAnimation</sprite>
-      <sprite>sprites\spr_CrystalDark</sprite>
+      <sprite>sprites\spr_SpikeFlowerIdle</sprite>
+      <sprite>sprites\spr_SpikeFlowerActivation</sprite>
+      <sprite>sprites\spr_SpikeFlowerActive</sprite>
       <sprite>sprites\spr_Checkpoint</sprite>
       <sprite>sprites\spr_CheckpointBlooming</sprite>
       <sprite>sprites\spr_DoorFormation</sprite>
@@ -200,8 +200,8 @@
       <object>objects\obj_LightBug</object>
       <object>objects\obj_Geyser</object>
       <object>objects\obj_Checkpoint</object>
-      <object>objects\obj_Crystal</object>
-      <object>objects\obj_CrystalDark</object>
+      <object>objects\obj_SpikeFlower</object>
+      <object>objects\obj_SpikeFlowerActive</object>
       <object>objects\obj_Door</object>
       <object>objects\obj_ZodaxSign</object>
       <object>objects\obj_Boulder</object>

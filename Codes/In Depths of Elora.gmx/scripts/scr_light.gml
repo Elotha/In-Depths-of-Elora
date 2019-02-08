@@ -2,8 +2,8 @@
 //
 //argument0: size
 //argument1: color
-//argument2: x coordinate
-//argument3: y coordinate
+//argument2: x coordinate (relative)
+//argument3: y coordinate (relative)
 
 
 {

@@ -639,8 +639,8 @@
             type = "Plant";
             break;
             
-        case obj_CrystalDark:
-            type = "Dark Crystal";
+        case obj_SpikeFlowerActive:
+            type = "Spike Flower";
             break;
             
         case obj_Drop:
