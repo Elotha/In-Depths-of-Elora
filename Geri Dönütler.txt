@@ -15,7 +15,9 @@ Jump animation daha düz olmalý.
 V-Sync.
 
 
-Bacaklarýn çizimi ortama uymuyor.
+Pixonun bacaklarýnýn çizimi ortama uymuyor.
+
+Pixo'nun koþma animasyonu düzeltilmeli.
 
 Bir þeylerin ne olduðu belli olmuyor.
 
@@ -39,10 +41,9 @@ Sývýdaki yeþil renk deðiþtirilebilir.
 
 Damlayan sývý büyütülmeli, belli olmuyor.
 
-Pixo'nun koþma animasyonu düzeltilmeli.
-
 Oyunda gölgeler eksik.
 
+Oyuna bölüm içi kapý mantýðý eklenmeli.
 
 Daha dark müzikler
 Hikaye ve gameplay baðlantýsý
