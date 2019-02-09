@@ -31,17 +31,44 @@
 
 {
     image_speed = 1/6;
-    range = 6;
     alarm[1] = 1;
     pursuit = false;
-    count = 0;
     motion_set(0,1);
     xx1 = 24;
     yy1 = -20;
     xx2 = 128;
     yy2 = 32;
     damage = 20;
+    collision = false;
+    second_arrow = false;
     event_inherited();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collision
+
+{
+    collision = false;
 }
 </string>
           </argument>
@@ -65,8 +92,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-    alarm[0] = (range*16)/speed;
+            <string>///Collision
+
+{
+    collision = false;
+}
 </string>
           </argument>
         </arguments>
@@ -97,10 +127,8 @@
         sprite_index = spr_BeulianRun;
         image_index = 0;
         }
-    alarm[0] = (range*16)/speed;
     hspeed = -hspeed;
     image_xscale = -image_xscale;
-    count = 0;
 }
 </string>
           </argument>
@@ -128,10 +156,10 @@
 
 {
     if sprite_index = spr_BeulianDeath then exit;
-    var col = collision_rectangle(x+(xx1*image_xscale),y+yy1,x+(xx2*image_xscale),y+yy2,obj_Character,false,true);
-    if col != noone //Takip durumunu kontrol et, karakter varsa takibe başla
+    var char = collision_rectangle(x+(xx1*image_xscale),y+yy1,x+(xx2*image_xscale),y+yy2,obj_Character,false,true);
+    if char != noone //Takip durumunu kontrol et, karakter varsa takibe başla
         {
-        if !col.invincibility
+        if !char.invincibility
             if !pursuit
                 {
                 pursuit = true;
@@ -151,54 +179,65 @@
                 }
             }
         }
-        
-    var col2 = collision_rectangle(x+(21*image_xscale),y+14,x+((32+21)*image_xscale),y+46,obj_Block,false,true);
-    if col2 = noone &amp;&amp; pursuit //Takip varsa, karakter görüş alanından çıkınca takibi bırak
-        {
-        pursuit = false;
-        speed = 1;
-        image_speed = 1/6;
-        hspeed = -hspeed;
-        image_xscale = -image_xscale;
-        alarm[0] = count/speed;;
-        count = 0;
-        if sprite_index = spr_BeulianAttack
-            {
-            sprite_index = spr_BeulianRun;
-            image_index = 0;
-            }
-        }
     
-    if pursuit
+    if pursuit //Takip varsa, okları kontrol et, önündeki ve aşağındaki duvarı kontrol et, karakter görüş alanından çıkarsa takibi bırak
         {
-        if col = noone || (col != noone &amp;&amp; col.invincibility)
+        var arrow = instance_place(x,y,obj_BeulianArrow) //Ok kontrolü
+        if arrow != noone &amp;&amp; !second_arrow
             {
-            sprite_index = spr_BeulianRun;
+            arrow.last_dir = arrow.image_index;
+            arrow.image_index = 2;
+            second_arrow = true;
+            }
+        var block_down = collision_rectangle(x+(21*image_xscale),y+14,x+((32+21)*image_xscale),y+46,obj_Block,false,true); //Aşağıda blok var mı?
+        var block_ahead = collision_line(x,y+8,x+image_xscale*32,y+8,obj_Block,false,true); //Karşında blok var mı?
+        if char = noone || (char != noone &amp;&amp; char.invincibility) || block_down = noone || block_ahead != noone //Karakter görüş alanından çıkmışsa, karakter ölümsüzse veya aşağıda blok yoksa
+            {
             pursuit = false;
             speed = 1;
             image_speed = 1/6;
-            if count &gt; (range*16)
+            if sprite_index = spr_BeulianAttack
+                {
+                sprite_index = spr_BeulianRun;
+                image_index = 0;
+                }
+            if second_arrow
                 {
                 hspeed = -hspeed;
                 image_xscale = -image_xscale;
-                alarm[0] = count/speed;;
-                count = 0;
                 }
-            else
-                {
-                alarm[0] = ((range*16)-count)/speed;;
-                }
-            
             }
         }
-    count += abs(hspeed);
+    else //Takip yoksa ne zaman oklara çarpıp döneceğini kontrol et
+        {
+        var arrow = instance_place(x,y,obj_BeulianArrow)
+        if arrow != noone &amp;&amp; collision = false
+            {
+            if arrow.image_index = RIGHT &amp;&amp; image_xscale = -1
+                {
+                image_xscale = 1
+                hspeed = abs(hspeed);
+                }
+            
+            else if arrow.image_index = LEFT &amp;&amp; image_xscale = 1
+                {
+                image_xscale = -1
+                hspeed = -abs(hspeed);
+                }
+            else if arrow.image_index = 2 then with(arrow)
+                {
+                image_index = last_dir;
+                other.second_arrow = false;
+                }
+            }
+        }
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Damast">
+    <event eventtype="4" ename="obj_Monster">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -218,7 +257,8 @@
             <string>///Monster Death
 
 {
-    if !(other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion) then exit;
+    if !(other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion) 
+    || !(other.object_index = obj_Minyoo &amp;&amp; other.sprite_index = spr_MinyooTeleportation) then exit;
     scr_monster_death(spr_BeulianDeath);
     alarm[0] = -1;
 }
@@ -281,7 +321,7 @@
         sprite_index = spr_BeulianRun;
         image_index = 0;
         }
-    if sprite_index = spr_BeulianDeath &amp;&amp; alarm[1] = -1 &amp;&amp; image_speed != 0
+    if sprite_index = spr_BeulianDeath &amp;&amp; image_speed != 0
         {
         scr_monster_corpse();
         }

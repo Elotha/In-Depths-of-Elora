@@ -15,13 +15,15 @@ Jump animation daha düz olmalý.
 V-Sync.
 
 
-Pixonun bacaklarýnýn çizimi ortama uymuyor.
+Pixo'nun bacaklarýnýn çizimi ortama uymuyor.
 
 Pixo'nun koþma animasyonu düzeltilmeli.
 
+Pixo yükselirken pelerin aþaðýda, düþerken pelerin yukarda kalmalý.
+
 Bir þeylerin ne olduðu belli olmuyor.
 
-Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý. // Þelalelerin sývýsý grileþtirilmeli.
+Arkaplandaki nesneler uzaklaþtýkça grileþmeli. Blur olmamalý.
 
 Arkaplan biraz düzenlenebilir. 
 
@@ -37,13 +39,12 @@ Zodax'ýn sanat dizayný oyuna yeterince oturmuyor gibi.
 
 Zodax ve aðaç iliþkisi netleþtirilmeli.
 
-Sývýdaki yeþil renk deðiþtirilebilir.
-
-Damlayan sývý büyütülmeli, belli olmuyor.
-
 Oyunda gölgeler eksik.
 
 Oyuna bölüm içi kapý mantýðý eklenmeli.
+
+
+Double jump efekt tartýþýlabilir.
 
 Daha dark müzikler
 Hikaye ve gameplay baðlantýsý

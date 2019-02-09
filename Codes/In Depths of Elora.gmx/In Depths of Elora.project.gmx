@@ -75,6 +75,7 @@
       <sprite>sprites\spr_BeulianRun</sprite>
       <sprite>sprites\spr_BeulianAttack</sprite>
       <sprite>sprites\spr_BeulianDeath</sprite>
+      <sprite>sprites\spr_BeulianArrow</sprite>
       <sprite>sprites\spr_ZodaxWalk</sprite>
       <sprite>sprites\spr_ZodaxTeleportation</sprite>
       <sprite>sprites\spr_ZodaxDeath</sprite>
@@ -179,6 +180,7 @@
       <object>objects\obj_Finish</object>
     </objects>
     <objects name="Character">
+      <object>objects\obj_StartPoint</object>
       <object>objects\obj_CharacterParent</object>
       <object>objects\obj_Character</object>
       <object>objects\obj_CharacterDeath</object>
@@ -211,6 +213,7 @@
       <object>objects\obj_Damast</object>
       <object>objects\obj_Palpus</object>
       <object>objects\obj_Beulian</object>
+      <object>objects\obj_BeulianArrow</object>
       <object>objects\obj_Zodax</object>
       <object>objects\obj_Minyoo</object>
       <object>objects\obj_MonsterCorpse</object>
@@ -252,8 +255,10 @@
     <room>rooms\rm_Finish</room>
     <room>rooms\rm_Base</room>
   </rooms>
-  <constants number="1">
+  <constants number="3">
     <constant name="RUN_STEP">0</constant>
+    <constant name="LEFT">1</constant>
+    <constant name="RIGHT">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

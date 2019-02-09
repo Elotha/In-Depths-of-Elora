@@ -2,14 +2,14 @@
 <sprite>
   <type>0</type>
   <xorig>0</xorig>
-  <yorigin>8</yorigin>
+  <yorigin>0</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>10</bbox_left>
-  <bbox_right>20</bbox_right>
-  <bbox_top>3</bbox_top>
+  <bbox_left>8</bbox_left>
+  <bbox_right>23</bbox_right>
+  <bbox_top>1</bbox_top>
   <bbox_bottom>31</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -23,5 +23,17 @@
     <frame index="0">images\spr_LifeStone_0.png</frame>
     <frame index="1">images\spr_LifeStone_1.png</frame>
     <frame index="2">images\spr_LifeStone_2.png</frame>
+    <frame index="3">images\spr_LifeStone_3.png</frame>
+    <frame index="4">images\spr_LifeStone_4.png</frame>
+    <frame index="5">images\spr_LifeStone_5.png</frame>
+    <frame index="6">images\spr_LifeStone_6.png</frame>
+    <frame index="7">images\spr_LifeStone_7.png</frame>
+    <frame index="8">images\spr_LifeStone_8.png</frame>
+    <frame index="9">images\spr_LifeStone_9.png</frame>
+    <frame index="10">images\spr_LifeStone_10.png</frame>
+    <frame index="11">images\spr_LifeStone_11.png</frame>
+    <frame index="12">images\spr_LifeStone_12.png</frame>
+    <frame index="13">images\spr_LifeStone_13.png</frame>
+    <frame index="14">images\spr_LifeStone_14.png</frame>
   </frames>
 </sprite>

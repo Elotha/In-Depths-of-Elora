@@ -5,3 +5,5 @@ Health bar upgrade noktalarý olabilir.
 Zodax'ýn ruhani meyve emdiði aðaç, oyuncu tarafýndan yok edilebilir olarak tasarlanabilir. Böylece yok edildiðinde, o aðacýn özünden yapýlan bir yemeðin bilgisi açýlmýþ olur.
 
 Topladýðýmýz mavi elmaslarý yerlilerden notlar satýn almak için kullanabiliriz. Böylece hikaye parçalarý da açýlmýþ olur.
+
+Geri dönmemizi saðlayan kapýlar da olabilir.

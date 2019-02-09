@@ -61,6 +61,7 @@
 {
     draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,1);
     draw_sprite_part_ext(spr_HP,0,0,0,43+health,48,xy,xy,2,2,c_white,1);
+    draw_sprite_ext(spr_LifeStone,-1,xy+7,xy+21,1.5,1.5,0,c_white,1);
 
 /*
     

@@ -1,0 +1,27 @@
+Start Game
+
+Settings
+---> Controls (Keyboard / Gamepad)
+	Zýplama, saða sola gitme, kamerayý oynatma,
+
+---> Gameplay
+	Oyun içi arayüz tamamen gizlenebilir, sadece etkileþim anýnda görünürleþtirilebilir, sadece belirli 	bir tuþa basýlýnca görülebilir ya da her an görünür kýlýnabilir olacak.
+
+	On Startup seçeneði. Oyuncu isterse menüden baþlamak yerine direkt oyuna girebilir.
+
+	Diyaloglarýn harflerinin çýkýþ hýzý ayarlanabilir. Diyaloglarýn kendiliðinden geçmesi ve skiplenmek 	zorunda olmasý da oyuncu tarafýndan ayarlanabilir.
+
+---> Graphics
+	V-Sync.
+	Fullscreen / Windowed.
+	Resolution (?)
+	Graphics Quality (?)
+
+---> Audio
+	Music Volume
+	Sound Effects Volume
+	Voices Volume
+
+Achievements
+
+Exit

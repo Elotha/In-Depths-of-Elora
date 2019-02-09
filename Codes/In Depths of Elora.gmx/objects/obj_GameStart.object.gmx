@@ -29,6 +29,7 @@
 
 {
     global.timing_platform = 160;
+    global.force_start = false;
 }
 </string>
           </argument>
