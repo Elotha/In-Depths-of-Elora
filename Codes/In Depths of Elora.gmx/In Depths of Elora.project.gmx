@@ -21,6 +21,8 @@
     <sound>sound\snd_Key2</sound>
     <sound>sound\snd_Key3</sound>
     <sound>sound\snd_Key4</sound>
+    <sound>sound\snd_TimingPlatform_Coming</sound>
+    <sound>sound\snd_TimingPlatform_Going</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Character">
