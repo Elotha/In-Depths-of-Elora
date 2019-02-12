@@ -102,8 +102,8 @@
             <string>///Audio
 
 {
-    global.music = true;
-    global.sounds = true;
+    global.music = false;
+    global.sounds = false;
     global.current_music = snd_Music;
 }
 </string>
