@@ -23,6 +23,9 @@
     <sound>sound\snd_Key4</sound>
     <sound>sound\snd_TimingPlatform_Coming</sound>
     <sound>sound\snd_TimingPlatform_Going</sound>
+    <sound>sound\snd_Jump1</sound>
+    <sound>sound\snd_Jump2</sound>
+    <sound>sound\snd_Jump3</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Character">

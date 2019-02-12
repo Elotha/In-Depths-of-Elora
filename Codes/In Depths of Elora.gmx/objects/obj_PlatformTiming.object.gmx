@@ -31,7 +31,7 @@
     image_speed = 0;
     alarm[0] = global.timing_platform;
     image_alpha = 1;
-    audio_play_sound(snd_TimingPlatform_Going,15,false);
+    //if global.sounds then audio_play_sound(snd_TimingPlatform_Going,15,false);
 }
 </string>
           </argument>

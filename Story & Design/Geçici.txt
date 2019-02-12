@@ -17,3 +17,7 @@ Bu sýrada lanetin havadan bulaþýyor olma ihtimaline karþýn bir sur inþa edilmeye
 Bu olaylar dönerken, krallýk baþka bir ülke ile savaþa girecektir. Dolayýsýyla meclis için asker desteði oldukça azalacaktýr. Meclis, kendi askerlerini toplamak ve yetiþtirmek zorunda kalýr. Pixo da ekibe böyle dahil olur.
 
 Keþif gruplarýndan bir asker, zaman taþýný keþfeder. Bunu meclise teslim eder. 
+
+------
+
+Bir noktada diðer portal konumlarýný da denemeleri gerekiyor.
