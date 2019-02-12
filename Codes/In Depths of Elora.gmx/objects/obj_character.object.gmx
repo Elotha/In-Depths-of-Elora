@@ -755,7 +755,7 @@
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         draw_set_font(fnt_Potion);
-        draw_text(360,30,potion_text);
+        draw_text(360,44,potion_text);
         }
 
 }

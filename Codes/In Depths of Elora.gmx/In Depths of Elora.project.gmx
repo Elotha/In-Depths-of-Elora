@@ -256,8 +256,8 @@
   <rooms name="rooms">
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Finish</room>
+    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Base</room>
   </rooms>
   <constants number="3">

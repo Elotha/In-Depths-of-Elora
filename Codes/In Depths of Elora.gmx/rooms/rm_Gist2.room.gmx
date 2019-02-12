@@ -224,7 +224,7 @@
     <instance objName="obj_Key" x="3960" y="248" name="inst_D8DB3D18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3624" y="488" name="inst_91A6822D" locked="0" code="" scaleX="62" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpikeFlower" x="3680" y="672" name="inst_CCACDDB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="3776" y="640" name="inst_008B8818" locked="0" code="range = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="3920" y="640" name="inst_008B8818" locked="0" code="range = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="4224" y="288" name="inst_C0A310E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4120" y="392" name="inst_9095FCFF" locked="0" code="" scaleX="4" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4264" y="168" name="inst_C4CF5B28" locked="0" code="" scaleX="8" scaleY="7" colour="4294967295" rotation="0"/>
@@ -273,7 +273,6 @@
     <instance objName="obj_WallJump" x="1464" y="552" name="inst_D1CE03A6" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="obj_WallJump" x="1496" y="328" name="inst_BB114D15" locked="0" code="" scaleX="1" scaleY="26.2857151031494" colour="4294967295" rotation="0"/>
     <instance objName="obj_WallJump" x="1280" y="64" name="inst_8F3889AF" locked="0" code="" scaleX="1" scaleY="55" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Character" x="3600" y="240" name="inst_769253E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_BeulianArrow" x="384" y="320" name="inst_E774B630" locked="0" code="image_index = LEFT;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_BeulianArrow" x="144" y="320" name="inst_33F7E601" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_BeulianArrow" x="3168" y="512" name="inst_38681B77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -281,6 +280,8 @@
     <instance objName="obj_BeulianArrow" x="1664" y="320" name="inst_152F49AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_BeulianArrow" x="1808" y="320" name="inst_7329864E" locked="0" code="image_index = LEFT;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_StartPoint" x="256" y="576" name="inst_B28F3824" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BeulianArrow" x="3760" y="672" name="inst_1FE3C236" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BeulianArrow" x="4080" y="672" name="inst_E9E1410E" locked="0" code="image_index = LEFT;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

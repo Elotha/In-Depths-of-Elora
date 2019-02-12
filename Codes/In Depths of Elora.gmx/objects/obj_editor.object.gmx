@@ -31,7 +31,7 @@
     global.editor_mode = true;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
-    global.old_mode = true;
+    global.old_mode = false;
 }
 </string>
           </argument>
