@@ -81,7 +81,7 @@
         </function>
         <function>
           <name>create_only_one</name>
-          <externalName>create_only_one</externalName>
+          <externalName>scr_create_only_one</externalName>
           <kind>11</kind>
           <help>create_only_one(x,y,obj)</help>
           <returnType>2</returnType>

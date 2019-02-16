@@ -34,9 +34,10 @@
     global.falling_speed = 0.25; //Global yerçekimi değeri
     global.falling_limit = 15; //Maksimum düşme hızı
     global.frame_rate = 1/6; //Genel animasyon hızı
+    v_sync = true;
     
     display_set_gui_size(view_wport[0],view_hport[0]);
-    display_reset(0,true);    
+    display_reset(0,v_sync);    
     
     
     window_set_cursor(cr_none);

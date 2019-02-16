@@ -142,7 +142,7 @@
     <scripts name="Extension">
       <script>scripts\scr_destroy_instance.gml</script>
       <script>scripts\scr_reverse.gml</script>
-      <script>scripts\create_only_one.gml</script>
+      <script>scripts\scr_create_only_one.gml</script>
       <script>scripts\scr_light.gml</script>
     </scripts>
     <scripts name="Monsters">
@@ -183,6 +183,7 @@
       <object>objects\obj_Background</object>
       <object>objects\obj_Camera</object>
       <object>objects\obj_Light</object>
+      <object>objects\obj_HUD</object>
       <object>objects\obj_Lives</object>
       <object>objects\obj_Keys</object>
       <object>objects\obj_Score</object>
@@ -240,7 +241,6 @@
       <object>objects\obj_Potion</object>
     </objects>
     <objects name="HUD &amp; Effects">
-      <object>objects\obj_HUD</object>
       <object>objects\obj_Interface</object>
       <object>objects\obj_KeyEffect2</object>
       <object>objects\obj_KeyEffect3</object>

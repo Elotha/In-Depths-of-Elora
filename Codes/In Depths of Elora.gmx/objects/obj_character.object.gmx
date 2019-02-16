@@ -56,8 +56,6 @@
         x = other.x;
         y = other.y;
         }
-        
-    potion_text = "";
     
     event_inherited();
 }
@@ -347,7 +345,11 @@
             if global.sounds then audio_play_sound(snd_PotionHP_Big,1,false);
             health = global.health_max;
             with(effect) image_blend = c_red;
-            potion_text = "+ Health Points!";
+            with(obj_HUD) 
+                {
+                potion_text_full[0] = "+ Health Points!";
+                alarm[0] = 2;
+                }
             break;
             
         case spr_PotionHP_Small:
@@ -355,7 +357,11 @@
             health += 20;
             if health &gt; global.health_max then health = global.health_max;
             with(effect) image_blend = c_red;
-            potion_text = "+ Health Points!";
+            with(obj_HUD) 
+                {
+                potion_text_full[0] = "+ Health Points!";
+                alarm[0] = 2;
+                }
             break;
             
         case spr_PotionLight:
@@ -365,7 +371,11 @@
             alarm[3] = 1;
             alarm[4] = room_speed*10;
             with(effect) image_blend = c_yellow;
-            potion_text = "+ Light Radius Increased! (10 Seconds)";
+            with(obj_HUD) 
+                {
+                potion_text_full[0] = "+ Light Radius Increased! (10 Seconds)";
+                alarm[0] = 2;
+                }
             break;
             
         case spr_PotionResistance:
@@ -390,7 +400,11 @@
                     break;
                 }
             alarm[5] = room_speed*10;
-            potion_text = "+ Resistance Increased! (10 Seconds)";
+            with(obj_HUD) 
+                {
+                potion_text_full[0] = "+ Resistance Increased! (10 Seconds)";
+                alarm[0] = 2;
+                }
             break;
             
         }
@@ -753,13 +767,15 @@
             <string>///Draw GUI
 
 {
-    if potion_text != ""
+    if potion_text_full != ""
         {
-        draw_set_colour(c_white);
-        draw_set_valign(fa_top);
-        draw_set_halign(fa_left);
-        draw_set_font(fnt_Potion);
-        draw_text(360,44,potion_text);
+            {
+            draw_set_colour(c_white);
+            draw_set_valign(fa_top);
+            draw_set_halign(fa_left);
+            draw_set_font(fnt_Potion);
+            draw_text(360,44,potion_text);
+            }
         }
 
 }

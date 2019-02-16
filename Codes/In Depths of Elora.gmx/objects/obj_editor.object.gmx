@@ -151,12 +151,17 @@
         global.immortality = reverse(global.immortality);
         }
         
-     if keyboard_check(ord('K')) //Işığı arttır
+     if keyboard_check_pressed(ord('I')) //Ölümsüzlüğü aç-kapa
         {
-        with(obj_CharacterParent) 
+        global.immortality = reverse(global.immortality);
+        }
+        
+     if keyboard_check(ord('C')) //Işığı arttır
+        {
+        with(obj_System)
             {
-            light_size++;
-            light_size_new++;
+            v_sync = !v_sync;
+            display_reset(0,v_sync);
             }
         }
         
