@@ -2,9 +2,9 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <visible>0</visible>
+  <depth>-1000</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,43 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Particles
+            <string>///Create
 
 {
-   
-    i = 0;
-    while key_effect[i] != -1
-        {
-        i++;
-        if i = array_length_1d(key_effect) then break;
-        }
+    randomize();
+    global.timing_platform = 160; //Timing platformların bekleme süresi
+    global.force_start = false; //Karakter başlama noktasında doğsun mu?
+    global.falling_speed = 0.25; //Global yerçekimi değeri
+    global.falling_limit = 15; //Maksimum düşme hızı
+    global.frame_rate = 1/6; //Genel animasyon hızı
     
-
-    key_effect[i] = part_system_create();
-    part_system_depth(key_effect[i],-100);
-    particle_key = part_type_create();
-    part_type_shape(particle_key,pt_shape_pixel);
-    part_type_size(particle_key,1,1,0,0);
-    part_type_speed(particle_key,0.1,2.6,0.02,0.01);
-    part_type_direction(particle_key,30,150,0,0);
-    part_type_gravity(particle_key,0.2,270);
-    part_type_colour_hsv(particle_key,35,35,50,255,240,240);
-    part_type_life(particle_key,20,20);
-    part_type_alpha2(particle_key,1,0);
-    part_system_position(key_effect[i],x,y);
+    display_set_gui_size(view_wport[0],view_hport[0]);
+    display_reset(0,true);    
     
-    key_emitter = part_emitter_create(key_effect[i]);
-    part_emitter_region(key_effect[i],key_emitter,-3,-3,3,3,ps_shape_ellipse,ps_distr_gaussian);
-    part_emitter_burst(key_effect[i],key_emitter,particle_key,24);
     
-    alarm[0] = 60;
+    window_set_cursor(cr_none);
+    //cursor_sprite = spr_Cursor;
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -78,13 +64,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Particles
+            <string>///Checkpoint
 
 {
-    part_emitter_destroy(key_effect[i],key_emitter);
-    part_system_destroy(key_effect[i]);
-    instance_destroy();
-    key_effect[i] = -1;
+
+    global.checkpoint = -1; //Henüz bir checkpoint almadık
 }
 </string>
           </argument>

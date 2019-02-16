@@ -276,7 +276,7 @@
 
 {
     draw_self();
-    if global.draw
+    if draw
         {
         draw_set_color(c_yellow);
         draw_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,true);

@@ -79,6 +79,24 @@
             <arg>2</arg>
           </args>
         </function>
+        <function>
+          <name>create_only_one</name>
+          <externalName>create_only_one</externalName>
+          <kind>11</kind>
+          <help>create_only_one(x,y,obj)</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>create_light</name>
+          <externalName>scr_light</externalName>
+          <kind>11</kind>
+          <help>create_light(light_size,color,x,y)</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
       </functions>
       <constants/>
     </file>

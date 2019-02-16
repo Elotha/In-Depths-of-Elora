@@ -33,6 +33,7 @@
     distant_previous = true;
     col = make_colour_rgb(112,97,166);
     alarm[0] = 120;
+    depth = ENVIRONMENT;
 }
 </string>
           </argument>
@@ -127,7 +128,7 @@
             <string>///Light
 
 {
-    scr_light(128,col,8,14);
+    create_light(128,col,x+8,y+14);
 }
 </string>
           </argument>
@@ -179,11 +180,11 @@
             
         if sprite_index = spr_DoorFormation
             {
-            if !distant &amp;&amp; global.key_number &gt;= global.key_max
+            if !distant &amp;&amp; obj_Keys.key_number &gt;= obj_Keys.key_max
                 {
                 sprite_index = spr_DoorOpening;
                 }
-            if !distant &amp;&amp; global.key_number != global.key_max
+            if !distant &amp;&amp; obj_Keys.key_number != obj_Keys.key_max
                 {
                 image_speed = 0;
                 image_index = image_number-1;

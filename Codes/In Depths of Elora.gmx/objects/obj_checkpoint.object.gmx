@@ -33,6 +33,7 @@
     img_sign = 1;
     col = make_colour_rgb(184,53,29);
     checkpoint_text = false;
+    depth = ENVIRONMENT;
 }
 </string>
           </argument>
@@ -139,7 +140,7 @@
             <string>///Light
 
 {
-    scr_light(128,col,35,43);
+    create_light(128,col,x+35,y+43);
 }
 </string>
           </argument>

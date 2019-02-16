@@ -3,7 +3,7 @@
   <spriteName>spr_CharacterIdle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-25</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_CharacterParent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -48,6 +48,8 @@
     sprite_change = false; //Sprite'ın değişip değişmediğini kontrol eden değer
     last_sprite = spr_CharacterIdle; //Step başında hangi sprite'a sahip olduğunu kaydeden değer
     health = global.health_max;
+    old_mode = global.old_mode;
+    draw = global.draw;
     
     with(obj_Camera)
         {
@@ -303,13 +305,15 @@
 
 {
     last_sprite = sprite_index;
-    if sprite_index = spr_CharacterDoor then exit;
-    scr_jump();
-    scr_keyboard_inputs();
-    scr_vertical_movement(true,true);
-    scr_horizontal_movement(true);
-    scr_sprite_control();
-    scr_sound_control();
+    if sprite_index != spr_CharacterDoor
+        {
+        scr_jump();
+        scr_keyboard_inputs();
+        scr_vertical_movement(true,true);
+        scr_horizontal_movement(true);
+        scr_sprite_control();
+        scr_sound_control();
+        }
 }
 </string>
           </argument>
@@ -785,7 +789,7 @@
 
 {
     draw_self();
-    if global.draw
+    if draw
         {
         //draw_set_colour(c_red); //Yatay
         //draw_rectangle(x,y-19,x+((abs(sprite_xoffset)+8)*dir_sign)+h_speed,y+abs(sprite_yoffset),true);

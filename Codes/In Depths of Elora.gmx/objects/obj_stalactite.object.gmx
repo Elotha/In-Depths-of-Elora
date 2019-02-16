@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Image Speed
+            <string>///Image Speed and Depth
 
 {
     image_speed = 1/6;
+    depth = ENVIRONMENT;
 }
 </string>
           </argument>

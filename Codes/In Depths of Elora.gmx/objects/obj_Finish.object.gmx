@@ -65,7 +65,7 @@
             <string>///Light
 
 {
-    scr_light(352,c_white,512/2,384/2);
+    create_light(352,c_white,view_wview/2,view_hview/2);
 }
 </string>
           </argument>

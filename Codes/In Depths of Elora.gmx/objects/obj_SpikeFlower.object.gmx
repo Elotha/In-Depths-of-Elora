@@ -30,6 +30,7 @@
 {
     image_speed = 1/6;
     active = false;
+    depth = ENVIRONMENT;
 }
 </string>
           </argument>

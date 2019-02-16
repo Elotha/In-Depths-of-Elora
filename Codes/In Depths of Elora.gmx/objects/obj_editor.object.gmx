@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>-100</depth>
+  <depth>-100000</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,7 +28,7 @@
             <string>///Create
 
 {
-    global.editor_mode = true;
+    editor_mode = true;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
     global.old_mode = true;
@@ -38,7 +38,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="75">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,546 +55,121 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Light
+            <string>///Everything
 
 {
-    if !global.editor_mode then exit;
-    //K tuşuna basılı tuttuğumuz sürece ana karakterin etrafındaki ışık artar.
-    //light_size_new sadece light potion alındığı zaman geçerli olan bir değer.
-    with(obj_CharacterParent) 
+    if keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_f12) then game_end(); //Oyunu kapat
+    if keyboard_check_pressed(vk_f5) //Oyunu yeniden başlat
         {
-        light_size++;
-        light_size_new++;
+        scr_clear();
+        audio_stop_all();
+        game_restart();
+        exit;
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="74">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Health
-
-{
-    health--;
-    with (obj_Character) if health &lt;= 0
+    if keyboard_check_pressed(vk_f1) //Editör modunu aç-kapa
         {
-        var death = instance_create(x,y,obj_CharacterDeath);
-        lives--;
-        instance_destroy();
+        if keyboard_check(vk_control) then editor_mode = reverse(editor_mode);
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="123">
-      <action>
-        <libid>1</libid>
-        <id>332</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_end_game</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-    </event>
-    <event eventtype="9" enumb="122">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Screenshot
-
-{
-    if !global.editor_mode then exit;
-    
-    //burada hangi isim verileceği kontrol ediliyor. "screenshot_" kısmından sonra verilecek olan
-    //numaranın sıradaki son numara olması gerekiyor, o sebeple.
-    var i = 0;
-    while file_exists("screenshot_" + string(i) + ".png") i++;
         
-    screen_save("screenshot_" + string(i) + ".png");
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="116">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Restart Room
-
-{
-    destroy(obj_KeyEffect2);
-    destroy(obj_KeyEffect3);
-    destroy(obj_ZodaxEffect);
-    audio_stop_all();
-    game_restart();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="113">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Old Mode
-
-{
-    global.old_mode = reverse(global.old_mode);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="112">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Editor Mode
-
-{
-    if keyboard_check(vk_control) then global.editor_mode = scr_reverse(global.editor_mode);
-    //scr_reverse ya da reverse, bana ait bir fonksiyon. yaptığı şey ise boolean amaçlı bir değeri
-    //(boolean demek true false tutan değer demek) tersine çevirmek.
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="109">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Previous Room
-
-{
-    if !global.editor_mode then exit;
+    if keyboard_check_pressed(vk_f11) //Screenshot
+        {
+        var i = 0;
+        while file_exists("screenshot_" + string(i) + ".png") i++;
+        screen_save("screenshot_" + string(i) + ".png");
+        }
+        
+    if !editor_mode then exit; //Editör modu kapalıysa devam etme
     
-    if room_exists(room_previous(room))
-       {
-       room_goto_previous();
-       destroy(obj_KeyEffect);
-       destroy(obj_KeyEffect2);
-       destroy(obj_KeyEffect3);
-       destroy(obj_ZodaxEffect);
-       }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="107">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Next Room
-
-{
-    if !global.editor_mode then exit;
+    if keyboard_check_pressed(vk_shift) //Bölümü yeniden başlat
+        {
+        scr_clear();
+        room_restart();
+        exit;
+        }
+        
+    if keyboard_check_pressed(vk_add) //Sonraki odaya git
+        {
+        if room_exists(room_next(room))
+            {
+            scr_clear();
+            room_goto_next();
+            exit;
+            }
+        }
+    if keyboard_check_pressed(vk_subtract) //Önceki odaya git
+        {
+        if room_exists(room_previous(room))
+            {
+            scr_clear();
+            room_goto_previous();
+            exit;
+            }
+        }
     
-    if room_exists(room_next(room))
-       {
-       destroy(obj_KeyEffect);
-       destroy(obj_KeyEffect2);
-       destroy(obj_KeyEffect3);
-       destroy(obj_ZodaxEffect);
-       room_goto_next();
-       
-       }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="89">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-    if !global.editor_mode then exit;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>611</id>
-        <kind>6</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>-1</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>global.key_number</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>1</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="88">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Global Draw
-
-{
-    if !global.editor_mode then exit;
-    global.draw = reverse(global.draw);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="86">
-      <action>
-        <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Visibility
-
-{
-    if !global.editor_mode then exit;
-    //visible değeri bir objenin görünür olup olmadığını belirten değerdir.
-    with(obj_Block) visible = reverse(visible);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="80">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Force Start
-
-{
-    if !global.editor_mode then exit;
-    global.force_start = reverse(global.force_start);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="76">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Lives
-
-{
-    if !global.editor_mode then exit;
-    lives++;
-    health = global.health_max;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="73">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Immortality
-
-{
-    if !global.editor_mode then exit;
-    global.immortality = reverse(global.immortality);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>332</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_end_game</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-    </event>
-    <event eventtype="9" enumb="18">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Room Speed
-
-{
-    if !global.editor_mode then exit;
+    if keyboard_check_pressed(vk_f2) //Yaşlı modunu aç-kapa
+        {
+        global.old_mode = reverse(global.old_mode);
+        with(obj_CharacterParent) old_mode = global.old_mode;
+        with(obj_Camera) old_mode = global.old_mode;
+        }
     
-    //room_speed değeri, odanın saniyede kaç step işlediğini belirten değerdir.
-    if room_speed = 60 then room_speed = 2; else room_speed = 60;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="16">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Restart Room
-
-{
-    if !global.editor_mode then exit;
-    
-    //destroy, benim kendi ürettiğim bir fonksiyon. instance_destroy ile aynı işi görüyor.
-    //ancak içine ne yazarsam onu yok ediyor.
-    //burada yok ettiğim efektler, partikül efektleri. partikül efektlerini yok etmeden 
-    //bölümü yeniden başlatırsan efektler yok olmayıp bug yaratıyor bu yüzden yazdım.
-    destroy(obj_KeyEffect2);
-    destroy(obj_KeyEffect3);
-    destroy(obj_ZodaxEffect);
-    room_restart();
+    if keyboard_check_pressed(vk_alt) //Oyunu yavaşlat ya da normal hızına getir
+        {
+        if room_speed = 60 then room_speed = 2; else room_speed = 60;
+        }
+        
+    if keyboard_check_pressed(ord('Y')) //Anahtar kazan
+        {
+        with(obj_Keys) key_number++;
+        }
+        
+     if keyboard_check_pressed(ord('X')) //Global draw modunu aç-kapa
+        {
+        global.draw = reverse(global.draw);
+        with(obj_CharacterParent) draw = global.draw;
+        with(obj_Monster) draw = global.draw;
+        }
+        
+     if keyboard_check_pressed(ord('V')) //Blokları görünür-görünmez yap
+        {
+        with(obj_Block) visible = reverse(visible);
+        }
+        
+     if keyboard_check_pressed(ord('P')) //Karakteri zorla doğdur - serbest doğdur
+        {
+        global.force_start = reverse(global.force_start);
+        }
+        
+     if keyboard_check_pressed(ord('L')) //Hak sayısını arttır ve canı fulle
+        {
+        lives++;
+        health = global.health_max;
+        }
+        
+     if keyboard_check_pressed(ord('I')) //Ölümsüzlüğü aç-kapa
+        {
+        global.immortality = reverse(global.immortality);
+        }
+        
+     if keyboard_check(ord('K')) //Işığı arttır
+        {
+        with(obj_CharacterParent) 
+            {
+            light_size++;
+            light_size_new++;
+            }
+        }
+        
+     if keyboard_check(ord('J')) //Canı azalt
+        {
+        health--;
+        with (obj_Character) if health &lt;= 0
+            {
+            var death = instance_create(x,y,obj_CharacterDeath);
+            lives--;
+            instance_destroy();
+            }
+        }
 }
 </string>
           </argument>

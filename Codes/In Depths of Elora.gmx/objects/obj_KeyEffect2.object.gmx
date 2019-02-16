@@ -41,7 +41,7 @@
     key_effect[i] = part_system_create();
     part_system_depth(key_effect[i],-100);
     particle_key = part_type_create();
-    part_type_shape(particle_key,pt_shape_pixel);
+    part_type_sprite(particle_key,spr_ParticlePixel,false,false,false);
     part_type_size(particle_key,1,1,0,0);
     part_type_speed(particle_key,0.2,0.8,0.02,0.01);
     part_type_direction(particle_key,0,360,0,0);
@@ -57,6 +57,8 @@
     
     
     motion_set(point_direction(x,y,obj_Door.x+8,obj_Door.y+14),1);
+    
+    depth = ITEM;
 }
 </string>
           </argument>
@@ -154,7 +156,7 @@
         {
         if sprite_index = spr_DoorFormation
             {
-            if !distant &amp;&amp; global.key_number = global.key_max
+            if !distant &amp;&amp; obj_Keys.key_number = obj_Keys.key_max
                 {
                 sprite_index = spr_DoorOpening;
                 image_speed = 1/5;

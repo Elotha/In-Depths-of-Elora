@@ -7,9 +7,11 @@
 
 
 {
-    draw_set_blend_mode(bm_subtract);
+    /*draw_set_blend_mode(bm_subtract);
     surface_set_target(light);
     draw_circle_colour(x-view_xview+argument2,y-view_yview+argument3,argument0,argument1,c_black,false);
     surface_reset_target();
-    draw_set_blend_mode(bm_normal);
+    draw_set_blend_mode(bm_normal);*/
+    
+    ds_list_add(light_list,string(argument0) + "," + string(argument1) + "," + string(argument2) + "," + string(argument3) + ",");
 }

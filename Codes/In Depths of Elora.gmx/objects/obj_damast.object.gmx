@@ -3,7 +3,7 @@
   <spriteName>spr_DamastIdle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1000000</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_Monster</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -37,6 +37,7 @@
     dir_perm = false;
     count = 0;
     damage = 20;
+    depth = PLATFORM+50;
     event_inherited();
 }
 </string>
@@ -138,7 +139,7 @@
             {
             motion_set(270,3);
             sprite_index = spr_DamastFly;
-            depth = 0;
+            depth = MONSTER;
             friction = 0.1;
             alarm[0] = 210;
             alarm[1] = 30;
@@ -301,43 +302,11 @@
 
 {
     draw_self();
-    if global.draw
+    if draw
         {
         draw_set_colour(c_yellow);
         draw_rectangle(xx1,yy1,xx2,yy2,true);
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Press Enter
-
-{
-        motion_set(270,6);
-        sprite_index = spr_DamastFly;
-        depth = 0;
-        friction = 0.1;
-        alarm[0] = 210;
-        alarm[1] = 30;
 }
 </string>
           </argument>

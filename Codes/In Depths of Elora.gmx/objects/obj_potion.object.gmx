@@ -58,7 +58,7 @@
             <string>///Light Potion
 
 {
-    if sprite_index = spr_PotionLight then scr_light(32,col,16,16);
+    if sprite_index = spr_PotionLight then create_light(32,col,x+16,y+16);
 }
 </string>
           </argument>

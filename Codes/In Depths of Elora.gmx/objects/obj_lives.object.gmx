@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
+  <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -31,6 +31,8 @@
     lives = 5; //Hak sayımız
     global.health_max = 120; //Maksimum canımız
     health = global.health_max; //Mevcut canımız
+    depth = INTERFACE1;
+    hud_color = global.hud_color;
 }
 </string>
           </argument>
@@ -61,7 +63,7 @@
 {
     draw_set_font(fnt_Calibri_HUD);
     draw_set_valign(fa_top);
-    draw_set_colour(global.hud_color);
+    draw_set_colour(hud_color);
     draw_text(obj_HUD.xy+51,obj_HUD.xy+34,"X " + string(lives));
 }
 </string>

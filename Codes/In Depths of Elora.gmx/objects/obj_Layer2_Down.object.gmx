@@ -29,6 +29,7 @@
 
 {
     sprite_index = choose(spr_Layer2_Down1, spr_Layer2_Down2);
+    depth = BACKGROUND2;
 }
 </string>
           </argument>

@@ -29,6 +29,7 @@
 
 {
     image_speed = 1/10;;
+    depth = WATERFALL2;
 }
 </string>
           </argument>

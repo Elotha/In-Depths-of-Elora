@@ -2,8 +2,8 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
-  <depth>-100</depth>
+  <visible>0</visible>
+  <depth>-10000</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Timing Platform
+            <string>///Creator of Every System Object
 
 {
-    global.timing_platform = 160;
-    global.force_start = false;
+    if instance_number(obj_Creator) != 1 then destroy_except(obj_Creator,id);
+
+    create_only_one(0,0,obj_Editor);
+    create_only_one(0,0,obj_System);
+    create_only_one(0,0,obj_Audio);
+    create_only_one(0,0,obj_Background);
+    create_only_one(0,0,obj_Camera);
+    create_only_one(0,0,obj_Light);
+    create_only_one(0,0,obj_HUD);
+    create_only_one(0,0,obj_Lives);
+    create_only_one(0,0,obj_Keys);
+    create_only_one(0,0,obj_Score);
+    create_only_one(0,0,obj_Particles);
+    create_only_one(0,0,obj_LightBug_Creator);
 }
 </string>
           </argument>
@@ -53,46 +65,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Checkpoint
+            <string>///Creator of Every System Object
 
 {
-
-    global.checkpoint = -1; //Henüz bir checkpoint almadık
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Game Start
-
-{
-    randomize();
-    global.falling_speed = 0.25; //Global yerçekimi değeri
-    global.falling_limit = 15; //Maksimum düşme hızı
-    global.frame_rate = 1/6; //Genel animasyon hızı
-    
-    display_set_gui_size(view_wport[0],view_hport[0]);
-    
-    window_set_cursor(cr_none);
-    //cursor_sprite = spr_Cursor;
+    if room = 0 then exit;
+    if instance_number(obj_Creator) != 0 then destroy_except(obj_Creator,id);
+    create_only_one(0,0,obj_Editor);
+    create_only_one(0,0,obj_System);
+    create_only_one(0,0,obj_Audio);
+    create_only_one(0,0,obj_Background);
+    create_only_one(0,0,obj_Camera);
+    create_only_one(0,0,obj_Light);
+    create_only_one(0,0,obj_HUD);
+    create_only_one(0,0,obj_Lives);
+    create_only_one(0,0,obj_Keys);
+    create_only_one(0,0,obj_Score);
+    create_only_one(0,0,obj_Particles);
+    create_only_one(0,0,obj_LightBug_Creator);
 }
 </string>
           </argument>

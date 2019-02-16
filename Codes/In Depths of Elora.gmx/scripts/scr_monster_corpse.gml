@@ -29,6 +29,7 @@
         alarm[0] = 2;
         h_speed = other.h_speed;
         v_speed = other.v_speed;
+        depth = MONSTER;
         }
         
     instance_destroy();

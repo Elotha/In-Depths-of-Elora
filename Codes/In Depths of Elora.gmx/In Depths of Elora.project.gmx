@@ -8,24 +8,28 @@
     <extension index="0">extensions\MyFunctions</extension>
   </NewExtensions>
   <sounds name="sound">
-    <sound>sound\snd_Music</sound>
-    <sound>sound\snd_Gist2</sound>
-    <sound>sound\snd_FootStep</sound>
-    <sound>sound\snd_PotionLight</sound>
-    <sound>sound\snd_PotionResistance</sound>
-    <sound>sound\snd_PotionHP_Big</sound>
-    <sound>sound\snd_PotionHP_Small</sound>
-    <sound>sound\snd_ScoreStone</sound>
-    <sound>sound\snd_LifeStone</sound>
-    <sound>sound\snd_Key1</sound>
-    <sound>sound\snd_Key2</sound>
-    <sound>sound\snd_Key3</sound>
-    <sound>sound\snd_Key4</sound>
-    <sound>sound\snd_TimingPlatform_Coming</sound>
-    <sound>sound\snd_TimingPlatform_Going</sound>
-    <sound>sound\snd_Jump1</sound>
-    <sound>sound\snd_Jump2</sound>
-    <sound>sound\snd_Jump3</sound>
+    <sounds name="Soundtracks">
+      <sound>sound\snd_Music</sound>
+      <sound>sound\snd_Gist2</sound>
+    </sounds>
+    <sounds name="Sound Effects">
+      <sound>sound\snd_FootStep</sound>
+      <sound>sound\snd_PotionLight</sound>
+      <sound>sound\snd_PotionResistance</sound>
+      <sound>sound\snd_PotionHP_Big</sound>
+      <sound>sound\snd_PotionHP_Small</sound>
+      <sound>sound\snd_ScoreStone</sound>
+      <sound>sound\snd_LifeStone</sound>
+      <sound>sound\snd_Key1</sound>
+      <sound>sound\snd_Key2</sound>
+      <sound>sound\snd_Key3</sound>
+      <sound>sound\snd_Key4</sound>
+      <sound>sound\snd_TimingPlatform_Coming</sound>
+      <sound>sound\snd_TimingPlatform_Going</sound>
+      <sound>sound\snd_Jump1</sound>
+      <sound>sound\snd_Jump2</sound>
+      <sound>sound\snd_Jump3</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Character">
@@ -111,6 +115,7 @@
       <sprite>sprites\spr_KeyboardSpace</sprite>
       <sprite>sprites\spr_ItemEffect</sprite>
       <sprite>sprites\spr_Cursor</sprite>
+      <sprite>sprites\spr_ParticlePixel</sprite>
     </sprites>
     <sprites name="Backgrounds">
       <sprite>sprites\spr_Layer1_Up1</sprite>
@@ -137,6 +142,8 @@
     <scripts name="Extension">
       <script>scripts\scr_destroy_instance.gml</script>
       <script>scripts\scr_reverse.gml</script>
+      <script>scripts\create_only_one.gml</script>
+      <script>scripts\scr_light.gml</script>
     </scripts>
     <scripts name="Monsters">
       <script>scripts\scr_monster_death.gml</script>
@@ -152,12 +159,12 @@
       <script>scripts\scr_death.gml</script>
       <script>scripts\scr_friction.gml</script>
     </scripts>
-    <scripts name="General">
-      <script>scripts\scr_light.gml</script>
-    </scripts>
     <scripts name="Sounds">
       <script>scripts\scr_sound_control.gml</script>
       <script>scripts\scr_sound_effect.gml</script>
+    </scripts>
+    <scripts name="General">
+      <script>scripts\scr_clear.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -169,11 +176,12 @@
   </fonts>
   <objects name="objects">
     <objects name="System">
+      <object>objects\obj_Creator</object>
       <object>objects\obj_Editor</object>
-      <object>objects\obj_GameStart</object>
-      <object>objects\obj_Camera</object>
-      <object>objects\obj_Background</object>
+      <object>objects\obj_System</object>
       <object>objects\obj_Audio</object>
+      <object>objects\obj_Background</object>
+      <object>objects\obj_Camera</object>
       <object>objects\obj_Light</object>
       <object>objects\obj_Lives</object>
       <object>objects\obj_Keys</object>
@@ -204,13 +212,13 @@
       <object>objects\obj_Stalactite</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Stream</object>
-      <object>objects\obj_LightBug</object>
       <object>objects\obj_Geyser</object>
       <object>objects\obj_Checkpoint</object>
       <object>objects\obj_SpikeFlower</object>
       <object>objects\obj_SpikeFlowerActive</object>
       <object>objects\obj_Door</object>
       <object>objects\obj_ZodaxSign</object>
+      <object>objects\obj_LightBug</object>
       <object>objects\obj_Boulder</object>
     </objects>
     <objects name="Monsters">
@@ -233,15 +241,15 @@
     </objects>
     <objects name="HUD &amp; Effects">
       <object>objects\obj_HUD</object>
-      <object>objects\obj_KeyEffect</object>
+      <object>objects\obj_Interface</object>
       <object>objects\obj_KeyEffect2</object>
       <object>objects\obj_KeyEffect3</object>
+      <object>objects\obj_ZodaxEffect</object>
+      <object>objects\obj_ItemEffect</object>
       <object>objects\obj_KeyboardKey</object>
       <object>objects\obj_KeyboardSpace</object>
       <object>objects\obj_KeyboardArrow</object>
       <object>objects\obj_KeyboardArrow2</object>
-      <object>objects\obj_ItemEffect</object>
-      <object>objects\obj_ZodaxEffect</object>
     </objects>
     <objects name="Backgrounds">
       <object>objects\obj_Waterfall1</object>
@@ -260,10 +268,25 @@
     <room>rooms\rm_Finish</room>
     <room>rooms\rm_Base</room>
   </rooms>
-  <constants number="3">
+  <constants number="18">
     <constant name="RUN_STEP">0</constant>
     <constant name="LEFT">1</constant>
     <constant name="RIGHT">0</constant>
+    <constant name="FOREGROUND1">-200</constant>
+    <constant name="FOREGROUND2">-100</constant>
+    <constant name="CHARACTER">0</constant>
+    <constant name="MONSTER">100</constant>
+    <constant name="ITEM">200</constant>
+    <constant name="ENVIRONMENT">300</constant>
+    <constant name="PLATFORM">400</constant>
+    <constant name="CAVEWALL">500</constant>
+    <constant name="BACKGROUND1">600</constant>
+    <constant name="WATERFALL1">700</constant>
+    <constant name="BACKGROUND2">800</constant>
+    <constant name="WATERFALL2">900</constant>
+    <constant name="BACKGROUND3">1000</constant>
+    <constant name="INTERFACE1">-400</constant>
+    <constant name="INTERFACE2">-300</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

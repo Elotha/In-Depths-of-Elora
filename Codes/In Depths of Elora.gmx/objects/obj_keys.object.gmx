@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
+  <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,7 +28,7 @@
             <string>///Number of Keys
 
 {
-    global.key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster);
+    key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster);
 }
 </string>
           </argument>
@@ -55,9 +55,11 @@
             <string>///Room Start
 
 {
-    global.key_number = 0; //Mevcut anahtar sayımız
-    global.key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
+    key_number = 0; //Mevcut anahtar sayımız
+    key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
     global.key_sound = 4;
+    depth = INTERFACE1;
+    hud_color = global.hud_color;
     
     alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
 }
@@ -87,9 +89,9 @@
 
 {
     draw_set_font(fnt_Calibri_HUD2);
-    draw_set_colour(global.hud_color);
+    draw_set_colour(hud_color);
     draw_set_valign(fa_top);
-    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(global.key_number) + " / " + string(global.key_max));
+    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(key_number) + " / " + string(key_max));
 }
 </string>
           </argument>

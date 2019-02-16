@@ -3,11 +3,72 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>-100</depth>
-  <persistent>0</persistent>
+  <depth>-1000</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create Light Bugs
+    
+{
+    repeat(total/2)
+        {
+        instance_create(irandom(room_width),irandom(room_height),obj_LightBug);
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create Light Bugs
+    
+{
+    repeat(total/2)
+        {
+        instance_create(irandom(room_width),irandom(room_height),obj_LightBug);
+        }
+    alarm[1] = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
@@ -29,13 +90,15 @@
 
 {
     //ww ve hh değerleri, odanın toplam alanının 32'de birini elde etmek için kullanılıyor.
-    //Ardından bu sayının 1/12 katı kadar ışık böceği yaratılıyor. Bu sayı ileride bölümlere özel hale getirilecek.
-    ww = floor(room_width/32);
-    hh = floor(room_height/32);
-    repeat(ww*hh/12)
+    //Ardından bu sayının 1/6 katı kadar ışık böceği yaratılıyor. Bu sayı ileride bölümlere özel hale getirilecek.
+    var ww = floor(room_width/32);
+    var hh = floor(room_height/32);
+    total = ww*hh/12;
+    /*repeat(total/2)
         {
         instance_create(irandom(room_width),irandom(room_height),obj_LightBug);
-        }
+        }*/
+    alarm[0] = 1;
 }
 </string>
           </argument>

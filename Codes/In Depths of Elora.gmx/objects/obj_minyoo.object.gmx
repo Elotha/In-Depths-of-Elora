@@ -96,7 +96,7 @@
 
 {
     if sprite_index != spr_MinyooWalk then exit;
-    scr_light(light_size,col,image_xscale*17,1);
+    create_light(light_size,col,x+image_xscale*17,y+1);
 }
 </string>
           </argument>
@@ -158,7 +158,7 @@
             <string>///Step
 
 {
-    if gravity != 0
+    if gravity != 0 //Bloğa değme anı
         {
         var block = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+sprite_get_width(sprite_index)/2,y+abs(sprite_height)+vspeed,obj_Block,false,true);
         if block != noone
@@ -172,10 +172,10 @@
             }
         }
     
-    if !teleport
+    if !teleport //Karakter tespiti
         {
-        var coll = collision_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+detect_y,obj_Character,false,true);
-        if coll != noone &amp;&amp; !coll.invincibility
+        var char = collision_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+detect_y,obj_Character,false,true);
+        if char != noone &amp;&amp; !char.invincibility &amp;&amp; char.y &gt; y
             {
             teleport = true;
             sprite_index = spr_MinyooTeleportation;
@@ -347,7 +347,7 @@
 
 {
     draw_self();
-    if global.draw
+    if draw
         {draw_set_colour(c_green);
         draw_rectangle(x-sprite_get_width(sprite_index)/2,y,x+left_x,y+24,true);
         draw_rectangle(x+sprite_get_width(sprite_index)/2,y,x+right_x,y+24,true);

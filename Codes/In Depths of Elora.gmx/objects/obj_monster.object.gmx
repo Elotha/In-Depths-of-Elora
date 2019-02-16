@@ -25,15 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Drop
+            <string>///Create
 
-//Bu obje, canavarların ortak atasıdır. Bir objenin atası, bu obje olarak belirlenirse, bu objeye yazılan bütün kodlar, o obje için de geçerli olur.
 //drop = 0 ise canavar öldüğü zaman hiçbir şey düşürmez.
 //drop = 1 ise rastgele bir potion düşürür.
 
 {
     if object_index = obj_Palpus then drop = 0; else drop = 1;
     alarm[11] = 1; //obj_key_monster oluşturma işi
+    if object_index != obj_Damast then depth = MONSTER;
+    falling_speed = global.falling_speed;
+    falling_limit = global.falling_limit;
+    draw = global.draw;
 }
 </string>
           </argument>

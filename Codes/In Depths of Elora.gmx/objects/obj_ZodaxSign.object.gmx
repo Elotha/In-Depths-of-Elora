@@ -31,6 +31,7 @@
     light_size = 128;
     color = make_colour_rgb(201,255,243);
     image_speed = 1/6;
+    depth = ENVIRONMENT;
 }
 </string>
           </argument>
@@ -57,7 +58,7 @@
             <string>///Light
 
 {
-    scr_light(light_size,color,16,-6);
+    create_light(light_size,color,x+16,y-6);
 }
 </string>
           </argument>

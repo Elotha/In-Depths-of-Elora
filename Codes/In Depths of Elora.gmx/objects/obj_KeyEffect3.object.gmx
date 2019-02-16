@@ -39,7 +39,7 @@
     key_effect[i] = part_system_create();
     part_system_depth(key_effect[i],-100);
     particle_key = part_type_create();
-    part_type_shape(particle_key,pt_shape_pixel);
+    part_type_sprite(particle_key,spr_ParticlePixel,false,false,false);
     part_type_size(particle_key,1,1,0,0);
     part_type_speed(particle_key,0.1,2.6,0.02,0.01);
     part_type_direction(particle_key,30,150,0,0);
@@ -54,6 +54,7 @@
     part_emitter_burst(key_effect[i],key_emitter,particle_key,48);
     
     alarm[0] = 60;
+    depth = ITEM;
 }
 </string>
           </argument>

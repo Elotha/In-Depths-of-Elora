@@ -34,7 +34,7 @@
     zodax_effect = part_system_create();
     part_system_depth(zodax_effect,-100);
     particle_zodax = part_type_create();
-    part_type_shape(particle_zodax,pt_shape_pixel);
+    part_type_sprite(particle_zodax,spr_ParticlePixel,false,false,false);
     part_type_size(particle_zodax,1,1,0,0);
     part_type_speed(particle_zodax,0.2,0.5,0.02,0.05);
     part_type_direction(particle_zodax,0,360,0,0);
@@ -49,6 +49,7 @@
     part_emitter_stream(zodax_effect,zodax_emitter,particle_zodax,1);
     
     alarm[0] = 48;
+    depth = ITEM;
 
 }
 </string>

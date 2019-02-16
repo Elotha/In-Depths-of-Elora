@@ -61,7 +61,7 @@
     if global.key_sound != 4 then global.key_sound++; else global.key_sound = 1;
     if global.sounds then audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
     
-    global.key_number++;
+    obj_Keys.key_number++;
 }
 </string>
           </argument>

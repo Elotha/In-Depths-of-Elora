@@ -33,6 +33,8 @@
     alarm[0] = 15;
     col = make_colour_hsv(irandom_range(20,55),irandom_range(200,255),255);
     image_blend = col;
+    depth = FOREGROUND2+50;
+    instance_deactivate_object(id);
 }
 </string>
           </argument>
@@ -87,7 +89,7 @@
             <string>///Light
 
 {
-    scr_light(16,col,0,0);
+    if point_distance(x,y,obj_Camera.x,obj_Camera.y) &lt; 500 then create_light(16,col,x,y);
 }
 </string>
           </argument>

@@ -352,7 +352,7 @@
 
 {
     draw_self();
-    if global.draw
+    if draw
         {
         draw_set_colour(c_yellow);
         draw_rectangle(x+(xx1*image_xscale),y+yy1,x+(xx2*image_xscale),y+yy2,true);

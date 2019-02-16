@@ -35,6 +35,7 @@
         friction = 0.05;
         motion_set(90,0.8);
         }
+    depth = ITEM;
 }
 </string>
           </argument>

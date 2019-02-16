@@ -3,7 +3,7 @@
   <spriteName>spr_Waterfall2</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>100000005</depth>
+  <depth>1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -33,6 +33,7 @@
         {
         instance_create(x,y+i+sprite_get_height(spr_Waterfall2),obj_Waterfall3);
         }
+    depth = WATERFALL2;
 }
 </string>
           </argument>
