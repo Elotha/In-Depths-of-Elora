@@ -8,4 +8,5 @@
     sprite_index = argument0;
     image_index = 0;
     speed = 0;
+    scr_checkpoint("monsters",false,false);
 }

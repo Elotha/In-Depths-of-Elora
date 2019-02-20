@@ -68,7 +68,6 @@
             <string>///Creator of Every System Object
 
 {
-    if room = 0 then exit;
     if instance_number(obj_Creator) != 0 then destroy_except(obj_Creator,id);
     create_only_one(0,0,obj_Editor);
     create_only_one(0,0,obj_System);

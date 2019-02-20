@@ -3,7 +3,7 @@
   <spriteName>spr_CharacterDeath</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_CharacterParent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -31,6 +31,7 @@
     image_speed = 1/6;
     alarm[0] = 1;
     death_type = "default";
+    depth = CHARACTER;
     event_inherited();
 }
 </string>
@@ -155,12 +156,15 @@
             destroy(obj_KeyEffect2);
             destroy(obj_KeyEffect3);
             destroy(obj_ZodaxEffect);
+            scr_delete_files();
             room_restart();
             }
         else
             {
             instance_create(global.checkpoint.x+40,global.checkpoint.y+40,obj_Character);
             instance_destroy();
+            scr_delete_files();
+            room_restart();
             }
         }
     else if lives = 0 then game_restart();

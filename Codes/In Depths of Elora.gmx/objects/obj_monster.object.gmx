@@ -195,11 +195,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Temp V_Speed H_Speed
-
+            <string>///Temp V_Speed H_Speed &amp; INI File
 {
     v_speed = 0;
     h_speed = 0;
+    if global.first_start[room] = 0
+        {
+        scr_checkpoint("monsters",true,true);
+        }
+    else scr_existence_check("monsters.ini");
 }
 </string>
           </argument>

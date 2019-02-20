@@ -29,14 +29,11 @@
 
 {
     image_speed = 1/6;
-    event_inherited();
 }
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="obj_Character">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -53,19 +50,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Key
+            <string>///Checkpoint
 
 {
-    instance_destroy();
-    instance_create(x+16,y+16,obj_KeyEffect2);
-    if global.key_sound != 4 then global.key_sound++; else global.key_sound = 1;
-    if global.sounds then audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
-    
-    obj_Keys.key_number++;
+    if global.first_start[room] = 0 then scr_checkpoint("keys",true,true);
+    else scr_existence_check("keys.ini");
 }
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="4" ename="obj_Block">

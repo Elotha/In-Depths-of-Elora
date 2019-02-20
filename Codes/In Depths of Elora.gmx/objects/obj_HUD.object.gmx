@@ -32,50 +32,26 @@
     global.hud_color = make_color_rgb(230,217,211);
     xy = 32;
     depth = INTERFACE2;
-    potion_text[0] = "";
-    potion_text_full[0] = "";
-    potion_text_position[0] = "";
-    count = 1;
-    text_number = 0;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///String Length--
-
-{
-    if string_length(potion_text) != 0
+    potion_text[0] = -1;
+    potion_text_full[0] = -1;
+    count[0] = 1;
+    potion_dir[0] = -1;
+    for(var a = 0; a &lt; 10; a++)
         {
-        count--;
-        potion_text = string_copy(potion_text_full,1,count);
-        alarm[1] = 2;
+        potion_text_length[a] = a*160;
+        length[a] = 0;
+        start_point[a] = 0;
         }
+    timing = -1;
+    width = string_width("+ Light Radius Increased!");
+    color = make_color_rgb(255,236,214);
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -92,14 +68,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///String Length++
+            <string>///Step
 
 {
-    if string_length(potion_text) != string_length(potion_text_full)
+    for(var i = 0; i &lt; array_length_1d(timing); i++)
         {
-        count++;
-        potion_text = string_copy(potion_text_full,1,count);
-        alarm[0] = 2;
+        if timing[i] != -1 then timing[i]--;
+        if timing[i] = 0
+            {
+            scr_potiontext(i);
+            }
         }
 }
 </string>
@@ -132,18 +110,22 @@
     draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,1);
     draw_sprite_part_ext(spr_HP,0,0,0,43+health,48,xy,xy,2,2,c_white,1);
     draw_sprite_ext(spr_LifeStone,-1,xy+7,xy+21,1.5,1.5,0,c_white,1);
-    if potion_text_full != -1
+    var pottext = false;
+    for(var k = 0; k &lt; array_length_1d(potion_text_full); k++)
         {
-        draw_set_colour(c_white);
+        if potion_text_full[k] != -1 then pottext = true;
+        }
+    if pottext
+        {
+        draw_set_colour(color);
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         draw_set_font(fnt_Potion);
-        var k = 0;
-        for(var i = 0; i &lt; array_length_1d(potion_text_full); i++)
+        for(var i = 0; i &lt; array_length_1d(potion_text); i++)
             {
-            if potion_text_full[i] != -1
+            if potion_text[i] != -1
                 {
-                draw_text(360,44,potion_text);
+                draw_text(360+potion_text_length[i],44,potion_text[i]);
                 }
             }
         }

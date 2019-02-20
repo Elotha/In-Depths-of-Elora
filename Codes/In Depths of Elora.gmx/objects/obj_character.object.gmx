@@ -64,33 +64,6 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="6">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Potion Text
-
-{
-    potion_text = "";
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
@@ -338,49 +311,29 @@
             <string>///Potion
 
 {
-    var effect = instance_create(other.x+16,other.y+16,obj_ItemEffect);
     switch(other.sprite_index)
         {
         case spr_PotionHP_Big:
-            if global.sounds then audio_play_sound(snd_PotionHP_Big,1,false);
+            scr_potion(snd_PotionHP_Big,c_red,"+ Health Points!");
             health = global.health_max;
-            with(effect) image_blend = c_red;
-            with(obj_HUD) 
-                {
-                potion_text_full[0] = "+ Health Points!";
-                alarm[0] = 2;
-                }
             break;
             
         case spr_PotionHP_Small:
-            if global.sounds then audio_play_sound(snd_PotionHP_Small,1,false);
             health += 20;
             if health &gt; global.health_max then health = global.health_max;
-            with(effect) image_blend = c_red;
-            with(obj_HUD) 
-                {
-                potion_text_full[0] = "+ Health Points!";
-                alarm[0] = 2;
-                }
+            scr_potion(snd_PotionHP_Big,c_red,"+ Health Points!");
             break;
             
         case spr_PotionLight:
-            if global.sounds then audio_play_sound(snd_PotionLight,1,false);
             light_size_new += 150;
             light_potion++;
             alarm[3] = 1;
             alarm[4] = room_speed*10;
-            with(effect) image_blend = c_yellow;
-            with(obj_HUD) 
-                {
-                potion_text_full[0] = "+ Light Radius Increased! (10 Seconds)";
-                alarm[0] = 2;
-                }
+            scr_potion(snd_PotionLight,c_yellow,"+ Light Radius Increased!");
             break;
             
         case spr_PotionResistance:
-            if global.sounds then audio_play_sound(snd_PotionResistance,1,false);
-            with(effect) image_blend = c_teal;
+            scr_potion(snd_PotionResistance,c_teal,"+ Resistance Increased!");
             switch(resistance)
                 {
                 case 1:
@@ -400,16 +353,46 @@
                     break;
                 }
             alarm[5] = room_speed*10;
-            with(obj_HUD) 
-                {
-                potion_text_full[0] = "+ Resistance Increased! (10 Seconds)";
-                alarm[0] = 2;
-                }
             break;
             
         }
-    alarm[6] = room_speed*1.5;
     destroy(other);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Key">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Key
+
+{
+    with(other)
+        {
+        instance_destroy();
+        instance_create(x+16,y+16,obj_KeyEffect2);
+        if global.key_sound != 4 then global.key_sound++; else global.key_sound = 1;
+        if global.sounds then audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
+        
+        obj_Keys.key_number++;
+        scr_checkpoint("keys",false,false);
+        }
 }
 </string>
           </argument>
@@ -441,6 +424,7 @@
     with(effect) image_blend = c_red;
     lives++;
     destroy(other);
+    with(other) scr_checkpoint("life_stones",false,false);
 }
 </string>
           </argument>
@@ -474,6 +458,7 @@
         instance_destroy();
         var effect = instance_create(x+16,y+16,obj_ItemEffect);
         with(effect) image_blend = make_colour_rgb(83,110,138);
+        scr_checkpoint("score_stones",false,false);
         }
 }
 </string>
@@ -611,6 +596,22 @@
             alarm[0] = 6;
             }
         }
+    ini_open("temp.ini");
+    if ini_section_exists("temp")
+        {
+        file_delete("monsters.ini");
+        file_delete("score_stones.ini");
+        file_delete("life_stones.ini");
+        file_delete("keys.ini");
+        
+        file_rename("monsters_temp.ini","monsters.ini");
+        file_rename("score_stones_temp.ini","score_stones.ini");
+        file_rename("life_stones_temp.ini","life_stones.ini");
+        file_rename("keys_temp.ini","keys.ini");
+        
+        ini_section_delete("temp");
+        }
+    ini_close();
 }
 </string>
           </argument>
@@ -741,43 +742,6 @@
         x = xstart;
         y = ystart;
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Draw GUI
-
-{
-    if potion_text_full != ""
-        {
-            {
-            draw_set_colour(c_white);
-            draw_set_valign(fa_top);
-            draw_set_halign(fa_left);
-            draw_set_font(fnt_Potion);
-            draw_text(360,44,potion_text);
-            }
-        }
-
 }
 </string>
           </argument>

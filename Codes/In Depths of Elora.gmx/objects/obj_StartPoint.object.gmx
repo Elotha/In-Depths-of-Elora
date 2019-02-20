@@ -33,7 +33,11 @@
         destroy(obj_Character);
         instance_create(x,y,obj_Character);
         }
-    else if instance_number(obj_Character) = 0 then instance_create(x,y,obj_Character);
+    else if instance_number(obj_Character) = 0
+        {
+        if global.checkpoint = -1 then instance_create(x,y,obj_Character);
+        else instance_create(global.checkpoint.x+40,global.checkpoint.y+40,obj_Character);
+        }
 }
 </string>
           </argument>
