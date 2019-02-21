@@ -171,6 +171,7 @@
         with (obj_Character) if health &lt;= 0
             {
             var death = instance_create(x,y,obj_CharacterDeath);
+            death.image_xscale = image_xscale;
             lives--;
             instance_destroy();
             }

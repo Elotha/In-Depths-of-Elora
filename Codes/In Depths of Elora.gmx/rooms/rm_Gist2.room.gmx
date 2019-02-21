@@ -76,7 +76,7 @@
     <instance objName="obj_PlatformTiming" x="624" y="576" name="inst_57B49161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="576" y="672" name="inst_32FBB511" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="320" y="192" name="inst_49E8D012" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="176" y="288" name="inst_23D12AE0" locked="0" code="range = 11;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="176" y="288" name="inst_23D12AE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="48" y="96" name="inst_AB475438" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="72" y="96" name="inst_3EE0C253" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="48" y="72" name="inst_08D0D4C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -116,8 +116,8 @@
     <instance objName="obj_Potion" x="1312" y="128" name="inst_C45DE4D8" locked="0" code="sprite_index = spr_PotionHP_Small;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Damast" x="1312" y="32" name="inst_0D92309D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpikeFlower" x="1600" y="320" name="inst_7026AA0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="1696" y="288" name="inst_F014B334" locked="0" code="range = 6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Minyoo" x="1792" y="160" name="inst_2E28A25C" locked="0" code="drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="1696" y="288" name="inst_F014B334" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Minyoo" x="1792" y="160" name="inst_2E28A25C" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Damast" x="1632" y="32" name="inst_FA5D2CEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="1704" y="48" name="inst_5AAC64C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="1728" y="48" name="inst_A2EC345F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -147,7 +147,7 @@
     <instance objName="obj_Plant" x="2048" y="608" name="inst_049FC070" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="2112" y="608" name="inst_BEB19777" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="2176" y="608" name="inst_72416D74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Damast" x="2432" y="32" name="inst_3E0F4329" locked="0" code="drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Damast" x="2432" y="32" name="inst_3E0F4329" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Damast" x="2400" y="32" name="inst_6AAFF53F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Geyser" x="2272" y="96" name="inst_FD8090E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="2496" y="72" name="inst_3DA470A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -156,7 +156,7 @@
     <instance objName="obj_ScoreStone" x="2520" y="72" name="inst_0B4069E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2184" y="168" name="inst_B32047C4" locked="0" code="" scaleX="26" scaleY="40" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2392" y="168" name="inst_E3A1A7EB" locked="0" code="" scaleX="20" scaleY="15" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Zodax" x="2528" y="448" name="inst_9B874715" locked="0" code="times_max = 4;&#xA;range = 9;&#xA;spd = 1;&#xA;image_xscale = 1;&#xA;tel_x = 2784;&#xA;tel_y = 192;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Zodax" x="2528" y="448" name="inst_9B874715" locked="0" code="creation_code = true;&#xA;times_max = 4;&#xA;image_xscale = 1;&#xA;tel_x = 2784;&#xA;tel_y = 192;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ZodaxSign" x="2688" y="448" name="inst_1E70327F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2696" y="200" name="inst_AE2A24F0" locked="0" code="" scaleX="38" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2392" y="456" name="inst_F7C99361" locked="0" code="" scaleX="48" scaleY="11" colour="4294967295" rotation="0"/>
@@ -185,7 +185,7 @@
     <instance objName="obj_Potion" x="3040" y="608" name="inst_85BF6DEE" locked="0" code="sprite_index = spr_PotionResistance;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3112" y="520" name="inst_F01A4AE9" locked="0" code="" scaleX="46" scaleY="31" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3208" y="168" name="inst_3B6E6470" locked="0" code="" scaleX="26" scaleY="15" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="3200" y="480" name="inst_4FDD77AB" locked="0" code="range = 7;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="3200" y="480" name="inst_4FDD77AB" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3072" y="72" name="inst_0A006EFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3096" y="72" name="inst_9F9F5C49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3096" y="96" name="inst_38998001" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -217,12 +217,12 @@
     <instance objName="obj_Block" x="3528" y="360" name="inst_668DFDCC" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3480" y="584" name="inst_6FDBE6AF" locked="0" code="" scaleX="8" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_Minyoo" x="3712" y="480" name="inst_F3FF0A02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Minyoo" x="4016" y="480" name="inst_1DB51A06" locked="0" code="drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Minyoo" x="4016" y="480" name="inst_1DB51A06" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4040" y="32" name="inst_B67C05DC" locked="0" code="" scaleX="10" scaleY="37" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="3960" y="248" name="inst_D8DB3D18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="3624" y="488" name="inst_91A6822D" locked="0" code="" scaleX="62" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpikeFlower" x="3680" y="672" name="inst_CCACDDB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="3920" y="640" name="inst_008B8818" locked="0" code="range = 18;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="3920" y="640" name="inst_008B8818" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="4224" y="288" name="inst_C0A310E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4120" y="392" name="inst_9095FCFF" locked="0" code="" scaleX="4" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="4264" y="168" name="inst_C4CF5B28" locked="0" code="" scaleX="8" scaleY="7" colour="4294967295" rotation="0"/>

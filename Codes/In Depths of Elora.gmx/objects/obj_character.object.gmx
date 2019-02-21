@@ -56,12 +56,24 @@
         x = other.x;
         y = other.y;
         }
-    
-    event_inherited();
 }
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="2" enumb="5">
@@ -391,7 +403,7 @@
         if global.sounds then audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
         
         obj_Keys.key_number++;
-        scr_checkpoint("keys",false,false);
+        if !key_monster then scr_checkpoint(true);
         }
 }
 </string>
@@ -424,7 +436,6 @@
     with(effect) image_blend = c_red;
     lives++;
     destroy(other);
-    with(other) scr_checkpoint("life_stones",false,false);
 }
 </string>
           </argument>
@@ -458,7 +469,7 @@
         instance_destroy();
         var effect = instance_create(x+16,y+16,obj_ItemEffect);
         with(effect) image_blend = make_colour_rgb(83,110,138);
-        scr_checkpoint("score_stones",false,false);
+        scr_checkpoint(true);
         }
 }
 </string>
@@ -596,22 +607,8 @@
             alarm[0] = 6;
             }
         }
-    ini_open("temp.ini");
-    if ini_section_exists("temp")
-        {
-        file_delete("monsters.ini");
-        file_delete("score_stones.ini");
-        file_delete("life_stones.ini");
-        file_delete("keys.ini");
-        
-        file_rename("monsters_temp.ini","monsters.ini");
-        file_rename("score_stones_temp.ini","score_stones.ini");
-        file_rename("life_stones_temp.ini","life_stones.ini");
-        file_rename("keys_temp.ini","keys.ini");
-        
-        ini_section_delete("temp");
-        }
-    ini_close();
+    if file_exists("temp.ini") then file_delete("temp.ini");
+    global.temp_number = 0;
 }
 </string>
           </argument>

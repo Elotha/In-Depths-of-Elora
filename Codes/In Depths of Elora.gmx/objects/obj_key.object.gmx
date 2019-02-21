@@ -29,6 +29,7 @@
 
 {
     image_speed = 1/6;
+    key_monster = false;
 }
 </string>
           </argument>
@@ -50,11 +51,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Checkpoint
+            <string>///Creation Code
 
 {
-    if global.first_start[room] = 0 then scr_checkpoint("keys",true,true);
-    else scr_existence_check("keys.ini");
+    creation_code = false;
 }
 </string>
           </argument>

@@ -21,11 +21,8 @@
     if health <= 0
         {
         var death = instance_create(x,y,obj_CharacterDeath);
-        with(death) 
-            {
-            death_type = argument0;
-            image_xscale = other.image_xscale;
-            }
+        death.death_type = argument0;
+        death.image_xscale = image_xscale;
         lives--;
         instance_destroy();
         }

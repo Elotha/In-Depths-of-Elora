@@ -169,7 +169,6 @@
       <script>scripts\scr_potiontext.gml</script>
       <script>scripts\scr_potion_text_length.gml</script>
       <script>scripts\scr_checkpoint.gml</script>
-      <script>scripts\scr_delete_files.gml</script>
       <script>scripts\scr_existence_check.gml</script>
     </scripts>
   </scripts>

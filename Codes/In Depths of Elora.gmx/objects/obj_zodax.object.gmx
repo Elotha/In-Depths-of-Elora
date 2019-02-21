@@ -28,10 +28,8 @@
             <string>///Create
 //
 //times_max değeri kaç kez git gel yapacağını belirtir.
-//range değeri kaç kere 16'lık tile boyunca yürüyeceğini belirtir.
 //tel_x değeri ışınlanacağı yerin x koordinatını belirtir.
 //tel_y değeri ışınlanacağı yerin y koordinatını belirtir.
-//spd değeri, hspeed değerini belirtir.
 //image_xscale değeri, zodaxın hangi yöne bakacağını belirtir.
 
 {

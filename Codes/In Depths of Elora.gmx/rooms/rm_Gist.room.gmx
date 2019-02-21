@@ -139,7 +139,7 @@
     <instance objName="obj_Key" x="1648" y="368" name="inst_9D4C77F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="1664" y="288" name="inst_1032D000" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Potion" x="2072" y="304" name="inst_DC248B93" locked="0" code="sprite_index = spr_PotionHP_Small;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Beulian" x="2048" y="160" name="inst_E4D0AFE4" locked="0" code="range = 8;&#xA;drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Beulian" x="2048" y="160" name="inst_E4D0AFE4" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Geyser" x="1856" y="128" name="inst_A5FA0112" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Checkpoint" x="1568" y="32" name="inst_29AF901C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1592" y="136" name="inst_80BA4C92" locked="0" code="" scaleX="8" scaleY="7" colour="4294967295" rotation="0"/>

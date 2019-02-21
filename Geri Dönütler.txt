@@ -43,6 +43,8 @@ Oyunda gölgeler eksik.
 
 Oyuna bölüm içi kapý mantýðý eklenmeli.
 
+Ana karakter çok zýplýyor.
+
 
 Double jump efekt tartýþýlabilir.
 

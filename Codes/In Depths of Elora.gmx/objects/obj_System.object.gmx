@@ -34,7 +34,9 @@
     global.falling_speed = 0.25; //Global yerçekimi değeri
     global.falling_limit = 15; //Maksimum düşme hızı
     global.frame_rate = 1/6; //Genel animasyon hızı
-    global.checkpoint = -1;
+    global.checkpoint = -1; //Henüz checkpoint almadık
+    global.temp_number = 0;
+    
     v_sync = true;
     
     var i = 0;

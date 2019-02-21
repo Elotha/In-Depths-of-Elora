@@ -31,12 +31,16 @@
 //drop = 1 ise rastgele bir potion düşürür.
 
 {
-    if object_index = obj_Palpus then drop = 0; else drop = 1;
+    if object_index = obj_Palpus then drop = "0"; else drop = "1";
     alarm[11] = 1; //obj_key_monster oluşturma işi
     if object_index != obj_Damast then depth = MONSTER;
     falling_speed = global.falling_speed;
     falling_limit = global.falling_limit;
     draw = global.draw;
+    creation_code = false;
+    initial_xscale = image_xscale;
+    v_speed = 0;
+    h_speed = 0;
 }
 </string>
           </argument>
@@ -93,31 +97,32 @@
             
         }
         
+    var item = -4;
     switch(drop)
         {
-        case 1:
+        case "1":
             var rnd = irandom(100);
             if rnd &lt; 25 then instance_create(xx,yy,obj_Potion);
             break;
             
         case "HP Small":
-            var pot = instance_create(xx,yy,obj_Potion);
-            with(pot) sprite_index = spr_PotionHP_Small;
+            item = instance_create(xx,yy,obj_Potion);
+            with(item) sprite_index = spr_PotionHP_Small;
             break;
             
         case "HP Big":
-            var pot = instance_create(xx,yy,obj_Potion);
-            with(pot) sprite_index = spr_PotionHP_Big;
+            item = instance_create(xx,yy,obj_Potion);
+            with(item) sprite_index = spr_PotionHP_Big;
             break;
             
         case "Resistance":
-            var pot = instance_create(xx,yy,obj_Potion);
-            with(pot) sprite_index = spr_PotionResistance;
+            item = instance_create(xx,yy,obj_Potion);
+            with(item) sprite_index = spr_PotionResistance;
             break;
             
         case "Light":
-            var pot = instance_create(xx,yy,obj_Potion);
-            with(pot) sprite_index = spr_PotionLight;
+            item = instance_create(xx,yy,obj_Potion);
+            with(item) sprite_index = spr_PotionLight;
             break;
             
         case "Key":
@@ -125,18 +130,19 @@
                 {
                 if monster_id = other.id //monster_id değeri, obj_key_monster'ın hangi canavara ait olduğunu tutar.
                     {
-                    var key = instance_create(x-16,y-16,obj_Key);
-                    with(key) 
+                    item = instance_create(x-16,y-16,obj_Key);
+                    with(item) 
                         {
                         vspeed = 1.4;
                         friction = 0.1;
+                        key_monster = true;
                         }
                     instance_destroy();
                     }
                 }
             break;
-            
         }
+    with(item) scr_checkpoint(false);
 }
 </string>
           </argument>
@@ -172,38 +178,7 @@
             monster_type = object_get_name(other.object_index);
             }
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Temp V_Speed H_Speed &amp; INI File
-{
-    v_speed = 0;
-    h_speed = 0;
-    if global.first_start[room] = 0
-        {
-        scr_checkpoint("monsters",true,true);
-        }
-    else scr_existence_check("monsters.ini");
+    initial_xscale = image_xscale;
 }
 </string>
           </argument>

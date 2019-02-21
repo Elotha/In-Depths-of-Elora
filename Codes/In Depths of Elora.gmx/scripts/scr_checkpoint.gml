@@ -1,25 +1,27 @@
 ///Checkpoint
 
+//argument0: yaşayacak mı doktor bey?
+
 {
     ini_open("temp.ini");
-    if !ini_section_exists("temp")
+    var t = global.temp_number;
+    ini_write_real(t,"existence",argument0);
+    ini_write_real(t,"id",id);
+    ini_write_string(t,"type",object_get_name(object_index));
+    ini_write_real(t,"xstart",xstart);
+    ini_write_real(t,"ystart",ystart);
+    ini_write_real(t,"creation_code",creation_code);
+    if object_index = obj_Beulian || object_index = obj_Damast || object_index = obj_Minyoo || object_index = obj_Palpus || object_index = obj_Zodax
         {
-        ini_write_real("temp","temp",true);
-        file_copy("monsters.ini","monsters_temp.ini");
-        file_copy("score_stones.ini","score_stones_temp.ini");
-        file_copy("life_stones.ini","life_stones_temp.ini");
-        file_copy("keys.ini","keys_temp.ini");
+        ini_write_string(t,"drop",drop);
+        ini_write_real(t,"image_xscale",initial_xscale);
+        if object_index = obj_Zodax
+            {
+            ini_write_real(t,"tel_x",tel_x);
+            ini_write_real(t,"tel_y",tel_y);
+            ini_write_real(t,"times_max",times_max);
+            }
         }
-    ini_close();
-    ini_open(argument0 + "_temp.ini");
-    ini_write_real(string(xstart) + "," + string(ystart),"existence",argument1);
-    ini_close();
-    
-    if argument2
-        {
-        ini_open(argument0 + ".ini");
-        ini_write_real(string(xstart) + "," + string(ystart),"existence",argument1);
-        ini_close();
-        }
-    
+    ini_close();    
+    global.temp_number++;
 }
