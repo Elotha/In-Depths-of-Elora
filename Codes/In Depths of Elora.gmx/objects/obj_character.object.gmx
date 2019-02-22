@@ -404,6 +404,7 @@
         
         obj_Keys.key_number++;
         if !key_monster then scr_checkpoint(true);
+        
         }
 }
 </string>
@@ -609,6 +610,8 @@
         }
     if file_exists("temp.ini") then file_delete("temp.ini");
     global.temp_number = 0;
+    with(obj_Keys) key_checkpoint = key_number;
+    with(obj_Score) score_checkpoint = score;
 }
 </string>
           </argument>

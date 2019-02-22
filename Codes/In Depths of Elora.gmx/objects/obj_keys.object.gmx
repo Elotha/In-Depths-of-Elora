@@ -56,6 +56,7 @@
 
 {
     key_number = 0; //Mevcut anahtar sayımız
+    key_checkpoint = key_number;
     key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
     global.key_sound = 4;
     depth = INTERFACE1;

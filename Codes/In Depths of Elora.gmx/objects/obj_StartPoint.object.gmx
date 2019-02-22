@@ -66,6 +66,8 @@
     if global.checkpoint = -1 then instance_create(x,y,obj_Character);
     else instance_create(global.checkpoint.x+40,global.checkpoint.y+40,obj_Character);
     scr_existence_check();
+    with(obj_Keys) key_number = key_checkpoint;
+    with(obj_Score) score = score_checkpoint;
 }
 </string>
           </argument>

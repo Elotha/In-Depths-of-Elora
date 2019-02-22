@@ -29,6 +29,7 @@
 
 {
     score = 0;
+    score_checkpoint = score;
     depth = INTERFACE1;
     hud_color = global.hud_color;
 }
