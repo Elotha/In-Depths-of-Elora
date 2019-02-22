@@ -29,6 +29,15 @@
       <sound>sound\snd_Jump1</sound>
       <sound>sound\snd_Jump2</sound>
       <sound>sound\snd_Jump3</sound>
+      <sound>sound\snd_Jump4</sound>
+      <sound>sound\snd_Jump5</sound>
+      <sound>sound\snd_Hurt1</sound>
+      <sound>sound\snd_Hurt2</sound>
+      <sound>sound\snd_Hurt3</sound>
+      <sound>sound\snd_Hurt4</sound>
+      <sound>sound\snd_Hurt5</sound>
+      <sound>sound\snd_Hurt6</sound>
+      <sound>sound\snd_Hurt7</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -145,11 +154,6 @@
       <script>scripts\scr_create_only_one.gml</script>
       <script>scripts\scr_light.gml</script>
     </scripts>
-    <scripts name="Monsters">
-      <script>scripts\scr_monster_death.gml</script>
-      <script>scripts\scr_monster_corpse.gml</script>
-      <script>scripts\scr_monster_death_alpha.gml</script>
-    </scripts>
     <scripts name="Movement">
       <script>scripts\scr_jump.gml</script>
       <script>scripts\scr_keyboard_inputs.gml</script>
@@ -158,6 +162,11 @@
       <script>scripts\scr_sprite_control.gml</script>
       <script>scripts\scr_death.gml</script>
       <script>scripts\scr_friction.gml</script>
+    </scripts>
+    <scripts name="Monsters">
+      <script>scripts\scr_monster_death.gml</script>
+      <script>scripts\scr_monster_corpse.gml</script>
+      <script>scripts\scr_monster_death_alpha.gml</script>
     </scripts>
     <scripts name="Sounds">
       <script>scripts\scr_sound_control.gml</script>

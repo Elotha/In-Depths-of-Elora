@@ -19,14 +19,22 @@
                     image_speed = 1/6;
                     var effect = instance_create(x+(-8*image_xscale),y+26+v_speed+falling_speed,obj_DoubleJump_Effect);
                     with(effect) image_xscale = other.image_xscale;
-                    //if global.sounds then audio_play_sound(choose(snd_Jump1,snd_Jump2,snd_Jump3),15,false);
+                    if global.sounds
+                        {
+                        var snd = audio_play_sound(choose(snd_Jump1,snd_Jump2,snd_Jump3,snd_Jump4,snd_Jump5),15,false);
+                        sound_volume(snd,1);
+                        }
                     }
                     
                 if jump_count = 0 //Yerde miyiz?
                     {
                     jump_count++;
                     v_speed = jump_speed;
-                    //if global.sounds then audio_play_sound(choose(snd_Jump1,snd_Jump2,snd_Jump3),15,false);
+                    if global.sounds
+                        {
+                        var snd = audio_play_sound(choose(snd_Jump1,snd_Jump2,snd_Jump3,snd_Jump4,snd_Jump5),15,false);
+                        sound_volume(snd,1);
+                        }
                     }
                 }
             }

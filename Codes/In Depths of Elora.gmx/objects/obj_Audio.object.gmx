@@ -73,8 +73,8 @@
                 global.current_music = audio_play_sound(snd_Music,10,true);
                 
             }
+        audio_sound_gain(global.current_music,0.6,0);
         
-        sound_volume(global.current_music,0.5);
         }
 }
 </string>
@@ -103,7 +103,7 @@
 
 {
     global.music = false;
-    global.sounds = false;
+    global.sounds = true;
     global.current_music = snd_Music;
 }
 </string>
@@ -173,8 +173,11 @@
                 break;
                 
             case rm_Gist2:
-                global.current_music = audio_play_sound(snd_Gist2,11,true);
+                global.current_music = audio_play_sound(snd_Gist2,10,true);
                 break;
+                
+            default:
+                global.current_music = audio_play_sound(snd_Gist2,10,true);
             }
         sound_volume(global.current_music,0.5);
         }

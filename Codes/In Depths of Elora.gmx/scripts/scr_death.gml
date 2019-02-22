@@ -26,4 +26,8 @@
         lives--;
         instance_destroy();
         }
+    else
+        {
+        if global.sounds then audio_play_sound(choose(snd_Hurt1,snd_Hurt2,snd_Hurt3,snd_Hurt4,snd_Hurt5,snd_Hurt6,snd_Hurt7),15,false);
+        }
 }
