@@ -26,21 +26,12 @@
                         obj.tel_y = ini_read_real(i,"tel_y",0);
                         obj.times_max = ini_read_real(i,"times_max",2);
                         }
-                    if obj.drop = "Key" then 
-                    with(obj)
-                        {
-                        var key = instance_create(x,y,obj_KeyMonster);
-                        with(key)
-                            {
-                            monster_id = other.id;
-                            monster_type = object_get_name(other.object_index);
-                            }
-                        }
                     }
                 }
             }
         }
     ini_close();
     file_delete("temp.ini");
+    with(obj_Key) if key_monster then key_monster = false;
     global.temp_number = 0;
 }

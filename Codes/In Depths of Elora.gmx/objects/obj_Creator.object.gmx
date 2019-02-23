@@ -69,6 +69,7 @@
 
 {
     if instance_number(obj_Creator) != 0 then destroy_except(obj_Creator,id);
+    if room = rm_Finish then exit;
     create_only_one(0,0,obj_Editor);
     create_only_one(0,0,obj_System);
     create_only_one(0,0,obj_Audio);
