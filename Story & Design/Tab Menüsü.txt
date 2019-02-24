@@ -1,0 +1,10 @@
+Günlük girdilerimizin olduðu ana bir bölüm olabilir. Burada journal alt baþlýklara bölünür: Earth, Elora, Monsters, Plants, Inhabitants.
+--> Girdilerde progress barlarý bulunacak. Her entrynin kendine özel istediði bir koþul olacak. Örneðin beulianýn hangi yemeklerde nasýl kullanýldýðýný öðrenmek için öncelikle beþ tane beulian kesme koþulunun olmasý gibi.
+
+Yerlilerle yapýlan eski konuþmalarýn özeti olan bir bölüm olabilir. Pixo, konuþulanlarý kendi aðzýndan anlatýr.
+
+Achievements kýsmý olabilir.
+
+Ýstatistiklerin olduðu bir bölüm olabilir. (kaç kez yandýn, kaç kez öldün, toplamda kaç adým attýn vb.)
+
+Belki harita olabilir.
