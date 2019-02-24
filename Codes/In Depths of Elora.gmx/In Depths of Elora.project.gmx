@@ -26,18 +26,20 @@
       <sound>sound\snd_Key4</sound>
       <sound>sound\snd_TimingPlatform_Coming</sound>
       <sound>sound\snd_TimingPlatform_Going</sound>
-      <sound>sound\snd_Jump1</sound>
-      <sound>sound\snd_Jump2</sound>
-      <sound>sound\snd_Jump3</sound>
-      <sound>sound\snd_Jump4</sound>
-      <sound>sound\snd_Jump5</sound>
-      <sound>sound\snd_Hurt1</sound>
-      <sound>sound\snd_Hurt2</sound>
-      <sound>sound\snd_Hurt3</sound>
-      <sound>sound\snd_Hurt4</sound>
-      <sound>sound\snd_Hurt5</sound>
-      <sound>sound\snd_Hurt6</sound>
-      <sound>sound\snd_Hurt7</sound>
+      <sounds name="Hurt">
+        <sound>sound\snd_Hurt1</sound>
+        <sound>sound\snd_Hurt2</sound>
+        <sound>sound\snd_Hurt3</sound>
+        <sound>sound\snd_Hurt4</sound>
+        <sound>sound\snd_Hurt5</sound>
+      </sounds>
+      <sounds name="Jump">
+        <sound>sound\snd_Jump1</sound>
+        <sound>sound\snd_Jump2</sound>
+        <sound>sound\snd_Jump3</sound>
+        <sound>sound\snd_Jump4</sound>
+        <sound>sound\snd_Jump5</sound>
+      </sounds>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -66,7 +68,7 @@
       <sprite>sprites\spr_LiquidMiddle</sprite>
       <sprite>sprites\spr_LiquidRight</sprite>
       <sprite>sprites\spr_Plant</sprite>
-      <sprite>sprites\spr_Stalactite</sprite>
+      <sprite>sprites\spr_StalactiteLiquid</sprite>
       <sprite>sprites\spr_Drop</sprite>
       <sprite>sprites\spr_Stream</sprite>
       <sprite>sprites\spr_LightBug</sprite>
@@ -81,6 +83,9 @@
       <sprite>sprites\spr_Door</sprite>
       <sprite>sprites\spr_ZodaxBush</sprite>
       <sprite>sprites\spr_Boulder</sprite>
+      <sprite>sprites\spr_StalactiteLeft</sprite>
+      <sprite>sprites\spr_StalactiteMiddle</sprite>
+      <sprite>sprites\spr_StalactiteRight</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\spr_DamastIdle</sprite>
@@ -125,6 +130,7 @@
       <sprite>sprites\spr_ItemEffect</sprite>
       <sprite>sprites\spr_Cursor</sprite>
       <sprite>sprites\spr_ParticlePixel</sprite>
+      <sprite>sprites\spr_Mask_32x32</sprite>
     </sprites>
     <sprites name="Backgrounds">
       <sprite>sprites\spr_Layer1_Up1</sprite>
@@ -224,7 +230,7 @@
       <object>objects\obj_SpikesRight</object>
       <object>objects\obj_Liquid</object>
       <object>objects\obj_Plant</object>
-      <object>objects\obj_Stalactite</object>
+      <object>objects\obj_StalactiteLiquid</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Stream</object>
       <object>objects\obj_Geyser</object>
@@ -235,6 +241,7 @@
       <object>objects\obj_ZodaxSign</object>
       <object>objects\obj_LightBug</object>
       <object>objects\obj_Boulder</object>
+      <object>objects\obj_Stalactite</object>
     </objects>
     <objects name="Monsters">
       <object>objects\obj_Monster</object>
@@ -278,8 +285,8 @@
   <rooms name="rooms">
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_Finish</room>
     <room>rooms\rm_TestChamber</room>
+    <room>rooms\rm_Finish</room>
     <room>rooms\rm_Base</room>
   </rooms>
   <constants number="18">

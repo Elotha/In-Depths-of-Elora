@@ -31,7 +31,7 @@
     editor_mode = true;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
-    global.old_mode = false;
+    global.old_mode = true;
 }
 </string>
           </argument>
@@ -144,11 +144,6 @@
         {
         lives++;
         health = global.health_max;
-        }
-        
-     if keyboard_check_pressed(ord('I')) //Ölümsüzlüğü aç-kapa
-        {
-        global.immortality = reverse(global.immortality);
         }
         
      if keyboard_check_pressed(ord('I')) //Ölümsüzlüğü aç-kapa

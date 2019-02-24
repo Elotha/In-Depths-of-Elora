@@ -195,9 +195,9 @@
     <instance objName="obj_ScoreStone" x="3120" y="120" name="inst_45A53077" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3120" y="96" name="inst_07DB5992" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="3120" y="72" name="inst_6227043C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stalactite" x="3680" y="128" name="inst_E9C5443E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stalactite" x="3760" y="128" name="inst_3561CEB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stalactite" x="3840" y="128" name="inst_F883D960" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_StalactiteLiquid" x="3680" y="128" name="inst_E9C5443E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_StalactiteLiquid" x="3760" y="128" name="inst_3561CEB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_StalactiteLiquid" x="3840" y="128" name="inst_F883D960" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Checkpoint" x="3328" y="64" name="inst_C5F5D63F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Liquid" x="3648" y="320" name="inst_D7F0FE31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Liquid" x="3744" y="320" name="inst_50788D96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

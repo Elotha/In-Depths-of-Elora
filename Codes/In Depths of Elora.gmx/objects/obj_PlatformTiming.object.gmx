@@ -32,7 +32,6 @@
     alarm[0] = global.timing_platform;
     image_alpha = 1;
     depth = PLATFORM;
-    //if global.sounds then audio_play_sound(snd_TimingPlatform_Going,15,false);
 }
 </string>
           </argument>

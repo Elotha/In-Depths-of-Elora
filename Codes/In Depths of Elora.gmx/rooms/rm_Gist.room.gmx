@@ -113,7 +113,7 @@
     <instance objName="obj_Liquid" x="1696" y="672" name="inst_F18C1F89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Liquid" x="1728" y="672" name="inst_21D941ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Liquid" x="1760" y="672" name="inst_71187634" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Stalactite" x="1728" y="512" name="inst_11DB8729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_StalactiteLiquid" x="1728" y="512" name="inst_11DB8729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1592" y="424" name="inst_8509997C" locked="0" code="" scaleX="16" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1800" y="680" name="inst_66FF2828" locked="0" code="" scaleX="40" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="1952" y="608" name="inst_4F07B20C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
