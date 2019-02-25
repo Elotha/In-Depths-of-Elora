@@ -30,11 +30,24 @@
 {
     key = "";
     text = "";
-    event_inherited();
 }
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">
@@ -60,12 +73,12 @@
     draw_self();
     draw_set_valign(fa_center);
     draw_set_halign(fa_center);
-    draw_set_font(fnt_calibri_8);
+    draw_set_font(fnt_Calibri_8);
     draw_set_colour(c_black);
     draw_text(x+8,y+7,key);
     draw_set_colour(c_white);
     draw_set_halign(fa_left);
-    draw_set_font(fnt_interact);
+    draw_set_font(fnt_Interact);
     draw_text(x+sprite_width+4,y+8,text);
     draw_set_valign(fa_top);
 }

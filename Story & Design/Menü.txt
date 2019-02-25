@@ -25,8 +25,8 @@ Settings
 	Sound Effects Volume
 	Voices Volume
 
-Achievements
+Journal
 
-Elora's Book
+Profiles
 
 Exit
