@@ -11,6 +11,7 @@
     <sounds name="Soundtracks">
       <sound>sound\snd_Music</sound>
       <sound>sound\snd_Gist2</sound>
+      <sound>sound\snd_MainMenu</sound>
     </sounds>
     <sounds name="Sound Effects">
       <sound>sound\snd_FootStep</sound>
@@ -132,7 +133,6 @@
       <sprite>sprites\spr_ItemEffect</sprite>
       <sprite>sprites\spr_Cursor</sprite>
       <sprite>sprites\spr_ParticlePixel</sprite>
-      <sprite>sprites\spr_Mask_32x32</sprite>
     </sprites>
     <sprites name="Backgrounds">
       <sprite>sprites\spr_Layer1_Up1</sprite>
@@ -146,6 +146,21 @@
       <sprite>sprites\spr_Waterfall1</sprite>
       <sprite>sprites\spr_Waterfall2</sprite>
       <sprite>sprites\spr_Waterfall3</sprite>
+    </sprites>
+    <sprites name="General">
+      <sprite>sprites\spr_Mask_32x32</sprite>
+    </sprites>
+    <sprites name="Menu">
+      <sprite>sprites\spr_MainMenuFont</sprite>
+      <sprite>sprites\spr_LogoEyeless</sprite>
+      <sprite>sprites\spr_MenuEye1</sprite>
+      <sprite>sprites\spr_MenuEye2</sprite>
+      <sprite>sprites\spr_MenuEye3</sprite>
+      <sprite>sprites\spr_MenuEye4</sprite>
+      <sprite>sprites\spr_MenuBackground</sprite>
+      <sprite>sprites\spr_MenuBackground_StartGame</sprite>
+      <sprite>sprites\spr_MenuIndicatorLeft</sprite>
+      <sprite>sprites\spr_MenuIndicatorRight</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -187,6 +202,7 @@
       <script>scripts\scr_potion_text_length.gml</script>
       <script>scripts\scr_checkpoint.gml</script>
       <script>scripts\scr_existence_check.gml</script>
+      <script>scripts\scr_music.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -285,8 +301,18 @@
       <object>objects\obj_Layer2_Up</object>
       <object>objects\obj_Layer2_Down</object>
     </objects>
+    <objects name="Menu">
+      <object>objects\obj_MainMenu</object>
+      <object>objects\obj_LogoEyeless</object>
+      <object>objects\obj_MenuEyeParent</object>
+      <object>objects\obj_MenuEye1</object>
+      <object>objects\obj_MenuEye2</object>
+      <object>objects\obj_MenuEye3</object>
+      <object>objects\obj_MenuEye4</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Menu</room>
     <room>rooms\rm_Level1</room>
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>

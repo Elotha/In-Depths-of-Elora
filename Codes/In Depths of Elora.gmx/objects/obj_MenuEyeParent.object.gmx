@@ -2,9 +2,9 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>-100</depth>
-  <persistent>-1</persistent>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,19 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Audio
+            <string>///Image Speed
 
 {
-    global.music = true;
-    global.sounds = false;
-    global.current_music = snd_Music;
+    img_spd = 1/5;
+    image_speed = 0;
+    alarm[0] = irandom_range(room_speed*1.5,room_speed*4);
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="5">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,17 +54,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Room End
+            <string>///Image Speed
 
 {
-    audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
+    image_speed = img_spd;
+    alarm[0] = irandom_range(room_speed*4,room_speed*10);
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
+    <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,72 +82,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Music
+            <string>///Image Speed
 
 {
-    audio_stop_all();
-    if global.music then scr_music();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="78">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Sounds
-
-{
-    global.sounds = reverse(global.sounds);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="77">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Music
-
-//Burası bölümler hazırlanınca düzenlenecek. Böylece doğru bölümde doğru müziğin çalması sağlanacak.
-
-{
-    if global.music
-        {
-        audio_stop_sound(global.current_music);
-        }
-    else scr_music();
-    global.music = reverse(global.music);
+    image_speed = 0;
 }
 </string>
           </argument>
