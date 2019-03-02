@@ -58,7 +58,7 @@
             <string>///Everything
 
 {
-    if keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_f12) then game_end(); //Oyunu kapat
+    if keyboard_check_pressed(vk_f12) then game_end(); //Oyunu kapat
     if keyboard_check_pressed(vk_f5) //Oyunu yeniden başlat
         {
         scr_clear();

@@ -161,6 +161,8 @@
       <sprite>sprites\spr_MenuBackground_StartGame</sprite>
       <sprite>sprites\spr_MenuIndicatorLeft</sprite>
       <sprite>sprites\spr_MenuIndicatorRight</sprite>
+      <sprite>sprites\spr_PauseMenu</sprite>
+      <sprite>sprites\spr_BlackView</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -309,6 +311,7 @@
       <object>objects\obj_MenuEye2</object>
       <object>objects\obj_MenuEye3</object>
       <object>objects\obj_MenuEye4</object>
+      <object>objects\obj_Pause</object>
     </objects>
   </objects>
   <rooms name="rooms">

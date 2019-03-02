@@ -120,13 +120,19 @@
             <string>///Create
 
 {
+    if instance_number(obj_Character) != 0
+        {
+        x = obj_Character.x;
+        y = obj_Character.y;
+        }
+    else
+        {
+        x = obj_StartPoint.x;
+        y = obj_StartPoint.y;        
+        }
     camera = "Stable"; //"Stable" durumu, kamerayı hareket ettirmek için aşağı-yukarı tuşlarını kullanmadığımız anlamına geliyor.
     camera_y = 0; //"Stable" durumundan çıkarsak camera_y, değişim değerini tutacak. Şimdilik 0.
     old_mode = global.old_mode;
-    with(obj_LightBug)
-        {
-        if point_distance(x,y,obj_Camera.x,obj_Camera.y) &gt; 500 then instance_deactivate_object(id);
-        }
     alarm[0] = 30;
 }
 </string>
