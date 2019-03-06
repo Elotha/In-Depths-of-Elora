@@ -112,6 +112,7 @@
     
     
     menu_current = "Main Menu";
+    button_current = STARTGAME;
     
     selected[0] = 0.5;
     for(var i = 1; i &lt; 12; i++)
