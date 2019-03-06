@@ -28,29 +28,96 @@
             <string>///Create
 
 {
-    globalvar fnt_mainmenu;
-    fnt_mainmenu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPRSTUVXYZ0123456789",true,2);
-    font = fnt_mainmenu;
+    globalvar fnt_menu;
+    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPRSTUVXYZ0123456789",true,2);
+    font = fnt_menu;
     
     image_speed = 1/5;
     display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
     start_game = false;
     alpha = 1;
     
-    main_menu[0] = "START GAME";
-    main_menu[1] = "SETTINGS";
-    main_menu[2] = "JOURNAL";
-    main_menu[3] = "PROFILES";
-    main_menu[4] = "EXIT";
+    main_menu[STARTGAME] = "START GAME";
+    main_menu[SETTINGS] = "SETTINGS";
+    main_menu[JOURNAL] = "JOURNAL";
+    main_menu[PROFILES] = "PROFILES";
+    main_menu[EXIT] = "EXIT";
+    
+    settings[CONTROLS] = "CONTROLS";
+    settings[GAMEPLAY] = "GAMEPLAY";
+    settings[GRAPHICS] = "GRAPHICS";
+    settings[AUDIO] = "AUDIO";
+    settings[SET_BACK] = "BACK";
+    
+    controls[MENU_LEFT] = "LEFT";
+    controls[MENU_RIGHT] = "RIGHT";
+    controls[JUMP] = "JUMP";
+    controls[CAMERAUP] = "CAMERA UP";
+    controls[CAMERADOWN] = "CAMERA DOWN";
+    controls[MENU_INTERACT] = "INTERACT";
+    controls[CONT_JOURNAL] = "JOURNAL";
+    controls[PAUSEMENU] = "PAUSE MENU";
+    controls[CONT_BACK] = "BACK";
+    
+    hud = "ALWAYS SHOW";
+    on_startup = "MENU";
+    dialog_speed = 2;
+    language = "ENGLISH";
+    speedrun_timer = "OFF";
+    
+    global.hud = hud;
+    global.on_startup = on_startup;
+    global.dialog_speed = dialog_speed;
+    global.language = language;
+    global.speedrun_timer = speedrun_timer;
+    
+    gameplay[HUD] = "HUD: " + hud;
+    gameplay[ONSTARTUP] = "ON STARTUP: " + on_startup;
+    gameplay[DIALOGSPEED] = "DIALOG SPEED: " + string(dialog_speed);
+    gameplay[LANGUAGE] = "LANGUAGE: " + language;
+    gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + speedrun_timer;
+    gameplay[GAMEP_BACK] = "BACK";
+    
+    fullscreen = "ON";
+    resolution_x = "1920";
+    resolution_y = "1080";
+    graphics_quality = "HIGH";
+    
+    global.fullscreen = "ON";
+    global.resolution_x = "1920";
+    global.resolution_y = "1080";
+    global.graphics_quality = "HIGH";
+    
+    graphics[V_SYNC] = "V-SYNC: ";
+    graphics[FULSCREEN] = "FULLSCREEN: ";
+    graphics[RESOLUTION] = "RESOLUTION: ";
+    graphics[QUALITY] = "GRAPHICS QUALITY: ";
+    graphics[GRAP_BACK] = "BACK";
+    
+    master_volume = 10;
+    music_volume = 10;
+    sounds_volume = 10;
+    voices_volume = 10;
+    
+    global.master_volume = 10;
+    global.music_volume = 10;
+    global.sounds_volume = 10;
+    global.voices_volume = 10;
+    
+    audio[MASTER_VOLUME] = "MASTER VOLUME: ";
+    audio[MUSIC_VOLUME] = "MUSIC VOLUME: ";
+    audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: ";
+    audio[VOICES_VOLUME] = "VOICES VOLUME: ";
+    audio[AUDIO_BACK] = "BACK";
+    
     
     menu_current = "Main Menu";
-    button_current = "START GAME";
     
-    for(var i = 0; i &lt; 8; i++)
+    selected[0] = 0.5;
+    for(var i = 1; i &lt; 12; i++)
         {
         selected[i] = 0;
         }
-    selected[0] = 0.5;
     selected_total = 5;
     selected_number = 0;
 }
@@ -94,13 +161,13 @@
             selected[0] = 0;
             selected[selected_total-1] = 0.5;
             selected_number = selected_total-1;
-            button_current = main_menu[selected_number];
+            button_current = selected_number;
             }
         else
             {
             selected[selected_number--] = 0;
             selected[selected_number] = 0.5;
-            button_current = main_menu[selected_number];
+            button_current = selected_number;
             }
         }
     else if dir = 1
@@ -110,13 +177,13 @@
             selected[selected_total-1] = 0;
             selected[0] = 0.5;
             selected_number = 0;
-            button_current = main_menu[selected_number];
+            button_current = selected_number;
             }
         else
             {
             selected[selected_number++] = 0;
             selected[selected_number] = 0.5;
-            button_current = main_menu[selected_number];
+            button_current = selected_number;
             }
         }
     if keyboard_check_pressed(vk_enter)
@@ -126,25 +193,94 @@
             case "Main Menu":
                 switch(button_current)
                     {
-                    case "START GAME":
+                    case STARTGAME:
                         start_game = true;
                         break;
                         
-                    case "SETTINGS":
+                    case SETTINGS:
+                        menu_current = "Settings";
+                        scr_change_menu(settings);
                         break;
                         
-                    case "JOURNAL":
+                    case JOURNAL:
                         break;
                         
-                    case "PROFILES":
+                    case PROFILES:
                         break;
                         
-                    case "EXIT":
+                    case EXIT:
                         game_end();
                         break;
                         
                     }
                 break;
+                
+            case "Settings":
+                switch(button_current)
+                    {
+                    case CONTROLS:
+                        menu_current = "Controls";
+                        scr_change_menu(controls);
+                        break;
+                        
+                    case GAMEPLAY:
+                        menu_current = "Gameplay";
+                        scr_change_menu(gameplay);
+                        break;
+                        
+                    case GRAPHICS:
+                        menu_current = "Graphics";
+                        scr_change_menu(graphics);
+                        break;
+                        
+                    case AUDIO:
+                        menu_current = "Audio";
+                        scr_change_menu(audio);
+                        break;
+                        
+                    case SET_BACK:
+                        menu_current = "Main Menu";
+                        scr_change_menu(main_menu);
+                        break;
+                        
+                    }
+                break;
+                
+            case "Controls":
+                switch(button_current)
+                    {
+                    case CONT_BACK:
+                        menu_current = "Main Menu";
+                        scr_change_menu(main_menu);
+                        break;
+                    }
+                
+            case "Gameplay":
+                switch(button_current)
+                    {
+                    case GAMEP_BACK:
+                        menu_current = "Main Menu";
+                        scr_change_menu(main_menu);
+                        break;
+                    }
+                
+            case "Graphics":
+                switch(button_current)
+                    {
+                    case GRAP_BACK:
+                        menu_current = "Main Menu";
+                        scr_change_menu(main_menu);
+                        break;
+                    }
+                
+            case "Audio":
+                switch(button_current)
+                    {
+                    case AUDIO_BACK:
+                        menu_current = "Main Menu";
+                        scr_change_menu(main_menu);
+                        break;
+                    }
             }
         }
 }
@@ -213,17 +349,27 @@
     switch(menu_current)
         {
         case "Main Menu":
-            for(var i = 0; i &lt; array_length_1d(main_menu); i++)
-                {
-                draw_set_alpha(alpha);
-                draw_text_transformed(room_width/2,176+(i*32),main_menu[i],1+selected[i],1+selected[i],0);
-                if selected[i] = 0.5
-                    {
-                    draw_sprite(spr_MenuIndicatorLeft,-1,room_width/2-(string_width(main_menu[i])*1.5+32)/2,166+(i*32));
-                    draw_sprite(spr_MenuIndicatorRight,-1,room_width/2+(string_width(main_menu[i])*1.5+32)/2,166+(i*32));
-                    }
-                draw_set_alpha(1);
-                }
+            scr_draw_menu(main_menu);
+            break;
+        
+        case "Settings":
+            scr_draw_menu(settings);
+            break;
+        
+        case "Controls":
+            scr_draw_menu(controls);
+            break;
+        
+        case "Gameplay":
+            scr_draw_menu(gameplay);
+            break;
+        
+        case "Graphics":
+            scr_draw_menu(graphics);
+            break;
+        
+        case "Audio":
+            scr_draw_menu(main_menu);
             break;
         
         }

@@ -20,6 +20,7 @@ Settings
 	Graphics Quality (?)
 
 ---> Audio
+	Master Volume
 	Music Volume
 	Sound Effects Volume
 	Voices Volume

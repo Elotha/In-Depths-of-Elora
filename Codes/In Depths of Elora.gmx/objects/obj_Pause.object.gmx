@@ -41,7 +41,7 @@
     
     button_current = "RESUME";
     
-    font = fnt_mainmenu;
+    font = fnt_menu;
     
     for(var i = 0; i &lt; 8; i++)
         {
