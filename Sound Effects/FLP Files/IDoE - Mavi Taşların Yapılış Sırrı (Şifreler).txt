@@ -1,0 +1,18 @@
+Mavi taþlarýn her biri, alýndýðýnda farklý bir notaya tekabül eder. Oyunun ismi Ýngilizce yazýldýðý için, Ýngilizce alfabe içerir. Alfabe içinde 26 harf bulunur.
+26 harf içerisinde ise Tolga'nýn seçtiði bir gam yer alýr. Gamýn ilk notasý 1, son notasý ise 26'dýr ve taþlarý her aldýðýnda aslýnda oyunun adýný þifrelenmiþ
+bir þekilde çalarsýnýz. Yani :
+
+I N  D E P T H S  O F  E L O R A :
+
+"9-14"  "4-5-16-20-8-19"  "15-6"  "5-12-15-18-1"
+
+1- B3	11- E5	21- A#6
+2- C#4	12- F#5	22- B6
+3- D#4	13- G#5	23- C#7
+4- E4	14- A#5	24- D#7
+5- F#4	15- B5	25- E7
+6- G#4	16- C#6	26- F#7
+7- A#4	17- D#6
+8- B4	18- E6
+9- C#5	19- F#6
+10- D#5	20- G#6

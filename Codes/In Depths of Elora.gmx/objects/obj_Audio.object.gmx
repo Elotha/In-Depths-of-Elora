@@ -85,26 +85,7 @@
 
 {
     audio_stop_all();
-        
-    if global.music
-        {
-        switch(room)
-            {
-            case rm_Gist:
-                global.current_music = audio_play_sound(snd_Music,10,true);
-                break;
-                
-            case rm_Gist2:
-                global.current_music = audio_play_sound(snd_Gist2,10,true);
-                break;
-            
-            default:
-                global.current_music = audio_play_sound(snd_Music,10,true);
-                
-            }
-        audio_sound_gain(global.current_music,0.6,0);
-        
-        }
+    if global.music then scr_music();
 }
 </string>
           </argument>
@@ -164,23 +145,7 @@
         {
         audio_stop_sound(global.current_music);
         }
-    else
-        {
-        switch(room)
-            {
-            case rm_Gist:
-                global.current_music = audio_play_sound(snd_Music,10,true);
-                break;
-                
-            case rm_Gist2:
-                global.current_music = audio_play_sound(snd_Gist2,10,true);
-                break;
-                
-            default:
-                global.current_music = audio_play_sound(snd_Gist2,10,true);
-            }
-        sound_volume(global.current_music,0.5);
-        }
+    else scr_music();
     global.music = reverse(global.music);
 }
 </string>

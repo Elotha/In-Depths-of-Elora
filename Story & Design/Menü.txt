@@ -1,9 +1,8 @@
-Start Game
----> Profiles
+Start Game // Continue
 
 Settings
 ---> Controls (Keyboard / Gamepad)
-	Zýplama, saða sola gitme, kamerayý oynatma,
+	Zýplama, saða sola gitme, kamerayý oynatma, etkileþime girme
 
 ---> Gameplay
 	Oyun içi arayüz tamamen gizlenebilir, sadece etkileþim anýnda görünürleþtirilebilir, sadece belirli 		bir tuþa basýlýnca görülebilir ya da her an görünür kýlýnabilir olacak.
@@ -21,6 +20,7 @@ Settings
 	Graphics Quality (?)
 
 ---> Audio
+	Master Volume
 	Music Volume
 	Sound Effects Volume
 	Voices Volume

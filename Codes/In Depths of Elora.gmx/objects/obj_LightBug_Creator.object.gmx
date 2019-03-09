@@ -8,6 +8,32 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alarm
+
+{
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
@@ -28,8 +54,6 @@
             <string>///Light Bugs
 
 {
-    //ww ve hh değerleri, odanın toplam alanının 32'de birini elde etmek için kullanılıyor.
-    //Ardından bu sayının 1/6 katı kadar ışık böceği yaratılıyor. Bu sayı ileride bölümlere özel hale getirilecek.
     var ww = floor(room_width/32);
     var hh = floor(room_height/32);
     total = ww*hh/12;
@@ -37,6 +61,15 @@
         {
         instance_create(irandom(room_width),irandom(room_height),obj_LightBug);
         }
+        
+    /*alarm[0] = 2;
+    var ww2 = 640/32;
+    var hh2 = 360/32;
+    var total2 = ww2*hh2/12;
+    repeat(total2)
+        {
+        instance_create(irandom_range(view_xview,view_xview+640),irandom_range(view_yview,view_yview+360),obj_LightBug);
+        }*/
 }
 </string>
           </argument>
