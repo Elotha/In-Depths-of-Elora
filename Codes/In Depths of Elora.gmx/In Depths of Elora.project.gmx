@@ -89,6 +89,10 @@
       <sprite>sprites\spr_StalactiteRight</sprite>
       <sprite>sprites\spr_WallSpikesLeft</sprite>
       <sprite>sprites\spr_WallSpikesRight</sprite>
+      <sprite>sprites\spr_WallSpikesLeft_UpperL</sprite>
+      <sprite>sprites\spr_wallSpikesLeft_LowerL</sprite>
+      <sprite>sprites\spr_WallSpikesRight_UpperL</sprite>
+      <sprite>sprites\spr_WallSpikesRight_LowerL</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\spr_DamastIdle</sprite>
@@ -265,7 +269,11 @@
       <object>objects\obj_Boulder</object>
       <object>objects\obj_Stalactite</object>
       <object>objects\obj_WallSpikesLeft</object>
+      <object>objects\obj_WallSpikesLeft_UpperL</object>
+      <object>objects\obj_WallSpikesLeft_LowerL</object>
       <object>objects\obj_WallSpikesRight</object>
+      <object>objects\obj_WallSpikesRight_UpperL</object>
+      <object>objects\obj_WallSpikesRight_LowerL</object>
     </objects>
     <objects name="Monsters">
       <object>objects\obj_Monster</object>
