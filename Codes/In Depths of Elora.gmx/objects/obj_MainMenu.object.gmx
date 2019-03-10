@@ -29,7 +29,7 @@
 
 {
     globalvar fnt_menu;
-    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPRSTUVXYZ0123456789",true,2);
+    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,'/&lt;&gt;+=",true,2);
     font = fnt_menu;
     
     image_speed = 1/5;
@@ -71,11 +71,11 @@
     global.language = language;
     global.speedrun_timer = speedrun_timer;
     
-    gameplay[HUD] = "HUD: " + hud;
-    gameplay[ONSTARTUP] = "ON STARTUP: " + on_startup;
-    gameplay[DIALOGSPEED] = "DIALOG SPEED: " + string(dialog_speed);
-    gameplay[LANGUAGE] = "LANGUAGE: " + language;
-    gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + speedrun_timer;
+    gameplay[HUD] = "HUD: " + "&lt;" + hud + "&gt;";
+    gameplay[ONSTARTUP] = "ON STARTUP: " + "&lt;" + on_startup + "&gt;";
+    gameplay[DIALOGSPEED] = "DIALOG SPEED: " + "&lt;" + string(dialog_speed) + "&gt;";
+    gameplay[LANGUAGE] = "LANGUAGE: " + "&lt;" + language + "&gt;";
+    gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + "&lt;" + speedrun_timer + "&gt;";
     gameplay[GAMEP_BACK] = "BACK";
     
     fullscreen = "ON";
@@ -88,10 +88,12 @@
     global.resolution_y = "1080";
     global.graphics_quality = "HIGH";
     
-    graphics[V_SYNC] = "V-SYNC: ";
-    graphics[FULSCREEN] = "FULLSCREEN: ";
-    graphics[RESOLUTION] = "RESOLUTION: ";
-    graphics[QUALITY] = "GRAPHICS QUALITY: ";
+     v_sync = "ON";
+    
+    graphics[V_SYNC] = "V-SYNC: " + "&lt;" + v_sync + "&gt;";
+    graphics[FULSCREEN] = "FULLSCREEN: " + "ON";
+    graphics[RESOLUTION] = "RESOLUTION: 1920x1080";
+    graphics[QUALITY] = "GRAPHICS QUALITY: HIGH";
     graphics[GRAP_BACK] = "BACK";
     
     master_volume = 10;
@@ -104,10 +106,10 @@
     global.sounds_volume = 10;
     global.voices_volume = 10;
     
-    audio[MASTER_VOLUME] = "MASTER VOLUME: ";
-    audio[MUSIC_VOLUME] = "MUSIC VOLUME: ";
-    audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: ";
-    audio[VOICES_VOLUME] = "VOICES VOLUME: ";
+    audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
+    audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;;
+    audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";;;
+    audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";;;
     audio[AUDIO_BACK] = "BACK";
     
     
@@ -121,6 +123,13 @@
         }
     selected_total = 5;
     selected_number = 0;
+    
+    show[0] = "+";
+    for(var k = 1; k &lt; 6; k++)
+        {
+        show[k] = main_menu[k-1];
+        }
+    show[6] = "=";
 }
 </string>
           </argument>
@@ -200,7 +209,7 @@
                         
                     case SETTINGS:
                         menu_current = "Settings";
-                        scr_change_menu(settings);
+                        scr_change_menu(settings,0);
                         break;
                         
                     case JOURNAL:
@@ -221,27 +230,27 @@
                     {
                     case CONTROLS:
                         menu_current = "Controls";
-                        scr_change_menu(controls);
+                        scr_change_menu(controls,0);
                         break;
                         
                     case GAMEPLAY:
                         menu_current = "Gameplay";
-                        scr_change_menu(gameplay);
+                        scr_change_menu(gameplay,0);
                         break;
                         
                     case GRAPHICS:
                         menu_current = "Graphics";
-                        scr_change_menu(graphics);
+                        scr_change_menu(graphics,0);
                         break;
                         
                     case AUDIO:
                         menu_current = "Audio";
-                        scr_change_menu(audio);
+                        scr_change_menu(audio,0);
                         break;
                         
                     case SET_BACK:
                         menu_current = "Main Menu";
-                        scr_change_menu(main_menu);
+                        scr_change_menu(main_menu,SETTINGS);
                         break;
                         
                     }
@@ -251,8 +260,8 @@
                 switch(button_current)
                     {
                     case CONT_BACK:
-                        menu_current = "Main Menu";
-                        scr_change_menu(main_menu);
+                        menu_current = "Settings";
+                        scr_change_menu(settings,0);
                         break;
                     }
                 
@@ -260,8 +269,8 @@
                 switch(button_current)
                     {
                     case GAMEP_BACK:
-                        menu_current = "Main Menu";
-                        scr_change_menu(main_menu);
+                        menu_current = "Settings";
+                        scr_change_menu(settings,1);
                         break;
                     }
                 
@@ -269,8 +278,8 @@
                 switch(button_current)
                     {
                     case GRAP_BACK:
-                        menu_current = "Main Menu";
-                        scr_change_menu(main_menu);
+                        menu_current = "Settings";
+                        scr_change_menu(settings,2);
                         break;
                     }
                 
@@ -278,8 +287,8 @@
                 switch(button_current)
                     {
                     case AUDIO_BACK:
-                        menu_current = "Main Menu";
-                        scr_change_menu(main_menu);
+                        menu_current = "Settings";
+                        scr_change_menu(settings,3);
                         break;
                     }
             }
@@ -370,7 +379,7 @@
             break;
         
         case "Audio":
-            scr_draw_menu(main_menu);
+            scr_draw_menu(audio);
             break;
         
         }

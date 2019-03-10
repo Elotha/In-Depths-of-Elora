@@ -39,8 +39,6 @@
     globalvar pause;
     pause = false;
     
-    v_sync = true;
-    
     var i = 0;
     while room_exists(i) 
         {

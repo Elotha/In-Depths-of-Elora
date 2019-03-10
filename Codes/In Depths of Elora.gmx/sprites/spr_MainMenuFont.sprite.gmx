@@ -8,7 +8,7 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>7</bbox_right>
+  <bbox_right>8</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>12</bbox_bottom>
   <HTile>0</HTile>
@@ -54,5 +54,17 @@
     <frame index="31">images\spr_MainMenuFont_31.png</frame>
     <frame index="32">images\spr_MainMenuFont_32.png</frame>
     <frame index="33">images\spr_MainMenuFont_33.png</frame>
+    <frame index="34">images\spr_MainMenuFont_34.png</frame>
+    <frame index="35">images\spr_MainMenuFont_35.png</frame>
+    <frame index="36">images\spr_MainMenuFont_36.png</frame>
+    <frame index="37">images\spr_MainMenuFont_37.png</frame>
+    <frame index="38">images\spr_MainMenuFont_38.png</frame>
+    <frame index="39">images\spr_MainMenuFont_39.png</frame>
+    <frame index="40">images\spr_MainMenuFont_40.png</frame>
+    <frame index="41">images\spr_MainMenuFont_41.png</frame>
+    <frame index="42">images\spr_MainMenuFont_42.png</frame>
+    <frame index="43">images\spr_MainMenuFont_43.png</frame>
+    <frame index="44">images\spr_MainMenuFont_44.png</frame>
+    <frame index="45">images\spr_MainMenuFont_45.png</frame>
   </frames>
 </sprite>
