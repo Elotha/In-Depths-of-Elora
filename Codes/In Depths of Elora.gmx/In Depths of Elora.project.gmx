@@ -209,8 +209,11 @@
       <script>scripts\scr_checkpoint.gml</script>
       <script>scripts\scr_existence_check.gml</script>
       <script>scripts\scr_music.gml</script>
-      <script>scripts\scr_change_menu.gml</script>
+    </scripts>
+    <scripts name="Menu">
       <script>scripts\scr_draw_menu.gml</script>
+      <script>scripts\scr_change_menu.gml</script>
+      <script>scripts\scr_back_to_menu.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -333,7 +336,7 @@
     <room>rooms\rm_Finish</room>
     <room>rooms\rm_Base</room>
   </rooms>
-  <constants number="54">
+  <constants number="55">
     <constant name="RUN_STEP">0</constant>
     <constant name="LEFT">1</constant>
     <constant name="RIGHT">0</constant>
@@ -371,7 +374,8 @@
     <constant name="MENU_INTERACT">5</constant>
     <constant name="CONT_JOURNAL">6</constant>
     <constant name="PAUSEMENU">7</constant>
-    <constant name="CONT_BACK">8</constant>
+    <constant name="CONT_DEFAULT">8</constant>
+    <constant name="CONT_BACK">9</constant>
     <constant name="HUD">0</constant>
     <constant name="ONSTARTUP">1</constant>
     <constant name="DIALOGSPEED">2</constant>

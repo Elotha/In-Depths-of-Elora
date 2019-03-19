@@ -28,8 +28,9 @@
             <string>///Create
 
 {
+    scr_back_to_menu();
     globalvar fnt_menu;
-    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,'/&lt;&gt;+=",true,2);
+    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,'/&lt;&gt;=+",true,2);
     font = fnt_menu;
     
     image_speed = 1/5;
@@ -49,21 +50,182 @@
     settings[AUDIO] = "AUDIO";
     settings[SET_BACK] = "BACK";
     
-    controls[MENU_LEFT] = "LEFT";
-    controls[MENU_RIGHT] = "RIGHT";
-    controls[JUMP] = "JUMP";
-    controls[CAMERAUP] = "CAMERA UP";
-    controls[CAMERADOWN] = "CAMERA DOWN";
-    controls[MENU_INTERACT] = "INTERACT";
-    controls[CONT_JOURNAL] = "JOURNAL";
-    controls[PAUSEMENU] = "PAUSE MENU";
-    controls[CONT_BACK] = "BACK";
+    ini_open("profiles.ini");
+    if ini_read_real("PROFILES","TOTAL",0) != 0 //Önceden oluşturulmuş bir profil var mı?
+        {
+        current_profile = ini_read_string("PROFILES","CURRENT","");
+        ini_close();
+        ini_open(string_lower(current_profile)+".ini");
+        
+        //Controls
+        
+        control_left_string[0] = ini_read_string("CONTROLS","LEFT1","LEFT ARROW");
+        control_left_string[1] = ini_read_string("CONTROLS","LEFT2","A");
+        
+        control_right_string[0] = ini_read_string("CONTROLS","RIGHT1","RIGHT ARROW");
+        control_right_string[1] = ini_read_string("CONTROLS","RIGHT2","D");
+        
+        control_jump_string =ini_read_string("CONTROLS","JUMP","SPACE");
+        
+        control_cameraup_string[0] = ini_read_string("CONTROLS","CAMERAUP1","UP ARROW");
+        control_cameraup_string[1] = ini_read_string("CONTROLS","CAMERAUP2","W");
+        
+        control_cameradown_string[0] = ini_read_string("CONTROLS","CAMERADOWN1","DOWN ARROW");
+        control_cameradown_string[1] = ini_read_string("CONTROLS","CAMERADOWN2","S");
+        
+        control_interact_string = ini_read_string("CONTROLS","INTERACT","E");
+        
+        control_journal_string = ini_read_string("CONTROLS","JOURNAL","TAB");
+        
+        control_pause_string = ini_read_string("CONTROLS","PAUSE","ESCAPE");
+        
+        //Gameplay
+        
+        hud = ini_read_string("GAMEPLAY","HUD","ALWAYS SHOW");
+        
+        on_startup = ini_read_string("GAMEPLAY","ONSTARTUP","MENU");
+        
+        dialog_speed = ini_read_real("GAMEPLAY","DIALOGSPEED",2);
+        
+        language = ini_read_string("GAMEPLAY","LANGUAGE","ENGLISH");
+        
+        speedrun_timer = ini_read_string("GAMEPLAY","SPEEDRUN TIMER","OFF");
+        
+        //Graphics
     
-    hud = "ALWAYS SHOW";
-    on_startup = "MENU";
-    dialog_speed = 2;
-    language = "ENGLISH";
-    speedrun_timer = "OFF";
+        v_sync = ini_read_string("GRAPHICS","V_SYNC","ON");
+        
+        fullscreen = ini_read_string("GRAPHICS","FULLSCREEN","ON");
+        
+        resolution_x = ini_read_string("GRAPHICS","RESOLUTIONX","1920");
+        
+        resolution_y = ini_read_string("GRAPHICS","RESOLUTIONY","1080");
+        
+        graphics_quality = ini_read_string("GRAPHICS","QUALITY","HIGH");  
+        
+        //Audio
+        
+        global.master_volume = ini_read_string("AUDIO","MASTER",10);
+        
+        global.music_volume = ini_read_string("AUDIO","MUSIC",10);
+        
+        global.sounds_volume = ini_read_string("AUDIO","SOUNDS",10);
+        
+        global.voices_volume = ini_read_string("AUDIO","VOICES",10);        
+        }
+        
+    else //Önceden profil oluşturulmadıysa yeni bir profil oluşturup varsayılan değerleri içine yerleştir
+        {        
+        ini_write_real("PROFILES","TOTAL",1);
+        ini_write_string("PROFILES","CURRENT","NEW"); //"NEW" isminde bir profil yarat
+        ini_close();
+        ini_open("new.ini");
+        
+        //Controls
+        
+        control_left_string[0] = "LEFT ARROW";
+        control_left_string[1] = "A";
+        ini_write_string("CONTROLS","LEFT1",control_left_string[0]);
+        ini_write_string("CONTROLS","LEFT2",control_left_string[1]);
+        
+        control_right_string[0] = "RIGHT ARROW";
+        control_right_string[1] = "D";
+        ini_write_string("CONTROLS","RIGHT1",control_right_string[0]);
+        ini_write_string("CONTROLS","RIGHT2",control_right_string[1]);
+        
+        control_jump_string = "SPACE";
+        ini_write_string("CONTROLS","JUMP",control_jump_string);
+        
+        control_cameraup_string[0] = "UP ARROW";
+        control_cameraup_string[1] = "W";
+        ini_write_string("CONTROLS","CAMERAUP1",control_cameraup_string[0]);
+        ini_write_string("CONTROLS","CAMERAUP2",control_cameraup_string[1]);
+        
+        control_cameradown_string[0] = "DOWN ARROW";
+        control_cameradown_string[1] = "S";
+        ini_write_string("CONTROLS","CAMERADOWN1",control_cameradown_string[0]);
+        ini_write_string("CONTROLS","CAMERADOWN2",control_cameradown_string[1]);
+        
+        control_interact_string = "E";
+        ini_write_string("CONTROLS","INTERACT",control_interact_string);
+        
+        control_journal_string = "TAB";
+        ini_write_string("CONTROLS","JOURNAL",control_journal_string);
+        
+        control_pause_string = "ESCAPE";
+        ini_write_string("CONTROLS","PAUSEMENU",control_pause_string);
+        
+        //Gameplay
+        
+        hud = "ALWAYS SHOW";
+        ini_write_string("GAMEPLAY","HUD",hud);
+        
+        on_startup = "MENU";
+        ini_write_string("GAMEPLAY","ONSTARTUP",on_startup);
+        
+        dialog_speed = 2;
+        ini_write_real("GAMEPLAY","DIALOGSPEED",dialog_speed);
+        
+        language = "ENGLISH";
+        ini_write_string("GAMEPLAY","LANGUAGE",language);
+        
+        speedrun_timer = "OFF";
+        ini_write_string("GAMEPLAY","SPEEDRUN TIMER",speedrun_timer);
+        
+        //Graphics
+    
+        v_sync = "ON";
+        ini_write_string("GRAPHICS","V_SYNC",v_sync);
+        
+        fullscreen = "ON";
+        ini_write_string("GRAPHICS","FULLSCREEN",fullscreen);
+        
+        resolution_x = "1920";
+        ini_write_string("GRAPHICS","RESOLUTIONX",resolution_x);
+        
+        resolution_y = "1080";
+        ini_write_string("GRAPHICS","RESOLUTIONY",resolution_y);
+        
+        graphics_quality = "HIGH";
+        ini_write_string("GRAPHICS","QUALITY",graphics_quality);  
+        
+        //Audio
+        
+        global.master_volume = 10;
+        ini_write_string("AUDIO","MASTER",global.master_volume);
+        
+        global.music_volume = 10;
+        ini_write_string("AUDIO","MUSIC",global.music_volume);
+        
+        global.sounds_volume = 10;
+        ini_write_string("AUDIO","SOUNDS",global.sounds_volume);
+        
+        global.voices_volume = 10;
+        ini_write_string("AUDIO","VOICES",global.voices_volume);        
+        }
+        
+        
+    ini_close();
+        
+    if control_left_string[0] = control_left_string[1] then controls[MENU_LEFT] = "LEFT: " + control_left_string[0];
+    else controls[MENU_LEFT] = "LEFT: " + control_left_string[0] + " OR " + control_left_string[1];
+    
+    if control_right_string[0] = control_right_string[1] then controls[MENU_RIGHT] = "RIGHT: " + control_right_string[0];
+    else controls[MENU_RIGHT] = "RIGHT: " + control_right_string[0] + " OR " + control_right_string[1];
+    
+    controls[JUMP] = "JUMP: " + control_jump_string;
+    
+    if control_cameraup_string[0] = control_cameraup_string[1] then controls[CAMERAUP] = "CAMERA UP: " + control_cameraup_string[0];
+    controls[CAMERAUP] = "CAMERA UP: " + control_cameraup_string[0] + " OR " + control_cameraup_string[1];
+    
+    if control_cameradown_string[0] = control_cameradown_string[1] then controls[CAMERADOWN] = "CAMERA DOWN: " + control_cameradown_string[0];
+    controls[CAMERADOWN] = "CAMERA DOWN: " + control_cameradown_string[0] + " OR " + control_cameradown_string[1];;
+    
+    controls[CONT_JOURNAL] = "JOURNAL: " + control_journal_string;;
+    controls[MENU_INTERACT] = "INTERACT: " + control_interact_string;
+    controls[PAUSEMENU] = "PAUSE MENU: " + control_pause_string;;
+    controls[CONT_DEFAULT] = "RETURN TO DEFAULT";
+    controls[CONT_BACK] = "BACK";
     
     global.hud = hud;
     global.on_startup = on_startup;
@@ -78,33 +240,16 @@
     gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + "&lt;" + speedrun_timer + "&gt;";
     gameplay[GAMEP_BACK] = "BACK";
     
-    fullscreen = "ON";
-    resolution_x = "1920";
-    resolution_y = "1080";
-    graphics_quality = "HIGH";
-    
-    global.fullscreen = "ON";
-    global.resolution_x = "1920";
-    global.resolution_y = "1080";
-    global.graphics_quality = "HIGH";
-    
-     v_sync = "ON";
+    global.fullscreen = fullscreen;
+    global.resolution_x = resolution_x;
+    global.resolution_y = resolution_y;
+    global.graphics_quality = graphics_quality;
     
     graphics[V_SYNC] = "V-SYNC: " + "&lt;" + v_sync + "&gt;";
-    graphics[FULSCREEN] = "FULLSCREEN: " + "ON";
-    graphics[RESOLUTION] = "RESOLUTION: 1920x1080";
-    graphics[QUALITY] = "GRAPHICS QUALITY: HIGH";
+    graphics[FULSCREEN] = "FULLSCREEN: " + fullscreen;
+    graphics[RESOLUTION] = "RESOLUTION: " + resolution_x + " X " + resolution_y;
+    graphics[QUALITY] = "GRAPHICS QUALITY: " + graphics_quality;
     graphics[GRAP_BACK] = "BACK";
-    
-    master_volume = 10;
-    music_volume = 10;
-    sounds_volume = 10;
-    voices_volume = 10;
-    
-    global.master_volume = 10;
-    global.music_volume = 10;
-    global.sounds_volume = 10;
-    global.voices_volume = 10;
     
     audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
     audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;;
@@ -124,12 +269,9 @@
     selected_total = 5;
     selected_number = 0;
     
-    show[0] = "+";
-    for(var k = 1; k &lt; 6; k++)
-        {
-        show[k] = main_menu[k-1];
-        }
-    show[6] = "=";
+    show_first = "";
+    show_last = "";
+    offset = 0;
 }
 </string>
           </argument>
@@ -172,12 +314,24 @@
             selected[selected_total-1] = 0.5;
             selected_number = selected_total-1;
             button_current = selected_number;
+            if selected_total &gt; 5
+                {
+                offset = selected_total-5;
+                show_first = "+";
+                show_last = "";
+                }
             }
         else
             {
             selected[selected_number--] = 0;
             selected[selected_number] = 0.5;
             button_current = selected_number;
+            if selected_total &gt; 5
+                {
+                if selected_number &lt; selected_total-4 then show_last = "=";
+                if offset &gt; 0 &amp;&amp; selected_number &lt; offset then offset--;
+                if offset = 0 then show_first = "";
+                }
             }
         }
     else if dir = 1
@@ -188,12 +342,24 @@
             selected[0] = 0.5;
             selected_number = 0;
             button_current = selected_number;
+            if selected_total &gt; 5
+                {
+                show_first = "";
+                show_last = "=";
+                offset = 0;
+                }
             }
         else
             {
             selected[selected_number++] = 0;
             selected[selected_number] = 0.5;
             button_current = selected_number;
+            if selected_total &gt; 5
+                {
+                if selected_number &gt;= 5 then show_first = "+";
+                if selected_number-offset &gt; 4 &amp;&amp; offset &lt; selected_total-4 then offset++;
+                if offset = selected_total-5 then show_last = "";
+                }
             }
         }
     if keyboard_check_pressed(vk_enter)
@@ -293,39 +459,6 @@
                     }
             }
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Destroy Objects
-
-{
-    destroy(obj_HUD);
-    destroy(obj_Score);
-    destroy(obj_Lives);
-    destroy(obj_Keys);
-    destroy(obj_Camera);
-    destroy(obj_Background);
-    destroy(obj_System);
 }
 </string>
           </argument>
