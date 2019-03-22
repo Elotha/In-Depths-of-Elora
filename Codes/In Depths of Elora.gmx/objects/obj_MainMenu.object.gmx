@@ -105,13 +105,13 @@
         
         //Audio
         
-        global.master_volume = ini_read_string("AUDIO","MASTER",10);
+        global.master_volume = ini_read_real("AUDIO","MASTER",10);
         
-        global.music_volume = ini_read_string("AUDIO","MUSIC",10);
+        global.music_volume = ini_read_real("AUDIO","MUSIC",10);
         
-        global.sounds_volume = ini_read_string("AUDIO","SOUNDS",10);
+        global.sounds_volume = ini_read_real("AUDIO","SOUNDS",10);
         
-        global.voices_volume = ini_read_string("AUDIO","VOICES",10);        
+        global.voices_volume = ini_read_real("AUDIO","VOICES",10);        
         }
         
     else //Önceden profil oluşturulmadıysa yeni bir profil oluşturup varsayılan değerleri içine yerleştir
@@ -192,21 +192,23 @@
         //Audio
         
         global.master_volume = 10;
-        ini_write_string("AUDIO","MASTER",global.master_volume);
+        ini_write_real("AUDIO","MASTER",global.master_volume);
         
         global.music_volume = 10;
-        ini_write_string("AUDIO","MUSIC",global.music_volume);
+        ini_write_real("AUDIO","MUSIC",global.music_volume);
         
         global.sounds_volume = 10;
-        ini_write_string("AUDIO","SOUNDS",global.sounds_volume);
+        ini_write_real("AUDIO","SOUNDS",global.sounds_volume);
         
         global.voices_volume = 10;
-        ini_write_string("AUDIO","VOICES",global.voices_volume);        
+        ini_write_real("AUDIO","VOICES",global.voices_volume);        
         }
         
         
     ini_close();
         
+    //Controls
+    
     if control_left_string[0] = control_left_string[1] then controls[MENU_LEFT] = "LEFT: " + control_left_string[0];
     else controls[MENU_LEFT] = "LEFT: " + control_left_string[0] + " OR " + control_left_string[1];
     
@@ -224,8 +226,11 @@
     controls[CONT_JOURNAL] = "JOURNAL: " + control_journal_string;;
     controls[MENU_INTERACT] = "INTERACT: " + control_interact_string;
     controls[PAUSEMENU] = "PAUSE MENU: " + control_pause_string;;
+    controls[HUDKEY] = "HUD KEY: " + control_pause_string;;
     controls[CONT_DEFAULT] = "RETURN TO DEFAULT";
     controls[CONT_BACK] = "BACK";
+    
+    //Gameplay
     
     global.hud = hud;
     global.on_startup = on_startup;
@@ -233,23 +238,58 @@
     global.language = language;
     global.speedrun_timer = speedrun_timer;
     
-    gameplay[HUD] = "HUD: " + "&lt;" + hud + "&gt;";
-    gameplay[ONSTARTUP] = "ON STARTUP: " + "&lt;" + on_startup + "&gt;";
-    gameplay[DIALOGSPEED] = "DIALOG SPEED: " + "&lt;" + string(dialog_speed) + "&gt;";
-    gameplay[LANGUAGE] = "LANGUAGE: " + "&lt;" + language + "&gt;";
-    gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + "&lt;" + speedrun_timer + "&gt;";
+    hud[0] = "ALWAYS SHOW";
+    hud[1] = "ONLY WHEN INTERACT";
+    hud[2] = "ONLY WHEN PRESS THE HUD KEY";
+    hud[3] = "NEVER";
+    
+    on_startup[0] = "MENU";
+    on_startup[1] = "CONTINUE";
+    
+    dialog_speed[0] = "1";
+    dialog_speed[1] = "2";
+    dialog_speed[2] = "4";
+    dialog_speed[3] = "8";
+    
+    language[0] = "ENGLISH";
+    language[1] = "TURKISH";
+    
+    speedrun_timer[0] = "OFF";
+    speedrun_timer[1] = "ON";
+    
+    gameplay[HUD] = "HUD: " + "&lt;" + hud[0] + "&gt;";
+    gameplay[ONSTARTUP] = "ON STARTUP: " + "&lt;" + on_startup[0] + "&gt;";
+    gameplay[DIALOGSPEED] = "DIALOG SPEED: " + "&lt;" + dialog_speed[1] + "&gt;";
+    gameplay[LANGUAGE] = "LANGUAGE: " + "&lt;" + language[0] + "&gt;";
+    gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + "&lt;" + speedrun_timer[0] + "&gt;";
     gameplay[GAMEP_BACK] = "BACK";
     
-    global.fullscreen = fullscreen;
+    //Graphics
+    
+    /*global.fullscreen = fullscreen;
     global.resolution_x = resolution_x;
     global.resolution_y = resolution_y;
-    global.graphics_quality = graphics_quality;
+    global.graphics_quality = graphics_quality;*/
     
-    graphics[V_SYNC] = "V-SYNC: " + "&lt;" + v_sync + "&gt;";
-    graphics[FULSCREEN] = "FULLSCREEN: " + fullscreen;
-    graphics[RESOLUTION] = "RESOLUTION: " + resolution_x + " X " + resolution_y;
-    graphics[QUALITY] = "GRAPHICS QUALITY: " + graphics_quality;
+    v_sync[0] = "ON";
+    v_sync[1] = "OFF";
+    
+    fullscreen[0] = "ON";
+    fullscreen[1] = "OFF";
+    
+    resolution[0] = "1920 X 1080";
+    resolution[1] = "1600 X 900";
+    
+    graphics_quality[0] = "HIGH";
+    graphics_quality[1] = "LOW";
+    
+    graphics[V_SYNC] = "V-SYNC: " + "&lt;" + v_sync[0] + "&gt;";
+    graphics[FULLSCREEN] = "FULLSCREEN: " + "&lt;"  + fullscreen[0] + "&gt;";;
+    graphics[RESOLUTION] = "RESOLUTION: " + "&lt;"  + resolution[0] + "&gt;";;
+    graphics[GRAP_QUALITY] = "GRAPHICS QUALITY: " + "&lt;"  + graphics_quality[0] + "&gt;";;
     graphics[GRAP_BACK] = "BACK";
+    
+    //Audio
     
     audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
     audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;;
@@ -272,6 +312,9 @@
     show_first = "";
     show_last = "";
     offset = 0;
+    
+    draw_set_alpha(1);
+    alpha = 1;
 }
 </string>
           </argument>
@@ -295,7 +338,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///Down and Up
 
 {
     if start_game
@@ -362,7 +405,136 @@
                 }
             }
         }
-    if keyboard_check_pressed(vk_enter)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Left and Right
+
+{
+    var left = keyboard_check_pressed(vk_left);
+    var right = keyboard_check_pressed(vk_right);
+    dirc = right-left;
+    if keyboard_check_pressed(vk_enter) then dirc = 1;
+    if dirc != 0
+        {
+        switch(menu_current)
+            {
+            case "Gameplay": 
+                switch(button_current)
+                    {
+                    case HUD:
+                        gameplay[HUD] = scr_change_button(dirc,hud,gameplay[HUD],"HUD: ");
+                        break;
+                        
+                    case ONSTARTUP:
+                        gameplay[ONSTARTUP] = scr_change_button(dirc,on_startup,gameplay[ONSTARTUP],"ON STARTUP: ");
+                        break;
+                        
+                    case DIALOGSPEED:
+                        gameplay[DIALOGSPEED] = scr_change_button(dirc,dialog_speed,gameplay[DIALOGSPEED],"DIALOG SPEED: ");
+                        break;
+                        
+                    case LANGUAGE:
+                        gameplay[LANGUAGE] = scr_change_button(dirc,language,gameplay[LANGUAGE],"LANGUAGE: ");
+                        break;
+                        
+                    case SPEEDRUN:
+                        gameplay[SPEEDRUN] = scr_change_button(dirc,speedrun_timer,gameplay[SPEEDRUN],"SPEEDRUN TIMER: ");
+                        break;
+                    }
+                break;
+                    
+            case "Graphics": 
+                switch(button_current)
+                    {
+                    case V_SYNC:
+                        graphics[V_SYNC] = scr_change_button(dirc,v_sync,graphics[V_SYNC],"V-SYNC: ");
+                        break;
+                        
+                    case FULLSCREEN:
+                        graphics[FULLSCREEN] = scr_change_button(dirc,fullscreen,graphics[FULLSCREEN],"FULLSCREEN: ");
+                        break;
+                        
+                    case RESOLUTION:
+                        graphics[RESOLUTION] = scr_change_button(dirc,resolution,graphics[RESOLUTION],"RESOLUTION: ");
+                        break;
+                        
+                    case GRAP_QUALITY:
+                        graphics[GRAP_QUALITY] = scr_change_button(dirc,graphics_quality,graphics[GRAP_QUALITY],"GRAPHICS QUALITY: ");
+                        break;
+                    }
+                break;
+                
+            case "Audio":
+                if !keyboard_check_pressed(vk_enter) then switch(button_current)
+                    {
+                    case MASTER_VOLUME:
+                        global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
+                        audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
+                        break;
+                        
+                    case MUSIC_VOLUME:
+                        global.music_volume = clamp(global.music_volume+(1*dirc),0,10);    
+                        audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;
+                        break;
+                        
+                    case SOUNDS_VOLUME:
+                        global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);    
+                        audio[SOUNDS_VOLUME] = "SOUNDS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";;
+                        break;
+                        
+                    case VOICES_VOLUME:
+                        global.voices_volume = clamp(global.voices_volume+(1*dirc),0,10);    
+                        audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";;
+                        break;
+                        
+                    }
+            }
+            
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Enter
+
+{
+    if keyboard_check_pressed(vk_enter) //Enter'a Basılırsa
         {
         switch(menu_current)
             {
@@ -465,6 +637,33 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Delete The Font
+
+{
+    font_delete(fnt_menu);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -488,6 +687,7 @@
     draw_set_font(font);
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
+    draw_set_colour(c_white);
     
     switch(menu_current)
         {

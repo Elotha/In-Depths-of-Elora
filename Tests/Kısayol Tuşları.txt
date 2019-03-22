@@ -1,0 +1,18 @@
+M: Müziði açar / kapatýr.
+N: Ses efektlerini açar / kapatýr.
+F12: Oyunu kapatýr.
+F5: Oyunu yeniden baþlatýr.
+F11: Screenshot alýr.
+
+CTRL + F1: Editör modunu açar / kapatýr.
+SHIFT: Bölümü yeniden baþlatýr.
+ALT: Oyunu yavaþlatýr / hýzlandýrýr.
++: Bir sonraki odaya geçirir.
+-: Bir önceki odaya döndürür.
+F2: Yukarý tuþuyla (veya W ile) zýplamayý açar / kapatýr.
+Y: Anahtar sayýsýný bir arttýrýr.
+X: Etkileþim çizgilerini açar / kapatýr.
+L: Caný fuller ve hak sayýsýný bir arttýrýr.
+I: Ölümsüzlüðü açar / kapatýr.
+C: V-sync'i açar / kapatýr.
+J: Caný azaltýr.
