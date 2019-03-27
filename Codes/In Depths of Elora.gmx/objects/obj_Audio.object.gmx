@@ -28,8 +28,8 @@
             <string>///Audio
 
 {
-    global.music = false;
-    global.sounds = false;
+    global.music = true;
+    global.sounds = true;
     global.current_music = snd_Music;
 }
 </string>

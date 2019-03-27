@@ -39,6 +39,8 @@
     destroy(obj_KeyEffect3);
     destroy(obj_ZodaxEffect);
     destroy(obj_Particles);
+    
+    display_set_gui_size(640,360);
 }
 </string>
           </argument>
@@ -96,9 +98,7 @@
     draw_set_colour(c_white);
     draw_set_valign(fa_center);
     draw_set_halign(fa_center);
-    display_set_gui_size(640,360);
-    draw_text_transformed(512/2,384/2,"CONGRATULATIONS! #PRESS &lt;F5&gt; TO RESTART THE GAME!",1,1,0);
-    display_set_gui_size(view_wport[0]*2/3,view_hport[0]*2/3);
+    draw_text_transformed(view_wview/2,view_hview/2,"CONGRATULATIONS! #PRESS &lt;F5&gt; TO RESTART THE GAME!",1,1,0);
 }
 </string>
           </argument>

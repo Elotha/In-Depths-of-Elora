@@ -43,12 +43,12 @@
     
     font = fnt_menu;
     
-    for(var i = 0; i &lt; 8; i++)
+    for(var i = 0; i &lt; 3; i++)
         {
         selected[i] = 0;
         }
     selected[0] = 0.5;
-    selected_total = 5;
+    selected_total = 3;
     selected_number = 0;
 }
 </string>
@@ -154,6 +154,7 @@
                 
             case "MAIN MENU":
                 instance_destroy();
+                scr_back_to_menu();
                 room_goto(rm_Menu);
                 break;
                 

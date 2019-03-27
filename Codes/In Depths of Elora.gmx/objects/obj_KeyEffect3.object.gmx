@@ -28,16 +28,16 @@
             <string>///Particles
 
 {
-    i = 0;
-    while key_effect[i] != -1
+    /*i = 0;
+    while key_effect != -1
         {
         i++;
         if i = array_length_1d(key_effect) then break;
-        }
+        }*/
     
 
-    key_effect[i] = part_system_create();
-    part_system_depth(key_effect[i],-100);
+    key_effect = part_system_create();
+    part_system_depth(key_effect,-100);
     particle_key = part_type_create();
     part_type_sprite(particle_key,spr_ParticlePixel,false,false,false);
     part_type_size(particle_key,1,1,0,0);
@@ -47,11 +47,11 @@
     part_type_colour_hsv(particle_key,35,35,50,255,240,240);
     part_type_life(particle_key,30,30);
     part_type_alpha2(particle_key,1,0);
-    part_system_position(key_effect[i],x,y);
+    part_system_position(key_effect,x,y);
     
-    key_emitter = part_emitter_create(key_effect[i]);
-    part_emitter_region(key_effect[i],key_emitter,-3,-3,3,3,ps_shape_ellipse,ps_distr_gaussian);
-    part_emitter_burst(key_effect[i],key_emitter,particle_key,48);
+    key_emitter = part_emitter_create(key_effect);
+    part_emitter_region(key_effect,key_emitter,-3,-3,3,3,ps_shape_ellipse,ps_distr_gaussian);
+    part_emitter_burst(key_effect,key_emitter,particle_key,48);
     
     alarm[0] = 60;
     depth = ITEM;
@@ -81,8 +81,8 @@
             <string>///Destroy
 
 {
-    part_emitter_destroy(key_effect[i],key_emitter);
-    part_system_destroy(key_effect[i]);
+    part_emitter_destroy(key_effect,key_emitter);
+    part_system_destroy(key_effect);
 }
 </string>
           </argument>
@@ -110,7 +110,7 @@
 
 {
     instance_destroy();
-    key_effect[i] = -1;
+    key_effect = -1;
 }
 </string>
           </argument>

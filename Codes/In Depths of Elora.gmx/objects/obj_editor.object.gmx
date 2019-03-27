@@ -31,7 +31,7 @@
     editor_mode = true;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
-    global.old_mode = true;
+    global.old_mode = false;
 }
 </string>
           </argument>
@@ -151,12 +151,12 @@
         global.immortality = reverse(global.immortality);
         }
         
-     if keyboard_check(ord('C')) //Işığı arttır
+     if keyboard_check(ord('C')) //V-Sync
         {
         with(obj_System)
             {
-            v_sync = !v_sync;
-            display_reset(0,v_sync);
+            if v_sync = "ON" then v_sync = "OFF"; else v_sync = "ON";
+            if v_sync = "ON" display_reset(0,true); else display_reset(0,false);
             }
         }
         
