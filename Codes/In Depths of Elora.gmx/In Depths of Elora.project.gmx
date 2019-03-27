@@ -215,10 +215,14 @@
       <script>scripts\scr_change_menu.gml</script>
       <script>scripts\scr_change_button.gml</script>
       <script>scripts\scr_back_to_menu.gml</script>
+      <script>scripts\scr_draw_description.gml</script>
+      <script>scripts\scr_profile_new.gml</script>
+      <script>scripts\scr_profile_load.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Calibri_HUD2</font>
+    <font>fonts\fnt_Calibri_Profile</font>
     <font>fonts\fnt_Calibri_HUD</font>
     <font>fonts\fnt_Potion</font>
     <font>fonts\fnt_Calibri_8</font>

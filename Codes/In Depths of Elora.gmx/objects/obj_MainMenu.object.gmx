@@ -37,6 +37,20 @@
     display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
     start_game = false;
     alpha = 1;
+    draw_set_alpha(1);
+    
+    selected[0] = 0.5;
+    for(var i = 1; i &lt; 12; i++)
+        {
+        selected[i] = 0;
+        }
+    selected_total = 5;
+    selected_number = 0;
+    
+    show_first = "";
+    show_last = "";
+    offset = 0;
+    
     
     main_menu[STARTGAME] = "START GAME";
     main_menu[SETTINGS] = "SETTINGS";
@@ -112,209 +126,25 @@
         global.sounds_volume = ini_read_real("AUDIO","SOUNDS",10);
         
         global.voices_volume = ini_read_real("AUDIO","VOICES",10);        
+        
+        //Variables
+        
+        description = "";
+        menu_current = "Main Menu";
+        scr_profile_load();
         }
-        
-    else //Önceden profil oluşturulmadıysa yeni bir profil oluşturup varsayılan değerleri içine yerleştir
-        {        
-        ini_write_real("PROFILES","TOTAL",1);
-        ini_write_string("PROFILES","CURRENT","NEW"); //"NEW" isminde bir profil yarat
-        ini_close();
-        ini_open("new.ini");
-        
-        //Controls
-        
-        control_left_string[0] = "LEFT ARROW";
-        control_left_string[1] = "A";
-        ini_write_string("CONTROLS","LEFT1",control_left_string[0]);
-        ini_write_string("CONTROLS","LEFT2",control_left_string[1]);
-        
-        control_right_string[0] = "RIGHT ARROW";
-        control_right_string[1] = "D";
-        ini_write_string("CONTROLS","RIGHT1",control_right_string[0]);
-        ini_write_string("CONTROLS","RIGHT2",control_right_string[1]);
-        
-        control_jump_string = "SPACE";
-        ini_write_string("CONTROLS","JUMP",control_jump_string);
-        
-        control_cameraup_string[0] = "UP ARROW";
-        control_cameraup_string[1] = "W";
-        ini_write_string("CONTROLS","CAMERAUP1",control_cameraup_string[0]);
-        ini_write_string("CONTROLS","CAMERAUP2",control_cameraup_string[1]);
-        
-        control_cameradown_string[0] = "DOWN ARROW";
-        control_cameradown_string[1] = "S";
-        ini_write_string("CONTROLS","CAMERADOWN1",control_cameradown_string[0]);
-        ini_write_string("CONTROLS","CAMERADOWN2",control_cameradown_string[1]);
-        
-        control_interact_string = "E";
-        ini_write_string("CONTROLS","INTERACT",control_interact_string);
-        
-        control_journal_string = "TAB";
-        ini_write_string("CONTROLS","JOURNAL",control_journal_string);
-        
-        control_pause_string = "ESCAPE";
-        ini_write_string("CONTROLS","PAUSEMENU",control_pause_string);
-        
-        //Gameplay
-        
-        hud = "ALWAYS SHOW";
-        ini_write_string("GAMEPLAY","HUD",hud);
-        
-        on_startup = "MENU";
-        ini_write_string("GAMEPLAY","ONSTARTUP",on_startup);
-        
-        dialog_speed = 2;
-        ini_write_real("GAMEPLAY","DIALOGSPEED",dialog_speed);
-        
-        language = "ENGLISH";
-        ini_write_string("GAMEPLAY","LANGUAGE",language);
-        
-        speedrun_timer = "OFF";
-        ini_write_string("GAMEPLAY","SPEEDRUN TIMER",speedrun_timer);
-        
-        //Graphics
-    
-        v_sync = "ON";
-        ini_write_string("GRAPHICS","V_SYNC",v_sync);
-        
-        fullscreen = "ON";
-        ini_write_string("GRAPHICS","FULLSCREEN",fullscreen);
-        
-        resolution_x = "1920";
-        ini_write_string("GRAPHICS","RESOLUTIONX",resolution_x);
-        
-        resolution_y = "1080";
-        ini_write_string("GRAPHICS","RESOLUTIONY",resolution_y);
-        
-        graphics_quality = "HIGH";
-        ini_write_string("GRAPHICS","QUALITY",graphics_quality);  
-        
-        //Audio
-        
-        global.master_volume = 10;
-        ini_write_real("AUDIO","MASTER",global.master_volume);
-        
-        global.music_volume = 10;
-        ini_write_real("AUDIO","MUSIC",global.music_volume);
-        
-        global.sounds_volume = 10;
-        ini_write_real("AUDIO","SOUNDS",global.sounds_volume);
-        
-        global.voices_volume = 10;
-        ini_write_real("AUDIO","VOICES",global.voices_volume);        
+    else
+        {
+        description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+        new_profile = "";
+        keyboard_string = new_profile;
+        menu_current = "New Profile";
         }
-        
+    button_current = 0;
         
     ini_close();
         
-    //Controls
     
-    if control_left_string[0] = control_left_string[1] then controls[MENU_LEFT] = "LEFT: " + control_left_string[0];
-    else controls[MENU_LEFT] = "LEFT: " + control_left_string[0] + " OR " + control_left_string[1];
-    
-    if control_right_string[0] = control_right_string[1] then controls[MENU_RIGHT] = "RIGHT: " + control_right_string[0];
-    else controls[MENU_RIGHT] = "RIGHT: " + control_right_string[0] + " OR " + control_right_string[1];
-    
-    controls[JUMP] = "JUMP: " + control_jump_string;
-    
-    if control_cameraup_string[0] = control_cameraup_string[1] then controls[CAMERAUP] = "CAMERA UP: " + control_cameraup_string[0];
-    controls[CAMERAUP] = "CAMERA UP: " + control_cameraup_string[0] + " OR " + control_cameraup_string[1];
-    
-    if control_cameradown_string[0] = control_cameradown_string[1] then controls[CAMERADOWN] = "CAMERA DOWN: " + control_cameradown_string[0];
-    controls[CAMERADOWN] = "CAMERA DOWN: " + control_cameradown_string[0] + " OR " + control_cameradown_string[1];;
-    
-    controls[CONT_JOURNAL] = "JOURNAL: " + control_journal_string;;
-    controls[MENU_INTERACT] = "INTERACT: " + control_interact_string;
-    controls[PAUSEMENU] = "PAUSE MENU: " + control_pause_string;;
-    controls[HUDKEY] = "HUD KEY: " + control_pause_string;;
-    controls[CONT_DEFAULT] = "RETURN TO DEFAULT";
-    controls[CONT_BACK] = "BACK";
-    
-    //Gameplay
-    
-    global.hud = hud;
-    global.on_startup = on_startup;
-    global.dialog_speed = dialog_speed;
-    global.language = language;
-    global.speedrun_timer = speedrun_timer;
-    
-    hud[0] = "ALWAYS SHOW";
-    hud[1] = "ONLY WHEN INTERACT";
-    hud[2] = "ONLY WHEN PRESS THE HUD KEY";
-    hud[3] = "NEVER";
-    
-    on_startup[0] = "MENU";
-    on_startup[1] = "CONTINUE";
-    
-    dialog_speed[0] = "1";
-    dialog_speed[1] = "2";
-    dialog_speed[2] = "4";
-    dialog_speed[3] = "8";
-    
-    language[0] = "ENGLISH";
-    language[1] = "TURKISH";
-    
-    speedrun_timer[0] = "OFF";
-    speedrun_timer[1] = "ON";
-    
-    gameplay[HUD] = "HUD: " + "&lt;" + hud[0] + "&gt;";
-    gameplay[ONSTARTUP] = "ON STARTUP: " + "&lt;" + on_startup[0] + "&gt;";
-    gameplay[DIALOGSPEED] = "DIALOG SPEED: " + "&lt;" + dialog_speed[1] + "&gt;";
-    gameplay[LANGUAGE] = "LANGUAGE: " + "&lt;" + language[0] + "&gt;";
-    gameplay[SPEEDRUN] = "SPEEDRUN TIMER: " + "&lt;" + speedrun_timer[0] + "&gt;";
-    gameplay[GAMEP_BACK] = "BACK";
-    
-    //Graphics
-    
-    /*global.fullscreen = fullscreen;
-    global.resolution_x = resolution_x;
-    global.resolution_y = resolution_y;
-    global.graphics_quality = graphics_quality;*/
-    
-    v_sync[0] = "ON";
-    v_sync[1] = "OFF";
-    
-    fullscreen[0] = "ON";
-    fullscreen[1] = "OFF";
-    
-    resolution[0] = "1920 X 1080";
-    resolution[1] = "1600 X 900";
-    
-    graphics_quality[0] = "HIGH";
-    graphics_quality[1] = "LOW";
-    
-    graphics[V_SYNC] = "V-SYNC: " + "&lt;" + v_sync[0] + "&gt;";
-    graphics[FULLSCREEN] = "FULLSCREEN: " + "&lt;"  + fullscreen[0] + "&gt;";;
-    graphics[RESOLUTION] = "RESOLUTION: " + "&lt;"  + resolution[0] + "&gt;";;
-    graphics[GRAP_QUALITY] = "GRAPHICS QUALITY: " + "&lt;"  + graphics_quality[0] + "&gt;";;
-    graphics[GRAP_BACK] = "BACK";
-    
-    //Audio
-    
-    audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
-    audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;;
-    audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";;;
-    audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";;;
-    audio[AUDIO_BACK] = "BACK";
-    
-    
-    menu_current = "Main Menu";
-    button_current = STARTGAME;
-    
-    selected[0] = 0.5;
-    for(var i = 1; i &lt; 12; i++)
-        {
-        selected[i] = 0;
-        }
-    selected_total = 5;
-    selected_number = 0;
-    
-    show_first = "";
-    show_last = "";
-    offset = 0;
-    
-    draw_set_alpha(1);
-    alpha = 1;
 }
 </string>
           </argument>
@@ -322,6 +152,43 @@
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Profile Name
+
+{
+    if menu_current = "New Profile"
+        {
+        if keyboard_check_pressed(vk_backspace)
+            {
+            new_profile = string_copy(new_profile,1,string_length(new_profile)-1);
+            keyboard_string = new_profile;
+            }
+        else if keyboard_check_pressed(vk_anykey)
+            {
+            new_profile = string_copy(string_upper(string_lettersdigits(keyboard_string)),1,16);
+            keyboard_string = new_profile;
+            }
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -348,60 +215,63 @@
         exit;
         }
         
-    var dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
-    if dir = -1
+    if menu_current != "New Profile"
         {
-        if selected_number = 0
+        var dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
+        if dir = -1
             {
-            selected[0] = 0;
-            selected[selected_total-1] = 0.5;
-            selected_number = selected_total-1;
-            button_current = selected_number;
-            if selected_total &gt; 5
+            if selected_number = 0
                 {
-                offset = selected_total-5;
-                show_first = "+";
-                show_last = "";
+                selected[0] = 0;
+                selected[selected_total-1] = 0.5;
+                selected_number = selected_total-1;
+                button_current = selected_number;
+                if selected_total &gt; 5
+                    {
+                    offset = selected_total-5;
+                    show_first = "+";
+                    show_last = "";
+                    }
+                }
+            else
+                {
+                selected[selected_number--] = 0;
+                selected[selected_number] = 0.5;
+                button_current = selected_number;
+                if selected_total &gt; 5
+                    {
+                    if selected_number &lt; selected_total-5 then show_last = "=";
+                    if offset &gt; 0 &amp;&amp; selected_number &lt; offset then offset--;
+                    if offset = 0 then show_first = "";
+                    }
                 }
             }
-        else
+        else if dir = 1
             {
-            selected[selected_number--] = 0;
-            selected[selected_number] = 0.5;
-            button_current = selected_number;
-            if selected_total &gt; 5
+            if selected_number = selected_total-1
                 {
-                if selected_number &lt; selected_total-4 then show_last = "=";
-                if offset &gt; 0 &amp;&amp; selected_number &lt; offset then offset--;
-                if offset = 0 then show_first = "";
+                selected[selected_total-1] = 0;
+                selected[0] = 0.5;
+                selected_number = 0;
+                button_current = selected_number;
+                if selected_total &gt; 5
+                    {
+                    show_first = "";
+                    show_last = "=";
+                    offset = 0;
+                    }
                 }
-            }
-        }
-    else if dir = 1
-        {
-        if selected_number = selected_total-1
-            {
-            selected[selected_total-1] = 0;
-            selected[0] = 0.5;
-            selected_number = 0;
-            button_current = selected_number;
-            if selected_total &gt; 5
+            else
                 {
-                show_first = "";
-                show_last = "=";
-                offset = 0;
-                }
-            }
-        else
-            {
-            selected[selected_number++] = 0;
-            selected[selected_number] = 0.5;
-            button_current = selected_number;
-            if selected_total &gt; 5
-                {
-                if selected_number &gt;= 5 then show_first = "+";
-                if selected_number-offset &gt; 4 &amp;&amp; offset &lt; selected_total-4 then offset++;
-                if offset = selected_total-5 then show_last = "";
+                selected[selected_number++] = 0;
+                selected[selected_number] = 0.5;
+                button_current = selected_number;
+                if selected_total &gt; 5
+                    {
+                    if selected_number &gt;= 5 then show_first = "+";
+                    if selected_number-offset &gt; 4 &amp;&amp; offset &lt; selected_total-4 then offset++;
+                    if offset = selected_total-5 then show_last = "";
+                    }
                 }
             }
         }
@@ -538,6 +408,15 @@
         {
         switch(menu_current)
             {
+            case "New Profile":
+                if new_profile != ""
+                    {
+                    scr_profile_new();
+                    description = "";
+                    menu_current = "Main Menu";
+                    }
+                break;
+                
             case "Main Menu":
                 switch(button_current)
                     {
@@ -569,6 +448,7 @@
                     case CONTROLS:
                         menu_current = "Controls";
                         scr_change_menu(controls,0);
+                        description = "Press &lt;Enter&gt; to change the key.";
                         break;
                         
                     case GAMEPLAY:
@@ -600,6 +480,7 @@
                     case CONT_BACK:
                         menu_current = "Settings";
                         scr_change_menu(settings,0);
+                        description = "";
                         break;
                     }
                 
@@ -631,33 +512,6 @@
                     }
             }
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Delete The Font
-
-{
-    font_delete(fnt_menu);
 }
 </string>
           </argument>
@@ -714,7 +568,16 @@
         case "Audio":
             scr_draw_menu(audio);
             break;
+            
+        case "New Profile":
+            draw_text(room_width/2,176,"CREATE A NEW PROFILE: " + new_profile);
+            break;
         
+        }
+        
+    if description != ""
+        {
+        scr_draw_description(description);
         }
 }
 </string>
