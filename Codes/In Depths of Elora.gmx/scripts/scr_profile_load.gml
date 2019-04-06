@@ -3,7 +3,9 @@
 {
     ini_open("profiles.ini");
     if ini_read_real("Profiles","Total",0) = 0 then return false;
-    current_profile = ini_read_string("Profiles","Current","");
+    current_profile_number = ini_read_real("Profiles","Current Number",0);
+    current_profile = ini_read_string("Profiles",current_profile_number,"");
+    ini_write_string("Profiles","Current",current_profile);
     ini_close();
     ini_open(string_lower(current_profile)+"_config.ini");
     
@@ -45,15 +47,22 @@
     
     //Graphics
 
-    v_sync_current = ini_read_real("Graphics","V-Sync",ON);
+    var vsync = ini_read_real("Graphics","V-Sync",ON);
+    if vsync != global.v_sync
+        {
+        v_sync_current = vsync;
+        display_reset(0,v_sync_current);
+        global.v_sync = v_sync_current;
+        }
+    else v_sync_current = global.v_sync;
+    
     
     fullscreen_current = ini_read_real("Graphics","Fullscreen",ON);
     
     resolution_current = ini_read_real("Graphics","Resolution",R1920X1080);
     
-    graphics_quality_current = ini_read_real("Graphics","Quality",QUALITY_HIGH);  
+    graphics_quality_current = ini_read_real("Graphics","Quality",QUALITY_HIGH);
     
-    display_reset(0,v_sync_current); //V-sync
     window_set_fullscreen(fullscreen_current); //Fullscreen
     
     //Audio
@@ -70,7 +79,6 @@
     
     ini_close();
     description = "";
-    menu_current = "Main Menu";
     scr_profile_strings();
     return true;
 }

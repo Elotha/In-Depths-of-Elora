@@ -8,8 +8,8 @@
 //argument5: ini key
 
 {
-    ini_open(string_lower(current_profile) +"_config.ini");
-    var str = string_copy(argument2,string_pos("<",argument2)+1,string_pos(">",argument2)-string_pos("<",argument2)-1);
+    if argument4 != "Profiles" then ini_open(string_lower(current_profile) +"_config.ini"); else ini_open("profiles.ini");
+    var str = string_copy(argument2,string_pos("<",argument2)+1,string_pos(">",argument2)-string_pos("<",argument2)-1); // "< >" işaretlerinin ortasındaki stringi al
     for(var i = 0; i < array_length_1d(argument1); i++)
         {
         if argument1[i] = str then break;

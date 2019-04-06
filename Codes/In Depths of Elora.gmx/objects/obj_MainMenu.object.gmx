@@ -95,32 +95,33 @@
     graphics_quality[QUALITY_HIGH] = "HIGH";
     graphics_quality[QUALITY_LOW] = "LOW";
     
+    global.v_sync = ON;
     if !scr_profile_load() //Önceden oluşturulmuş bir profil yoksa
         {
-        display_reset(0,ON);
         description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
         new_profile = "";
         keyboard_string = new_profile;
         menu_current = "New Profile";
+        v_sync_current = ON;
         }
     else //Varsa
         {
         description = "";
         menu_current = "Main Menu";        
         }
+    display_reset(0,v_sync_current);
     button_current = 0;
-    
-    profile = -1;
     
     ini_open("profiles.ini");
     total = ini_read_real("Profiles","Total",0);
     if total &gt; 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "&lt;" + current_profile + "&gt;"; 
     else if total = 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + current_profile;
     else if total = 0 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: ";
-    for (var i = 0; i &lt; total; i++)
+    for (var k = 0; k &lt; total; k++)
         {
-        profile[i] = ini_read_string("Profiles",i,"");
+        profile[k] = ini_read_string("Profiles",k,"");
         }
+    if total = 0 then profile[0] = "";
     profiles[CREATE_PROFILE] = "CREATE A NEW PROFILE";
     profiles[DELETE_PROFILE] = "DELETE CURRENT PROFILE";
     profiles[PROFILES_BACK] = "BACK";
@@ -379,11 +380,12 @@
                 switch(button_current)
                     {
                     case CURRENT_PROFILE:
-                        if dirc = 1
+                        if total &gt; 1
                             {
-                            
+                            profiles[CURRENT_PROFILE] = scr_change_button(dirc,profile,profiles[CURRENT_PROFILE],"CURRENT PROFILE: ","Profiles","Current Number");
+                            scr_profile_load();
+                            break;
                             }
-                        break;
                     }
             }
             
@@ -421,8 +423,6 @@
                     {
                     scr_profile_new();
                     description = "";
-                    menu_current = "Main Menu";
-                    scr_change_menu(main_menu,0);
                     }
                 break;
                 

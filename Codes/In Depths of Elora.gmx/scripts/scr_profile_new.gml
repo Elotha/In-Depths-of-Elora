@@ -9,11 +9,16 @@
         current_profile = ini_read_string("Profiles","Current","Current");
         file_copy(current_profile + "_config.ini",string_lower(new_profile) + "_config.ini");
         check = true;
+        menu_current = "Profiles";
+        scr_change_menu(profiles,0);
         }
     else //Bu ilk profilimiz ise
         {
         ini_open("profiles.ini");
         ini_write_real("Profiles","Total",1);
+        
+        menu_current = "Main Menu";
+        scr_change_menu(main_menu,0);
         }
     var i = 0;
     while ini_key_exists("Profiles",i) i++;
@@ -115,5 +120,13 @@
     ini_write_real("General","Level",rm_Level1);
     ini_close();
     
+    ini_open("profiles.ini");
+    total = ini_read_real("Profiles","Total",0);
+    for (var i = 0; i < total; i++)
+        {
+        profile[i] = ini_read_string("Profiles",i,"");
+        }
+    ini_close();
+    profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "<" + current_profile + ">";
     scr_profile_strings();
 }
