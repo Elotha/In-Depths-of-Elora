@@ -215,10 +215,15 @@
       <script>scripts\scr_change_menu.gml</script>
       <script>scripts\scr_change_button.gml</script>
       <script>scripts\scr_back_to_menu.gml</script>
+      <script>scripts\scr_draw_description.gml</script>
+      <script>scripts\scr_profile_new.gml</script>
+      <script>scripts\scr_profile_load.gml</script>
+      <script>scripts\scr_profile_strings.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Calibri_HUD2</font>
+    <font>fonts\fnt_Calibri_Profile</font>
     <font>fonts\fnt_Calibri_HUD</font>
     <font>fonts\fnt_Potion</font>
     <font>fonts\fnt_Calibri_8</font>
@@ -337,7 +342,7 @@
     <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Base</room>
   </rooms>
-  <constants number="56">
+  <constants number="78">
     <constant name="AUDIO_BACK">4</constant>
     <constant name="AUDIO">3</constant>
     <constant name="BACKGROUND1">600</constant>
@@ -394,6 +399,28 @@
     <constant name="WATERFALL1">700</constant>
     <constant name="WATERFALL2">900</constant>
     <constant name="HUDKEY">8</constant>
+    <constant name="ALWAYS_SHOW">0</constant>
+    <constant name="ONLY_INTERACT">1</constant>
+    <constant name="ONLY_HUDKEY">2</constant>
+    <constant name="HUD_NEVER">3</constant>
+    <constant name="STARTUP_MENU">0</constant>
+    <constant name="STARTUP_CONT">1</constant>
+    <constant name="SPEED1">0</constant>
+    <constant name="SPEED2">1</constant>
+    <constant name="SPEED4">2</constant>
+    <constant name="SPEED8">3</constant>
+    <constant name="ENGLISH">0</constant>
+    <constant name="TURKISH">1</constant>
+    <constant name="OFF">0</constant>
+    <constant name="ON">1</constant>
+    <constant name="QUALITY_HIGH">0</constant>
+    <constant name="QUALITY_LOW">1</constant>
+    <constant name="R1920X1080">0</constant>
+    <constant name="R1600X900">1</constant>
+    <constant name="CURRENT_PROFILE">0</constant>
+    <constant name="CREATE_PROFILE">1</constant>
+    <constant name="DELETE_PROFILE">2</constant>
+    <constant name="PROFILES_BACK">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

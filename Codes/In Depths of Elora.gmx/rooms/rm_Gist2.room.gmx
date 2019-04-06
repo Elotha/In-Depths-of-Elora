@@ -117,7 +117,7 @@
     <instance objName="obj_Damast" x="1312" y="32" name="inst_0D92309D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SpikeFlower" x="1600" y="320" name="inst_7026AA0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Beulian" x="1696" y="288" name="inst_F014B334" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Minyoo" x="1792" y="160" name="inst_2E28A25C" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Minyoo" x="1792" y="160" name="inst_2E28A25C" locked="0" code="creation_code = true;&#xA;drop = &quot;Key&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Damast" x="1632" y="32" name="inst_FA5D2CEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="1704" y="48" name="inst_5AAC64C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ScoreStone" x="1728" y="48" name="inst_A2EC345F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

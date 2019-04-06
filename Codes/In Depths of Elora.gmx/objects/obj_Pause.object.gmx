@@ -234,6 +234,7 @@
     display_set_gui_size(640,360);
     draw_sprite(spr_BlackView,0,0,0);
     draw_sprite(sprite_index,image_index,view_wview/2,view_hview/2);
+    draw_set_font(fnt_menu);
 }
 </string>
           </argument>
@@ -258,7 +259,7 @@
             <string>///Fonts
 
 {
-    draw_set_font(font);
+    //draw_set_font(font);
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
     for(var i = 0; i &lt; array_length_1d(pause_menu); i++)

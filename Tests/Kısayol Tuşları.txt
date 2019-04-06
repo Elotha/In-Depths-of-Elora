@@ -5,7 +5,7 @@ F5: Oyunu yeniden baþlatýr.
 F11: Screenshot alýr.
 
 CTRL + F1: Editör modunu açar / kapatýr.
-SHIFT: Bölümü yeniden baþlatýr.
+F4: Bölümü yeniden baþlatýr.
 ALT: Oyunu yavaþlatýr / hýzlandýrýr.
 +: Bir sonraki odaya geçirir.
 -: Bir önceki odaya döndürür.
