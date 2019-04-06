@@ -34,4 +34,9 @@
     file_delete("temp.ini");
     with(obj_Key) if key_monster then key_monster = false;
     global.temp_number = 0;
+    with(obj_Monster)
+        {
+        x = xstart;
+        y = ystart;
+        }
 }

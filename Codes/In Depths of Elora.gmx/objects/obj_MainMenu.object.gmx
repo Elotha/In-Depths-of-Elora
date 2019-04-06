@@ -64,87 +64,60 @@
     settings[AUDIO] = "AUDIO";
     settings[SET_BACK] = "BACK";
     
-    ini_open("profiles.ini");
-    if ini_read_real("PROFILES","TOTAL",0) != 0 //Önceden oluşturulmuş bir profil var mı?
-        {
-        current_profile = ini_read_string("PROFILES","CURRENT","");
-        ini_close();
-        ini_open(string_lower(current_profile)+".ini");
-        
-        //Controls
-        
-        control_left_string[0] = ini_read_string("CONTROLS","LEFT1","LEFT ARROW");
-        control_left_string[1] = ini_read_string("CONTROLS","LEFT2","A");
-        
-        control_right_string[0] = ini_read_string("CONTROLS","RIGHT1","RIGHT ARROW");
-        control_right_string[1] = ini_read_string("CONTROLS","RIGHT2","D");
-        
-        control_jump_string =ini_read_string("CONTROLS","JUMP","SPACE");
-        
-        control_cameraup_string[0] = ini_read_string("CONTROLS","CAMERAUP1","UP ARROW");
-        control_cameraup_string[1] = ini_read_string("CONTROLS","CAMERAUP2","W");
-        
-        control_cameradown_string[0] = ini_read_string("CONTROLS","CAMERADOWN1","DOWN ARROW");
-        control_cameradown_string[1] = ini_read_string("CONTROLS","CAMERADOWN2","S");
-        
-        control_interact_string = ini_read_string("CONTROLS","INTERACT","E");
-        
-        control_journal_string = ini_read_string("CONTROLS","JOURNAL","TAB");
-        
-        control_pause_string = ini_read_string("CONTROLS","PAUSE","ESCAPE");
-        
-        //Gameplay
-        
-        hud = ini_read_string("GAMEPLAY","HUD","ALWAYS SHOW");
-        
-        on_startup = ini_read_string("GAMEPLAY","ONSTARTUP","MENU");
-        
-        dialog_speed = ini_read_real("GAMEPLAY","DIALOGSPEED",2);
-        
-        language = ini_read_string("GAMEPLAY","LANGUAGE","ENGLISH");
-        
-        speedrun_timer = ini_read_string("GAMEPLAY","SPEEDRUN TIMER","OFF");
-        
-        //Graphics
+    hud[ALWAYS_SHOW] = "ALWAYS SHOW";
+    hud[ONLY_INTERACT] = "ONLY WHEN INTERACT";
+    hud[ONLY_HUDKEY] = "ONLY WHEN PRESS THE HUD KEY";
+    hud[HUD_NEVER] = "NEVER";
     
-        v_sync = ini_read_string("GRAPHICS","V_SYNC","ON");
-        
-        fullscreen = ini_read_string("GRAPHICS","FULLSCREEN","ON");
-        
-        resolution_x = ini_read_string("GRAPHICS","RESOLUTIONX","1920");
-        
-        resolution_y = ini_read_string("GRAPHICS","RESOLUTIONY","1080");
-        
-        graphics_quality = ini_read_string("GRAPHICS","QUALITY","HIGH");  
-        
-        //Audio
-        
-        global.master_volume = ini_read_real("AUDIO","MASTER",10);
-        
-        global.music_volume = ini_read_real("AUDIO","MUSIC",10);
-        
-        global.sounds_volume = ini_read_real("AUDIO","SOUNDS",10);
-        
-        global.voices_volume = ini_read_real("AUDIO","VOICES",10);        
-        
-        //Variables
-        
-        description = "";
-        menu_current = "Main Menu";
-        scr_profile_load();
-        }
-    else
+    on_startup[STARTUP_MENU] = "MENU";
+    on_startup[STARTUP_CONT] = "CONTINUE";
+    
+    dialog_speed[SPEED1] = "1";
+    dialog_speed[SPEED2] = "2";
+    dialog_speed[SPEED4] = "4";
+    dialog_speed[SPEED8] = "8";
+    
+    language[ENGLISH] = "ENGLISH";
+    language[TURKISH] = "TURKISH";
+    
+    speedrun_timer[OFF] = "OFF";
+    speedrun_timer[ON] = "ON";
+    
+    v_sync[ON] = "ON";
+    v_sync[OFF] = "OFF";
+    
+    fullscreen[ON] = "ON";
+    fullscreen[OFF] = "OFF";
+    
+    resolution[R1920X1080] = "1920 X 1080";
+    resolution[R1600X900] = "1600 X 900";
+    
+    graphics_quality[QUALITY_HIGH] = "HIGH";
+    graphics_quality[QUALITY_LOW] = "LOW";
+    
+    if !scr_profile_load() //Önceden oluşturulmuş bir profil yoksa
         {
+        display_reset(0,ON);
         description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
         new_profile = "";
         keyboard_string = new_profile;
         menu_current = "New Profile";
         }
+    else //Varsa
+        {
+        description = "";
+        menu_current = "Main Menu";        
+        }
     button_current = 0;
-        
-    ini_close();
-        
     
+    ini_open("profiles.ini");
+    total = ini_read_real("Profiles","Total",0);
+    if total &gt; 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "&lt;" + current_profile + "&gt;"; 
+    else profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + current_profile;
+    profiles[CREATE_PROFILE] = "CREATE A NEW PROFILE";
+    profiles[DELETE_PROFILE] = "DELETE CURRENT PROFILE";
+    profiles[PROFILES_BACK] = "BACK";
+    ini_close();
 }
 </string>
           </argument>
@@ -182,6 +155,11 @@
             {
             new_profile = string_copy(string_upper(string_lettersdigits(keyboard_string)),1,16);
             keyboard_string = new_profile;
+            }
+        if keyboard_check_pressed(vk_escape)
+            {
+            if total = 0 then game_end(); //Esc'ye basılırsa oyunu kapat
+            else scr_change_menu(profiles,1);
             }
         }
 }
@@ -311,23 +289,23 @@
                 switch(button_current)
                     {
                     case HUD:
-                        gameplay[HUD] = scr_change_button(dirc,hud,gameplay[HUD],"HUD: ");
+                        gameplay[HUD] = scr_change_button(dirc,hud,gameplay[HUD],"HUD: ","Gameplay","Hud");
                         break;
                         
                     case ONSTARTUP:
-                        gameplay[ONSTARTUP] = scr_change_button(dirc,on_startup,gameplay[ONSTARTUP],"ON STARTUP: ");
+                        gameplay[ONSTARTUP] = scr_change_button(dirc,on_startup,gameplay[ONSTARTUP],"ON STARTUP: ","Gameplay","On Startup");
                         break;
                         
                     case DIALOGSPEED:
-                        gameplay[DIALOGSPEED] = scr_change_button(dirc,dialog_speed,gameplay[DIALOGSPEED],"DIALOG SPEED: ");
+                        gameplay[DIALOGSPEED] = scr_change_button(dirc,dialog_speed,gameplay[DIALOGSPEED],"DIALOG SPEED: ","Gameplay","Dialog Speed");
                         break;
                         
                     case LANGUAGE:
-                        gameplay[LANGUAGE] = scr_change_button(dirc,language,gameplay[LANGUAGE],"LANGUAGE: ");
+                        gameplay[LANGUAGE] = scr_change_button(dirc,language,gameplay[LANGUAGE],"LANGUAGE: ","Gameplay","Language");
                         break;
                         
                     case SPEEDRUN:
-                        gameplay[SPEEDRUN] = scr_change_button(dirc,speedrun_timer,gameplay[SPEEDRUN],"SPEEDRUN TIMER: ");
+                        gameplay[SPEEDRUN] = scr_change_button(dirc,speedrun_timer,gameplay[SPEEDRUN],"SPEEDRUN TIMER: ","Gameplay","Speedrun Timer");
                         break;
                     }
                 break;
@@ -336,47 +314,59 @@
                 switch(button_current)
                     {
                     case V_SYNC:
-                        graphics[V_SYNC] = scr_change_button(dirc,v_sync,graphics[V_SYNC],"V-SYNC: ");
+                        graphics[V_SYNC] = scr_change_button(dirc,v_sync,graphics[V_SYNC],"V-SYNC: ","Graphics","V-Sync");
+                        ini_open(current_profile + "_config.ini");
+                        display_reset(0,ini_read_real("Graphics","V-Sync","ON"));
+                        ini_close();
                         break;
                         
                     case FULLSCREEN:
-                        graphics[FULLSCREEN] = scr_change_button(dirc,fullscreen,graphics[FULLSCREEN],"FULLSCREEN: ");
+                        graphics[FULLSCREEN] = scr_change_button(dirc,fullscreen,graphics[FULLSCREEN],"FULLSCREEN: ","Graphics","Fullscreen");
+                        ini_open(current_profile + "_config.ini");
+                        window_set_fullscreen(ini_read_real("Graphics","Fullscreen","ON"));
+                        ini_close();
                         break;
                         
                     case RESOLUTION:
-                        graphics[RESOLUTION] = scr_change_button(dirc,resolution,graphics[RESOLUTION],"RESOLUTION: ");
+                        graphics[RESOLUTION] = scr_change_button(dirc,resolution,graphics[RESOLUTION],"RESOLUTION: ","Graphics","Resolution");
                         break;
                         
                     case GRAP_QUALITY:
-                        graphics[GRAP_QUALITY] = scr_change_button(dirc,graphics_quality,graphics[GRAP_QUALITY],"GRAPHICS QUALITY: ");
+                        graphics[GRAP_QUALITY] = scr_change_button(dirc,graphics_quality,graphics[GRAP_QUALITY],"GRAPHICS QUALITY: ","Graphics","Quality");
                         break;
                     }
                 break;
                 
             case "Audio":
+                ini_open(string_lower(current_profile) +"_config.ini");
                 if !keyboard_check_pressed(vk_enter) then switch(button_current)
                     {
                     case MASTER_VOLUME:
                         global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
                         audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
+                        ini_write_real("Audio","Master",global.master_volume);
                         break;
                         
                     case MUSIC_VOLUME:
                         global.music_volume = clamp(global.music_volume+(1*dirc),0,10);    
                         audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;
+                        ini_write_real("Audio","Music",global.music_volume);
                         break;
                         
                     case SOUNDS_VOLUME:
                         global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);    
                         audio[SOUNDS_VOLUME] = "SOUNDS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";;
+                        ini_write_real("Audio","Sounds",global.sounds_volume);
                         break;
                         
                     case VOICES_VOLUME:
                         global.voices_volume = clamp(global.voices_volume+(1*dirc),0,10);    
                         audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";;
+                        ini_write_real("Audio","Voices",global.voices_volume);
                         break;
                         
                     }
+                ini_close();
             }
             
         }
@@ -433,6 +423,8 @@
                         break;
                         
                     case PROFILES:
+                        menu_current = "Profiles";
+                        scr_change_menu(profiles,0);
                         break;
                         
                     case EXIT:
@@ -483,6 +475,7 @@
                         description = "";
                         break;
                     }
+                break;
                 
             case "Gameplay":
                 switch(button_current)
@@ -492,6 +485,7 @@
                         scr_change_menu(settings,1);
                         break;
                     }
+                break;
                 
             case "Graphics":
                 switch(button_current)
@@ -501,6 +495,7 @@
                         scr_change_menu(settings,2);
                         break;
                     }
+                break;
                 
             case "Audio":
                 switch(button_current)
@@ -510,6 +505,27 @@
                         scr_change_menu(settings,3);
                         break;
                     }
+                break;
+                
+            case "Profiles":
+                switch(button_current)
+                    {
+                    case CREATE_PROFILE:
+                        description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
+                        new_profile = "";
+                        keyboard_string = new_profile;
+                        menu_current = "New Profile";
+                        break;
+                        
+                    case DELETE_PROFILE:
+                        break;
+                        
+                    case PROFILES_BACK:
+                        menu_current = "Main Menu";
+                        scr_change_menu(main_menu,3);
+                        break;
+                    }
+                break;
             }
         }
 }
@@ -551,6 +567,10 @@
         
         case "Settings":
             scr_draw_menu(settings);
+            break;
+        
+        case "Profiles":
+            scr_draw_menu(profiles);
             break;
         
         case "Controls":

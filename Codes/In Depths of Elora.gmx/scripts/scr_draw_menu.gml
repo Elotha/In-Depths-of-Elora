@@ -2,7 +2,7 @@
 
 {
     
-    for(var i = 0+offset; i < 5+offset; i++)
+    for(var i = 0+offset; i < min(5,array_length_1d(argument0))+offset; i++)
         {
         draw_set_alpha(alpha);
         draw_text_transformed(room_width/2,176+(i*32)-(offset*32),argument0[i],1+selected[i],1+selected[i],0);
