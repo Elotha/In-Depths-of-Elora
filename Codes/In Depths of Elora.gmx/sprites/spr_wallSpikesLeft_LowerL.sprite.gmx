@@ -7,7 +7,7 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>3</bbox_left>
+  <bbox_left>1</bbox_left>
   <bbox_right>31</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>31</bbox_bottom>
@@ -27,6 +27,5 @@
     <frame index="4">images\spr_wallSpikesLeft_LowerL_4.png</frame>
     <frame index="5">images\spr_wallSpikesLeft_LowerL_5.png</frame>
     <frame index="6">images\spr_wallSpikesLeft_LowerL_6.png</frame>
-    <frame index="7">images\spr_wallSpikesLeft_LowerL_7.png</frame>
   </frames>
 </sprite>
