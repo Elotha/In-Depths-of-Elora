@@ -1,6 +1,10 @@
 ///Load
 
 {
+    //Profiles
+    
+    profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + current_profile;
+    
     //Controls
     
     if control_left_string[0] = control_left_string[1] then controls[MENU_LEFT] = "LEFT: " + control_left_string[0];

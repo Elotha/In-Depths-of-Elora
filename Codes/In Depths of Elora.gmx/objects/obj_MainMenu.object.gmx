@@ -110,10 +110,17 @@
         }
     button_current = 0;
     
+    profile = -1;
+    
     ini_open("profiles.ini");
     total = ini_read_real("Profiles","Total",0);
     if total &gt; 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "&lt;" + current_profile + "&gt;"; 
-    else profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + current_profile;
+    else if total = 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + current_profile;
+    else if total = 0 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: ";
+    for (var i = 0; i &lt; total; i++)
+        {
+        profile[i] = ini_read_string("Profiles",i,"");
+        }
     profiles[CREATE_PROFILE] = "CREATE A NEW PROFILE";
     profiles[DELETE_PROFILE] = "DELETE CURRENT PROFILE";
     profiles[PROFILES_BACK] = "BACK";
@@ -151,7 +158,7 @@
             new_profile = string_copy(new_profile,1,string_length(new_profile)-1);
             keyboard_string = new_profile;
             }
-        else if keyboard_check_pressed(vk_anykey)
+        else if keyboard_check_pressed(vk_anykey) &amp;&amp; !keyboard_check_pressed(vk_enter) &amp;&amp; !keyboard_check_pressed(vk_escape)
             {
             new_profile = string_copy(string_upper(string_lettersdigits(keyboard_string)),1,16);
             keyboard_string = new_profile;
@@ -367,6 +374,17 @@
                         
                     }
                 ini_close();
+            
+            case "Profiles":
+                switch(button_current)
+                    {
+                    case CURRENT_PROFILE:
+                        if dirc = 1
+                            {
+                            
+                            }
+                        break;
+                    }
             }
             
         }
@@ -404,6 +422,7 @@
                     scr_profile_new();
                     description = "";
                     menu_current = "Main Menu";
+                    scr_change_menu(main_menu,0);
                     }
                 break;
                 
