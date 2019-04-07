@@ -114,9 +114,34 @@
     button_current = 0;
     
     scr_profile_names();
-    
-    delete_profile[0] = "YES, DELETE THIS PROFILE: ";
-    delete_profile[1] = "NO, CANCEL IT";
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Description
+
+{
+    if total = 0 then description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+    else description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
 }
 </string>
           </argument>
@@ -409,7 +434,6 @@
                 if new_profile != ""
                     {
                     scr_profile_new();
-                    description = "";
                     }
                 break;
                 
@@ -609,6 +633,7 @@
                 if total = 0 then game_end(); //Esc'ye basılırsa oyunu kapat
                 else 
                     {
+                    description = "";
                     menu_current = "Profiles";
                     scr_change_menu(profiles,1);
                     }
