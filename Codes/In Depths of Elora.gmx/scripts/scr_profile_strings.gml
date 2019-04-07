@@ -58,4 +58,6 @@
     audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "<" + string(global.sounds_volume) + "/10" + ">";;;
     audio[VOICES_VOLUME] = "VOICES VOLUME: " + "<" + string(global.voices_volume) + "/10" + ">";;;
     audio[AUDIO_BACK] = "BACK";
+    
+    scr_profile_names();
 }

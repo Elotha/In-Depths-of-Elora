@@ -9,20 +9,26 @@
         current_profile = ini_read_string("Profiles","Current","Current");
         file_copy(current_profile + "_config.ini",string_lower(new_profile) + "_config.ini");
         check = true;
-        menu_current = "Profiles";
-        scr_change_menu(profiles,0);
         }
     else //Bu ilk profilimiz ise
         {
         ini_open("profiles.ini");
         ini_write_real("Profiles","Total",1);
-        
+        }
+    if game_is_started
+        {
+        game_is_started = false;
         menu_current = "Main Menu";
         scr_change_menu(main_menu,0);
         }
-    var i = 0;
-    while ini_key_exists("Profiles",i) i++;
-    ini_write_string("Profiles",i,new_profile);
+    else
+        {
+        menu_current = "Profiles";
+        scr_change_menu(profiles,0);        
+        }
+    total = ini_read_real("Profiles","Total",0);
+    ini_write_string("Profiles",total-1,new_profile);
+    ini_write_string("Profiles","Current Number",total-1);
     ini_write_string("Profiles","Current",new_profile);
     ini_close();
     current_profile = new_profile;

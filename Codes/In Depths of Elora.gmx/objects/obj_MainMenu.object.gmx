@@ -96,6 +96,7 @@
     graphics_quality[QUALITY_LOW] = "LOW";
     
     global.v_sync = ON;
+    game_is_started = true;
     if !scr_profile_load() //Önceden oluşturulmuş bir profil yoksa
         {
         description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
@@ -112,20 +113,10 @@
     display_reset(0,v_sync_current);
     button_current = 0;
     
-    ini_open("profiles.ini");
-    total = ini_read_real("Profiles","Total",0);
-    if total &gt; 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "&lt;" + current_profile + "&gt;"; 
-    else if total = 1 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + current_profile;
-    else if total = 0 then profiles[CURRENT_PROFILE] = "CURRENT PROFILE: ";
-    for (var k = 0; k &lt; total; k++)
-        {
-        profile[k] = ini_read_string("Profiles",k,"");
-        }
-    if total = 0 then profile[0] = "";
-    profiles[CREATE_PROFILE] = "CREATE A NEW PROFILE";
-    profiles[DELETE_PROFILE] = "DELETE CURRENT PROFILE";
-    profiles[PROFILES_BACK] = "BACK";
-    ini_close();
+    scr_profile_names();
+    
+    delete_profile[0] = "YES, DELETE THIS PROFILE: ";
+    delete_profile[1] = "NO, CANCEL IT";
 }
 </string>
           </argument>
@@ -163,11 +154,6 @@
             {
             new_profile = string_copy(string_upper(string_lettersdigits(keyboard_string)),1,16);
             keyboard_string = new_profile;
-            }
-        if keyboard_check_pressed(vk_escape)
-            {
-            if total = 0 then game_end(); //Esc'ye basılırsa oyunu kapat
-            else scr_change_menu(profiles,1);
             }
         }
 }
@@ -384,6 +370,7 @@
                             {
                             profiles[CURRENT_PROFILE] = scr_change_button(dirc,profile,profiles[CURRENT_PROFILE],"CURRENT PROFILE: ","Profiles","Current Number");
                             scr_profile_load();
+                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + current_profile;
                             break;
                             }
                     }
@@ -537,6 +524,8 @@
                         break;
                         
                     case DELETE_PROFILE:
+                        menu_current = "Delete Profile";
+                        scr_change_menu(delete_profile,0);
                         break;
                         
                     case PROFILES_BACK:
@@ -544,6 +533,120 @@
                         scr_change_menu(main_menu,3);
                         break;
                     }
+                break;
+                
+            case "Delete Profile":
+                switch(button_current)
+                    {
+                    case DELETE_IT:
+                        ini_open("profiles.ini");
+                        current_profile_number = ini_read_real("Profiles","Current Number",0);
+                        file_delete(current_profile + "_config.ini");
+                        file_delete(current_profile + ".ini");
+                        for(var j = current_profile_number; j &lt; total-1; j++)
+                            {
+                            ini_write_string("Profiles",j,ini_read_string("Profiles",j+1,""));
+                            }
+                        ini_key_delete("Profiles",total-1);
+                        if current_profile_number = total-1 then current_profile_number--;
+                        ini_write_real("Profiles","Current Number",current_profile_number);
+                        ini_write_real("Profiles","Total",--total);
+                        ini_close();
+                        if total = 0
+                            {
+                            file_delete("profiles.ini");
+                            description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+                            new_profile = "";
+                            keyboard_string = new_profile;
+                            menu_current = "New Profile";
+                            }
+                        else
+                            {
+                            scr_profile_load();
+                            scr_profile_names();
+                            menu_current = "Profiles";
+                            scr_change_menu(profiles,2);
+                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + current_profile;
+                            }
+                        break;
+                        
+                    case CANCEL_IT:
+                        menu_current = "Profiles";
+                        scr_change_menu(profiles,2);
+                        break;
+                    }
+            }
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Escape
+
+{
+    if keyboard_check_pressed(vk_escape)
+        {
+        switch(menu_current)
+            {
+            case "New Profile":
+                if total = 0 then game_end(); //Esc'ye basılırsa oyunu kapat
+                else 
+                    {
+                    menu_current = "Profiles";
+                    scr_change_menu(profiles,1);
+                    }
+                break;
+                
+            case "Settings":
+                menu_current = "Main Menu";
+                scr_change_menu(main_menu,SETTINGS);
+                break;
+                
+            case "Controls":
+                menu_current = "Settings";
+                scr_change_menu(main_menu,CONTROLS);
+                break;
+                
+            case "Gameplay":
+                menu_current = "Settings";
+                scr_change_menu(main_menu,GAMEPLAY);
+                break;
+                
+            case "Graphics":
+                menu_current = "Settings";
+                scr_change_menu(main_menu,GRAPHICS);
+                break;
+                
+            case "Audio":
+                menu_current = "Settings";
+                scr_change_menu(main_menu,AUDIO);
+                break;
+                
+            case "Profiles":
+                menu_current = "Main Menu";
+                scr_change_menu(main_menu,PROFILES);
+                break;
+                
+            case "Delete Profile":
+                menu_current = "Profiles";
+                scr_change_menu(profiles,DELETE_PROFILE);
                 break;
             }
         }
@@ -610,6 +713,10 @@
             
         case "New Profile":
             draw_text(room_width/2,176,"CREATE A NEW PROFILE: " + new_profile);
+            break;
+            
+        case "Delete Profile":
+            scr_draw_menu(delete_profile);
             break;
         
         }

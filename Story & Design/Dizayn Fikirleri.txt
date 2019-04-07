@@ -13,3 +13,5 @@ Bloklarýn yanýnda yuva yapmýþ solucan tarzýnda bir yaratýk olabilir. Yanýndan ge
 Ana menüdeki "Journal" bölümü aracýlýðýyla oyuncu topladýðý hikaye parçalarýný okuyabilsin. Ayný zamanda bu alana, oyunu oynamadan daha fazla hikaye açmak isteyenler için bir mini-oyun eklenebilir. Mini-oyun oyundan sadece birkaç parça ileride olabilecek þekilde kýsýtlanabilir.
 
 Journalý her açtýðýmýzda arkaplanda büyücünün silüeti çýkýp journal hakkýnda bir yorum yapabilir. "It's magical!", "I created it, ha ha!","Isn't it a masterpiece?".
+
+Zodax'ý öldürünce büyü özü (mavi taþlar) düþsün.
