@@ -11,3 +11,5 @@ Geri dönmemizi saðlayan kapýlar da olabilir.
 Bloklarýn yanýnda yuva yapmýþ solucan tarzýnda bir yaratýk olabilir. Yanýndan geçtiðimiz zaman dýþarý çýkýp saldýrýr. Damastý çarptýrmak için kullanýlabilir.
 
 Ana menüdeki "Journal" bölümü aracýlýðýyla oyuncu topladýðý hikaye parçalarýný okuyabilsin. Ayný zamanda bu alana, oyunu oynamadan daha fazla hikaye açmak isteyenler için bir mini-oyun eklenebilir. Mini-oyun oyundan sadece birkaç parça ileride olabilecek þekilde kýsýtlanabilir.
+
+Journalý her açtýðýmýzda arkaplanda büyücünün silüeti çýkýp journal hakkýnda bir yorum yapabilir. "It's magical!", "I created it, ha ha!","Isn't it a masterpiece?".
