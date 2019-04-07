@@ -33,6 +33,12 @@
     
     control_hud_string = ini_read_string("Controls","Hud","CTRL");
     
+    control_music_string = ini_read_string("Controls","Music","M");
+    
+    control_sounds_string = ini_read_string("Controls","Sounds","N");
+    
+    control_voices_string = ini_read_string("Controls","Voices","B");
+    
     //Gameplay
     
     hud_current = ini_read_real("Gameplay","Hud",ALWAYS_SHOW);

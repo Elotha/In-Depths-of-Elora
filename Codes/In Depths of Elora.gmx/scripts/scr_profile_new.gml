@@ -5,6 +5,25 @@
     if file_exists("profiles.ini") //Başka profil varsa
         {
         ini_open("profiles.ini");
+        total = ini_read_real("Profiles","Total",0);
+        var name_check = false;
+        for(var g = 0; g < total; g++)
+            {
+            if new_profile = ini_read_string("Profiles",g,"")
+                {
+                name_check = true;
+                break;
+                }
+            }
+        if name_check
+            {
+            ini_close();
+            description = "Profile name must be unique.";
+            alarm[0] = 120;
+            exit;
+            }
+        description = "";
+        if alarm[0] != -1 then alarm[0] = -1;
         ini_write_real("Profiles","Total",ini_read_real("Profiles","Total",0)+1);
         current_profile = ini_read_string("Profiles","Current","Current");
         file_copy(current_profile + "_config.ini",string_lower(new_profile) + "_config.ini");

@@ -20,7 +20,9 @@
     controls[CONT_JOURNAL] = "JOURNAL: " + control_journal_string;;
     controls[MENU_INTERACT] = "INTERACT: " + control_interact_string;
     controls[PAUSEMENU] = "PAUSE MENU: " + control_pause_string;;
-    controls[HUDKEY] = "HUD KEY: " + control_pause_string;;
+    controls[HUDKEY] = "HUD KEY: " + control_hud_string;;
+    controls[MUSICKEY] = "MUSIC ON/OFF: " + control_music_string;;
+    controls[SOUNDSKEY] = "SOUND EFFECTS ON/OFF: " + control_sounds_string;;
     controls[CONT_DEFAULT] = "RETURN TO DEFAULT";
     controls[CONT_BACK] = "BACK";
     
