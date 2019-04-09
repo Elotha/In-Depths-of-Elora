@@ -221,6 +221,7 @@
       <script>scripts\scr_profile_load.gml</script>
       <script>scripts\scr_profile_strings.gml</script>
       <script>scripts\scr_profile_names.gml</script>
+      <script>scripts\scr_controls_load.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

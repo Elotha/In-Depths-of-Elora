@@ -15,3 +15,7 @@ Ana menüdeki "Journal" bölümü aracýlýðýyla oyuncu topladýðý hikaye parçalarýný o
 Journalý her açtýðýmýzda arkaplanda büyücünün silüeti çýkýp journal hakkýnda bir yorum yapabilir. "It's magical!", "I created it, ha ha!","Isn't it a masterpiece?".
 
 Zodax'ý öldürünce büyü özü (mavi taþlar) düþsün.
+
+Uzun süre anahtar bulamama durumunda oyuncuya ipucu verilebilir.
+
+Journaldaki büyücü biraz esprili olabilir. Bir easter egg yerleþtirilebilir. Mesela bir buton olur, bu butona basýnca bütün journal silinir. Oyuncu bir anlýðýna kalp krizi geçirir. Ama aslýnda büyücü þaka yapmýþtýr.
