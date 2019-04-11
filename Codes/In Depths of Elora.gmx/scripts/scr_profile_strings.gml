@@ -2,31 +2,9 @@
 
 {
     //Controls
+    scr_control_strings();
     
-    if control_left_string[0] = control_left_string[1] then controls[MENU_LEFT] = "LEFT: " + control_left_string[0];
-    else controls[MENU_LEFT] = "LEFT: " + control_left_string[0] + " OR " + control_left_string[1];
-    
-    if control_right_string[0] = control_right_string[1] then controls[MENU_RIGHT] = "RIGHT: " + control_right_string[0];
-    else controls[MENU_RIGHT] = "RIGHT: " + control_right_string[0] + " OR " + control_right_string[1];
-    
-    controls[JUMP] = "JUMP: " + control_jump_string;
-    
-    if control_cameraup_string[0] = control_cameraup_string[1] then controls[CAMERAUP] = "CAMERA UP: " + control_cameraup_string[0];
-    controls[CAMERAUP] = "CAMERA UP: " + control_cameraup_string[0] + " OR " + control_cameraup_string[1];
-    
-    if control_cameradown_string[0] = control_cameradown_string[1] then controls[CAMERADOWN] = "CAMERA DOWN: " + control_cameradown_string[0];
-    controls[CAMERADOWN] = "CAMERA DOWN: " + control_cameradown_string[0] + " OR " + control_cameradown_string[1];;
-    
-    controls[CONT_JOURNAL] = "JOURNAL: " + control_journal_string;;
-    controls[MENU_INTERACT] = "INTERACT: " + control_interact_string;
-    controls[PAUSEMENU] = "PAUSE MENU: " + control_pause_string;;
-    controls[HUDKEY] = "HUD KEY: " + control_hud_string;;
-    controls[MUSICKEY] = "MUSIC ON/OFF: " + control_music_string;;
-    controls[SOUNDSKEY] = "SOUND EFFECTS ON/OFF: " + control_sounds_string;;
-    controls[CONT_DEFAULT] = "RETURN TO DEFAULT";
-    controls[CONT_BACK] = "BACK";
-    
-    //Gameplay
+   //Gameplay
     
     global.hud = hud_current;
     global.on_startup = on_startup_current;

@@ -15,7 +15,7 @@
                 break;
                 }
             }
-        if name_check
+        if name_check //Başka bir profil ismi ile çakışıyor mu?
             {
             ini_close();
             description = "Profile name must be unique.";
@@ -54,47 +54,12 @@
     
     if !check
         {
-    
         //Controls
-            
-        ini_open(string_lower(new_profile) + "_config.ini");
-        
-        control_left_string[0] = "LEFT ARROW";
-        control_left_string[1] = "A";
-        ini_write_string("Controls","Left1",control_left_string[0]);
-        ini_write_string("Controls","Left2",control_left_string[1]);
-        
-        control_right_string[0] = "RIGHT ARROW";
-        control_right_string[1] = "D";
-        ini_write_string("Controls","Right1",control_right_string[0]);
-        ini_write_string("Controls","Right2",control_right_string[1]);
-        
-        control_jump_string = "SPACE";
-        ini_write_string("Controls","Jump",control_jump_string);
-        
-        control_cameraup_string[0] = "UP ARROW";
-        control_cameraup_string[1] = "W";
-        ini_write_string("Controls","Camera Up1",control_cameraup_string[0]);
-        ini_write_string("Controls","Camera Up2",control_cameraup_string[1]);
-        
-        control_cameradown_string[0] = "DOWN ARROW";
-        control_cameradown_string[1] = "S";
-        ini_write_string("Controls","Camera Down1",control_cameradown_string[0]);
-        ini_write_string("Controls","Camera Down2",control_cameradown_string[1]);
-        
-        control_interact_string = "E";
-        ini_write_string("Controls","Interact",control_interact_string);
-        
-        control_journal_string = "TAB";
-        ini_write_string("Controls","Journal",control_journal_string);
-        
-        control_pause_string = "ESCAPE";
-        ini_write_string("Controls","Pause Menu",control_pause_string);
-        
-        control_hud_string = "CTRL";
-        ini_write_string("Controls","Hud",control_hud_string);
+       
+        scr_control_defaults();
         
         //Gameplay
+        ini_open(string_lower(current_profile) + "_config.ini");
         
         hud_current = ALWAYS_SHOW;
         ini_write_real("Gameplay","Hud",hud_current);

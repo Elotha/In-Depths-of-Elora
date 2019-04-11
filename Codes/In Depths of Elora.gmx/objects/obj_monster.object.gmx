@@ -37,7 +37,6 @@
     falling_speed = global.falling_speed;
     falling_limit = global.falling_limit;
     draw = global.draw;
-    creation_code = false;
     initial_xscale = image_xscale;
     v_speed = 0;
     h_speed = 0;
@@ -97,7 +96,7 @@
             
         }
         
-    var item = -4;
+    var item = false;
     switch(drop)
         {
         case "1":
@@ -142,7 +141,7 @@
                 }
             break;
         }
-    with(item) scr_checkpoint(false);
+    if item != 0 then with(item) scr_checkpoint(false);
 }
 </string>
           </argument>
