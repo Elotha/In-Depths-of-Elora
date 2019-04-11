@@ -15,5 +15,5 @@
     selected[argument1] = 0.5;
     button_current = selected_number;
     offset = 0;
-    if selected_total > 5 then show_last = "=";
+    if selected_total > 5 then show_last = "$";
 }

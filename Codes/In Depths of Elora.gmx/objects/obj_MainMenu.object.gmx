@@ -30,7 +30,7 @@
 {
     scr_back_to_menu(); //Gereksiz objeleri sil
     globalvar fnt_menu;
-    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,'/&lt;&gt;=+",true,2);
+    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
     font = fnt_menu;
     
     image_speed = 1/5;
@@ -314,7 +314,7 @@
                 if selected_total &gt; 5
                     {
                     offset = selected_total-5;
-                    show_first = "+";
+                    show_first = "!";
                     show_last = "";
                     }
                 }
@@ -325,7 +325,7 @@
                 button_current = selected_number;
                 if selected_total &gt; 5
                     {
-                    if selected_number &lt; selected_total-5 then show_last = "=";
+                    if selected_number &lt; selected_total-5 then show_last = "$";
                     if offset &gt; 0 &amp;&amp; selected_number &lt; offset then offset--;
                     if offset = 0 then show_first = "";
                     }
@@ -342,7 +342,7 @@
                 if selected_total &gt; 5
                     {
                     show_first = "";
-                    show_last = "=";
+                    show_last = "$";
                     offset = 0;
                     }
                 }
@@ -353,7 +353,7 @@
                 button_current = selected_number;
                 if selected_total &gt; 5
                     {
-                    if selected_number &gt;= 5 then show_first = "+";
+                    if selected_number &gt;= 5 then show_first = "!";
                     if selected_number-offset &gt; 4 &amp;&amp; offset &lt; selected_total-4 then offset++;
                     if offset = selected_total-5 then show_last = "";
                     }
