@@ -10,7 +10,6 @@
     ini_write_string(t,"type",object_get_name(object_index));
     ini_write_real(t,"xstart",xstart);
     ini_write_real(t,"ystart",ystart);
-    ini_write_real(t,"creation_code",creation_code);
     if object_index = obj_Beulian || object_index = obj_Damast || object_index = obj_Minyoo || object_index = obj_Palpus || object_index = obj_Zodax
         {
         ini_write_string(t,"drop",drop);

@@ -29,7 +29,7 @@
 
 {
     global.music = false;
-    global.sounds = true;
+    global.sounds = false;
     global.current_music = snd_Music;
 }
 </string>

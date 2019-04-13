@@ -28,9 +28,9 @@
             <string>///Create
 
 {
-    scr_back_to_menu();
+    scr_back_to_menu(); //Gereksiz objeleri sil
     globalvar fnt_menu;
-    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,'/&lt;&gt;=+",true,2);
+    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
     font = fnt_menu;
     
     image_speed = 1/5;
@@ -63,6 +63,24 @@
     settings[GRAPHICS] = "GRAPHICS";
     settings[AUDIO] = "AUDIO";
     settings[SET_BACK] = "BACK";
+    
+    enum controlkeys
+        {
+        left,
+        right,
+        jump,
+        cameraup,
+        cameradown,
+        interact,
+        journal,
+        hud,
+        music,
+        sounds,
+        cont_default,
+        back
+        }
+        
+    control_change = false; //Herhangi bir kontrol değiştiriliyor mu?
     
     hud[ALWAYS_SHOW] = "ALWAYS SHOW";
     hud[ONLY_INTERACT] = "ONLY WHEN INTERACT";
@@ -97,7 +115,7 @@
     
     global.v_sync = ON;
     game_is_started = true;
-    if !scr_profile_load() //Önceden oluşturulmuş bir profil yoksa
+    if !scr_profile_load() //Önceden oluşturulmuş bir profil varsa yükle, yoksa parantez içini çalıştır
         {
         description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
         new_profile = "";
@@ -105,12 +123,8 @@
         menu_current = "New Profile";
         v_sync_current = ON;
         }
-    else //Varsa
-        {
-        description = "";
-        menu_current = "Main Menu";        
-        }
-    display_reset(0,v_sync_current);
+    else menu_current = "Main Menu";
+    //display_reset(0,v_sync_current);
     button_current = 0;
     
     scr_profile_names();
@@ -140,8 +154,18 @@
             <string>///Description
 
 {
-    if total = 0 then description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
-    else description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
+    switch(menu_current)
+        {
+        case "New Profile":
+            if total = 0 then description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+            else description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
+            break;
+        
+        case "Controls":
+            if description = "Default control settings applied." then description = "Press &lt;Enter&gt; to change key.";
+            else description = "Press any key to assign, press &lt;ESC&gt; to cancel. Some keys are not allowed.";
+            break;   
+        }
 }
 </string>
           </argument>
@@ -149,6 +173,77 @@
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Start
+
+{
+    if start_game
+        {
+        if alpha &gt; 0 then alpha -= 0.05;
+        else room_goto_next();
+        exit;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Control Change
+
+{
+    if control_change
+        {
+        if keyboard_check_pressed(vk_escape)
+            {
+            control_change = false;
+            description = "Press &lt;Enter&gt; to change key.";
+            }
+        else if keyboard_check_pressed(vk_anykey)
+            {
+            if scr_control_load(button_current,false)
+                {
+                control_change = false;
+                description = "Press &lt;Enter&gt; to change key.";
+                }
+            }
+        exit;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -204,14 +299,7 @@
             <kind>1</kind>
             <string>///Down and Up
 
-{
-    if start_game
-        {
-        if alpha &gt; 0 then alpha -= 0.05;
-        else room_goto_next();
-        exit;
-        }
-        
+{        
     if menu_current != "New Profile"
         {
         var dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
@@ -226,7 +314,7 @@
                 if selected_total &gt; 5
                     {
                     offset = selected_total-5;
-                    show_first = "+";
+                    show_first = "!";
                     show_last = "";
                     }
                 }
@@ -237,7 +325,7 @@
                 button_current = selected_number;
                 if selected_total &gt; 5
                     {
-                    if selected_number &lt; selected_total-5 then show_last = "=";
+                    if selected_number &lt; selected_total-5 then show_last = "$";
                     if offset &gt; 0 &amp;&amp; selected_number &lt; offset then offset--;
                     if offset = 0 then show_first = "";
                     }
@@ -254,7 +342,7 @@
                 if selected_total &gt; 5
                     {
                     show_first = "";
-                    show_last = "=";
+                    show_last = "$";
                     offset = 0;
                     }
                 }
@@ -265,12 +353,13 @@
                 button_current = selected_number;
                 if selected_total &gt; 5
                     {
-                    if selected_number &gt;= 5 then show_first = "+";
+                    if selected_number &gt;= 5 then show_first = "!";
                     if selected_number-offset &gt; 4 &amp;&amp; offset &lt; selected_total-4 then offset++;
                     if offset = selected_total-5 then show_last = "";
                     }
                 }
             }
+        if dir != 0 then exit;
         }
 }
 </string>
@@ -400,7 +489,7 @@
                             }
                     }
             }
-            
+        if !keyboard_check_pressed(vk_enter) then exit;
         }
 }
 </string>
@@ -470,7 +559,7 @@
                     case CONTROLS:
                         menu_current = "Controls";
                         scr_change_menu(controls,0);
-                        description = "Press &lt;Enter&gt; to change the key.";
+                        description = "Press &lt;Enter&gt; to change key.";
                         break;
                         
                     case GAMEPLAY:
@@ -499,11 +588,21 @@
             case "Controls":
                 switch(button_current)
                     {
-                    case CONT_BACK:
+                    case controlkeys.cont_default:
+                        scr_control_defaults();
+                        description = "Default control settings applied.";
+                        alarm[0] = 120;
+                        break;
+                        
+                    case controlkeys.back:
                         menu_current = "Settings";
                         scr_change_menu(settings,0);
                         description = "";
                         break;
+                        
+                    default:
+                        control_change = true;
+                        description = "Press any key to assign, press &lt;ESC&gt; to cancel. Some keys are not allowed.";
                     }
                 break;
                 
@@ -600,6 +699,7 @@
                         break;
                     }
             }
+        exit;
         }
 }
 </string>
@@ -674,6 +774,7 @@
                 scr_change_menu(profiles,DELETE_PROFILE);
                 break;
             }
+        exit;
         }
 }
 </string>
