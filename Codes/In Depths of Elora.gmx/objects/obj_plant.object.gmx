@@ -30,6 +30,7 @@
 {
     image_speed = 1/6;
     times = 0;
+    mask_index = -1;
 }
 </string>
           </argument>
@@ -76,9 +77,14 @@
             {
             times = 0;
             sprite_index = spr_PlantSquirt;
+            mask_index = spr_PlantSquirt;
             }
         }
-    else if sprite_index = spr_PlantSquirt then sprite_index = spr_PlantDance;
+    else if sprite_index = spr_PlantSquirt
+        {
+        sprite_index = spr_PlantDance;
+        mask_index = -1;
+        }
 }
 </string>
           </argument>
