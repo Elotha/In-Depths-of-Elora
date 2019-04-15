@@ -29,14 +29,17 @@
 
 {
     scr_back_to_menu(); //Gereksiz objeleri sil
-    globalvar fnt_menu;
+    globalvar fnt_menu, font_string, current_profile;
     fnt_menu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
     font = fnt_menu;
+    font_string[0] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;+*"';
+    font_string[1] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     
     image_speed = 1/5;
     display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
     start_game = false;
-    alpha = 1;
+    alpha = 0;
+    start_alpha = true;
     draw_set_alpha(1);
     
     selected[0] = 0.5;
@@ -81,10 +84,11 @@
         }
         
     control_change = false; //Herhangi bir kontrol değiştiriliyor mu?
+    control_check = false; //Atanmamış tuş var mı?
     
     hud[ALWAYS_SHOW] = "ALWAYS SHOW";
     hud[ONLY_INTERACT] = "ONLY WHEN INTERACT";
-    hud[ONLY_HUDKEY] = "ONLY WHEN PRESS THE HUD KEY";
+    hud[ONLY_HUDKEY] = "ONLY WHEN HOLD THE HUD KEY";
     hud[HUD_NEVER] = "NEVER";
     
     on_startup[STARTUP_MENU] = "MENU";
@@ -115,8 +119,10 @@
     
     global.v_sync = ON;
     game_is_started = true;
-    if !scr_profile_load() //Önceden oluşturulmuş bir profil varsa yükle, yoksa parantez içini çalıştır
+    if !scr_profile_load() //Önceden oluşturulmuş bir profil varsa yükle, yoksa aşağıdaki kodları çalıştır
         {
+        global.music = true;
+        global.sounds = true;
         description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
         new_profile = "";
         keyboard_string = new_profile;
@@ -192,11 +198,16 @@
             <string>///Start
 
 {
-    if start_game
+    if start_game //Oyuna başlama tuşuna bastık
         {
         if alpha &gt; 0 then alpha -= 0.05;
         else room_goto_next();
         exit;
+        }
+        
+    if start_alpha
+        {
+        if alpha &lt; 1 then alpha += 0.025; else start_alpha = false;
         }
 }
 </string>
@@ -272,8 +283,12 @@
             }
         else if keyboard_check_pressed(vk_anykey) &amp;&amp; !keyboard_check_pressed(vk_enter) &amp;&amp; !keyboard_check_pressed(vk_escape)
             {
-            new_profile = string_copy(string_upper(string_lettersdigits(keyboard_string)),1,16);
-            keyboard_string = new_profile;
+            if string_count(string_upper(keyboard_lastchar),font_string[1]) != 0
+                {
+                new_profile = string_copy(string_upper(keyboard_string),1,16);
+                keyboard_string = new_profile;
+                }
+            else keyboard_string = new_profile;
             }
         }
 }
@@ -450,21 +465,44 @@
                 if !keyboard_check_pressed(vk_enter) then switch(button_current)
                     {
                     case MASTER_VOLUME:
-                        global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
+                        if global.master_volume = 0 &amp;&amp; dirc = 1
+                            {
+                            global.master_volume = 1;
+                            scr_music();
+                            }
+                        else if global.master_volume = 1 &amp;&amp; dirc = -1
+                            {
+                            global.master_volume = 0;
+                            scr_music();
+                            }
+                        else global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
                         audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
                         ini_write_real("Audio","Master",global.master_volume);
+                        scr_volumes("Master");
                         break;
                         
                     case MUSIC_VOLUME:
-                        global.music_volume = clamp(global.music_volume+(1*dirc),0,10);    
+                        if global.music_volume = 0 &amp;&amp; dirc = 1
+                            {
+                            global.music_volume = 1;
+                            scr_music();
+                            }
+                        else if global.music_volume = 1 &amp;&amp; dirc = -1
+                            {
+                            global.music_volume = 0;
+                            scr_music();
+                            }
+                        else global.music_volume = clamp(global.music_volume+(1*dirc),0,10);
                         audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;
                         ini_write_real("Audio","Music",global.music_volume);
+                        scr_volumes("Music");
                         break;
                         
                     case SOUNDS_VOLUME:
-                        global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);    
+                        global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);
                         audio[SOUNDS_VOLUME] = "SOUNDS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";;
                         ini_write_real("Audio","Sounds",global.sounds_volume);
+                        scr_volumes("Sounds");
                         break;
                         
                     case VOICES_VOLUME:
@@ -595,6 +633,12 @@
                         break;
                         
                     case controlkeys.back:
+                        if control_check
+                            {
+                            description = "Cannot be empty keys!";
+                            alarm[0] = 120;
+                            break;
+                            }
                         menu_current = "Settings";
                         scr_change_menu(settings,0);
                         description = "";
@@ -629,6 +673,55 @@
             case "Audio":
                 switch(button_current)
                     {
+                    case MASTER_VOLUME:
+                        if global.master_volume &gt; 0
+                            {
+                            global.master_volume_last = global.master_volume;
+                            global.master_volume = 0;
+                            scr_music();
+                            }
+                        else 
+                            {
+                            global.master_volume = global.master_volume_last;
+                            scr_music();
+                            }
+                        audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";
+                        break;
+                        
+                    case MUSIC_VOLUME:
+                        if global.music_volume &gt; 0
+                            {
+                            global.music_volume_last = global.music_volume;
+                            global.music_volume = 0;
+                            scr_music();
+                            }
+                        else
+                            {
+                            global.music_volume = global.music_volume_last;
+                            scr_music();
+                            }
+                        break;
+                        
+                    case SOUNDS_VOLUME:
+                        if global.sounds_volume &gt; 0
+                            {
+                            global.sounds_volume_last = global.sounds_volume;
+                            global.sounds_volume = 0;
+                            }
+                        else global.sounds_volume = global.sounds_volume_last;
+                        audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";
+                        break;
+                        
+                    case VOICES_VOLUME:
+                        if global.voices_volume &gt; 0
+                            {
+                            global.voices_volume_last = global.voices_volume;
+                            global.voices_volume = 0;
+                            }
+                        else global.voices_volume = global.voices_volume_last;
+                        audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";
+                        break;
+                        
                     case AUDIO_BACK:
                         menu_current = "Settings";
                         scr_change_menu(settings,3);
@@ -745,6 +838,12 @@
                 break;
                 
             case "Controls":
+                if control_check
+                    {
+                    description = "Cannot be empty keys!";
+                    alarm[0] = 120;
+                    break;
+                    }
                 menu_current = "Settings";
                 scr_change_menu(main_menu,CONTROLS);
                 break;
@@ -775,6 +874,36 @@
                 break;
             }
         exit;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Global Controls
+
+{
+    for(var i = 0; i &lt; array_length_1d(control); i++)
+        {
+        global.controls[i] = control[i];
         }
 }
 </string>

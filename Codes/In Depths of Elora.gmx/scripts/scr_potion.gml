@@ -6,7 +6,7 @@
 
 {
     var effect = instance_create(other.x+16,other.y+16,obj_ItemEffect);
-    if global.sounds then audio_play_sound(argument0,1,false);
+    scr_play_sound(argument0);
     with(effect) image_blend = argument1;
     with(obj_HUD) 
         {

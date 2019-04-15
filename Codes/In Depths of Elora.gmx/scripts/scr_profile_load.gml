@@ -45,6 +45,8 @@
     control_string[controlkeys.sounds] = ini_read_string("Controls",controlkeys.sounds,"N");
     scr_control_load(controlkeys.sounds,true);
     
+    scr_wasd_check();
+    
     //Gameplay
     
     hud_current = ini_read_real("Gameplay","Hud",ALWAYS_SHOW);    
@@ -73,10 +75,12 @@
     
     //Audio
     
-    global.master_volume = ini_read_real("Audio","Master",10);    
-    global.music_volume = ini_read_real("Audio","Music",10);    
-    global.sounds_volume = ini_read_real("Audio","Sounds",10);    
-    global.voices_volume = ini_read_real("Audio","Voices",10);        
+    global.master_volume = ini_read_real("Audio","Master",10);
+    global.music_volume = ini_read_real("Audio","Music",10);
+    global.sounds_volume = ini_read_real("Audio","Sounds",10);
+    global.voices_volume = ini_read_real("Audio","Voices",10);
+    global.current_music = snd_MainMenu;
+    scr_music();
     
     //Variables
     

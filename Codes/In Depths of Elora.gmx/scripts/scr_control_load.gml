@@ -97,13 +97,11 @@
                 break;
                 
             default:
-                control[argument0] = argument1;
-                
+                control[argument0] = ord(control_string[argument0]);
             }
         }
     else //Yeni karakter giriliyor
         {
-        ini_open(current_profile + "_config.ini");
         switch(keyboard_key) //Değiştirilen karakter
             {
             case vk_left:
@@ -217,21 +215,42 @@
             case vk_f12:
                 description = "Invalid character!";
                 alarm[0] = 120;
-                ini_close();
                 return false;
                 exit;
                 
             default:
+                if string_count(string_upper(keyboard_lastchar),font_string[0]) != 0 then
                 control_string[argument0] = string_upper(keyboard_lastchar);
+                else 
+                    {
+                    description = "Invalid character!";
+                    alarm[0] = 120;
+                    return false;
+                    exit;
+                    }
                 
-            } 
-        
-        ini_write_string("Controls",argument0,control_string[argument0]);       
+            }
+        control_check = false;
+        ini_open(current_profile + "_config.ini");
+        for(var i = 0; i < controlkeys.cont_default; i++) //Aynı olan tuş var mı, kontrol et
+            {
+            if ini_read_string("Controls",i,"") = control_string[argument0]
+                {
+                if i = argument0 then continue;
+                ini_write_string("Controls",i,"");
+                control_string[i] = "";
+                control[i] = -1;
+                control_check = true;
+                break;
+                }
+            }
+        ini_write_string("Controls",argument0,control_string[argument0]); 
+        ini_close();
         //Strings
         scr_control_strings();
         
         control[argument0] = keyboard_key;
-        ini_close();
+        scr_wasd_check();
         return true;
     }
 }

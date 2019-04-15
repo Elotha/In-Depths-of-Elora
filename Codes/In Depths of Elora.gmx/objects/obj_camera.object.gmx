@@ -61,12 +61,9 @@
 
 {
     //Burada aşağı ya da yukarı tuşlarına bastığımız zaman kamerada oluşan değişim uygulanıyor.
-    if !old_mode 
-        {
-        if keyboard_check(vk_up) or keyboard_check(ord('W')) then camera = "Up";
-        else if keyboard_check(vk_down) or keyboard_check(ord('S')) then camera = "Down";
-        else camera = "Stable";
-        }
+    if instance_number(obj_Character) = 0 then exit;
+    if keyboard_check(obj_Character.control[controlkeys.cameraup]) or (wasd_check &amp;&amp; keyboard_check(ord('W'))) then camera = "Up";
+    else if keyboard_check(obj_Character.control[controlkeys.cameradown]) or (wasd_check &amp;&amp; keyboard_check(ord('S'))) then camera = "Down";
     else camera = "Stable";
     
     if camera = "Up" 
@@ -88,12 +85,12 @@
         
     if instance_number(obj_Character) != 0 //Odada bir karakter var mı? Karakter yoksa hata verir çünkü.
         {
-        x += (obj_Character.x - x) * .1; //.1 ile 0.1 aynı şeydir. Burada kameranın gecikmeli gelmesi sağlanıyor.
+        x += (obj_Character.x - x) * .1; 
         y += (clamp(obj_Character.y,0+view_hview[0]/2,room_height-view_hview[0]/2)+camera_y - y) * .1;
         }
-        
+     /*   
     x = clamp(x,0+view_wview[0]/2,room_width-view_wview[0]/2);
-    y = clamp(y,0+view_hview[0]/2,room_height-view_hview[0]/2);
+    y = clamp(y,0+view_hview[0]/2,room_height-view_hview[0]/2);*/
 }
 </string>
           </argument>
@@ -132,8 +129,8 @@
         }
     camera = "Stable"; //"Stable" durumu, kamerayı hareket ettirmek için aşağı-yukarı tuşlarını kullanmadığımız anlamına geliyor.
     camera_y = 0; //"Stable" durumundan çıkarsak camera_y, değişim değerini tutacak. Şimdilik 0.
-    old_mode = global.old_mode;
     alarm[0] = 30;
+    wasd_check = global.wasd_check;
 }
 </string>
           </argument>
