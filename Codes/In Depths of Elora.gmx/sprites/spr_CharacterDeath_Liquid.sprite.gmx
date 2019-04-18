@@ -59,5 +59,6 @@
     <frame index="36">images\spr_CharacterDeath_Liquid_36.png</frame>
     <frame index="37">images\spr_CharacterDeath_Liquid_37.png</frame>
     <frame index="38">images\spr_CharacterDeath_Liquid_38.png</frame>
+    <frame index="39">images\spr_CharacterDeath_Liquid_39.png</frame>
   </frames>
 </sprite>
