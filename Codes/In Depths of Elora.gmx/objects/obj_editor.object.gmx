@@ -31,7 +31,6 @@
     editor_mode = true;
     global.immortality = false;
     global.draw = false; //Debug Draw modu
-    global.old_mode = true;
 }
 </string>
           </argument>
@@ -58,7 +57,7 @@
             <string>///Everything
 
 {
-    if room = rm_Menu then if obj_MainMenu.menu_current = "Controls" then exit;
+    if room = rm_Menu then if obj_MainMenu.menu_current = "Controls" || obj_MainMenu.menu_current = "New Profile" then exit;
     if keyboard_check_pressed(vk_f12) then game_end(); //Oyunu kapat
     if keyboard_check_pressed(vk_f5) //Oyunu yeniden başlat
         {
@@ -107,13 +106,6 @@
             }
         }
     if menu then exit;
-    
-    if keyboard_check_pressed(vk_f2) //Yaşlı modunu aç-kapa
-        {
-        global.old_mode = reverse(global.old_mode);
-        with(obj_CharacterParent) old_mode = global.old_mode;
-        with(obj_Camera) old_mode = global.old_mode;
-        }
     
     if keyboard_check_pressed(vk_alt) //Oyunu yavaşlat ya da normal hızına getir
         {

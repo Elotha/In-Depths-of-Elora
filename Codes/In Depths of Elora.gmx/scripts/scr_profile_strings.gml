@@ -26,17 +26,17 @@
     global.graphics_quality = graphics_quality_current;
     
     graphics[V_SYNC] = "V-SYNC: " + "<" + v_sync[v_sync_current] + ">";
-    graphics[FULLSCREEN] = "FULLSCREEN: " + "<"  + fullscreen[fullscreen_current] + ">";;
-    graphics[RESOLUTION] = "RESOLUTION: " + "<"  + resolution[resolution_current] + ">";;
-    graphics[GRAP_QUALITY] = "GRAPHICS QUALITY: " + "<"  + graphics_quality[graphics_quality_current] + ">";;
+    graphics[FULLSCREEN] = "FULLSCREEN: " + "<"  + fullscreen[fullscreen_current] + ">";
+    graphics[RESOLUTION] = "RESOLUTION: " + "<"  + resolution[resolution_current] + ">";
+    graphics[GRAP_QUALITY] = "GRAPHICS QUALITY: " + "<"  + graphics_quality[graphics_quality_current] + ">";
     graphics[GRAP_BACK] = "BACK";
     
     //Audio
     
-    audio[MASTER_VOLUME] = "MASTER VOLUME: " + "<" + string(global.master_volume) + "/10" + ">";;
-    audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "<" + string(global.music_volume) + "/10" + ">";;;
-    audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "<" + string(global.sounds_volume) + "/10" + ">";;;
-    audio[VOICES_VOLUME] = "VOICES VOLUME: " + "<" + string(global.voices_volume) + "/10" + ">";;;
+    audio[MASTER_VOLUME] = "MASTER VOLUME: " + "<" + string(global.master_volume) + "/10" + ">";
+    audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "<" + string(global.music_volume) + "/10" + ">";
+    audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "<" + string(global.sounds_volume) + "/10" + ">";
+    audio[VOICES_VOLUME] = "VOICES VOLUME: " + "<" + string(global.voices_volume) + "/10" + ">";
     audio[AUDIO_BACK] = "BACK";
     
     scr_profile_names();

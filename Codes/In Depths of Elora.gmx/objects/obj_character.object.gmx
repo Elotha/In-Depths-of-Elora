@@ -48,8 +48,14 @@
     sprite_change = false; //Sprite'ın değişip değişmediğini kontrol eden değer
     last_sprite = spr_CharacterIdle; //Step başında hangi sprite'a sahip olduğunu kaydeden değer
     health = global.health_max;
-    old_mode = global.old_mode;
     draw = global.draw;
+    wasd_check = global.wasd_check;
+    
+    for(var i = 0; i &lt; array_length_1d(global.controls); i++)
+        {
+        control[i] = global.controls[i];
+        }
+    //obj_HUD.control_hud = control[controlkeys.hud];
     
     with(obj_Camera)
         {
@@ -400,7 +406,7 @@
         instance_destroy();
         instance_create(x+16,y+16,obj_KeyEffect2);
         if global.key_sound != 4 then global.key_sound++; else global.key_sound = 1;
-        if global.sounds then audio_play_sound(asset_get_index("snd_Key" + string(global.key_sound)),1,false);
+        scr_play_sound(asset_get_index("snd_Key" + string(global.key_sound)));
         
         obj_Keys.key_number++;
         if !key_monster then scr_checkpoint(true);
@@ -432,7 +438,7 @@
             <string>///Life
 
 {
-    if global.sounds then audio_play_sound(snd_LifeStone,1,false);
+    scr_play_sound(snd_LifeStone);
     var effect = instance_create(other.x+16,other.y+16,obj_ItemEffect);
     with(effect) image_blend = c_red;
     lives++;

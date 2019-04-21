@@ -198,9 +198,12 @@
       <script>scripts\scr_monster_corpse.gml</script>
       <script>scripts\scr_monster_death_alpha.gml</script>
     </scripts>
-    <scripts name="Sounds">
+    <scripts name="Music and Sounds">
       <script>scripts\scr_sound_control.gml</script>
       <script>scripts\scr_sound_effect.gml</script>
+      <script>scripts\scr_music.gml</script>
+      <script>scripts\scr_play_sound.gml</script>
+      <script>scripts\scr_volumes.gml</script>
     </scripts>
     <scripts name="General">
       <script>scripts\scr_clear.gml</script>
@@ -209,7 +212,6 @@
       <script>scripts\scr_potion_text_length.gml</script>
       <script>scripts\scr_checkpoint.gml</script>
       <script>scripts\scr_existence_check.gml</script>
-      <script>scripts\scr_music.gml</script>
     </scripts>
     <scripts name="Menu">
       <script>scripts\scr_draw_menu.gml</script>
@@ -224,6 +226,7 @@
       <script>scripts\scr_control_load.gml</script>
       <script>scripts\scr_control_defaults.gml</script>
       <script>scripts\scr_control_strings.gml</script>
+      <script>scripts\scr_wasd_check.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

@@ -59,7 +59,7 @@
             <string>///Alarm 0
 
 {
-    if room = rm_TestChamber then if global.sounds &amp;&amp; !audio_is_playing(snd_TimingPlatform_Coming) then audio_play_sound(snd_TimingPlatform_Coming,15,false);
+    //if room = rm_TestChamber then if global.sounds &amp;&amp; !audio_is_playing(snd_TimingPlatform_Coming) then scr_play_sound(snd_TimingPlatform_Coming);
     if image_index &gt; 2
         {
         image_index--;

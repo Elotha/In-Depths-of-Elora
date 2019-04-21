@@ -28,9 +28,79 @@
             <string>///Audio
 
 {
-    global.music = false;
-    global.sounds = false;
-    global.current_music = snd_Music;
+    //global.current_music = snd_Music;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Music &amp; Sounds
+
+{
+    var msc, snd;
+    if room = rm_Menu with(obj_MainMenu) //Ana menüdeysek
+        {
+        if menu_current = "New Profile" || menu_current = "Controls" then exit;
+        msc = control[controlkeys.music];
+        snd = control[controlkeys.sounds];
+        }
+    else if instance_number(obj_Character) != 0 
+        {
+        msc = obj_Character.control[controlkeys.music];
+        snd = obj_Character.control[controlkeys.sounds];
+        }
+    else exit;
+    if keyboard_check_pressed(msc) //Muzik tuşuna bastık
+        {
+        if global.music_volume &gt; 0
+            {
+            global.music_volume_last = global.music_volume;
+            global.music_volume = 0;
+            scr_music();
+            }
+        else
+            {
+            global.music_volume = global.music_volume_last;
+            scr_music();
+            }
+        ini_open(current_profile + "_config.ini");
+        ini_write_real("Audio","Music",global.music_volume);
+        ini_close();
+        }
+    if keyboard_check_pressed(snd)  //Sesler tuşuna bastık
+        {
+        if global.sounds_volume &gt; 0
+            {
+            global.sounds_volume_last = global.sounds_volume;
+            global.sounds_volume = 0;
+            }
+        else
+            {
+            global.sounds_volume = global.sounds_volume_last;
+            }
+        if room = rm_Menu then with(obj_MainMenu) audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";
+        ini_open(current_profile + "_config.ini");
+        ini_write_real("Audio","Sounds",global.sounds_volume);
+        ini_close();
+        }
 }
 </string>
           </argument>
@@ -84,77 +154,18 @@
             <string>///Music
 
 {
-    audio_stop_all();
-    if global.music then scr_music();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="78">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Sounds
-
-{
-    if room = rm_Menu with(obj_MainMenu)
+    if room = rm_Menu
         {
-        if menu_current = "New Profile" then exit;
-        }
-    global.sounds = reverse(global.sounds);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="77">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Music
-
-//Burası bölümler hazırlanınca düzenlenecek. Böylece doğru bölümde doğru müziğin çalması sağlanacak.
-
-{
-    if room = rm_Menu with(obj_MainMenu)
-        {
-        if menu_current = "New Profile" then exit;
-        }
-    if global.music
-        {
-        audio_stop_sound(global.current_music);
+        with(obj_MainMenu) 
+            {
+            if menu_current = "New Profile"
+                {
+                global.current_music = audio_play_sound(snd_MainMenu,10,true);
+                audio_sound_gain(global.current_music,0.6,0);
+                }
+            }
         }
     else scr_music();
-    global.music = reverse(global.music);
 }
 </string>
           </argument>
