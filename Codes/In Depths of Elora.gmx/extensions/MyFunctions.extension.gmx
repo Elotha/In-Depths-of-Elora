@@ -97,6 +97,15 @@
           <argCount>-1</argCount>
           <args/>
         </function>
+        <function>
+          <name>message</name>
+          <externalName>scr_message</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
       </functions>
       <constants/>
     </file>

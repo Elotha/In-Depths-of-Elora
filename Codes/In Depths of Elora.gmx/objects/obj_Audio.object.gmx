@@ -8,33 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Audio
-
-{
-    //global.current_music = snd_Music;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -55,51 +28,18 @@
             <string>///Music &amp; Sounds
 
 {
-    var msc, snd;
     if room = rm_Menu with(obj_MainMenu) //Ana menüdeysek
         {
         if menu_current = "New Profile" || menu_current = "Controls" then exit;
-        msc = control[controlkeys.music];
-        snd = control[controlkeys.sounds];
         }
-    else if instance_number(obj_Character) != 0 
+        
+    if keyboard_check_pressed(music_key) //Muzik tuşuna bastık
         {
-        msc = obj_Character.control[controlkeys.music];
-        snd = obj_Character.control[controlkeys.sounds];
+        scr_audio_toggle("Music");
         }
-    else exit;
-    if keyboard_check_pressed(msc) //Muzik tuşuna bastık
+    if keyboard_check_pressed(sounds_key)  //Sesler tuşuna bastık
         {
-        if global.music_volume &gt; 0
-            {
-            global.music_volume_last = global.music_volume;
-            global.music_volume = 0;
-            scr_music();
-            }
-        else
-            {
-            global.music_volume = global.music_volume_last;
-            scr_music();
-            }
-        ini_open(current_profile + "_config.ini");
-        ini_write_real("Audio","Music",global.music_volume);
-        ini_close();
-        }
-    if keyboard_check_pressed(snd)  //Sesler tuşuna bastık
-        {
-        if global.sounds_volume &gt; 0
-            {
-            global.sounds_volume_last = global.sounds_volume;
-            global.sounds_volume = 0;
-            }
-        else
-            {
-            global.sounds_volume = global.sounds_volume_last;
-            }
-        if room = rm_Menu then with(obj_MainMenu) audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";
-        ini_open(current_profile + "_config.ini");
-        ini_write_real("Audio","Sounds",global.sounds_volume);
-        ini_close();
+        scr_audio_toggle("Sounds");
         }
 }
 </string>
@@ -165,7 +105,10 @@
                 }
             }
         }
-    else scr_music();
+    else 
+        {
+        scr_music();
+        }
 }
 </string>
           </argument>

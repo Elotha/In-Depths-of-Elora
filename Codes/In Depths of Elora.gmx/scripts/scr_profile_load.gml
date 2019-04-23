@@ -44,6 +44,9 @@
     
     control_string[controlkeys.sounds] = ini_read_string("Controls",controlkeys.sounds,"N");
     scr_control_load(controlkeys.sounds,true);
+        
+    obj_Audio.music_key = control[controlkeys.music];
+    obj_Audio.sounds_key = control[controlkeys.sounds];
     
     scr_wasd_check();
     
@@ -61,7 +64,7 @@
     if vsync != global.v_sync
         {
         v_sync_current = vsync;
-        //display_reset(0,v_sync_current);
+        display_reset(0,v_sync_current);
         global.v_sync = v_sync_current;
         }
     else v_sync_current = global.v_sync;
@@ -78,14 +81,15 @@
     global.master_volume = ini_read_real("Audio","Master",10);
     global.music_volume = ini_read_real("Audio","Music",10);
     global.sounds_volume = ini_read_real("Audio","Sounds",10);
-    global.voices_volume = ini_read_real("Audio","Voices",10);
     scr_music();
+    if global.master_volume = 0 then global.master_volume_last = 10;
+    if global.music_volume = 0 then global.music_volume_last = 10;
+    if global.sounds_volume = 0 then global.sounds_volume_last = 10;
     
     //Variables
     
-    ini_close();
+    ini_close();    
     description = "";
-    //menu_current = "Main Menu";
     scr_profile_strings();
     return true;
 }

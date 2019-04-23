@@ -42,6 +42,9 @@
     start_alpha = true;
     draw_set_alpha(1);
     
+    audio_group_load(MainMenu);
+    global.current_music = snd_MainMenu;
+    
     selected[0] = 0.5;
     for(var i = 1; i &lt; 12; i++)
         {
@@ -200,6 +203,7 @@
 {
     if start_game //Oyuna başlama tuşuna bastık
         {
+        if !audio_group_is_loaded(InGame) then audio_group_load(InGame);
         if alpha &gt; 0 then alpha -= 0.05;
         else room_goto_next();
         exit;
@@ -374,7 +378,7 @@
                     }
                 }
             }
-        if dir != 0 then exit;
+        if dir != 0 exit;
         }
 }
 </string>
@@ -439,7 +443,7 @@
                     case V_SYNC:
                         graphics[V_SYNC] = scr_change_button(dirc,v_sync,graphics[V_SYNC],"V-SYNC: ","Graphics","V-Sync");
                         ini_open(current_profile + "_config.ini");
-                        display_reset(0,ini_read_real("Graphics","V-Sync","ON"));
+                        display_reset(0,ini_read_real("Graphics","V-Sync",ON));
                         ini_close();
                         break;
                         
@@ -474,6 +478,7 @@
                             {
                             global.master_volume = 0;
                             scr_music();
+                            global.master_volume_last = 10;
                             }
                         else global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
                         ini_write_real("Audio","Master",global.master_volume);
@@ -490,6 +495,7 @@
                             {
                             global.music_volume = 0;
                             scr_music();
+                            global.music_volume_last = 10;
                             }
                         else global.music_volume = clamp(global.music_volume+(1*dirc),0,10);
                         ini_write_real("Audio","Music",global.music_volume);
@@ -497,15 +503,14 @@
                         break;
                         
                     case SOUNDS_VOLUME:
-                        global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);
+                        if global.sounds_volume = 1 &amp;&amp; dirc = -1
+                            {
+                            global.sounds_volume = 0
+                            global.music_volume_last = 10;
+                            }
+                        else global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);
                         ini_write_real("Audio","Sounds",global.sounds_volume);
                         scr_volumes("Sounds");
-                        break;
-                        
-                    case VOICES_VOLUME:
-                        global.voices_volume = clamp(global.voices_volume+(1*dirc),0,10);    
-                        audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";;
-                        ini_write_real("Audio","Voices",global.voices_volume);
                         break;
                         
                     }
@@ -673,52 +678,15 @@
                 switch(button_current)
                     {
                     case MASTER_VOLUME:
-                        if global.master_volume &gt; 0
-                            {
-                            global.master_volume_last = global.master_volume;
-                            global.master_volume = 0;
-                            scr_music();
-                            }
-                        else 
-                            {
-                            global.master_volume = global.master_volume_last;
-                            scr_music();
-                            }
-                        audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";
+                        scr_audio_toggle("Master");
                         break;
                         
                     case MUSIC_VOLUME:
-                        if global.music_volume &gt; 0
-                            {
-                            global.music_volume_last = global.music_volume;
-                            global.music_volume = 0;
-                            scr_music();
-                            }
-                        else
-                            {
-                            global.music_volume = global.music_volume_last;
-                            scr_music();
-                            }
+                        scr_audio_toggle("Music");
                         break;
                         
                     case SOUNDS_VOLUME:
-                        if global.sounds_volume &gt; 0
-                            {
-                            global.sounds_volume_last = global.sounds_volume;
-                            global.sounds_volume = 0;
-                            }
-                        else global.sounds_volume = global.sounds_volume_last;
-                        audio[SOUNDS_VOLUME] = "SOUND EFFECTS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";
-                        break;
-                        
-                    case VOICES_VOLUME:
-                        if global.voices_volume &gt; 0
-                            {
-                            global.voices_volume_last = global.voices_volume;
-                            global.voices_volume = 0;
-                            }
-                        else global.voices_volume = global.voices_volume_last;
-                        audio[VOICES_VOLUME] = "VOICES VOLUME: " + "&lt;" + string(global.voices_volume) + "/10" + "&gt;";
+                        scr_audio_toggle("Sounds");
                         break;
                         
                     case AUDIO_BACK:
@@ -901,10 +869,7 @@
             <string>///Global Controls
 
 {
-    for(var i = 0; i &lt; array_length_1d(control); i++)
-        {
-        global.controls[i] = control[i];
-        }
+    scr_control_globals(true);
 }
 </string>
           </argument>
@@ -928,10 +893,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Audio
+            <string>///Game Start
 
 {
-    if room = rm_Menu then if !audio_is_playing(snd_MainMenu) then global.current_music = snd_MainMenu;
+    if on_startup_current = STARTUP_CONT
+        {
+        room_goto_next();
+        exit;
+        }
 }
 </string>
           </argument>
@@ -955,7 +924,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw GUI
+            <string>///Menus &amp; Description
 
 {
     draw_set_font(font);
@@ -1030,7 +999,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw
+            <string>///Menu Background
 
 {
     draw_sprite(spr_MenuBackground,-1,0,0);

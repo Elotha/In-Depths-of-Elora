@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create
+            <string>///HUD
 
 {
     image_speed = 1/6;
@@ -45,7 +45,128 @@
     timing = -1;
     width = string_width("+ Light Radius Increased!");
     color = make_color_rgb(255,236,214);
-    hud_key = true;
+    
+    hud_key = global.control[controlkeys.hud];
+    ini_open(current_profile + "_config.ini");
+    hud = ini_read_real("Gameplay","Hud",0);
+    ini_close();
+    if hud = ALWAYS_SHOW then hud_alpha = 1;
+    else hud_alpha = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Lives
+
+{
+    lives = 5; //Hak sayımız
+    global.health_max = 120; //Maksimum canımız
+    health = global.health_max; //Mevcut canımız
+    depth = INTERFACE1;
+    hud_color = global.hud_color;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Score
+
+{
+    score = 0;
+    score_checkpoint = score;
+    depth = INTERFACE1;
+    hud_color = global.hud_color;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HUD Alpha-
+
+{
+    if hud_alpha &gt; 0
+        {
+        hud_alpha -= 0.1;
+        alarm[1] = 1;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Number of Keys
+
+{
+    key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster);
 }
 </string>
           </argument>
@@ -72,7 +193,7 @@
             <string>///Step
 
 {
-    for(var i = 0; i &lt; array_length_1d(timing); i++)
+    for(var i = 0; i &lt; array_length_1d(timing); i++) //Potion text
         {
         if timing[i] != -1 then timing[i]--;
         if timing[i] = 0
@@ -80,6 +201,51 @@
             scr_potiontext(i);
             }
         }
+        
+    switch(hud)
+        {
+        case ONLY_HUDKEY:
+            if keyboard_check(hud_key)
+                {
+                if hud_alpha &lt; 1 then hud_alpha += 0.1;
+                }
+            else if hud_alpha &gt; 0 then hud_alpha -= 0.1;
+            break;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Keys
+
+{
+    key_number = 0; //Mevcut anahtar sayımız
+    key_checkpoint = key_number;
+    key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
+    global.key_sound = 4;
+    depth = INTERFACE1;
+    hud_color = global.hud_color;
+    
+    alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
 }
 </string>
           </argument>
@@ -103,15 +269,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw GUI
+            <string>///HUD
 
 {
-    if hud_key
+    if hud_alpha &gt; 0 //HUD gözüküyor mu?
         {
-        draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,1);
-        draw_sprite_part_ext(spr_HP,0,0,0,43+health,48,xy,xy,2,2,c_white,1);
-        draw_sprite_ext(spr_LifeStone,-1,xy+7,xy+21,1.5,1.5,0,c_white,1);
+        draw_set_alpha(hud_alpha);
+        draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,hud_alpha);
+        draw_sprite_part_ext(spr_HP,0,0,0,43+health,48,xy,xy,2,2,c_white,hud_alpha);
+        draw_sprite_ext(spr_LifeStone,-1,xy+16,xy+21,1.5,1.5,0,c_white,hud_alpha);
         }
+    else exit;
+        
     var pottext = false;
     for(var k = 0; k &lt; array_length_1d(potion_text_full); k++)
         {
@@ -132,6 +301,115 @@
             }
         }
 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Lives
+
+{
+    draw_set_font(fnt_Calibri_HUD);
+    draw_set_valign(fa_top);
+    draw_set_colour(hud_color);
+    draw_text(obj_HUD.xy+51,obj_HUD.xy+34,"X " + string(lives));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Score
+
+{
+    draw_set_font(fnt_Calibri_HUD2);
+    draw_set_colour(hud_color);
+    draw_set_valign(fa_top);
+    draw_text(obj_HUD.xy+126,obj_HUD.xy+62,string(score));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Keys
+
+{
+    draw_set_font(fnt_Calibri_HUD2);
+    draw_set_colour(hud_color);
+    draw_set_valign(fa_top);
+    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(key_number) + " / " + string(key_max));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alpha
+
+{
+    draw_set_alpha(1);
 }
 </string>
           </argument>

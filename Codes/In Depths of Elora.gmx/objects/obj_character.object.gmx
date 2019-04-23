@@ -51,11 +51,7 @@
     draw = global.draw;
     wasd_check = global.wasd_check;
     
-    for(var i = 0; i &lt; array_length_1d(global.controls); i++)
-        {
-        control[i] = global.controls[i];
-        }
-    //obj_HUD.control_hud = control[controlkeys.hud];
+    scr_control_globals(false);
     
     with(obj_Camera)
         {
@@ -227,8 +223,7 @@
             <string>///Jump Count
 
 {
-    if block_down != noone
-    if jump_count = 0 then jump_count = 1;
+    if block_down = noone then if jump_count = 0 then jump_count = 1;
 }
 </string>
           </argument>
@@ -334,12 +329,14 @@
         case spr_PotionHP_Big:
             scr_potion(snd_PotionHP_Big,c_red,"+ Health Points!");
             health = global.health_max;
+            scr_hud_interact();
             break;
             
         case spr_PotionHP_Small:
             health += 20;
             if health &gt; global.health_max then health = global.health_max;
             scr_potion(snd_PotionHP_Big,c_red,"+ Health Points!");
+            scr_hud_interact();
             break;
             
         case spr_PotionLight:
@@ -348,6 +345,7 @@
             alarm[3] = 1;
             alarm[4] = room_speed*10;
             scr_potion(snd_PotionLight,c_yellow,"+ Light Radius Increased!");
+            scr_hud_interact();
             break;
             
         case spr_PotionResistance:
@@ -371,6 +369,7 @@
                     break;
                 }
             alarm[5] = room_speed*10;
+            scr_hud_interact();
             break;
             
         }
@@ -408,10 +407,10 @@
         if global.key_sound != 4 then global.key_sound++; else global.key_sound = 1;
         scr_play_sound(asset_get_index("snd_Key" + string(global.key_sound)));
         
-        obj_Keys.key_number++;
+        obj_HUD.key_number++;
         if !key_monster then scr_checkpoint(true);
-        
         }
+    scr_hud_interact();
 }
 </string>
           </argument>
@@ -443,6 +442,7 @@
     with(effect) image_blend = c_red;
     lives++;
     destroy(other);
+    scr_hud_interact();
 }
 </string>
           </argument>
@@ -478,6 +478,7 @@
         with(effect) image_blend = make_colour_rgb(83,110,138);
         scr_checkpoint(true);
         }
+    scr_hud_interact();
 }
 </string>
           </argument>
@@ -616,8 +617,11 @@
         }
     if file_exists("temp.ini") then file_delete("temp.ini");
     global.temp_number = 0;
-    with(obj_Keys) key_checkpoint = key_number;
-    with(obj_Score) score_checkpoint = score;
+    with(obj_HUD) 
+        {
+        key_checkpoint = key_number;
+        score_checkpoint = score;
+        }
 }
 </string>
           </argument>

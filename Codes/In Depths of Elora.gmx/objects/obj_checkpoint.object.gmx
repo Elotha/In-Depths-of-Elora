@@ -33,7 +33,7 @@
     img_sign = 1;
     col = make_colour_rgb(184,53,29);
     checkpoint_text = false;
-    depth = ENVIRONMENT;
+    depth = CHARACTER+50;
 }
 </string>
           </argument>
