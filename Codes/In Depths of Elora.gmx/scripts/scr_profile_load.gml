@@ -79,7 +79,6 @@
     global.music_volume = ini_read_real("Audio","Music",10);
     global.sounds_volume = ini_read_real("Audio","Sounds",10);
     global.voices_volume = ini_read_real("Audio","Voices",10);
-    global.current_music = snd_MainMenu;
     scr_music();
     
     //Variables

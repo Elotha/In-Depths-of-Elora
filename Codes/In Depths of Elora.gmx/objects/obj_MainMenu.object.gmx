@@ -476,7 +476,6 @@
                             scr_music();
                             }
                         else global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
-                        audio[MASTER_VOLUME] = "MASTER VOLUME: " + "&lt;" + string(global.master_volume) + "/10" + "&gt;";;
                         ini_write_real("Audio","Master",global.master_volume);
                         scr_volumes("Master");
                         break;
@@ -493,14 +492,12 @@
                             scr_music();
                             }
                         else global.music_volume = clamp(global.music_volume+(1*dirc),0,10);
-                        audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "&lt;" + string(global.music_volume) + "/10" + "&gt;";;
                         ini_write_real("Audio","Music",global.music_volume);
                         scr_volumes("Music");
                         break;
                         
                     case SOUNDS_VOLUME:
                         global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);
-                        audio[SOUNDS_VOLUME] = "SOUNDS VOLUME: " + "&lt;" + string(global.sounds_volume) + "/10" + "&gt;";;
                         ini_write_real("Audio","Sounds",global.sounds_volume);
                         scr_volumes("Sounds");
                         break;
@@ -513,6 +510,7 @@
                         
                     }
                 ini_close();
+                break;
             
             case "Profiles":
                 switch(button_current)
@@ -526,6 +524,7 @@
                             break;
                             }
                     }
+                break;
             }
         if !keyboard_check_pressed(vk_enter) then exit;
         }
@@ -791,6 +790,7 @@
                         scr_change_menu(profiles,2);
                         break;
                     }
+                break;
             }
         exit;
         }
@@ -905,6 +905,33 @@
         {
         global.controls[i] = control[i];
         }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Audio
+
+{
+    if room = rm_Menu then if !audio_is_playing(snd_MainMenu) then global.current_music = snd_MainMenu;
 }
 </string>
           </argument>

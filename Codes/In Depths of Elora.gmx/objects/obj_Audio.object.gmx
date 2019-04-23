@@ -160,7 +160,7 @@
             {
             if menu_current = "New Profile"
                 {
-                global.current_music = audio_play_sound(snd_MainMenu,10,true);
+                if !audio_is_playing(snd_MainMenu) then global.current_music = audio_play_sound(snd_MainMenu,10,true);
                 audio_sound_gain(global.current_music,0.6,0);
                 }
             }
