@@ -28,8 +28,6 @@
             <string>///Game Start
 
 {
-    /*globalvar key_effect;
-    key_effect[10] = -1;*/
     globalvar scorepoint_effect;
     globalvar particle_key;
     scorepoint_effect[0] = -1;

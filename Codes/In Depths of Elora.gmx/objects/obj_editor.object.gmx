@@ -71,6 +71,12 @@
         if keyboard_check(vk_control) then editor_mode = reverse(editor_mode);
         }
         
+    if keyboard_check_pressed(vk_f2)
+        {
+        debug = !debug;
+        show_debug_overlay(debug);
+        }
+        
     if keyboard_check_pressed(vk_f11) //Screenshot
         {
         var i = 0;
@@ -192,6 +198,15 @@
 
 {
     menu = (room == rm_Menu);
+    ini_open("config.ini");
+    if ini_section_exists("Config") then debug = ini_read_real("Config","Debug",0);
+    else
+        {
+        ini_write_real("Config","Debug",false);
+        debug = false;
+        }
+    show_debug_overlay(debug);
+    ini_close();
 }
 </string>
           </argument>

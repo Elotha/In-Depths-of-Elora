@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="0">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alarm
+            <string>///Destroy Particles
 
 {
+    part_emitter_destroy(light_bugs_system,light_bugs_emitter);
+    part_system_destroy(light_bugs_system);
 }
 </string>
           </argument>
@@ -57,19 +59,29 @@
     var ww = floor(room_width/32);
     var hh = floor(room_height/32);
     total = ww*hh/12;
-    repeat(total)
+    /*repeat(total)
         {
         instance_create(irandom(room_width),irandom(room_height),obj_LightBug);
-        }
-        
-    /*alarm[0] = 2;
-    var ww2 = 640/32;
-    var hh2 = 360/32;
-    var total2 = ww2*hh2/12;
-    repeat(total2)
-        {
-        instance_create(irandom_range(view_xview,view_xview+640),irandom_range(view_yview,view_yview+360),obj_LightBug);
         }*/
+    
+
+    light_bugs_system = part_system_create();
+    part_system_depth(light_bugs_system,FOREGROUND2+50);
+    light_bugs_type = part_type_create();
+    part_type_sprite(light_bugs_type,spr_LightBug,true,false,false);
+    part_type_size(light_bugs_type,1,1,0,0);
+    part_type_speed(light_bugs_type,0.2,0.6,0,0);
+    part_type_direction(light_bugs_type,0,360,0,5);
+    part_type_gravity(light_bugs_type,0,270);
+    part_type_colour_hsv(light_bugs_type,20,55,200,255,255,255);
+    part_type_life(light_bugs_type,180,360);
+    part_type_alpha3(light_bugs_type,0,1,0);
+    part_system_position(light_bugs_system,x,y);
+    
+    light_bugs_emitter = part_emitter_create(light_bugs_system);
+    part_emitter_region(light_bugs_system,light_bugs_emitter,0,room_width,0,room_height,ps_shape_rectangle,ps_distr_linear);
+    part_emitter_burst(light_bugs_system,light_bugs_emitter,light_bugs_type,total);
+    part_emitter_stream(light_bugs_system,light_bugs_emitter,light_bugs_type,3);
 }
 </string>
           </argument>

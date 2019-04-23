@@ -361,7 +361,7 @@
     <constant name="BACKGROUND3">1000</constant>
     <constant name="CANCEL_IT">1</constant>
     <constant name="CAVEWALL">500</constant>
-    <constant name="CHARACTER">0</constant>
+    <constant name="CHARACTER">300</constant>
     <constant name="CONTINUE">0</constant>
     <constant name="CONTROLS">0</constant>
     <constant name="CREATE_PROFILE">1</constant>
@@ -370,7 +370,7 @@
     <constant name="DELETE_PROFILE">2</constant>
     <constant name="DIALOGSPEED">2</constant>
     <constant name="ENGLISH">0</constant>
-    <constant name="ENVIRONMENT">300</constant>
+    <constant name="ENVIRONMENT">200</constant>
     <constant name="EXIT">4</constant>
     <constant name="FOREGROUND1">-200</constant>
     <constant name="FOREGROUND2">-100</constant>
@@ -384,13 +384,13 @@
     <constant name="HUD">0</constant>
     <constant name="INTERFACE1">-400</constant>
     <constant name="INTERFACE2">-300</constant>
-    <constant name="ITEM">200</constant>
+    <constant name="ITEM">100</constant>
     <constant name="JOURNAL">2</constant>
     <constant name="CONT_JUMP">2</constant>
     <constant name="LANGUAGE">3</constant>
     <constant name="LEFT">1</constant>
     <constant name="MASTER_VOLUME">0</constant>
-    <constant name="MONSTER">100</constant>
+    <constant name="MONSTER">0</constant>
     <constant name="MUSIC_VOLUME">1</constant>
     <constant name="OFF">0</constant>
     <constant name="ON">1</constant>
@@ -429,6 +429,11 @@
   <help>
     <rtf>help.rtf</rtf>
   </help>
+  <audiogroups name="audiogroups">
+    <audiogroup name="audiogroup_default"/>
+    <audiogroup name="MainMenu"/>
+    <audiogroup name="InGame"/>
+  </audiogroups>
   <TutorialState>
     <IsTutorial>0</IsTutorial>
     <TutorialName></TutorialName>

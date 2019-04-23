@@ -30,12 +30,6 @@
 {
     spd = 0;
     spd_change = 0.25;
-    /*i = 0;
-    while key_effect != -1
-        {
-        i++;
-        if i = array_length_1d(key_effect) then break;
-        }*/
     
 
     key_effect = part_system_create();
