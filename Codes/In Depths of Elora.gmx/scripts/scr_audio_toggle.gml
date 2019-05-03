@@ -40,11 +40,20 @@
             {
             global.sounds_volume_last = global.sounds_volume;
             global.sounds_volume = 0;
+            if !ds_list_empty(sounds_list)
+                {
+                for(var i = 0; i < ds_list_size(sounds_list); i++)
+                    {
+                    audio_stop_sound(ds_list_find_value(sounds_list,i));
+                    }
+                ds_list_clear(sounds_list);
+                }
             }
         else global.sounds_volume = global.sounds_volume_last;
         scr_volumes("Sounds");
         ini_open(current_profile + "_config.ini");
         ini_write_real("Audio","Sounds",global.sounds_volume);
         ini_close();
+        
         }
 }

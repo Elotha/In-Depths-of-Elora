@@ -58,6 +58,8 @@
         x = other.x;
         y = other.y;
         }
+        
+    instance_create(x,y,obj_CharacterLight);
 }
 </string>
           </argument>

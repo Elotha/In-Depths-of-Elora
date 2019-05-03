@@ -17,8 +17,6 @@
                     sprite_index = spr_CharacterDoubleJump;
                     image_index = 0;
                     image_speed = 1/6;
-                    var effect = instance_create(x+(-8*image_xscale),y+26+v_speed+falling_speed,obj_DoubleJump_Effect);
-                    with(effect) image_xscale = other.image_xscale;
                     scr_play_sound(choose(snd_Jump1,snd_Jump2,snd_Jump3,snd_Jump4,snd_Jump5));
                     }
                     

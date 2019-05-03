@@ -76,6 +76,24 @@
     <instance objName="obj_WallSpikesRight_LowerL" x="768" y="320" name="inst_1DD444CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="456" y="264" name="inst_FC83BC4A" locked="0" code="" scaleX="38" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Checkpoint" x="320" y="384" name="inst_8AE9AF25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="480" y="384" name="inst_7A6742FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="512" y="384" name="inst_07168299" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="544" y="384" name="inst_F6592491" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="576" y="384" name="inst_BD67F60C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="608" y="384" name="inst_900EDD64" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="640" y="384" name="inst_0F8EC001" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="640" y="416" name="inst_6A4CB7E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="608" y="416" name="inst_F373FDA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="576" y="416" name="inst_5E66DCF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="544" y="416" name="inst_450BEEAD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="512" y="416" name="inst_D0C710BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="480" y="416" name="inst_E55DC719" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="480" y="448" name="inst_3FBADF1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="512" y="448" name="inst_3B0371EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="544" y="448" name="inst_9BC731E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="576" y="448" name="inst_83CBDDFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="608" y="448" name="inst_A421DD77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Potion" x="640" y="448" name="inst_A668F97B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="64" y="704" w="32" h="32" xo="96" yo="0" id="10001285" name="inst_8C496AAF" depth="400" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

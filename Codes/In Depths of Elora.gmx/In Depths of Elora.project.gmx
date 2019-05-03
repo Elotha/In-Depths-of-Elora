@@ -50,7 +50,6 @@
       <sprite>sprites\spr_CharacterDamaged</sprite>
       <sprite>sprites\spr_CharacterJump</sprite>
       <sprite>sprites\spr_CharacterDoubleJump</sprite>
-      <sprite>sprites\spr_CharacterDoubleJump_Effect</sprite>
       <sprite>sprites\spr_CharacterFly</sprite>
       <sprite>sprites\spr_CharacterDeath</sprite>
       <sprite>sprites\spr_CharacterDeath_Liquid</sprite>
@@ -264,7 +263,7 @@
       <object>objects\obj_CharacterParent</object>
       <object>objects\obj_Character</object>
       <object>objects\obj_CharacterDeath</object>
-      <object>objects\obj_DoubleJump_Effect</object>
+      <object>objects\obj_CharacterLight</object>
     </objects>
     <objects name="Environmental Elements">
       <object>objects\obj_Environment</object>
@@ -335,6 +334,7 @@
     </objects>
     <objects name="Menu">
       <object>objects\obj_MainMenu</object>
+      <object>objects\obj_MenuHeadParent</object>
       <object>objects\obj_LogoEyeless</object>
       <object>objects\obj_MenuEyeParent</object>
       <object>objects\obj_MenuEye1</object>
@@ -434,7 +434,6 @@
   </help>
   <audiogroups name="audiogroups">
     <audiogroup name="audiogroup_default"/>
-    <audiogroup name="MainMenu"/>
     <audiogroup name="InGame"/>
   </audiogroups>
   <TutorialState>

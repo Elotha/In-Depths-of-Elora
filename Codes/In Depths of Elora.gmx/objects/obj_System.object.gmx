@@ -33,7 +33,6 @@
     global.force_start = false; //Karakter başlama noktasında doğsun mu?
     global.falling_speed = 0.25; //Global yerçekimi değeri
     global.falling_limit = 15; //Maksimum düşme hızı
-    global.frame_rate = 1/6; //Genel animasyon hızı
     global.checkpoint = -1; //Henüz checkpoint almadık
     global.temp_number = 0;
     
@@ -50,7 +49,7 @@
     display_set_gui_size(view_wport[0]*2/3,view_hport[0]*2/3);    
     
     window_set_cursor(cr_none);
-    cursor_sprite = spr_JournalMouse;
+    //cursor_sprite = spr_JournalMouse;
 }
 </string>
           </argument>
