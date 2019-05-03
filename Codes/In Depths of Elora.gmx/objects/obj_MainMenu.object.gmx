@@ -42,7 +42,6 @@
     start_alpha = true;
     draw_set_alpha(1);
     
-    audio_group_load(MainMenu);
     global.current_music = snd_MainMenu;
     sounds_list = ds_list_create();
     
