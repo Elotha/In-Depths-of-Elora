@@ -136,7 +136,6 @@
       <sprite>sprites\spr_KeyboardSpace</sprite>
       <sprite>sprites\spr_ItemEffect</sprite>
       <sprite>sprites\spr_ParticlePixel</sprite>
-      <sprite>sprites\spr_JournalMouse</sprite>
     </sprites>
     <sprites name="Backgrounds">
       <sprite>sprites\spr_Layer1_Up1</sprite>
@@ -167,6 +166,13 @@
       <sprite>sprites\spr_MenuIndicatorRight</sprite>
       <sprite>sprites\spr_PauseMenu</sprite>
       <sprite>sprites\spr_BlackView</sprite>
+    </sprites>
+    <sprites name="Journal">
+      <sprite>sprites\spr_JournalRoll</sprite>
+      <sprite>sprites\spr_JournalLogo</sprite>
+      <sprite>sprites\spr_JournalIcons</sprite>
+      <sprite>sprites\spr_JournalTabs</sprite>
+      <sprite>sprites\spr_JournalMouse</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -342,6 +348,9 @@
       <object>objects\obj_MenuEye3</object>
       <object>objects\obj_MenuEye4</object>
       <object>objects\obj_Pause</object>
+    </objects>
+    <objects name="Journal">
+      <object>objects\obj_Journal</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -52,6 +52,8 @@
     ini_close();
     if hud = ALWAYS_SHOW then hud_alpha = 1;
     else hud_alpha = 0;
+    ww = display_get_gui_width();
+    hh = display_get_gui_height();
 }
 </string>
           </argument>
@@ -269,6 +271,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Display
+
+{
+    display_set_gui_size(view_wport[0]*2/3,view_hport[0]*2/3);  
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///HUD
 
 {
@@ -406,10 +433,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alpha
+            <string>///Alpha &amp;&amp; Display
 
 {
     draw_set_alpha(1);
+    display_set_gui_size(ww,hh);
 }
 </string>
           </argument>
