@@ -169,10 +169,15 @@
     </sprites>
     <sprites name="Journal">
       <sprite>sprites\spr_JournalRoll</sprite>
+      <sprite>sprites\spr_JournalPaper</sprite>
       <sprite>sprites\spr_JournalLogo</sprite>
       <sprite>sprites\spr_JournalIcons</sprite>
-      <sprite>sprites\spr_JournalTabs</sprite>
+      <sprite>sprites\spr_JournalTab</sprite>
       <sprite>sprites\spr_JournalMouse</sprite>
+      <sprite>sprites\spr_JournalFrameScroll</sprite>
+      <sprite>sprites\spr_JournalStatisticsFrames</sprite>
+      <sprite>sprites\spr_JournalStatisticsLastFrame</sprite>
+      <sprite>sprites\spr_JournalArrowsScroll</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -351,6 +356,7 @@
     </objects>
     <objects name="Journal">
       <object>objects\obj_Journal</object>
+      <object>objects\obj_JournalTab</object>
     </objects>
   </objects>
   <rooms name="rooms">
