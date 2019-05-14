@@ -32,12 +32,16 @@
     cursor_sprite = spr_JournalMouse;
     tab_current = "Roll";
     
-    logo_alpha = 0;
-    logo_dir = 1;
+    journal_alpha = 0;
+    journal_dir = 1;
     logo_index = 0;
     frate = global.frame_rate;
-    tab_alpha = 0;
-    statistics_index = 0;
+    tabs_alpha = 0;
+    //statistics_index = 0;
+    statistics_offset = 0;
+    statistics[5] = 0;
+    statistics_str[5] = "";
+    sprh = sprite_get_height(spr_JournalStatisticsFrames);
     
     image_speed = 0;
     ww = display_get_gui_width();
@@ -97,9 +101,47 @@
             <string>///Step
 
 {
-    if keyboard_check_pressed(journal_key) &amp;&amp; logo_dir != -1
+    if keyboard_check_pressed(journal_key) &amp;&amp; journal_dir != -1
         {
-        logo_dir = -1;
+        journal_dir = -1;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arrows
+
+{
+    switch(tab_current)
+        {
+        case "Statistics":
+            statistics_arrow[0] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2-110+8,obj_JournalArrowBig); //Yukarı ok
+            statistics_arrow[1] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2+110+24,obj_JournalArrowBig); //Aşağı ok
+            with(statistics_arrow[1]) 
+                {
+                image_index = 1;
+                image_angle = 180;
+                }
+            break;
         }
 }
 </string>
@@ -130,7 +172,7 @@
     var j = 0;
     for(var k = 0; k &lt; 4; k++)
         {
-        main_tabs[k] = instance_create(view_xview[0]+view_wview[0]/2-120+j,view_yview[0]+view_hview[0]/2-152/*-252*/,obj_JournalTab);
+        main_tabs[k] = instance_create(view_xview[0]+view_wview[0]/2-120+j,view_yview[0]+view_hview[0]/2-152,obj_JournalTab);
         j += sprite_get_width(spr_JournalTab);
         }
     with(main_tabs[0]) type = "Entries";
@@ -174,33 +216,42 @@
         }
     else if image_index = 0 &amp;&amp; roll_dir = -1 then instance_destroy();
     
+    
+    if journal_dir = -1 then if journal_alpha &gt; 0 then journal_alpha = clamp(journal_alpha-0.04,0,1); //Kapanma
+    else
+        {
+        roll_dir = -1;
+        journal_dir = 0;
+        }
+    
     switch(tab_current)
         {
         case "Start":
-            if logo_dir = 1 then if logo_alpha &lt; 1 then logo_alpha = clamp(logo_alpha+0.04,0,1);
-            if logo_dir = -1 then if logo_alpha &gt; 0 then logo_alpha = clamp(logo_alpha-0.04,0,1); else roll_dir = -1;
-            draw_sprite_ext(spr_JournalLogo,floor(logo_index),view_wview[0]/2,view_hview[0]/2,1,1,0,c_white,logo_alpha);
+            if journal_dir = 1 then if journal_alpha &lt; 1 then journal_alpha = clamp(journal_alpha+0.04,0,1);
+            draw_sprite_ext(spr_JournalLogo,floor(logo_index),view_wview[0]/2,view_hview[0]/2,1,1,0,c_white,journal_alpha);
             logo_index = logo_index+frate mod sprite_get_number(spr_JournalLogo);
             break;
             
         case "Statistics":
-            draw_sprite(spr_JournalFrameScroll,0,view_wview[0]/2,view_hview[0]/2+16);
-            var sprh = sprite_get_height(spr_JournalStatisticsFrames);
-            draw_sprite(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2-sprh*2+37);
-            draw_sprite(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2-sprh+43);
-            draw_sprite(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2+49);
-            draw_sprite(spr_JournalStatisticsLastFrame,0,view_wview[0]/2,view_hview[0]/2+sprh+55);
-            draw_sprite(spr_JournalArrowsScroll,0,view_wview[0]/2,view_hview[0]/2-110);
-            draw_sprite(spr_JournalArrowsScroll,0,view_wview[0]/2,view_hview[0]/2+110);
-            //statistics_index = statistics_index+frate mod sprite_get_number(spr_JournalStatisticsFrames);
+            draw_sprite_ext(spr_JournalFrameScroll,0,view_wview[0]/2,view_hview[0]/2+16,1,1,0,c_white,journal_alpha); //Dış hatlar
+            draw_sprite_ext(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2-sprh*2+37,1,1,0,c_white,journal_alpha); //Birinci istatistik
+            draw_sprite_ext(spr_JournalStatisticsFrames,1,view_wview[0]/2,view_hview[0]/2-sprh+43,1,1,0,c_white,journal_alpha); //İkinci istatistik
+            draw_sprite_ext(spr_JournalStatisticsFrames,2,view_wview[0]/2,view_hview[0]/2+49,1,1,0,c_white,journal_alpha); //Üçüncü istatistik
+            draw_sprite_ext(spr_JournalStatisticsLastFrame,0,view_wview[0]/2,view_hview[0]/2+sprh+55,1,1,0,c_white,journal_alpha); //Görünmeyen son istatistik
+            draw_sprite_ext(spr_JournalArrowBig,statistics_arrow[0].image_index,statistics_arrow[0].x-view_xview[0],statistics_arrow[0].y-view_yview[0],1,1,0,c_white,journal_alpha); //Yukardaki ok
+            draw_sprite_ext(spr_JournalArrowBig,statistics_arrow[1].image_index,statistics_arrow[1].x-view_xview[0],statistics_arrow[1].y-view_yview[0],1,1,180,c_white,journal_alpha); //Aşağıdaki ok
+            
+            draw_set_colour(c_black);
+            draw_text(view_wview[0]/2,view_hview[0]/2-130,string(statistics_offset));
+            draw_text(view_wview[0]/2+20,view_hview[0]/2-130,string(instance_number(obj_JournalArrowScroll)));
         }
         
     if tab_current != "Roll" //Tabs
         {
         for(var h = 0; h &lt; 4; h++) 
             {
-            draw_sprite(spr_JournalTab,main_tabs[h].image_index,(main_tabs[h].x-view_xview[0]),(main_tabs[h].y-view_yview[0]));
-            draw_sprite(spr_JournalIcons,h,(main_tabs[h].x-view_xview[0])-2,(main_tabs[h].y-view_yview[0])+sign(main_tabs[h].image_index)*14-16);
+            draw_sprite_ext(spr_JournalTab,main_tabs[h].image_index,(main_tabs[h].x-view_xview[0]),(main_tabs[h].y-view_yview[0]),1,1,0,c_white,journal_alpha);
+            draw_sprite_ext(spr_JournalIcons,h,(main_tabs[h].x-view_xview[0])-2,(main_tabs[h].y-view_yview[0])+sign(main_tabs[h].image_index)*14-16,1,1,0,c_white,journal_alpha);
             }
         }
     

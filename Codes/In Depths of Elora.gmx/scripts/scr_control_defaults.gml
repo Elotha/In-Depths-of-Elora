@@ -27,8 +27,8 @@
     control[controlkeys.interact] = ord('A');
     ini_write_string("Controls",controlkeys.interact,control_string[controlkeys.interact]);
     
-    control_string[controlkeys.journal] = "TAB";
-    control[controlkeys.journal] = vk_tab;
+    control_string[controlkeys.journal] = "J";
+    control[controlkeys.journal] = ord('J');
     ini_write_string("Controls",controlkeys.journal,control_string[controlkeys.journal]);
     
     control_string[controlkeys.hud] = "LEFT CONTROL";

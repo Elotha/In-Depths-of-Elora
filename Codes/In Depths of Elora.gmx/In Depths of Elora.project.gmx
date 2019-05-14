@@ -177,7 +177,7 @@
       <sprite>sprites\spr_JournalFrameScroll</sprite>
       <sprite>sprites\spr_JournalStatisticsFrames</sprite>
       <sprite>sprites\spr_JournalStatisticsLastFrame</sprite>
-      <sprite>sprites\spr_JournalArrowsScroll</sprite>
+      <sprite>sprites\spr_JournalArrowBig</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -242,6 +242,9 @@
       <script>scripts\scr_control_strings.gml</script>
       <script>scripts\scr_control_globals.gml</script>
       <script>scripts\scr_wasd_check.gml</script>
+    </scripts>
+    <scripts name="Journal">
+      <script>scripts\scr_journal_clear.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -357,6 +360,7 @@
     <objects name="Journal">
       <object>objects\obj_Journal</object>
       <object>objects\obj_JournalTab</object>
+      <object>objects\obj_JournalArrowBig</object>
     </objects>
   </objects>
   <rooms name="rooms">
