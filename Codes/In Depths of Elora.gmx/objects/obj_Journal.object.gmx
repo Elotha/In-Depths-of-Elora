@@ -42,6 +42,9 @@
     statistics[5] = 0;
     statistics_str[5] = "";
     sprh = sprite_get_height(spr_JournalStatisticsFrames);
+    achh = sprite_get_height(spr_JournalSquare);
+    achw = sprite_get_width(spr_JournalSquare);
+    ach_sep = 47;
     
     image_speed = 0;
     ww = display_get_gui_width();
@@ -232,6 +235,18 @@
             logo_index = logo_index+frate mod sprite_get_number(spr_JournalLogo);
             break;
             
+        case "Achievements":
+            draw_sprite_ext(spr_JournalFrameAchievements,0,view_wview[0]/2,view_hview[0]/2+12,1,1,0,c_white,journal_alpha); //Achievement tablosu
+            var w = 0;
+            for(var q = 0; q &lt; 4; q++)
+                {
+                for(var w = 0; w &lt; 4; w++)
+                    {
+                    draw_sprite_ext(spr_JournalSquare,0,view_wview[0]/2-(2*ach_sep)+(w*ach_sep)+26,view_hview[0]/2-(2*ach_sep)+(q*ach_sep)+9,1,1,0,c_white,journal_alpha); //Achievement kareleri
+                    }
+                }
+            break;
+            
         case "Statistics":
             draw_sprite_ext(spr_JournalFrameScroll,0,view_wview[0]/2,view_hview[0]/2+16,1,1,0,c_white,journal_alpha); //Dış hatlar
             draw_sprite_ext(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2-sprh*2+37,1,1,0,c_white,journal_alpha); //Birinci istatistik
@@ -240,10 +255,6 @@
             draw_sprite_ext(spr_JournalStatisticsLastFrame,0,view_wview[0]/2,view_hview[0]/2+sprh+55,1,1,0,c_white,journal_alpha); //Görünmeyen son istatistik
             draw_sprite_ext(spr_JournalArrowBig,statistics_arrow[0].image_index,statistics_arrow[0].x-view_xview[0],statistics_arrow[0].y-view_yview[0],1,1,0,c_white,journal_alpha); //Yukardaki ok
             draw_sprite_ext(spr_JournalArrowBig,statistics_arrow[1].image_index,statistics_arrow[1].x-view_xview[0],statistics_arrow[1].y-view_yview[0],1,1,180,c_white,journal_alpha); //Aşağıdaki ok
-            
-            draw_set_colour(c_black);
-            draw_text(view_wview[0]/2,view_hview[0]/2-130,string(statistics_offset));
-            draw_text(view_wview[0]/2+20,view_hview[0]/2-130,string(instance_number(obj_JournalArrowScroll)));
         }
         
     if tab_current != "Roll" //Tabs

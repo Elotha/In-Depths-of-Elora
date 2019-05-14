@@ -178,6 +178,9 @@
       <sprite>sprites\spr_JournalStatisticsFrames</sprite>
       <sprite>sprites\spr_JournalStatisticsLastFrame</sprite>
       <sprite>sprites\spr_JournalArrowBig</sprite>
+      <sprite>sprites\spr_JournalFrameAchievements</sprite>
+      <sprite>sprites\spr_JournalSquare</sprite>
+      <sprite>sprites\spr_JournalAchievementsArrow</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -361,6 +364,7 @@
       <object>objects\obj_Journal</object>
       <object>objects\obj_JournalTab</object>
       <object>objects\obj_JournalArrowBig</object>
+      <object>objects\obj_JournalAchievementsArrow</object>
     </objects>
   </objects>
   <rooms name="rooms">
