@@ -39,7 +39,7 @@
     pause_menu[1] = "SETTINGS";
     pause_menu[2] = "MAIN MENU";
     
-    button_current = "RESUME";
+    button_current = RESUME;
     
     font = fnt_menu;
     
@@ -50,6 +50,8 @@
     selected[0] = 0.5;
     selected_total = 3;
     selected_number = 0;
+    
+    //io_clear();
 }
 </string>
           </argument>
@@ -116,13 +118,13 @@
             selected[0] = 0;
             selected[selected_total-1] = 0.5;
             selected_number = selected_total-1;
-            button_current = pause_menu[selected_number];
+            button_current = selected_number;
             }
         else
             {
             selected[selected_number--] = 0;
             selected[selected_number] = 0.5;
-            button_current = pause_menu[selected_number];
+            button_current = selected_number;
             }
         }
     else if dir = 1
@@ -132,27 +134,28 @@
             selected[selected_total-1] = 0;
             selected[0] = 0.5;
             selected_number = 0;
-            button_current = pause_menu[selected_number];
+            button_current = selected_number;
             }
         else
             {
             selected[selected_number++] = 0;
             selected[selected_number] = 0.5;
-            button_current = pause_menu[selected_number];
+            button_current = selected_number;
             }
         }
     if keyboard_check_pressed(vk_enter)
         {
         switch(button_current)
             {
-            case "RESUME":
-                keyboard_key_press(vk_escape);
+            case RESUME:
+                instance_destroy();
+                //keyboard_key_press(vk_escape);
                 break;
                 
-            case "SETTINGS":
+            case SETTINGS:
                 break;
                 
-            case "MAIN MENU":
+            case MAINMENU:
                 instance_destroy();
                 scr_back_to_menu();
                 room_goto(rm_Menu);
@@ -316,7 +319,7 @@
             <string>///Escape
 
 {
-    if pause then instance_destroy();
+    instance_destroy();
 }
 </string>
           </argument>

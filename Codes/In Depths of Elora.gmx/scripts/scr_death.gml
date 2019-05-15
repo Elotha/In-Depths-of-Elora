@@ -30,4 +30,6 @@
         {
         scr_play_sound(choose(snd_Hurt1,snd_Hurt2,snd_Hurt3,snd_Hurt4,snd_Hurt5));
         }
+        
+    scr_hud_interact();
 }

@@ -27,12 +27,12 @@
     control[controlkeys.interact] = ord('A');
     ini_write_string("Controls",controlkeys.interact,control_string[controlkeys.interact]);
     
-    control_string[controlkeys.journal] = "TAB";
-    control[controlkeys.journal] = vk_tab;
+    control_string[controlkeys.journal] = "J";
+    control[controlkeys.journal] = ord('J');
     ini_write_string("Controls",controlkeys.journal,control_string[controlkeys.journal]);
     
-    control_string[controlkeys.hud] = "CTRL";
-    control[controlkeys.hud] = vk_control;
+    control_string[controlkeys.hud] = "LEFT CONTROL";
+    control[controlkeys.hud] = vk_lcontrol;
     ini_write_string("Controls",controlkeys.hud,control_string[controlkeys.hud]);
     
     control_string[controlkeys.music] = "M";
@@ -42,6 +42,9 @@
     control_string[controlkeys.sounds] = "N";
     control[controlkeys.sounds] = ord('N');
     ini_write_string("Controls",controlkeys.sounds,control_string[controlkeys.sounds]);
+    
+    obj_Audio.music_key = control[controlkeys.music];
+    obj_Audio.sounds_key = control[controlkeys.sounds];
     
     ini_close();
     

@@ -37,9 +37,6 @@
     create_only_one(0,0,obj_Camera);
     create_only_one(0,0,obj_Light);
     create_only_one(0,0,obj_HUD);
-    create_only_one(0,0,obj_Lives);
-    create_only_one(0,0,obj_Keys);
-    create_only_one(0,0,obj_Score);
     create_only_one(0,0,obj_Particles);
     create_only_one(0,0,obj_LightBug_Creator);
 }
@@ -78,9 +75,6 @@
     create_only_one(0,0,obj_Camera);
     create_only_one(0,0,obj_Light);
     create_only_one(0,0,obj_HUD);
-    create_only_one(0,0,obj_Lives);
-    create_only_one(0,0,obj_Keys);
-    create_only_one(0,0,obj_Score);
     create_only_one(0,0,obj_Particles);
     create_only_one(0,0,obj_LightBug_Creator);
 }

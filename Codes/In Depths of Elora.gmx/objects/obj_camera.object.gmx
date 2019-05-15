@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Instance Activitation
-
+/*
 {
     with(obj_LightBug)
         {
@@ -91,6 +91,8 @@
      /*   
     x = clamp(x,0+view_wview[0]/2,room_width-view_wview[0]/2);
     y = clamp(y,0+view_hview[0]/2,room_height-view_hview[0]/2);*/
+    
+    //if keyboard_check_pressed(vk_f6) view_object[0] = obj_Journal.main_tabs[0];
 }
 </string>
           </argument>

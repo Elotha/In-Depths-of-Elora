@@ -24,7 +24,7 @@
                 control[argument0] = vk_down;
                 break;
                 
-            case "LEFT CTRL":
+            case "LEFT CONTROL":
                 control[argument0] = vk_lcontrol;
                 break;
                 
@@ -32,7 +32,7 @@
                 control[argument0] = vk_alt;
                 break;
                 
-            case "RIGHT CTRL":
+            case "RIGHT CONTROL":
                 control[argument0] = vk_rcontrol;
                 break;
                 
@@ -251,6 +251,7 @@
         
         control[argument0] = keyboard_key;
         scr_wasd_check();
+        
         return true;
     }
 }

@@ -31,14 +31,12 @@
     destroy(obj_Camera);
     destroy(obj_Background);
     destroy(obj_Audio);
-    destroy(obj_Lives);
-    destroy(obj_Keys);
     destroy(obj_HUD);
-    destroy(obj_Score);
     destroy(obj_KeyEffect2);
     destroy(obj_KeyEffect3);
     destroy(obj_ZodaxEffect);
     destroy(obj_Particles);
+    destroy(obj_LightBug_Creator);
     
     display_set_gui_size(640,360);
 }

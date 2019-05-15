@@ -100,9 +100,6 @@
         
         global.sounds_volume = 10;
         ini_write_real("Audio","Sounds",global.sounds_volume);
-        
-        global.voices_volume = 10;
-        ini_write_real("Audio","Voices",global.voices_volume);
         }
     
     ini_close();
