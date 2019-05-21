@@ -44,7 +44,12 @@
     sprh = sprite_get_height(spr_JournalStatisticsFrames);
     achh = sprite_get_height(spr_JournalSquare);
     achw = sprite_get_width(spr_JournalSquare);
-    ach_sep = 47;
+    ach_sep = 47; //Achievements kısmındaki girdilerin birbirine olan piksel uzaklığı
+    achievement_number = 0; //Kaçıncı achievementtayız?
+    achievements_page = 0; //Kaçıncı sayfadayız?
+    achievements_max = 11; //Toplam achievement sayısı
+    achievements_page_max = floor(achievements_max/16); //Maksimum sayfa sayısı kaç?
+    
     
     image_speed = 0;
     ww = display_get_gui_width();
@@ -101,12 +106,68 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///Journal Key
 
 {
     if keyboard_check_pressed(journal_key) &amp;&amp; journal_dir != -1
         {
         journal_dir = -1;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Achievements
+
+{
+    var q, w, number;
+    for(q = 0; q &lt; 4; q++)
+        {
+        for(w = 0; w &lt; 4; w++)
+            {
+            number = q*4+w;
+            ach[number] = instance_create(view_xview[0]+view_wview[0]/2-(2*ach_sep)+(w*ach_sep)+26,view_yview[0]+view_hview[0]/2-(2*ach_sep)+(q*ach_sep)+9,obj_JournalAchievementsSquare); //Achievement kareleri
+            ach[number].number = number;
+            if ach[number].number &gt;= achievements_max then with(ach[number]) sprite_index = -1;
+            }
+        }
+        
+    //Oklar
+    achievements_arrow[0] = instance_create(view_xview[0]+view_wview[0]/2+109,view_yview[0]+view_hview[0]/2-13,obj_JournalAchievementsArrow); //Sağdaki ok
+    if achievements_page_max &gt; 0 then with(achievements_arrow[0]) image_index = 1;
+    achievements_arrow[1] = instance_create(view_xview[0]+view_wview[0]/2-106,view_yview[0]+view_hview[0]/2-13,obj_JournalAchievementsArrow); //Soldaki ok
+    with(achievements_arrow[1]) image_xscale = -1;
+        
+    //Başarım listesi
+    achievement_name[0] = "PALPUS DOMINATOR";
+    achievement_description[0] = "Kill a palpus.";
+    
+    achievement_name[1] = "GREED OF POWER";
+    achievement_description[1] = "Try to be a goddess.";
+    
+    for(var e = 2; e &lt; achievements_max; e++)
+        {
+        achievement_name[e] = "ACHIEVEMENT TITLE";
+        achievement_description[e] = string(e);
         }
 }
 </string>
@@ -209,7 +270,7 @@
 
 {
     if sign(image_speed) != roll_dir then image_speed = global.frame_rate*roll_dir;
-    display_set_gui_size(1920/3,1080/3);
+    display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
     draw_sprite(spr_JournalPaper,image_index,view_wview[0]/2,view_hview[0]/2); //Paper
     if image_index = sprite_get_number(spr_JournalRoll)-1 &amp;&amp; roll_dir = 1
         {
@@ -237,14 +298,22 @@
             
         case "Achievements":
             draw_sprite_ext(spr_JournalFrameAchievements,0,view_wview[0]/2,view_hview[0]/2+12,1,1,0,c_white,journal_alpha); //Achievement tablosu
-            var w = 0;
-            for(var q = 0; q &lt; 4; q++)
+            for(var q = 0; q &lt; min(achievements_max,16); q++)
                 {
-                for(var w = 0; w &lt; 4; w++)
-                    {
-                    draw_sprite_ext(spr_JournalSquare,0,view_wview[0]/2-(2*ach_sep)+(w*ach_sep)+26,view_hview[0]/2-(2*ach_sep)+(q*ach_sep)+9,1,1,0,c_white,journal_alpha); //Achievement kareleri
-                    }
+                if ach[q].sprite_index = -1 then continue;
+                with(ach[q]) draw_sprite_ext(sprite_index,image_index,x-view_xview[0],y-view_yview[0],1,1,0,c_white,other.journal_alpha); //Achievement kareleri
+                if q = achievement_number-(achievements_page*16) then with(ach[q]) draw_sprite_ext(spr_JournalSquare,1,x-view_xview[0],y-view_yview[0],1,1,0,c_white,other.journal_alpha); //Seçili kare
                 }
+            with(achievements_arrow[0]) draw_sprite_ext(sprite_index,image_index,x-view_xview[0],y-view_yview[0],1,1,image_angle,c_white,other.journal_alpha); //Sağdaki ok
+            with(achievements_arrow[1]) draw_sprite_ext(sprite_index,image_index,x-view_xview[0],y-view_yview[0],image_xscale,1,image_angle,c_white,other.journal_alpha); //Soldaki ok
+            display_set_gui_size(view_wport[0],view_hport[0]);
+            draw_set_colour(c_black);
+            draw_set_font(fnt_AchievementTitle);
+            draw_text(view_wport[0]/2-256,view_hport[0]/2+272,achievement_name[achievement_number]); //Seçili başarımın ismi
+            draw_set_font(fnt_AchievementDescription);
+            draw_text(view_wport[0]/2-256,view_hport[0]/2+304,achievement_description[achievement_number]); //Seçili başarımın açıklaması
+            display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
+                
             break;
             
         case "Statistics":

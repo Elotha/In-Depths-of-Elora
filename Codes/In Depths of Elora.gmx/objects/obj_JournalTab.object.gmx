@@ -124,6 +124,7 @@
                 }
             scr_journal_clear();
             tab_current = other.type;
+            if tab_current = "Achievements" then event_user(2);
             event_user(1); //Okları yarat
             }
         selected = true;

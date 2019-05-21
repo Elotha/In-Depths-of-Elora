@@ -131,6 +131,7 @@
         keyboard_string = new_profile;
         menu_current = "New Profile";
         v_sync_current = ON;
+        on_startup_current = STARTUP_MENU;
         }
     else menu_current = "Main Menu";
     //display_reset(0,v_sync_current);

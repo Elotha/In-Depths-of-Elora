@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_JournalAchievementsArrow</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -35,7 +35,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -57,15 +57,14 @@
 {
     if image_index = 2
         {
-        if image_angle = 0
+        if image_xscale = 1
             {
-            if obj_Journal.statistics_offset &gt; 0 then image_index = 1; else image_index = 0;
+            if obj_Journal.achievements_page &lt; obj_Journal.achievements_page_max then image_index = 1; else image_index = 0;
             }
-        else if image_angle = 180
+        else if image_xscale = -1
             {
-            if obj_Journal.statistics_offset &lt; array_length_1d(obj_Journal.statistics)-2 then image_index = 1; else image_index = 0;
+            if obj_Journal.achievements_page &gt; 0 then image_index = 1; else image_index = 0;
             }
-        
         }
 }
 </string>
@@ -96,15 +95,28 @@
     if image_index = 1
         {
         image_index = 2;
-        if image_angle = 0
+        if image_xscale = 1 //Sağdaki ok
             {
-            if obj_Journal.statistics_offset &gt; 0 then obj_Journal.statistics_offset--;
-            with(obj_Journal.statistics_arrow[1]) image_index = 1;  
+            if obj_Journal.achievements_page &lt; obj_Journal.achievements_page_max then obj_Journal.achievements_page++;
+            with(obj_Journal.achievements_arrow[1]) image_index = 1;
+            with(obj_JournalAchievementsSquare) 
+                {
+                number += 16;
+                if number &gt;= obj_Journal.achievements_max
+                    {
+                    sprite_index = -1;
+                    }
+                }
             }
-        if image_angle = 180 then if obj_Journal.statistics_offset &lt; array_length_1d(obj_Journal.statistics)-2
+        else if image_xscale = -1 then if obj_Journal.achievements_page &gt; 0 //Soldaki ok
             {
-            obj_Journal.statistics_offset++;
-            with(obj_Journal.statistics_arrow[0]) image_index = 1;                    
+            obj_Journal.achievements_page--;
+            with(obj_Journal.achievements_arrow[0]) image_index = 1;        
+            with(obj_JournalAchievementsSquare) 
+                {
+                number -= 16;
+                sprite_index = spr_JournalAchievements;
+                }
             }
         }
 }

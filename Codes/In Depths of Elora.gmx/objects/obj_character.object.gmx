@@ -42,7 +42,6 @@
     v_speed = 0; //Dikey hız
     dir_sign = 1; //X Scale
     run_speed = 4; //Koşma hızı
-    light_potion = 0; //Kaç tane light potion içtik?
     resistance = 1; //Direnç
     step_count[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
     sprite_change = false; //Sprite'ın değişip değişmediğini kontrol eden değer
@@ -101,74 +100,6 @@
 
 {
     resistance = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Light Potion
-
-{
-    light_size_new -= (light_potion*150);
-    light_potion = 0;
-    alarm[3] = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Light Potion
-
-{
-    if light_size &lt; light_size_new
-        {
-        light_size++;
-        alarm[3] = 1;
-        }
-    else if light_size &gt; light_size_new
-        {
-        light_size--;
-        alarm[3] = 1;
-        }
-    else if light_size = light_size_new
-        {
-        }
 }
 </string>
           </argument>
@@ -342,10 +273,13 @@
             break;
             
         case spr_PotionLight:
-            light_size_new += 150;
-            light_potion++;
-            alarm[3] = 1;
-            alarm[4] = room_speed*10;
+            with(obj_CharacterLight) 
+                {
+                light_size_new += 150;
+                alarm[0] = 1;
+                light_potion++;
+                alarm[1] = room_speed*10;
+                }
             scr_potion(snd_PotionLight,c_yellow,"+ Light Radius Increased!");
             scr_hud_interact();
             break;
