@@ -500,7 +500,7 @@
                 break;
                 
             case "Audio":
-                ini_open(string_lower(current_profile) +"_config.ini");
+                ini_open(current_profile +"_config.ini");
                 if !keyboard_check_pressed(vk_enter) then switch(button_current)
                     {
                     case MASTER_VOLUME:
@@ -560,7 +560,7 @@
                             {
                             profiles[CURRENT_PROFILE] = scr_change_button(dirc,profile,profiles[CURRENT_PROFILE],"CURRENT PROFILE: ","Profiles","Current Number");
                             scr_profile_load();
-                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + current_profile;
+                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + string_upper(current_profile);
                             break;
                             }
                     }
@@ -795,7 +795,7 @@
                             scr_profile_names();
                             menu_current = "Profiles";
                             scr_change_menu(profiles,2);
-                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + current_profile;
+                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + string_upper(current_profile);
                             }
                         break;
                         

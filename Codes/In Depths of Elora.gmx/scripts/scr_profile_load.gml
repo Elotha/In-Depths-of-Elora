@@ -8,10 +8,10 @@
         return false;
         }
     current_profile_number = ini_read_real("Profiles","Current Number",0);
-    current_profile = ini_read_string("Profiles",current_profile_number,"");
-    ini_write_string("Profiles","Current",current_profile);
+    current_profile = string_lower(ini_read_string("Profiles",current_profile_number,""));
+    ini_write_string("Profiles","Current",string_upper(current_profile));
     ini_close();
-    ini_open(string_lower(current_profile)+"_config.ini");
+    ini_open(current_profile+"_config.ini");
     
     //Controls
     

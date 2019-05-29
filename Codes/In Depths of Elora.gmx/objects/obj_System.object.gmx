@@ -49,8 +49,9 @@
     window_set_cursor(cr_none);
     
     ini_open(current_profile + "_config.ini");
-    journal_key = ini_read_real("Controls",controlkeys.journal,vk_tab);
+    journal_key = ord(ini_read_string("Controls",controlkeys.journal,vk_tab));
     ini_close();
+    
 }
 </string>
           </argument>
@@ -131,7 +132,7 @@
             <string>///Journal
 
 {
-    if keyboard_check_pressed(vk_tab) //Journal açılsın ya da kapansın
+    if keyboard_check_pressed(journal_key) //Journal açılsın ya da kapansın
         {
         if instance_number(obj_Journal) = 0 then instance_create(x,y,obj_Journal);
         }

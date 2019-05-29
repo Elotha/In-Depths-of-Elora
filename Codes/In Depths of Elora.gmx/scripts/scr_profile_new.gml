@@ -25,7 +25,7 @@
         description = "";
         if alarm[0] != -1 then alarm[0] = -1;
         ini_write_real("Profiles","Total",ini_read_real("Profiles","Total",0)+1);
-        current_profile = ini_read_string("Profiles","Current","Current");
+        current_profile = string_lower(ini_read_string("Profiles","Current","Current"));
         file_copy(current_profile + "_config.ini",string_lower(new_profile) + "_config.ini");
         check = true;
         }
@@ -50,7 +50,7 @@
     ini_write_string("Profiles","Current Number",total-1);
     ini_write_string("Profiles","Current",new_profile);
     ini_close();
-    current_profile = new_profile;
+    current_profile = string_lower(new_profile);
     
     if !check
         {
@@ -59,7 +59,7 @@
         scr_control_defaults();
         
         //Gameplay
-        ini_open(string_lower(current_profile) + "_config.ini");
+        ini_open(current_profile + "_config.ini");
         
         hud_current = ALWAYS_SHOW;
         ini_write_real("Gameplay","Hud",hud_current);
@@ -103,7 +103,7 @@
         }
     
     ini_close();
-    ini_open(string_lower(current_profile) + ".ini");
+    ini_open(current_profile + ".ini");
     ini_write_real("General","Level",rm_Level1);
     ini_close();
     
@@ -114,6 +114,6 @@
         profile[i] = ini_read_string("Profiles",i,"");
         }
     ini_close();
-    profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "<" + current_profile + ">";
+    profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "<" + string_upper(current_profile) + ">";
     scr_profile_strings();
 }

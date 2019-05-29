@@ -124,8 +124,20 @@
                 }
             scr_journal_clear();
             tab_current = other.type;
-            if tab_current = "Achievements" then event_user(2);
-            event_user(1); //Okları yarat
+            switch(tab_current)
+                {
+                case "Last Dialogues":
+                    event_user(1);
+                    break;
+                    
+                case "Achievements":
+                    event_user(2);
+                    break;
+                    
+                case "Statistics":
+                    event_user(3);
+                    break;
+                }
             }
         selected = true;
         image_index = 2;

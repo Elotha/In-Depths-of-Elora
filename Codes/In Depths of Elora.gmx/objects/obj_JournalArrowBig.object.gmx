@@ -57,15 +57,22 @@
 {
     if image_index = 2
         {
-        if image_angle = 0
+        switch(obj_Journal.tab_current)
             {
-            if obj_Journal.statistics_offset &gt; 0 then image_index = 1; else image_index = 0;
+            case "Last Dialogues":
+                break;
+                
+            case "Statistics":
+                if image_angle = 0
+                    {
+                    if obj_Journal.statistics_offset &gt; 0 then image_index = 1; else image_index = 0;
+                    }
+                else if image_angle = 180
+                    {
+                    if obj_Journal.statistics_offset &lt; obj_Journal.statistics_max then image_index = 1; else image_index = 0;
+                    }
+                break;
             }
-        else if image_angle = 180
-            {
-            if obj_Journal.statistics_offset &lt; array_length_1d(obj_Journal.statistics)-2 then image_index = 1; else image_index = 0;
-            }
-        
         }
 }
 </string>
@@ -96,15 +103,33 @@
     if image_index = 1
         {
         image_index = 2;
-        if image_angle = 0
+        switch(obj_Journal.tab_current)
             {
-            if obj_Journal.statistics_offset &gt; 0 then obj_Journal.statistics_offset--;
-            with(obj_Journal.statistics_arrow[1]) image_index = 1;  
-            }
-        if image_angle = 180 then if obj_Journal.statistics_offset &lt; array_length_1d(obj_Journal.statistics)-2
-            {
-            obj_Journal.statistics_offset++;
-            with(obj_Journal.statistics_arrow[0]) image_index = 1;                    
+            case "Last Dialogues":
+                if image_angle = 0
+                    {
+                    if obj_Journal.statistics_offset &gt; 0 then obj_Journal.statistics_offset--;
+                    with(obj_Journal.statistics_arrow[1]) image_index = 1;  
+                    }
+                if image_angle = 180
+                    {
+                    if obj_Journal.statistics_offset &lt;= obj_Journal.statistics_max then obj_Journal.statistics_offset++;
+                    with(obj_Journal.statistics_arrow[0]) image_index = 1;                    
+                    }
+                break;
+                
+            case "Statistics":
+                if image_angle = 0
+                    {
+                    if obj_Journal.statistics_offset &gt; 0 then obj_Journal.statistics_offset--;
+                    with(obj_Journal.statistics_arrow[1]) image_index = 1;  
+                    }
+                if image_angle = 180
+                    {
+                    if obj_Journal.statistics_offset &lt;= obj_Journal.statistics_max then obj_Journal.statistics_offset++;
+                    with(obj_Journal.statistics_arrow[0]) image_index = 1;                    
+                    }
+                break;
             }
         }
 }

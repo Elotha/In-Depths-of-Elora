@@ -1,7 +1,7 @@
 ///Defaults
 
 {
-    ini_open(string_lower(current_profile) + "_config.ini");
+    ini_open(current_profile + "_config.ini");
     
     control_string[controlkeys.left] = "LEFT ARROW";
     control[controlkeys.left] = vk_left;

@@ -28,6 +28,7 @@
             <string>///Create
 
 {
+    with(obj_CharacterParent) movement_permission = false;
     roll_dir = 1;
     cursor_sprite = spr_JournalMouse;
     tab_current = "Roll";
@@ -37,19 +38,6 @@
     logo_index = 0;
     frate = global.frame_rate;
     tabs_alpha = 0;
-    //statistics_index = 0;
-    statistics_offset = 0;
-    statistics[5] = 0;
-    statistics_str[5] = "";
-    sprh = sprite_get_height(spr_JournalStatisticsFrames);
-    achh = sprite_get_height(spr_JournalSquare);
-    achw = sprite_get_width(spr_JournalSquare);
-    ach_sep = 47; //Achievements kısmındaki girdilerin birbirine olan piksel uzaklığı
-    achievement_number = 0; //Kaçıncı achievementtayız?
-    achievements_page = 0; //Kaçıncı sayfadayız?
-    achievements_max = 11; //Toplam achievement sayısı
-    achievements_page_max = floor(achievements_max/16); //Maksimum sayfa sayısı kaç?
-    
     
     image_speed = 0;
     ww = display_get_gui_width();
@@ -83,6 +71,7 @@
 
 {
     cursor_sprite = -1;
+    with(obj_CharacterParent) movement_permission = true;
 }
 </string>
           </argument>
@@ -119,6 +108,74 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Statistics
+
+{
+    statistics_arrow[0] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2-110+8,obj_JournalArrowBig); //Yukarı ok
+    statistics_arrow[1] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2+110+24,obj_JournalArrowBig); //Aşağı ok
+    with(statistics_arrow[1]) 
+        {
+        image_index = 1;
+        image_angle = 180;
+        }
+        
+    statistics_offset = 0;
+    sprh = sprite_get_height(spr_JournalStatisticsFrames);
+    enum statistics
+        {
+        hurts,
+        deaths,
+        steps,
+        profile_time,
+        game_time,
+        score_stones,
+        potions,
+        st_lives,
+        }
+    
+    statistics_questions[statistics.hurts] = "How many times did you hurt?";
+    statistics_questions[statistics.deaths] = "How many times did you die?";
+    statistics_questions[statistics.steps] = "How many steps did you take?";
+    statistics_questions[statistics.profile_time] = "How long do you play in this profile?";
+    statistics_questions[statistics.game_time] = "How long do you play the game?";
+    statistics_questions[statistics.score_stones] = "How many blue stones did you take?";
+    statistics_questions[statistics.potions] = "How many potions did you take?";
+    statistics_questions[statistics.st_lives] = "How many lives did you take?";
+    
+    statistics_answers[statistics.hurts] = 0;
+    statistics_answers[statistics.deaths] = 1;
+    statistics_answers[statistics.steps] = 2;
+    statistics_answers[statistics.profile_time] = 3;
+    statistics_answers[statistics.game_time] = 4;
+    statistics_answers[statistics.score_stones] = 5;
+    statistics_answers[statistics.potions] = 6;
+    statistics_answers[statistics.st_lives] = 7;
+    
+    statistics_index = 0;
+    statistics_max = array_length_1d(statistics_questions)-4;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -139,13 +196,23 @@
             <string>///Achievements
 
 {
+    //Değişkenler
+    achh = sprite_get_height(spr_JournalSquare);
+    achw = sprite_get_width(spr_JournalSquare);
+    ach_sep = 47; //Achievements kısmındaki girdilerin birbirine olan piksel uzaklığı
+    achievement_number = 0; //Kaçıncı achievementtayız?
+    achievements_page = 0; //Kaçıncı sayfadayız?
+    achievements_max = 11; //Toplam achievement sayısı
+    achievements_page_max = floor(achievements_max/16); //Maksimum sayfa sayısı kaç?
+    
+    //Achievement kareleri
     var q, w, number;
     for(q = 0; q &lt; 4; q++)
         {
         for(w = 0; w &lt; 4; w++)
             {
             number = q*4+w;
-            ach[number] = instance_create(view_xview[0]+view_wview[0]/2-(2*ach_sep)+(w*ach_sep)+26,view_yview[0]+view_hview[0]/2-(2*ach_sep)+(q*ach_sep)+9,obj_JournalAchievementsSquare); //Achievement kareleri
+            ach[number] = instance_create(view_xview[0]+view_wview[0]/2-(2*ach_sep)+(w*ach_sep)+26,view_yview[0]+view_hview[0]/2-(2*ach_sep)+(q*ach_sep)+9,obj_JournalAchievementsSquare);
             ach[number].number = number;
             if ach[number].number &gt;= achievements_max then with(ach[number]) sprite_index = -1;
             }
@@ -192,21 +259,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Arrows
+            <string>///Last Dialogues
 
-{
-    switch(tab_current)
+{        
+    ///Değişkenler
+    last_dialogues_sep = 16;
+    
+    
+    //Oklar
+    last_dialogues_arrow[0] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2-110+8-6,obj_JournalArrowBig); //Yukarı ok
+    last_dialogues_arrow[1] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2+110+24-2,obj_JournalArrowBig); //Aşağı ok
+    //if achievements_page_max &gt; 0 then with(last_dialogues_arrow[0]) image_index = 1;
+    with(last_dialogues_arrow[1]) 
         {
-        case "Statistics":
-            statistics_arrow[0] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2-110+8,obj_JournalArrowBig); //Yukarı ok
-            statistics_arrow[1] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2+110+24,obj_JournalArrowBig); //Aşağı ok
-            with(statistics_arrow[1]) 
-                {
-                image_index = 1;
-                image_angle = 180;
-                }
-            break;
+        image_yscale = -1;
+        image_index = 1;
         }
+    
+    //Last Dialogues
+    last_dialogues[0] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
+    last_dialogues[1] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need.";    
+    last_dialogues[2] = "Wizard said, I am going to need this parchment.";
+    last_dialogues[3] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
+    last_dialogues[4] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need.";    
+    last_dialogues[5] = "Wizard said, I am going to need this parchment.";
+    
 }
 </string>
           </argument>
@@ -240,7 +317,7 @@
         j += sprite_get_width(spr_JournalTab);
         }
     with(main_tabs[0]) type = "Entries";
-    with(main_tabs[1]) type = "Last Dialogs";
+    with(main_tabs[1]) type = "Last Dialogues";
     with(main_tabs[2]) type = "Achievements";
     with(main_tabs[3]) type = "Statistics";
 }
@@ -280,7 +357,6 @@
         }
     else if image_index = 0 &amp;&amp; roll_dir = -1 then instance_destroy();
     
-    
     if journal_dir = -1 then if journal_alpha &gt; 0 then journal_alpha = clamp(journal_alpha-0.04,0,1); //Kapanma
     else
         {
@@ -292,12 +368,20 @@
         {
         case "Start":
             if journal_dir = 1 then if journal_alpha &lt; 1 then journal_alpha = clamp(journal_alpha+0.04,0,1);
-            draw_sprite_ext(spr_JournalLogo,floor(logo_index),view_wview[0]/2,view_hview[0]/2,1,1,0,c_white,journal_alpha);
+            draw_sprite_ext(spr_JournalLogo,floor(logo_index),view_wview[0]/2,view_hview[0]/2,1,1,0,c_white,journal_alpha); //Logo
             logo_index = logo_index+frate mod sprite_get_number(spr_JournalLogo);
             break;
             
+        case "Last Dialogues":
+            draw_sprite_ext(spr_JournalBigFrame,0,view_wview[0]/2,view_hview[0]/2+12,1,1,0,c_white,journal_alpha); //Last dialogues tablosu
+            draw_sprite_ext(spr_JournalArrowBig,last_dialogues_arrow[0].image_index,last_dialogues_arrow[0].x-view_xview[0],last_dialogues_arrow[0].y-view_yview[0],1,1,0,c_white,journal_alpha); //Yukardaki ok
+            draw_sprite_ext(spr_JournalArrowBig,last_dialogues_arrow[1].image_index,last_dialogues_arrow[1].x-view_xview[0],last_dialogues_arrow[1].y-view_yview[0],1,1,180,c_white,journal_alpha); //Aşağıdaki ok
+            
+            scr_last_dialogues();
+            break;
+            
         case "Achievements":
-            draw_sprite_ext(spr_JournalFrameAchievements,0,view_wview[0]/2,view_hview[0]/2+12,1,1,0,c_white,journal_alpha); //Achievement tablosu
+            draw_sprite_ext(spr_JournalFrameAchievements,0,view_wview[0]/2,view_hview[0]/2+12,1,1,0,c_white,journal_alpha); //Achievements tablosu
             for(var q = 0; q &lt; min(achievements_max,16); q++)
                 {
                 if ach[q].sprite_index = -1 then continue;
@@ -309,22 +393,47 @@
             display_set_gui_size(view_wport[0],view_hport[0]);
             draw_set_colour(c_black);
             draw_set_font(fnt_AchievementTitle);
-            draw_text(view_wport[0]/2-256,view_hport[0]/2+272,achievement_name[achievement_number]); //Seçili başarımın ismi
+            draw_text_colour(view_wport[0]/2-256,view_hport[0]/2+272,achievement_name[achievement_number],c_black,c_black,c_black,c_black,journal_alpha); //Seçili başarımın ismi
             draw_set_font(fnt_AchievementDescription);
-            draw_text(view_wport[0]/2-256,view_hport[0]/2+304,achievement_description[achievement_number]); //Seçili başarımın açıklaması
-            display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
+            draw_text_color(view_wport[0]/2-256,view_hport[0]/2+304,achievement_description[achievement_number],c_black,c_black,c_black,c_black,journal_alpha);; //Seçili başarımın açıklaması
                 
             break;
             
         case "Statistics":
             draw_sprite_ext(spr_JournalFrameScroll,0,view_wview[0]/2,view_hview[0]/2+16,1,1,0,c_white,journal_alpha); //Dış hatlar
-            draw_sprite_ext(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2-sprh*2+37,1,1,0,c_white,journal_alpha); //Birinci istatistik
-            draw_sprite_ext(spr_JournalStatisticsFrames,1,view_wview[0]/2,view_hview[0]/2-sprh+43,1,1,0,c_white,journal_alpha); //İkinci istatistik
-            draw_sprite_ext(spr_JournalStatisticsFrames,2,view_wview[0]/2,view_hview[0]/2+49,1,1,0,c_white,journal_alpha); //Üçüncü istatistik
-            draw_sprite_ext(spr_JournalStatisticsLastFrame,0,view_wview[0]/2,view_hview[0]/2+sprh+55,1,1,0,c_white,journal_alpha); //Görünmeyen son istatistik
+            draw_sprite_ext(spr_JournalStatisticsFrames,0,view_wview[0]/2,view_hview[0]/2-sprh*2+37-8,1,1,0,c_white,journal_alpha); //Birinci istatistik
+            draw_sprite_ext(spr_JournalStatisticsFrames,1,view_wview[0]/2,view_hview[0]/2-sprh+43-8,1,1,0,c_white,journal_alpha); //İkinci istatistik
+            draw_sprite_ext(spr_JournalStatisticsFrames,2,view_wview[0]/2,view_hview[0]/2+49-8,1,1,0,c_white,journal_alpha); //Üçüncü istatistik
+            draw_sprite_ext(spr_JournalStatisticsLastFrame,0,view_wview[0]/2,view_hview[0]/2+sprh+55-8,1,1,0,c_white,journal_alpha); //Görünmeyen son istatistik
             draw_sprite_ext(spr_JournalArrowBig,statistics_arrow[0].image_index,statistics_arrow[0].x-view_xview[0],statistics_arrow[0].y-view_yview[0],1,1,0,c_white,journal_alpha); //Yukardaki ok
             draw_sprite_ext(spr_JournalArrowBig,statistics_arrow[1].image_index,statistics_arrow[1].x-view_xview[0],statistics_arrow[1].y-view_yview[0],1,1,180,c_white,journal_alpha); //Aşağıdaki ok
+            
+            display_set_gui_size(view_wport[0],view_hport[0]);
+            
+            draw_set_font(fnt_AchievementTitle);
+            draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-sprh*2+16)*3,"- " + statistics_questions[statistics_offset],c_black,c_black,c_black,c_black,journal_alpha);
+            draw_set_font(fnt_AchievementDescription);
+            draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-sprh*2+32)*3,"   " + string(statistics_answers[statistics_offset]),c_black,c_black,c_black,c_black,journal_alpha);
+            
+            draw_set_font(fnt_AchievementTitle);
+            draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-sprh+22)*3,"- " + statistics_questions[statistics_offset+1],c_black,c_black,c_black,c_black,journal_alpha);
+            draw_set_font(fnt_AchievementDescription);
+            draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-sprh+22+16)*3,"   " + string(statistics_answers[statistics_offset+1]),c_black,c_black,c_black,c_black,journal_alpha);
+            
+            draw_set_font(fnt_AchievementTitle);
+            draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(28*3),"- " + statistics_questions[statistics_offset+2],c_black,c_black,c_black,c_black,journal_alpha);
+            draw_set_font(fnt_AchievementDescription);
+            draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(28+16)*3,"   " + string(statistics_answers[statistics_offset+2]),c_black,c_black,c_black,c_black,journal_alpha);
+            
+            if statistics_offset &lt; statistics_max
+                {
+                draw_set_font(fnt_AchievementTitle);
+                draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(+sprh*2-8)*3,"- " + statistics_questions[statistics_offset+3],c_black,c_black,c_black,c_black,journal_alpha/2);
+                draw_set_font(fnt_AchievementDescription);
+                draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(+sprh*2-8+16)*3,"   " + string(statistics_answers[statistics_offset+3]),c_black,c_black,c_black,c_black,journal_alpha/2);
+                }            
         }
+    display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
         
     if tab_current != "Roll" //Tabs
         {
