@@ -160,7 +160,7 @@
             }
         }
         
-     if keyboard_check(ord('J')) //Canı azalt
+     if keyboard_check(ord('O')) //Canı azalt
         {
         health--;
         with (obj_Character) if health &lt;= 0

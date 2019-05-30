@@ -29,6 +29,124 @@
 
 {
     image_speed = 0;
+    next_index = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Event User 1
+
+{
+    event_user(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Keyboard Inputs
+
+{
+
+    if keyboard_check_pressed(vk_up) &amp;&amp; image_yscale = 1 then event_user(0);
+    if keyboard_check_pressed(vk_down) &amp;&amp; image_yscale = -1 then event_user(0);
+    else if keyboard_check_released(vk_up) || keyboard_check_released(vk_down) then event_user(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="61">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Event User 0
+
+{
+    if image_yscale != -1 then exit;
+    if alarm[0] != -1 then event_user(1);
+    event_user(0);
+    alarm[0] = 15;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="60">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Event User 0
+
+{
+    if image_yscale != 1 then exit;
+    if alarm[0] != -1 then event_user(1);
+    event_user(0);
+    alarm[0] = 15;
 }
 </string>
           </argument>
@@ -52,7 +170,61 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Left Released
+            <string>///Event User 1
+
+{
+    event_user(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Event User 0
+
+{
+    event_user(0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Glob Left Released
 
 {
     if image_index = 2
@@ -60,6 +232,8 @@
         switch(obj_Journal.tab_current)
             {
             case "Last Dialogues":
+                if image_yscale = 1 then image_index = next_index;
+                if image_yscale = -1 then image_index = next_index;
                 break;
                 
             case "Statistics":
@@ -80,7 +254,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="4">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -106,15 +280,15 @@
         switch(obj_Journal.tab_current)
             {
             case "Last Dialogues":
-                if image_angle = 0
+                if image_yscale = 1
                     {
-                    if obj_Journal.statistics_offset &gt; 0 then obj_Journal.statistics_offset--;
-                    with(obj_Journal.statistics_arrow[1]) image_index = 1;  
+                    if obj_Journal.last_dialogues_offset &gt; 0 then obj_Journal.last_dialogues_offset--;
+                    with(obj_Journal) scr_last_dialogues_update(true);
                     }
-                if image_angle = 180
+                if image_yscale = -1
                     {
-                    if obj_Journal.statistics_offset &lt;= obj_Journal.statistics_max then obj_Journal.statistics_offset++;
-                    with(obj_Journal.statistics_arrow[0]) image_index = 1;                    
+                    obj_Journal.last_dialogues_offset++;
+                    with(obj_Journal) scr_last_dialogues_update(false);
                     }
                 break;
                 

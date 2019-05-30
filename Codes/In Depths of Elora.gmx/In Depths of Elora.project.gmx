@@ -251,7 +251,8 @@
     </scripts>
     <scripts name="Journal">
       <script>scripts\scr_journal_clear.gml</script>
-      <script>scripts\scr_last_dialogues.gml</script>
+      <script>scripts\scr_last_dialogues_update.gml</script>
+      <script>scripts\scr_last_dialogues_draw.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

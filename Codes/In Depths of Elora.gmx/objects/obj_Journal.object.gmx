@@ -264,26 +264,38 @@
 {        
     ///Değişkenler
     last_dialogues_sep = 16;
+    last_dialogues_str[0] = "S";
+    last_dialogues_str[1] = "S #S";
+    last_dialogues_str[2] = "S #S #S";
+    last_dialogues_str[3] = "S #S #S #S";
+    last_dialogues_str[4] = "S #S #S #S #S";
+    
+    last_dialogues_offset = 0;
     
     
     //Oklar
     last_dialogues_arrow[0] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2-110+8-6,obj_JournalArrowBig); //Yukarı ok
     last_dialogues_arrow[1] = instance_create(view_xview[0]+view_wview[0]/2-1,view_yview[0]+view_hview[0]/2+110+24-2,obj_JournalArrowBig); //Aşağı ok
-    //if achievements_page_max &gt; 0 then with(last_dialogues_arrow[0]) image_index = 1;
-    with(last_dialogues_arrow[1]) 
-        {
-        image_yscale = -1;
-        image_index = 1;
-        }
+    with(last_dialogues_arrow[1]) image_yscale = -1;
     
     //Last Dialogues
-    last_dialogues[0] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
-    last_dialogues[1] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need.";    
-    last_dialogues[2] = "Wizard said, I am going to need this parchment.";
-    last_dialogues[3] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
-    last_dialogues[4] = "Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need.";    
-    last_dialogues[5] = "Wizard said, I am going to need this parchment.";
+    /*for(var i = 0; i &lt; 10; i++)
+    last_dialogues[i] = string(i) + " Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
+    */
     
+    last_dialogues[0] = "0 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
+    last_dialogues[1] = "1 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need.";    
+    last_dialogues[2] = "2 Wizard said, I am going to need this parchment.";
+    last_dialogues[3] = "3 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
+    last_dialogues[4] = "4 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need.";
+    last_dialogues[5] = "5 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence.";
+    last_dialogues[6] = "6 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence.";
+    last_dialogues[7] = "7 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence.";
+    last_dialogues[8] = "8 Wizard said, I am going to need this parchment.";
+    last_dialogues[9] = "9 Wizard said, I am going to need this parchment. It was his #masterpiece and lifetime work. But he couldn't upload all the #data I need. He said I have to find pomegranate flower and #some stones that have magic essence."; 
+    
+    //Update Dialogues
+    scr_last_dialogues_update(true);
 }
 </string>
           </argument>
@@ -377,7 +389,7 @@
             draw_sprite_ext(spr_JournalArrowBig,last_dialogues_arrow[0].image_index,last_dialogues_arrow[0].x-view_xview[0],last_dialogues_arrow[0].y-view_yview[0],1,1,0,c_white,journal_alpha); //Yukardaki ok
             draw_sprite_ext(spr_JournalArrowBig,last_dialogues_arrow[1].image_index,last_dialogues_arrow[1].x-view_xview[0],last_dialogues_arrow[1].y-view_yview[0],1,1,180,c_white,journal_alpha); //Aşağıdaki ok
             
-            scr_last_dialogues();
+            scr_last_dialogues_draw();
             break;
             
         case "Achievements":

@@ -8,38 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Instance Activitation
-/*
-{
-    with(obj_LightBug)
-        {
-        if point_distance(x,y,obj_Camera.x,obj_Camera.y) &gt; 500 then instance_deactivate_object(id);
-        }
-    instance_activate_region(view_xview[0]-256,view_yview[0]-256,view_wview[0]+512,view_hview[0]+512,true);
-    alarm[0] = 30;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -62,9 +30,13 @@
 {
     //Burada aşağı ya da yukarı tuşlarına bastığımız zaman kamerada oluşan değişim uygulanıyor.
     if instance_number(obj_Character) = 0 then exit;
-    if keyboard_check(obj_Character.control[controlkeys.cameraup]) or (wasd_check &amp;&amp; keyboard_check(ord('W'))) then camera = "Up";
-    else if keyboard_check(obj_Character.control[controlkeys.cameradown]) or (wasd_check &amp;&amp; keyboard_check(ord('S'))) then camera = "Down";
-    else camera = "Stable";
+    if !obj_Character.movement_permission then camera = "Stable";
+    else
+        {
+        if keyboard_check(obj_Character.control[controlkeys.cameraup]) or (wasd_check &amp;&amp; keyboard_check(ord('W'))) then camera = "Up";
+        else if keyboard_check(obj_Character.control[controlkeys.cameradown]) or (wasd_check &amp;&amp; keyboard_check(ord('S'))) then camera = "Down";
+        else camera = "Stable";
+        }
     
     if camera = "Up" 
         {
