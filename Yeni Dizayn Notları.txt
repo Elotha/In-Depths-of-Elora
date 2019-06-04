@@ -1,0 +1,51 @@
+Dash ve space'e bastýkça daha yükseðe zýplama mekanikleri eklensin.
+
+Minyoo'nun üstünden geçersek minyoo tavandaki platforma ýþýnlansýn.
+
+Platform kararmasý görselliði yapýlabilir. 
+
+Üstünde zýplayarak kýrabildiðimiz taþlar olabilir. Bu taþlar normalde kýrýlabilir olduðu görünmüyor olabilir. Görmek için büyü görüþü moduna geçmemiz gerekir. Bazen de üstüne düþtüðümüzde yanlýþlýkla kýrýlabilir olduklarýný fark edebiliriz. 
+
+Dikit düþürebilme olabilir. Dikit düþürebilmek için bir birim yüksekliði olan platformlarýn üstünde zýplanabilir.
+
+Basýlabilir buttonlar olabilir.
+
+Ýçinden duman çýkan potlar düþünülebilir.
+
+Damast dokununca az, patlayýnca çok hasar versin. Damastlar iç kapýlarý patlatýyor olabilir. Damast öldüðü yerden tekrar doðabilir.
+
+Gümüþ kapýlar bazen shortcut amacýyla kullanýlabilir. Bazý kapýlar birden fazla gümüþ anahtar isteyebilir. Bölümler arasýnda gümüþ anahtar aktarýlýr. Ýlerideki bir bölümün kapýsýnda bir sürü gümüþ anahtarýn birikmesi gerekiyor ve bunun baþarýmý var.
+
+Elora'dan yayýlan büyü, büyü taþlarý, her canlýnýn büyü taþý içermesi, ruhun büyü taþýnýn içinde olmasý, büyünün zamanla sönüyor olmasý
+
+Elora, kendi odasýnda iletiþim kurabiliyor olabilir. Bu sayede bize oyunun loru ile ilgili bir þeyler verebilir. Hemona bazen Elora'yý ziyaret ediyor.
+
+Overall olarak baktýðýmýzda yukarýdan derine iniyor olalým.
+
+Pixo'nun büyü izlerini görebilme yeteneðini açtýðý bir modu var. Bu modda mana harcýyor. Manasý, herhangi bir upgrade olmadan sadece beþ saniye kullanýlabiliyor. Pixo bu moddan çýktýktan 1-2 saniye sonra, mana otomatik dolmaya baþlýyor fakat sadece 2 / 5 oranýnda otomatik dolabiliyor. Eðer tam doldurmak istiyorsak büyü esansý harcamak zorundayýz. Büyü izlerini takip ederek antik yapýtlarý bulabiliriz. Ayrýca sadece büyü görüþünde gözüken anahtarlar olabilir.
+
+Mana çeken varlýklar olabilir.
+
+Anahtar pusulalarýný sýrayla alýyoruz. Ýlk pusula sayesinde en yakýn altýn anahtarýn ne yönde olduðunu görebiliyoruz. Ýkinci pusula sayesinde odada kaç gümüþ anahtar olduðunu görebiliyoruz ve eðer bir büyü esansý harcarsak en yakýndakinin ne yönde olduðunu görebiliyoruz. Üçüncü pusula, odada mor anahtar olup olmadýðýný gösteriyor olabilir. Dördüncü pusula, sadece büyü görüþünde gözüken anahtarlar ile ilgili ipucu veriyor olabilir. 
+
+Zodax, üstüne basýlýnca öldürülebilecek kadar ufak ve zararsýz görünüyor. Sadece büyü görüþünde görünen saldýrýlarý var.
+
+Yaratýklarýn büyük bir kýsmý sadece normal modda tetiklenebiliyor.
+
+Pixo'nun büyü görüþü modunda dört temel yeteneði var. Ýlki, normalde göremediði bazý þeyleri büyü görüþü modunda görebiliyor. Mesela platformlarýn içine de bazen itemler sakliycaz. Bunlar normal modda görünmüyor. Ayný zamanda büyülü saldýrý yapan canlýlarýn büyüsünü normalde göremiyoruz, büyü görüþünde görebiliyoruz.
+
+Ýkinci yeteneði ise, büyü görüþünde asýl gördüðümüz þeyler büyü olduðu ve etkileþime girebildiðimiz þeyler büyü üzerine olduðu için, normalde canýmýz yanacak olduðu halde büyü görüþü modundayken canlýlara dokunacak kadar yaklaþabiliyoruz. Sadece canlýlarýn içindeki büyü taþýna dikkat etmemiz gerekiyor. Deðersek canýmýz yanýyor. 
+
+Üçüncü yeteneði double jump. Büyü görüþü sýrasýnda double jump yaparsak, bir büyü bulutunun içerisindeysek veya bir büyü izinin üstündeyken zýplarsak, üstünden zýpladýðýmýz þeyin içindeki büyü miktarýna göre daha yükseðe zýplayabiliyoruz.
+
+Dördüncü yeteneði ise dash. Büyü görüþü sýrasýnda normalde canlýlarýn taþlarýna dokununca canýmýz gidiyor fakat dash ile bu taþlarýn içinden geçersek baþka bir etkileþim yaratabiliyoruz. Ne taraftan dash attýðýmýza göre bazý canavarlarýn etkileþimi de deðiþebiliyor. 
+
+Beulianýn arkasýndan önüne doðru dashlersen öne doðru koþan, beulian silüetine sahip bir büyü bulutu çýkýyor. Bu büyülü silüetin bazý varlýklarla etkileþimi olabiliyor. Örneðin, bizden mana çalan varlýk bu büyülü silüeti yakalayabiliyor ve bu durum gerçekleþtiðinde bir süreliðine karný doyduðu için bizden mana çalmýyor. Önünden arkasýna doðru dashlersen beulianýn arkasýnda, koþmak için ayaklarýný hareket ettiren ama havaya doðru ilerlediði için koþamayan büyülü bir beulian silüeti çýkýyor. Bu büyülü, gittikçe yukarý doðru süzülen beulian silüeti üzerinden double jump yaparsak oldukça yüksek zýplayabiliyoruz.
+
+Minyoonun arkasýndan önüne doðru dashlersek normalde minyoonun platformun altýna düþüyor olmasý gibi platformun altýna ýþýnlanýyoruz. Önden arkaya dashlersek minyoonun sývýsýna dönüþüp tavana bi miktar ilerliyoruz. Eðer yukarýdaki bir sonraki platform menzil dýþýnda deðilse, o platforma dokunduðumuzda platformun üstüne ýþýnlanýyoruz.
+
+Zodax'ýn önündeysek zodax bize saldýrýyor ve manamýzý çekmeye çalýþýyor. Her iki taraftan da dashlenince onun normalde ýþýnlanacaðý yere ýþýnlanýyoruz.
+
+Damast'ýn hangi yönünden dashlersek, o yöne doðru damastýn silüetine dönüþüyoruz ve o yöne doðru hýzlýca gidiyoruz. Damastýn silüetini bu sýrada kullanabiliyoruz fakat dikey düzlemde hareket az etkiliyor. Mesela yatayda 25 metre gidebiliyorsak dikeyde 10 metre gidebiliyoruz.
+
+Sývý aslýnda milyonlarca yýl önceden kalan canlýlarýn fosilleri ile sönmeye yaklaþmýþ büyü parçacýklarýnýn bir araya gelip, etkileþime girerek oluþturduðu zararlý bir sývý. Bu sebeple büyü görüþü modunda da sývýya düþmek bize zarar veriyor. Ayrýca palpuslar sývýdan çýkarken sývý sýçrattýðý için büyü görüþünde palpuslar da hasar verebiliyor. Palpuslarýn büyü taþlarý normalde suyun içinde kalýyor. Palpuslarý ancak tetikledikten sonra dash yaparsak özelliklerini kullanabiliyoruz. Büyü görüþünde kalabildiðimiz sürece sývýnýn içinde gezinebiliyoruz. 
