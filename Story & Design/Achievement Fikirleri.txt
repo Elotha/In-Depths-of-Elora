@@ -9,3 +9,29 @@ Bütün health bar upgradelerini topla.
 "This one is top-tip-topsy-tipsy secret."
 "This one doesn't even exist."
 "Wha-? What achievement?"
+
+
+------
+
+Sola doðru gitmek
+
+Hiç hit almadan bitirmek
+
+Bütün mavi taþlarý toplamak
+
+Bütün yaratýklarý öldürmek
+
+10 dakika sabit durmak
+
+Her bölümde tavana deðmek
+
+Tavana ard arda zýplamak
+
+Checkpoint kullanmadan oyunu bitirmek
+
+Journaldaki tüm entryleri açmak
+
+Oyunu hacklemeye çalýþmak
+
+Oyunu bitirdikten sonra terse gitmek
+

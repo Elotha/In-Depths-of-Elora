@@ -27,13 +27,11 @@
             <kind>1</kind>
             <string>///Create
 
-//Surface'ler ileri seviye kodlardır, hiç girişmeyelim.
-
 {
-    globalvar light; //"light" isimli değeri global yapar.
+    globalvar light; 
     globalvar light_list;
     light = surface_create(view_wview,view_hview); 
-    depth = 0;
+    depth = MONSTER-50;
     light_list = ds_list_create();
 }
 </string>
@@ -119,7 +117,6 @@
             <string>///Draw
 
 {
-
     draw_set_blend_mode(bm_subtract);
     
     surface_set_target(light);

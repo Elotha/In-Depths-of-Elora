@@ -16,6 +16,8 @@
         jump_permission = false;
         movement_permission = false;
         alarm[2] = (1/image_speed)*image_number;
+        alarm[3] = -1;
+        if dash_cooldown < 40 then dash_cooldown = 40;
         }
         
     if health <= 0

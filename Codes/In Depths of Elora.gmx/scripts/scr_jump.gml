@@ -1,7 +1,7 @@
 ///Jumping
 
 {
-    if jump_permission //Zıplama iznimiz var mı?
+    if jump_permission && movement_permission //Zıplama iznimiz var mı?
         {
         if keyboard_check_pressed(control[controlkeys.jump])  //Inputlar
             {
@@ -27,6 +27,10 @@
                     scr_play_sound(choose(snd_Jump1,snd_Jump2,snd_Jump3,snd_Jump4,snd_Jump5));
                     }
                 }
+            }
+        if jump_count != 0 && keyboard_check(control[controlkeys.jump])
+            {
+            if sign(v_speed) = -1 then v_speed -= jump_plus;
             }
         }
 }

@@ -19,3 +19,11 @@ Zodax'ý öldürünce büyü özü (mavi taþlar) düþsün.
 Uzun süre anahtar bulamama durumunda oyuncuya ipucu verilebilir.
 
 Journaldaki büyücü biraz esprili olabilir. Bir easter egg yerleþtirilebilir. Mesela bir buton olur, bu butona basýnca bütün journal silinir. Oyuncu bir anlýðýna kalp krizi geçirir. Ama aslýnda büyücü þaka yapmýþtýr.
+
+Immidiate dialog seçeneði eklenmesi gerek.
+
+Canavar ýþýnlama büyüsü düþünülebilir.
+
+Anahtar pusulasý olabilir. Bu anahtar pusulasý, altýn anahtarýn ne yönde olduðunu bir cooldown ile gösterirken, diðer anahtarlarýn yerini göstermese de bulunduðu bölümde kaç tane olduðunu gösterebilir.
+
+Dash özelliði eklenebilir.

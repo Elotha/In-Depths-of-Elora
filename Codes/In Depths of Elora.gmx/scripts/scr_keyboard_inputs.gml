@@ -2,10 +2,30 @@
 
 {
     if invincibility && !movement_permission
-            {
-            if v_speed < -0.1 then v_speed += 0.1;
-            }
+        {
+        if v_speed < -0.1 then v_speed += 0.1;
+        }
             
+    if dash_cooldown = 0
+        {
+        if keyboard_check_pressed(ord('R')) && movement_permission
+            {
+            dash_cooldown = dash_cooldown_max;
+            alarm[3] = dash_range;
+            h_speed = dash_speed*image_xscale;
+            v_speed = 0;
+            movement_permission = false;
+            dir_sign = image_xscale;
+            exit;
+            }
+        }
+    else if dash_cooldown > 0
+        {
+        dash_cooldown--;
+        if scr_permission_check() then if !movement_permission then if dash_cooldown < dash_cooldown_max-dash_range+8 then movement_permission = true;
+        }
+    
+    
     var left_press, right_press;
     if movement_permission
         {
@@ -19,5 +39,23 @@
         
         if sign(h_speed) = 1 then dir_sign = 1;
         if sign(h_speed) = -1 then dir_sign = -1;
+        }
+        
+    if keyboard_check_pressed(ord('F'))
+        {
+        if image_blend = c_white
+            {
+            with(all) image_blend = c_aqua;
+            var tiles = tile_get_ids();
+            for(var i = 0; i < array_length_1d(tiles); i++)
+            tile_set_background(tiles[i],ts_PlatformsBlue);
+            }
+        else
+            {
+            with(all) image_blend = c_white; 
+            var tiles = tile_get_ids();
+            for(var i = 0; i < array_length_1d(tiles); i++)
+            tile_set_background(tiles[i],ts_Platforms);
+            }
         }
 }

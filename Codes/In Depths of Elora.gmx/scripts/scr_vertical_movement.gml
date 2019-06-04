@@ -8,7 +8,8 @@
     else block_down = collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom+v_speed+1,obj_Block,false,true);
     if block_down = noone
         {
-        if v_speed < falling_limit then v_speed += falling_speed;
+        if argument0 && dash_cooldown > dash_cooldown_max-dash_range+8 then v_speed = 0;
+        else if v_speed < falling_limit then v_speed += falling_speed;
         if argument1 then if jump_count = 0 && alarm[1] = -1 then alarm[1] = 10;
         }
         
@@ -23,6 +24,7 @@
                 }
             y += distance_to_object(block_down)-1;
             v_speed = 0;
+            //scr_dash_clear();
             //scr_sound_effect(-1,snd_FootStep,RUN_STEP);
             }
         }

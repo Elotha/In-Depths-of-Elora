@@ -33,7 +33,7 @@
     distant_previous = true;
     col = make_colour_rgb(112,97,166);
     alarm[0] = 120;
-    depth = ENVIRONMENT;
+    depth = CHARACTER-50;
 }
 </string>
           </argument>

@@ -188,6 +188,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\ts_Platforms</background>
+    <background>background\ts_PlatformsBlue</background>
     <background>background\ts_Platforms_Variations</background>
     <background>background\ts_PlatformsVariations32x32</background>
     <background>background\ts_Liquid</background>
@@ -210,6 +211,7 @@
       <script>scripts\scr_sprite_control.gml</script>
       <script>scripts\scr_death.gml</script>
       <script>scripts\scr_friction.gml</script>
+      <script>scripts\scr_permission_check.gml</script>
     </scripts>
     <scripts name="Monsters">
       <script>scripts\scr_monster_death.gml</script>

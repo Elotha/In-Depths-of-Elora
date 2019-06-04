@@ -11,6 +11,11 @@
             {
             x += h_speed;
             }
+        else if alarm[3] > -1 //Dash yaptığın yön serbest değilse
+            {
+            h_speed = 0;
+            alarm[3] = -1;
+            }
         }
     else
         {
