@@ -250,7 +250,6 @@
         scr_control_strings();
         
         control[argument0] = keyboard_key;
-        scr_wasd_check();
         
         return true;
     }

@@ -32,6 +32,7 @@
     alarm[0] = global.timing_platform;
     image_alpha = 1;
     depth = PLATFORM;
+    if magical_sight then image_blend = c_aqua;
 }
 </string>
           </argument>

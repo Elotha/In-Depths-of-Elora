@@ -48,8 +48,6 @@
     obj_Audio.music_key = control[controlkeys.music];
     obj_Audio.sounds_key = control[controlkeys.sounds];
     
-    scr_wasd_check();
-    
     //Gameplay
     
     hud_current = ini_read_real("Gameplay","Hud",ALWAYS_SHOW);    

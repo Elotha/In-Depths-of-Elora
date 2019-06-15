@@ -47,6 +47,4 @@
     obj_Audio.sounds_key = control[controlkeys.sounds];
     
     ini_close();
-    
-    global.wasd_check = true;
 }

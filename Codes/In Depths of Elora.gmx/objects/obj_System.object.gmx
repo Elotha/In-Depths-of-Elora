@@ -52,6 +52,9 @@
     journal_key = ord(ini_read_string("Controls",controlkeys.journal,vk_tab));
     ini_close();
     
+    globalvar magical_sight;
+    magical_sight = false;
+    
 }
 </string>
           </argument>

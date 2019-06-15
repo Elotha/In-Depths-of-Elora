@@ -13,7 +13,8 @@
                     {
                     jump_count++;
                     alarm[1] = -1;
-                    v_speed = jump_speed;
+                    var magjump = scr_magical_jump();
+                    if magjump > 0 then v_speed = jump_speed-1-(magjump*0.5); else v_speed = jump_speed;
                     sprite_index = spr_CharacterDoubleJump;
                     image_index = 0;
                     image_speed = 1/6;

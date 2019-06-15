@@ -6,9 +6,10 @@
         if v_speed < -0.1 then v_speed += 0.1;
         }
             
-    if dash_cooldown = 0
+    //Dash
+    if dash_cooldown = 0 
         {
-        if keyboard_check_pressed(ord('R')) && movement_permission
+        if keyboard_check_pressed(ord('D')) && movement_permission
             {
             dash_cooldown = dash_cooldown_max;
             alarm[3] = dash_range;
@@ -25,12 +26,12 @@
         if scr_permission_check() then if !movement_permission then if dash_cooldown < dash_cooldown_max-dash_range+8 then movement_permission = true;
         }
     
-    
+    //Left Right
     var left_press, right_press;
     if movement_permission
         {
-        if keyboard_check(control[controlkeys.left]) || (wasd_check && keyboard_check(ord('A'))) then left_press = true; else left_press = false;
-        if keyboard_check(control[controlkeys.right]) || (wasd_check && keyboard_check(ord('D'))) then right_press = true; else right_press = false;
+        if keyboard_check(control[controlkeys.left]) then left_press = true; else left_press = false;
+        if keyboard_check(control[controlkeys.right]) then right_press = true; else right_press = false;
 
         
         if ((left_press && right_press) xor (!left_press && !right_press)) then h_speed = 0;
@@ -39,23 +40,5 @@
         
         if sign(h_speed) = 1 then dir_sign = 1;
         if sign(h_speed) = -1 then dir_sign = -1;
-        }
-        
-    if keyboard_check_pressed(ord('F'))
-        {
-        if image_blend = c_white
-            {
-            with(all) image_blend = c_aqua;
-            var tiles = tile_get_ids();
-            for(var i = 0; i < array_length_1d(tiles); i++)
-            tile_set_background(tiles[i],ts_PlatformsBlue);
-            }
-        else
-            {
-            with(all) image_blend = c_white; 
-            var tiles = tile_get_ids();
-            for(var i = 0; i < array_length_1d(tiles); i++)
-            tile_set_background(tiles[i],ts_Platforms);
-            }
         }
 }

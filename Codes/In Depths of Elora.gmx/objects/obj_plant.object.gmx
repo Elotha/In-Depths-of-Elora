@@ -28,9 +28,12 @@
             <string>///Create
 
 {
-    image_speed = 1/6;
-    times = 0;
+    image_speed = 0;
+    img_speed = 1/6;
     mask_index = -1;
+    squirt = false;
+    dance_index = 0;
+    alarm[0] = 1/img_speed;
 }
 </string>
           </argument>
@@ -51,7 +54,7 @@
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="7" enumb="7">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -68,22 +71,77 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Animation End
+            <string>///Image Index
 
 {
-    if sprite_index = spr_PlantDance
+    if ++dance_index = 30
         {
-        if ++times = 5
+        squirt = !squirt;
+        dance_index -= 30;
+        if !magical_sight 
             {
-            times = 0;
-            sprite_index = spr_PlantSquirt;
-            mask_index = spr_PlantSquirt;
+            if squirt
+                {
+                sprite_index = spr_PlantSquirt;
+                mask_index = sprite_index;
+                }
+            else 
+                {
+                sprite_index = spr_PlantDance;
+                mask_index = -1;
+                }
             }
         }
-    else if sprite_index = spr_PlantSquirt
+    alarm[0] = 1/img_speed;
+    image_index = dance_index;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Magical Sight
+
+{
+    if magical_sight
         {
         sprite_index = spr_PlantDance;
+        image_blend = c_aqua;
         mask_index = -1;
+        image_index = dance_index;
+        }
+    else
+        {
+        image_blend = c_white;
+        if squirt
+            {
+            sprite_index = spr_PlantSquirt;
+            mask_index = sprite_index;
+            image_index = dance_index;
+            }
+        else 
+            {
+            sprite_index = spr_PlantDance;
+            mask_index = -1;
+            image_index = dance_index;
+            }
         }
 }
 </string>

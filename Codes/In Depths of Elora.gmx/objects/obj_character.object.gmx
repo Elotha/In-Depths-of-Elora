@@ -28,6 +28,7 @@
             <string>///Create
 
 {
+    //Temel Değişkenler
     movement_permission = true; //Hareket etme tuşlarına basma iznimiz var mı?
     bottom_x = 7; //Karakterin yere bastığını belirten taban genişliğinin yarısı
     h_speed = 0; //Yatay hız
@@ -35,40 +36,54 @@
     dir_sign = 1; //X Scale
     run_speed = 4; //Koşma hızı
     
-    jump_speed = -5.8; //Zıplama hızı -7.25
+    //Zıplama
+    jump_speed = -5.8; //Zıplama hızı
     jump_plus = 0.12;
     jump_count = 0; //Zıplama sayısı
     jump_max = 2; //En fazla kaç kere zıplayabiliyoruz?
     jump_permission = true; //Zıplama tuşuna basma iznimiz var mı?
     
+    //Dash
     dash = false; //Dash attık mı?
     dash_speed = 8; //Dash hızı
     dash_cooldown = 0; //Dash cooldown
     dash_cooldown_max = 60; //Dash cooldown süresi
     dash_range = 24; //Maksimum mesafe
     
+    //Görsel Değişkenler
     image_speed = 1/6; //Animasyon hızı   
     sprite_change = false; //Sprite'ın değişip değişmediğini kontrol eden değer
     last_sprite = spr_CharacterIdle; //Step başında hangi sprite'a sahip olduğunu kaydeden değer
     draw = global.draw;
     
+    //Hasar Değişkenleri
     invincibility = 0; //Hasar alma durumu
     invincibility_count = 0; //Yanıp sönme sayısı
     
+    //Diğer Değişkenler
     resistance = 1; //Direnç
     step_count[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
     health = global.health_max;
-    wasd_check = global.wasd_check;
     
-    scr_control_globals(false);
+    //Büyü görüşü modu
+    magical_sight = false; //Aktivasyon
+    magical_sight_time_max = 5*room_speed; //Maksimum zaman
+    magical_sight_time = magical_sight_time_max; //Kalan kullanım
+    magical_sight_cooldown = 2*room_speed; //Tekrar dolmadan önce geçmesi gereken süre
+    magical_sight_regeneration = 2*room_speed; //Otomatik olarak ne kadar dolacaK?
+    magical_sight_regen_speed = 1; //Tekrar dolma hızı
+    magical_sight_count = 0; //Alarm çalıştırma sayısı
     
-    with(obj_Camera)
+    
+    scr_control_globals(false); //Kontrolleri çek
+    
+    with(obj_Camera) //Kamerayı karaktere sabitle
         {
         x = other.x;
         y = other.y;
         }
         
-    create_only_one(x,y,obj_CharacterLight);
+    create_only_one(x,y,obj_CharacterLight); //Işığı yarat
 }
 </string>
           </argument>
@@ -110,6 +125,43 @@
 
 {
     resistance = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Magical Sight Cooldown
+
+{
+    if ++magical_sight_count &lt; magical_sight_regeneration
+        {
+        if magical_sight_time &lt; magical_sight_time_max then magical_sight_time++;
+        else
+            {
+            magical_sight_count = 0;
+            exit;
+            }
+        alarm[4] = magical_sight_regen_speed;
+        }
+    else magical_sight_count = 0;
 }
 </string>
           </argument>
@@ -266,6 +318,7 @@
     last_sprite = sprite_index;
     if sprite_index != spr_CharacterDoor
         {
+        scr_magical_sight();
         scr_jump();
         scr_keyboard_inputs();
         scr_vertical_movement(true,true);
@@ -736,6 +789,42 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw GUI
+
+{
+    var ww = display_get_gui_width();
+    var hh = display_get_gui_height();
+    display_set_gui_size(view_wport[0],view_hport[0]);
+    draw_set_colour(c_black);
+    draw_rectangle(view_wport[0]/2-magical_sight_time,view_hport[0]/2-460,view_wport[0]/2+magical_sight_time,view_hport[0]/2-460+16,true);
+    
+    draw_set_colour(c_blue);
+    draw_rectangle(view_wport[0]/2-magical_sight_time+1,view_hport[0]/2-460+1,view_wport[0]/2+magical_sight_time-1,view_hport[0]/2-460+16-1,false);
+    
+    display_set_gui_size(ww,hh);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -759,6 +848,10 @@
     draw_self();
     if draw
         {
+        draw_set_colour(c_red);
+        draw_rectangle(x-12,y,x+12,y+56,true);
+        exit;
+        
         //draw_set_colour(c_red); //Yatay
         //draw_rectangle(x,y-19,x+((abs(sprite_xoffset)+8)*dir_sign)+h_speed,y+abs(sprite_yoffset),true);
         
@@ -777,7 +870,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="81">
+    <event eventtype="9" enumb="84">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -794,53 +887,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_message(movement_permission);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Jump
+            <string>///Mana Potion
 
 {
-    if jump_speed != -7.25
+    if score &gt; 0 &amp;&amp; !magical_sight &amp;&amp; magical_sight_time != magical_sight_time_max
         {
-        jump_speed = -7.25;
-        jump_plus = 0;
-        }
-    else
-        {
-        jump_speed = -5.8;
-        jump_plus = 0.12;
+        score--;
+        magical_sight_time = magical_sight_time_max;
+        alarm[4] = -1;
         }
 }
 </string>

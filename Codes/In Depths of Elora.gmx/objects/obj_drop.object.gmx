@@ -31,6 +31,7 @@
     gravity = 0.25;
     gravity_direction = 270;
     damage = 10;
+    if magical_sight then image_blend = c_aqua;
 }
 </string>
           </argument>

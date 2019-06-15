@@ -34,4 +34,5 @@
         }
         
     scr_hud_interact();
+    if magical_sight then scr_magical_sight_close();
 }

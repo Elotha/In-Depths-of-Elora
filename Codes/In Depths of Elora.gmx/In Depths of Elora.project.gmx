@@ -185,6 +185,11 @@
       <sprite>sprites\spr_JournalBigFrame</sprite>
       <sprite>sprites\spr_JournalLine</sprite>
     </sprites>
+    <sprites name="Magical Sight">
+      <sprite>sprites\spr_SoulStone</sprite>
+      <sprite>sprites\spr_MS_PlantDance</sprite>
+      <sprite>sprites\spr_MS_PlantSquirt</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\ts_Platforms</background>
@@ -192,6 +197,7 @@
     <background>background\ts_Platforms_Variations</background>
     <background>background\ts_PlatformsVariations32x32</background>
     <background>background\ts_Liquid</background>
+    <background>background\ts_LiquidBlue</background>
     <background>background\bcg_BackLayer</background>
   </backgrounds>
   <paths name="paths"/>
@@ -204,6 +210,9 @@
       <script>scripts\scr_message.gml</script>
     </scripts>
     <scripts name="Movement">
+      <script>scripts\scr_magical_sight.gml</script>
+      <script>scripts\scr_magical_sight_close.gml</script>
+      <script>scripts\scr_magical_jump.gml</script>
       <script>scripts\scr_jump.gml</script>
       <script>scripts\scr_keyboard_inputs.gml</script>
       <script>scripts\scr_vertical_movement.gml</script>
@@ -249,7 +258,6 @@
       <script>scripts\scr_control_defaults.gml</script>
       <script>scripts\scr_control_strings.gml</script>
       <script>scripts\scr_control_globals.gml</script>
-      <script>scripts\scr_wasd_check.gml</script>
     </scripts>
     <scripts name="Journal">
       <script>scripts\scr_journal_clear.gml</script>
@@ -296,6 +304,7 @@
       <object>objects\obj_PlatformTiming</object>
       <object>objects\obj_PlatformTiming2</object>
       <object>objects\obj_PlatformCollapsing</object>
+      <object>objects\obj_SpikesParent</object>
       <object>objects\obj_Spikes</object>
       <object>objects\obj_SpikesLeft</object>
       <object>objects\obj_SpikesRight</object>
@@ -313,6 +322,7 @@
       <object>objects\obj_LightBug</object>
       <object>objects\obj_Boulder</object>
       <object>objects\obj_Stalactite</object>
+      <object>objects\obj_WallSpikesParent</object>
       <object>objects\obj_WallSpikesLeft</object>
       <object>objects\obj_WallSpikesLeft_UpperL</object>
       <object>objects\obj_WallSpikesLeft_LowerL</object>
@@ -350,6 +360,7 @@
       <object>objects\obj_KeyboardArrow2</object>
     </objects>
     <objects name="Backgrounds">
+      <object>objects\obj_BackgroundsParent</object>
       <object>objects\obj_Waterfall1</object>
       <object>objects\obj_Waterfall2</object>
       <object>objects\obj_Waterfall3</object>
@@ -375,6 +386,9 @@
       <object>objects\obj_JournalArrowBig</object>
       <object>objects\obj_JournalAchievementsArrow</object>
       <object>objects\obj_JournalAchievementsSquare</object>
+    </objects>
+    <objects name="Magical Sight">
+      <object>objects\obj_MagicalPlant</object>
     </objects>
   </objects>
   <rooms name="rooms">
