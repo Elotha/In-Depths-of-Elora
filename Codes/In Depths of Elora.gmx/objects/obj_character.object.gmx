@@ -44,7 +44,6 @@
     jump_permission = true; //Zıplama tuşuna basma iznimiz var mı?
     
     //Dash
-    dash = false; //Dash attık mı?
     dash_speed = 8; //Dash hızı
     dash_cooldown = 0; //Dash cooldown
     dash_cooldown_max = 60; //Dash cooldown süresi
@@ -320,7 +319,9 @@
         {
         scr_magical_sight();
         scr_jump();
-        scr_keyboard_inputs();
+        scr_invincibility();
+        scr_dash();
+        scr_left_right();
         scr_vertical_movement(true,true);
         scr_horizontal_movement(true);
         scr_sprite_control();
@@ -533,9 +534,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Death
+            <string>///Death or Dash
 
 {
+    if magical_sight &amp;&amp; dash_cooldown &gt; 0
+        {
+        scr_magical_interaction(other.object_index,image_xscale*other.image_xscale);
+        exit;
+        }
+        
     if global.immortality then exit;
     var type = "Default";
     if invincibility then exit;
@@ -720,6 +727,11 @@
                 alarm[0] = -1;
                 }
             break;
+            
+        case obj_MagicalPlant:
+            if !magical_sight then exit;
+            type = "Plant";
+            break;
         }
     scr_death(type);
 }
@@ -813,10 +825,10 @@
     var hh = display_get_gui_height();
     display_set_gui_size(view_wport[0],view_hport[0]);
     draw_set_colour(c_black);
-    draw_rectangle(view_wport[0]/2-magical_sight_time,view_hport[0]/2-460,view_wport[0]/2+magical_sight_time,view_hport[0]/2-460+16,true);
+    draw_rectangle(view_wport[0]/2-magical_sight_time,view_hport[0]/2-460-16,view_wport[0]/2+magical_sight_time,view_hport[0]/2-460,true);
     
     draw_set_colour(c_blue);
-    draw_rectangle(view_wport[0]/2-magical_sight_time+1,view_hport[0]/2-460+1,view_wport[0]/2+magical_sight_time-1,view_hport[0]/2-460+16-1,false);
+    draw_rectangle(view_wport[0]/2-magical_sight_time+1,view_hport[0]/2-460+1-16,view_wport[0]/2+magical_sight_time-1,view_hport[0]/2-460-1,false);
     
     display_set_gui_size(ww,hh);
 }
@@ -849,7 +861,7 @@
     if draw
         {
         draw_set_colour(c_red);
-        draw_rectangle(x-12,y,x+12,y+56,true);
+        draw_rectangle(x-32,y+32+32,x+32,y+96+16,true);
         exit;
         
         //draw_set_colour(c_red); //Yatay

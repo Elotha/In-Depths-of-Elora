@@ -210,11 +210,10 @@
       <script>scripts\scr_message.gml</script>
     </scripts>
     <scripts name="Movement">
-      <script>scripts\scr_magical_sight.gml</script>
-      <script>scripts\scr_magical_sight_close.gml</script>
-      <script>scripts\scr_magical_jump.gml</script>
       <script>scripts\scr_jump.gml</script>
-      <script>scripts\scr_keyboard_inputs.gml</script>
+      <script>scripts\scr_dash.gml</script>
+      <script>scripts\scr_invincibility.gml</script>
+      <script>scripts\scr_left_right.gml</script>
       <script>scripts\scr_vertical_movement.gml</script>
       <script>scripts\scr_horizontal_movement.gml</script>
       <script>scripts\scr_sprite_control.gml</script>
@@ -263,6 +262,12 @@
       <script>scripts\scr_journal_clear.gml</script>
       <script>scripts\scr_last_dialogues_update.gml</script>
       <script>scripts\scr_last_dialogues_draw.gml</script>
+    </scripts>
+    <scripts name="Magical Sight">
+      <script>scripts\scr_magical_sight.gml</script>
+      <script>scripts\scr_magical_sight_close.gml</script>
+      <script>scripts\scr_magical_jump.gml</script>
+      <script>scripts\scr_magical_interaction.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -339,6 +344,7 @@
       <object>objects\obj_Zodax</object>
       <object>objects\obj_Minyoo</object>
       <object>objects\obj_MonsterCorpse</object>
+      <object>objects\obj_MonsterCloud</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_Item</object>

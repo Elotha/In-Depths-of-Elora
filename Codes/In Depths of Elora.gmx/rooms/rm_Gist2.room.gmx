@@ -280,6 +280,7 @@
     <instance objName="obj_StartPoint" x="256" y="576" name="inst_B28F3824" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_BeulianArrow" x="3760" y="672" name="inst_1FE3C236" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_BeulianArrow" x="4080" y="672" name="inst_E9E1410E" locked="0" code="image_index = LEFT;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Character" x="1488" y="472" name="inst_02A5F80D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="400" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

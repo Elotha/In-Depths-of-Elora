@@ -2,7 +2,7 @@
 
 {
     //Büyü görüşü modu
-    if keyboard_check_pressed(ord('F')) && movement_permission && !invincibility //Açma Kapama
+    if keyboard_check_pressed(ord('F')) && movement_permission//Açma Kapama
         {
         if !magical_sight && magical_sight_time > 10 //Kapalıysa
             {
