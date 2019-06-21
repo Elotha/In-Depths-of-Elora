@@ -539,7 +539,7 @@
 {
     if magical_sight &amp;&amp; dash_cooldown &gt; 0
         {
-        scr_magical_interaction(other.object_index,image_xscale*other.image_xscale);
+        scr_magical_interaction();
         exit;
         }
         

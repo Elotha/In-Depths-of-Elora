@@ -1,14 +1,14 @@
 ///Magical Sight Interaction
 
 //argument0: hangi varlıkla temas ettik?
-//argument1: ne taraftan temas ettik? 1 ise arkadan, -1 ise önden temas ettik
+//image_xscale*other.image_xscale: ne taraftan temas ettik? 1 ise arkadan, -1 ise önden temas ettik
 
 {
     dash_cooldown = 1;
-    switch(argument0)
+    switch(other.object_index)
         {
         case obj_Beulian:
-            switch(argument1)
+            switch(image_xscale*other.image_xscale)
                 {
                 case 1:
                     break;
@@ -19,7 +19,7 @@
             break;
             
         case obj_Minyoo:
-            switch(argument1)
+            switch(image_xscale*other.image_xscale)
                 {
                 case 1:
                     var block;
@@ -44,9 +44,16 @@
             break;
             
         case obj_Damast:
-            switch(argument1)
+            switch(image_xscale)
                 {
                 case 1:
+                    sprite_index = spr_DamastFly;
+                    hspeed = 4;
+                    v_speed = 0;
+                    h_speed = 0;
+                    invincibility = true;
+                    jump_permission = false;
+                    dash_cooldown = 0;
                     break;
                     
                 case -1:
@@ -55,7 +62,7 @@
             break;
             
         case obj_Zodax:
-            switch(argument1)
+            switch(image_xscale*other.image_xscale)
                 {
                 case 1:
                 case -1:
@@ -74,7 +81,7 @@
             break;
             
         case obj_Palpus:
-            switch(argument1)
+            switch(image_xscale*other.image_xscale)
                 {
                 case 1:
                     break;

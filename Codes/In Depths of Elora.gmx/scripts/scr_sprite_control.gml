@@ -1,6 +1,7 @@
 ///Sprite Control
 
 {
+    if magical_sight then if sprite_index = spr_DamastFly then exit;
     if invincibility && !movement_permission && !jump_permission
         {
         if sprite_index != spr_CharacterDamaged
