@@ -30,13 +30,13 @@
 {
     image_speed = 1/6;
     
-    var spikes_left = collision_point(x-16,y+48,obj_Spikes,false,true);
-    var spikes_right = collision_point(x+48,y+48,obj_Spikes,false,true);
+    var Spikesleft = collision_point(x-16,y+48,obj_Spikes,false,true);
+    var Spikesright = collision_point(x+48,y+48,obj_Spikes,false,true);
     
-    if spikes_left = noone &amp;&amp; spikes_right != noone then instance_create(x-32,y,obj_SpikesLeft);
-    if spikes_left != noone &amp;&amp; spikes_right = noone then instance_create(x+32,y,obj_SpikesRight);
+    if Spikesleft = noone &amp;&amp; Spikesright != noone then instance_create(x-32,y,obj_SpikesLeft);
+    if Spikesleft != noone &amp;&amp; Spikesright = noone then instance_create(x+32,y,obj_SpikesRight);
     
-    type = "Non-lethal";
+    //Type = "Non-lethal";
 }
 </string>
           </argument>

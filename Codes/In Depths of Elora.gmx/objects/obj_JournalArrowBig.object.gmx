@@ -29,7 +29,7 @@
 
 {
     image_speed = 0;
-    next_index = 0;
+    NextIndex = 0;
 }
 </string>
           </argument>
@@ -227,23 +227,19 @@
             <string>///Glob Left Released
 
 {
-    if image_index = 2
-        {
-        switch(obj_Journal.tab_current)
-            {
+    if image_index = 2 {
+        switch(obj_Journal.TabCurrent) {
             case "Last Dialogues":
-                if image_yscale = 1 then image_index = next_index;
-                if image_yscale = -1 then image_index = next_index;
+                if image_yscale = 1 then image_index = NextIndex;
+                if image_yscale = -1 then image_index = NextIndex;
                 break;
                 
             case "Statistics":
-                if image_angle = 0
-                    {
-                    if obj_Journal.statistics_offset &gt; 0 then image_index = 1; else image_index = 0;
+                if image_angle = 0 {
+                    if obj_Journal.StatisticsOffset &gt; 0 then image_index = 1; else image_index = 0;
                     }
-                else if image_angle = 180
-                    {
-                    if obj_Journal.statistics_offset &lt; obj_Journal.statistics_max then image_index = 1; else image_index = 0;
+                else if image_angle = 180 {
+                    if obj_Journal.StatisticsOffset &lt; obj_Journal.StatisticsMax then image_index = 1; else image_index = 0;
                     }
                 break;
             }
@@ -274,34 +270,28 @@
             <string>///Image Index
 
 {
-    if image_index = 1
-        {
+    if image_index = 1 {
         image_index = 2;
-        switch(obj_Journal.tab_current)
-            {
+        switch(obj_Journal.TabCurrent) {
             case "Last Dialogues":
-                if image_yscale = 1
-                    {
-                    if obj_Journal.last_dialogues_offset &gt; 0 then obj_Journal.last_dialogues_offset--;
-                    with(obj_Journal) scr_last_dialogues_update(true);
+                if image_yscale = 1 {
+                    if obj_Journal.LastDialoguesOffset &gt; 0 then obj_Journal.LastDialoguesOffset--;
+                    with(obj_Journal) scr_LastDialoguesUpdate(true);
                     }
-                if image_yscale = -1
-                    {
-                    obj_Journal.last_dialogues_offset++;
-                    with(obj_Journal) scr_last_dialogues_update(false);
+                if image_yscale = -1 {
+                    obj_Journal.LastDialoguesOffset++;
+                    with(obj_Journal) scr_LastDialoguesUpdate(false);
                     }
                 break;
                 
             case "Statistics":
-                if image_angle = 0
-                    {
-                    if obj_Journal.statistics_offset &gt; 0 then obj_Journal.statistics_offset--;
-                    with(obj_Journal.statistics_arrow[1]) image_index = 1;  
+                if image_angle = 0 {
+                    if obj_Journal.StatisticsOffset &gt; 0 then obj_Journal.StatisticsOffset--;
+                    with(obj_Journal.StatisticsArrow[1]) image_index = 1;  
                     }
-                if image_angle = 180
-                    {
-                    if obj_Journal.statistics_offset &lt;= obj_Journal.statistics_max then obj_Journal.statistics_offset++;
-                    with(obj_Journal.statistics_arrow[0]) image_index = 1;                    
+                if image_angle = 180 {
+                    if obj_Journal.StatisticsOffset &lt;= obj_Journal.StatisticsMax then obj_Journal.StatisticsOffset++;
+                    with(obj_Journal.StatisticsArrow[0]) image_index = 1;                    
                     }
                 break;
             }

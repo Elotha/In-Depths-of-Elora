@@ -28,13 +28,11 @@
             <string>///Create a Character
 
 {
-    if global.force_start
-        {
+    if global.ForceStart {
         destroy(obj_Character);
         instance_create(x,y,obj_Character);
         }
-    else if instance_number(obj_Character) = 0
-        {
+    else if instance_number(obj_Character) = 0 {
         instance_create(x,y,obj_Character);
         }
 }
@@ -63,14 +61,15 @@
             <string>///Checkpoint Spawn
 
 {
-    if global.checkpoint = -1 then instance_create(x,y,obj_Character);
-    else instance_create(global.checkpoint.x+40,global.checkpoint.y+40,obj_Character);
-    scr_existence_check();
-    with(obj_HUD) 
-        {
-        key_number = key_checkpoint;
-        score = score_checkpoint;
+    show_message("Obj Key: " + string(instance_number(obj_Key))  + "Key Monster: " + string(instance_number(obj_KeyMonster)));
+    if global.Checkpoint = -1 then instance_create(x,y,obj_Character);
+    else instance_create(global.Checkpoint.x+40,global.Checkpoint.y+40,obj_Character);
+    scr_ExistenceCheck();
+    with(obj_HUD)  {
+        KeyNumber = KeyCheckpoint;
+        MagicEssence = MagicEssenceCheckpoint;
         }
+    show_message("Obj Key: " + string(instance_number(obj_Key))  + "Key Monster: " + string(instance_number(obj_KeyMonster)));
 }
 </string>
           </argument>

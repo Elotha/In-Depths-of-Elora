@@ -28,7 +28,7 @@
             <string>///Type
 
 {
-    type = "Non-lethal";
+    //Type = "Non-lethal";
 }
 </string>
           </argument>

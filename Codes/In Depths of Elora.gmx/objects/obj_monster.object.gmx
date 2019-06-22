@@ -27,19 +27,19 @@
             <kind>1</kind>
             <string>///Create
 
-//drop = 0 ise canavar öldüğü zaman hiçbir şey düşürmez.
-//drop = 1 ise rastgele bir potion düşürür.
+//Drop = 0 ise canavar öldüğü zaman hiçbir şey düşürmez.
+//Drop = 1 ise rastgele bir potion düşürür.
 
 {
-    if object_index = obj_Palpus then drop = "0"; else drop = "1";
+    if object_index = obj_Palpus then Drop = "0"; else Drop = "1";
     alarm[11] = 1; //obj_key_monster oluşturma işi
     if object_index != obj_Damast then depth = MONSTER;
-    falling_speed = global.falling_speed;
-    falling_limit = global.falling_limit;
-    draw = global.draw;
-    initial_xscale = image_xscale;
-    v_speed = 0;
-    h_speed = 0;
+    FallingSpeed = global.FallingSpeed;
+    FallingLimit = global.FallingLimit;
+    Draw = global.Draw;
+    InitialXScale = image_xscale;
+    VSpeed = 0;
+    HSpeed = 0;
 }
 </string>
           </argument>
@@ -65,11 +65,10 @@
             <kind>1</kind>
             <string>///Drop
 
-//Burada canavar öldüğü zaman drop değerine göre ne düşüreceğini belirleyen kodlar var.
+//Burada canavar öldüğü zaman Drop değerine göre ne düşüreceğini belirleyen kodlar var.
 
 {
-    switch(object_index)
-        {
+    switch(object_index) {
         case obj_Beulian:
             xx = x-16;
             yy = y-16;
@@ -93,55 +92,50 @@
         default:
             xx = x;
             yy = y;
-            
         }
         
-    var item = false;
-    switch(drop)
-        {
+    var Item = false;
+    switch(Drop) {
         case "1":
-            var rnd = irandom(100);
-            if rnd &lt; 25 then instance_create(xx,yy,obj_Potion);
+            var Rnd = irandom(100);
+            if Rnd &lt; 25 then instance_create(xx,yy,obj_Potion);
             break;
             
         case "HP Small":
-            item = instance_create(xx,yy,obj_Potion);
-            with(item) sprite_index = spr_PotionHP_Small;
+            Item = instance_create(xx,yy,obj_Potion);
+            with(Item) sprite_index = spr_PotionHP_Small;
             break;
             
         case "HP Big":
-            item = instance_create(xx,yy,obj_Potion);
-            with(item) sprite_index = spr_PotionHP_Big;
+            Item = instance_create(xx,yy,obj_Potion);
+            with(Item) sprite_index = spr_PotionHP_Big;
             break;
             
         case "Resistance":
-            item = instance_create(xx,yy,obj_Potion);
-            with(item) sprite_index = spr_PotionResistance;
+            Item = instance_create(xx,yy,obj_Potion);
+            with(Item) sprite_index = spr_PotionResistance;
             break;
             
         case "Light":
-            item = instance_create(xx,yy,obj_Potion);
-            with(item) sprite_index = spr_PotionLight;
+            Item = instance_create(xx,yy,obj_Potion);
+            with(Item) sprite_index = spr_PotionLight;
             break;
             
         case "Key":
-            with(obj_KeyMonster)
-                {
-                if monster_id = other.id //monster_id değeri, obj_key_monster'ın hangi canavara ait olduğunu tutar.
-                    {
-                    item = instance_create(x-16,y-16,obj_Key);
-                    with(item) 
-                        {
+            with(obj_KeyMonster) {
+                if MonsterID = other.id { //monster_id değeri, obj_key_monster'ın hangi canavara ait olduğunu tutar.
+                    Item = instance_create(x-16,y-16,obj_Key);
+                    with(Item) {
                         vspeed = 1.4;
                         friction = 0.1;
-                        key_monster = true;
+                        KeyMonster = true;
                         }
                     instance_destroy();
                     }
                 }
             break;
         }
-    if item != 0 then with(item) scr_checkpoint(false);
+    if Item != 0 then with(Item) scr_Checkpoint(false);
 }
 </string>
           </argument>
@@ -168,16 +162,14 @@
             <string>///Key Monster
 
 {
-    if drop = "Key"
-        {
-        var key = instance_create(x,y,obj_KeyMonster);
-        with(key)
-            {
-            monster_id = other.id;
-            monster_type = object_get_name(other.object_index);
+    if Drop = "Key" {
+        var Key = instance_create(x,y,obj_KeyMonster);
+        with(Key) {
+            MonsterID = other.id;
+            MonsterType = object_get_name(other.object_index);
             }
         }
-    initial_xscale = image_xscale;
+    InitialXScale = image_xscale;
 }
 </string>
           </argument>

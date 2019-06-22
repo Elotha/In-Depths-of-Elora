@@ -7,5 +7,5 @@
 
 
 {
-    ds_list_add(light_list,string(argument0) + "," + string(argument1) + "," + string(argument2) + "," + string(argument3) + ",");
+    ds_list_add(LightList,string(argument0) + "," + string(argument1) + "," + string(argument2) + "," + string(argument3) + ",");
 }

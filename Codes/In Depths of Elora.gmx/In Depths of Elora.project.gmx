@@ -54,9 +54,11 @@
       <sprite>sprites\spr_CharacterDeath</sprite>
       <sprite>sprites\spr_CharacterDeath_Liquid</sprite>
       <sprite>sprites\spr_CharacterDoor</sprite>
+      <sprite>sprites\spr_CharacterMask</sprite>
     </sprites>
     <sprites name="Environmental Elements">
       <sprite>sprites\spr_Block</sprite>
+      <sprite>sprites\spr_PlatformThin</sprite>
       <sprite>sprites\spr_WallJump</sprite>
       <sprite>sprites\spr_PlatformTiming</sprite>
       <sprite>sprites\spr_PlatformTiming2</sprite>
@@ -121,7 +123,7 @@
       <sprite>sprites\spr_PotionResistance</sprite>
       <sprite>sprites\spr_Key</sprite>
       <sprite>sprites\spr_KeyMonster</sprite>
-      <sprite>sprites\spr_ScoreStone</sprite>
+      <sprite>sprites\spr_MagicEssence</sprite>
       <sprite>sprites\spr_LifeStone</sprite>
     </sprites>
     <sprites name="HUD &amp; Effects">
@@ -204,70 +206,67 @@
   <scripts name="scripts">
     <scripts name="Extension">
       <script>scripts\scr_destroy_instance.gml</script>
-      <script>scripts\scr_reverse.gml</script>
       <script>scripts\scr_create_only_one.gml</script>
       <script>scripts\scr_light.gml</script>
       <script>scripts\scr_message.gml</script>
     </scripts>
-    <scripts name="Movement">
-      <script>scripts\scr_jump.gml</script>
-      <script>scripts\scr_dash.gml</script>
-      <script>scripts\scr_invincibility.gml</script>
-      <script>scripts\scr_left_right.gml</script>
-      <script>scripts\scr_vertical_movement.gml</script>
-      <script>scripts\scr_horizontal_movement.gml</script>
-      <script>scripts\scr_sprite_control.gml</script>
-      <script>scripts\scr_death.gml</script>
-      <script>scripts\scr_friction.gml</script>
-      <script>scripts\scr_permission_check.gml</script>
-    </scripts>
     <scripts name="Monsters">
-      <script>scripts\scr_monster_death.gml</script>
-      <script>scripts\scr_monster_corpse.gml</script>
-      <script>scripts\scr_monster_death_alpha.gml</script>
+      <script>scripts\scr_MonsterDeath.gml</script>
+      <script>scripts\scr_MonsterCorpse.gml</script>
+      <script>scripts\scr_MonsterDeathAlpha.gml</script>
     </scripts>
     <scripts name="Music and Sounds">
-      <script>scripts\scr_sound_control.gml</script>
-      <script>scripts\scr_sound_effect.gml</script>
-      <script>scripts\scr_music.gml</script>
-      <script>scripts\scr_play_sound.gml</script>
-      <script>scripts\scr_volumes.gml</script>
-      <script>scripts\scr_audio_toggle.gml</script>
+      <script>scripts\scr_SoundControl.gml</script>
+      <script>scripts\scr_SoundEffect.gml</script>
+      <script>scripts\scr_Music.gml</script>
+      <script>scripts\scr_PlaySound.gml</script>
+      <script>scripts\scr_Volumes.gml</script>
+      <script>scripts\scr_AudioToggle.gml</script>
     </scripts>
     <scripts name="General">
-      <script>scripts\scr_clear.gml</script>
-      <script>scripts\scr_potion.gml</script>
-      <script>scripts\scr_potiontext.gml</script>
-      <script>scripts\scr_potion_text_length.gml</script>
-      <script>scripts\scr_checkpoint.gml</script>
-      <script>scripts\scr_existence_check.gml</script>
-      <script>scripts\scr_hud_interact.gml</script>
+      <script>scripts\scr_Clear.gml</script>
+      <script>scripts\scr_Potion.gml</script>
+      <script>scripts\scr_PotionText.gml</script>
+      <script>scripts\scr_PotionTextLength.gml</script>
+      <script>scripts\scr_Checkpoint.gml</script>
+      <script>scripts\scr_ExistenceCheck.gml</script>
+      <script>scripts\scr_HUDInteract.gml</script>
     </scripts>
     <scripts name="Menu">
-      <script>scripts\scr_draw_menu.gml</script>
-      <script>scripts\scr_change_menu.gml</script>
-      <script>scripts\scr_change_button.gml</script>
-      <script>scripts\scr_back_to_menu.gml</script>
-      <script>scripts\scr_draw_description.gml</script>
-      <script>scripts\scr_profile_new.gml</script>
-      <script>scripts\scr_profile_load.gml</script>
-      <script>scripts\scr_profile_strings.gml</script>
-      <script>scripts\scr_profile_names.gml</script>
-      <script>scripts\scr_control_load.gml</script>
-      <script>scripts\scr_control_defaults.gml</script>
-      <script>scripts\scr_control_strings.gml</script>
-      <script>scripts\scr_control_globals.gml</script>
+      <script>scripts\scr_DrawMenu.gml</script>
+      <script>scripts\scr_ChangeMenu.gml</script>
+      <script>scripts\scr_ChangeButton.gml</script>
+      <script>scripts\scr_BackToMenu.gml</script>
+      <script>scripts\scr_DrawDescription.gml</script>
+      <script>scripts\scr_ProfileNew.gml</script>
+      <script>scripts\scr_ProfileLoad.gml</script>
+      <script>scripts\scr_ProfileStrings.gml</script>
+      <script>scripts\scr_ProfileNames.gml</script>
+      <script>scripts\scr_ControlLoad.gml</script>
+      <script>scripts\scr_ControlDefaults.gml</script>
+      <script>scripts\scr_ControlStrings.gml</script>
+      <script>scripts\scr_ControlGlobals.gml</script>
     </scripts>
     <scripts name="Journal">
-      <script>scripts\scr_journal_clear.gml</script>
-      <script>scripts\scr_last_dialogues_update.gml</script>
-      <script>scripts\scr_last_dialogues_draw.gml</script>
+      <script>scripts\scr_JournalClear.gml</script>
+      <script>scripts\scr_LastDialoguesUpdate.gml</script>
+      <script>scripts\scr_LastDialoguesDraw.gml</script>
     </scripts>
     <scripts name="Magical Sight">
-      <script>scripts\scr_magical_sight.gml</script>
-      <script>scripts\scr_magical_sight_close.gml</script>
-      <script>scripts\scr_magical_jump.gml</script>
-      <script>scripts\scr_magical_interaction.gml</script>
+      <script>scripts\scr_MagicalSight.gml</script>
+      <script>scripts\scr_MagicalSightClose.gml</script>
+      <script>scripts\scr_MagicalJump.gml</script>
+      <script>scripts\scr_MagicalInteraction.gml</script>
+    </scripts>
+    <scripts name="Movement">
+      <script>scripts\scr_HorizontalInputs.gml</script>
+      <script>scripts\scr_Dash.gml</script>
+      <script>scripts\scr_VerticalMovement.gml</script>
+      <script>scripts\scr_HorizontalMovement.gml</script>
+      <script>scripts\scr_Death.gml</script>
+      <script>scripts\scr_IfDash.gml</script>
+      <script>scripts\scr_PermissionCheck.gml</script>
+      <script>scripts\scr_SpriteControl.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -291,11 +290,11 @@
       <object>objects\obj_Light</object>
       <object>objects\obj_HUD</object>
       <object>objects\obj_Particles</object>
-      <object>objects\obj_LightBug_Creator</object>
+      <object>objects\obj_LightBugCreator</object>
       <object>objects\obj_Block</object>
-      <object>objects\obj_WallJump</object>
+      <object>objects\obj_PlatformThinParent</object>
+      <object>objects\obj_PlatformThin</object>
       <object>objects\obj_Finish</object>
-      <object>objects\obj_Temp</object>
     </objects>
     <objects name="Character">
       <object>objects\obj_StartPoint</object>
@@ -324,8 +323,6 @@
       <object>objects\obj_SpikeFlowerActive</object>
       <object>objects\obj_Door</object>
       <object>objects\obj_ZodaxSign</object>
-      <object>objects\obj_LightBug</object>
-      <object>objects\obj_Boulder</object>
       <object>objects\obj_Stalactite</object>
       <object>objects\obj_WallSpikesParent</object>
       <object>objects\obj_WallSpikesLeft</object>
@@ -348,7 +345,7 @@
     </objects>
     <objects name="Items">
       <object>objects\obj_Item</object>
-      <object>objects\obj_ScoreStone</object>
+      <object>objects\obj_MagicEssence</object>
       <object>objects\obj_LifeStone</object>
       <object>objects\obj_Key</object>
       <object>objects\obj_KeyMonster</object>
@@ -356,8 +353,8 @@
     </objects>
     <objects name="HUD &amp; Effects">
       <object>objects\obj_Interface</object>
+      <object>objects\obj_KeyEffect</object>
       <object>objects\obj_KeyEffect2</object>
-      <object>objects\obj_KeyEffect3</object>
       <object>objects\obj_ZodaxEffect</object>
       <object>objects\obj_ItemEffect</object>
       <object>objects\obj_KeyboardKey</object>
@@ -401,13 +398,13 @@
     <room>rooms\rm_Menu</room>
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Finish</room>
+    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Level1</room>
     <room>rooms\rm_Base</room>
     <room>rooms\rm_Temp</room>
   </rooms>
-  <constants number="73">
+  <constants number="74">
     <constant name="ALWAYS_SHOW">0</constant>
     <constant name="AUDIO_BACK">3</constant>
     <constant name="AUDIO">3</constant>
@@ -439,7 +436,7 @@
     <constant name="GRAP_QUALITY">3</constant>
     <constant name="GRAPHICS">2</constant>
     <constant name="HUD_NEVER">3</constant>
-    <constant name="HUD">0</constant>
+    <constant name="HUD_GP">0</constant>
     <constant name="INTERFACE1">-400</constant>
     <constant name="INTERFACE2">-300</constant>
     <constant name="ITEM">100</constant>
@@ -481,6 +478,7 @@
     <constant name="V_SYNC">0</constant>
     <constant name="WATERFALL1">700</constant>
     <constant name="WATERFALL2">900</constant>
+    <constant name="GAMEVERSION">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

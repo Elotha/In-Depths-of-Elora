@@ -28,28 +28,27 @@
             <string>///Escape
 
 {
-    screen_save("light.png");
-    pause_screen = sprite_add("light.png",1,false,false,0,0);
+    screen_save("Light.png");
+    PauseScreen = sprite_add("Light.png",1,false,false,0,0);
     instance_deactivate_all(true);
     image_speed = 1/4;
     ww = display_get_gui_width();
     hh = display_get_gui_height();
     
-    pause_menu[0] = "RESUME";
-    pause_menu[1] = "SETTINGS";
-    pause_menu[2] = "MAIN MENU";
+    PauseMenu[0] = "RESUME";
+    PauseMenu[1] = "SETTINGS";
+    PauseMenu[2] = "MAIN MENU";
     
-    button_current = RESUME;
+    ButtonCurrent = RESUME;
     
-    font = fnt_menu;
+    Font = FontMenu;
     
-    for(var i = 0; i &lt; 3; i++)
-        {
-        selected[i] = 0;
+    for(var i = 0; i &lt; 3; i++) {
+        Selected[i] = 0;
         }
-    selected[0] = 0.5;
-    selected_total = 3;
-    selected_number = 0;
+    Selected[0] = 0.5;
+    SelectedTotal = 3;
+    SelectedNumber = 0;
     
     //io_clear();
 }
@@ -78,12 +77,12 @@
             <string>///Destroy
 
 {
-    sprite_delete(pause_screen);
-    if file_exists("light.png") then file_delete("light.png");
+    sprite_delete(PauseScreen);
+    if file_exists("Light.png") then file_delete("Light.png");
     display_set_gui_size(ww,hh);
     instance_activate_all();
     keyboard_key_release(vk_escape);
-    pause = false;
+    Pause = false;
 }
 </string>
           </argument>
@@ -110,46 +109,38 @@
             <string>///Step
 
 {
-    var dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
-    if dir = -1
-        {
-        if selected_number = 0
+    var Dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
+    if Dir = -1 {
+        if SelectedNumber = 0
             {
-            selected[0] = 0;
-            selected[selected_total-1] = 0.5;
-            selected_number = selected_total-1;
-            button_current = selected_number;
+            Selected[0] = 0;
+            Selected[SelectedTotal-1] = 0.5;
+            SelectedNumber = SelectedTotal-1;
+            ButtonCurrent = SelectedNumber;
             }
-        else
-            {
-            selected[selected_number--] = 0;
-            selected[selected_number] = 0.5;
-            button_current = selected_number;
+        else {
+            Selected[SelectedNumber--] = 0;
+            Selected[SelectedNumber] = 0.5;
+            ButtonCurrent = SelectedNumber;
             }
         }
-    else if dir = 1
-        {
-        if selected_number = selected_total-1
-            {
-            selected[selected_total-1] = 0;
-            selected[0] = 0.5;
-            selected_number = 0;
-            button_current = selected_number;
+    else if Dir = 1 {
+        if SelectedNumber = SelectedTotal-1 {
+            Selected[SelectedTotal-1] = 0;
+            Selected[0] = 0.5;
+            SelectedNumber = 0;
+            ButtonCurrent = SelectedNumber;
             }
-        else
-            {
-            selected[selected_number++] = 0;
-            selected[selected_number] = 0.5;
-            button_current = selected_number;
+        else {
+            Selected[SelectedNumber++] = 0;
+            Selected[SelectedNumber] = 0.5;
+            ButtonCurrent = SelectedNumber;
             }
         }
-    if keyboard_check_pressed(vk_enter)
-        {
-        switch(button_current)
-            {
+    if keyboard_check_pressed(vk_enter) {
+        switch(ButtonCurrent) {
             case RESUME:
                 instance_destroy();
-                //keyboard_key_press(vk_escape);
                 break;
                 
             case SETTINGS:
@@ -157,7 +148,7 @@
                 
             case MAINMENU:
                 instance_destroy();
-                scr_back_to_menu();
+                scr_BackToMenu();
                 room_goto(rm_Menu);
                 break;
                 
@@ -233,11 +224,11 @@
 
 {
     display_set_gui_size(1920,1080);
-    draw_sprite(pause_screen,0,0,0);
+    draw_sprite(PauseScreen,0,0,0);
     display_set_gui_size(640,360);
     draw_sprite(spr_BlackView,0,0,0);
     draw_sprite(sprite_index,image_index,view_wview/2,view_hview/2);
-    draw_set_font(fnt_menu);
+    draw_set_font(Font);
 }
 </string>
           </argument>
@@ -262,16 +253,14 @@
             <string>///Fonts
 
 {
-    //draw_set_font(font);
+    //draw_set_font(Font);
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
-    for(var i = 0; i &lt; array_length_1d(pause_menu); i++)
-            {
+    for(var i = 0; i &lt; array_length_1d(PauseMenu); i++) {
             //draw_set_alpha(alpha);
-            draw_text_transformed(view_wview[0]/2+6,view_hview[0]/2-32+(i*24),pause_menu[i],1+selected[i],1+selected[i],0);
+            draw_text_transformed(view_wview[0]/2+6,view_hview[0]/2-32+(i*24),PauseMenu[i],1+Selected[i],1+Selected[i],0);
             //draw_text(view_wview[0]/2+4,view_hview[0]/2-32+(i*24),pause_menu[i]);
-            /*if selected[i] = 0.5
-                {
+            /*if selected[i] = 0.5 {
                 draw_sprite(spr_MenuIndicatorLeft,-1,room_width/2-(string_width(pause_menu[i])*1.5+32)/2,166+(i*32));
                 draw_sprite(spr_MenuIndicatorRight,-1,room_width/2+(string_width(pause_menu[i])*1.5+32)/2,166+(i*32));
                 }*/

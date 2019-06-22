@@ -28,15 +28,13 @@
             <string>///Sounds List
 
 {
-    var pos = 0;
-    for(var i = 0; i &lt; ds_list_size(sounds_list); i++)
-        {
-        if !audio_is_playing(ds_list_find_value(sounds_list,i-pos))
-            {
-            ds_list_delete(sounds_list,i-pos++);
+    var Pos = 0;
+    for(var i = 0; i &lt; ds_list_size(SoundsList); i++) {
+        if !audio_is_playing(ds_list_find_value(SoundsList,i-Pos)) {
+            ds_list_delete(SoundsList,i-Pos++);
             }
         }
-    if !ds_list_empty(sounds_list) then alarm[0] = 60;
+    if !ds_list_empty(SoundsList) then alarm[0] = 60;
 }
 </string>
           </argument>
@@ -63,18 +61,15 @@
             <string>///Music &amp; Sounds
 
 {
-    if room = rm_Menu with(obj_MainMenu) //Ana menüdeysek
-        {
-        if menu_current = "New Profile" || menu_current = "Controls" then exit;
+    if room = rm_Menu with(obj_MainMenu) { //Ana menüdeysek
+        if MenuCurrent = "New Profile" || MenuCurrent = "Controls" then exit;
         }
         
-    if keyboard_check_pressed(music_key) //Muzik tuşuna bastık
-        {
-        scr_audio_toggle("Music");
+    if keyboard_check_pressed(MusicKey) { //Muzik tuşuna bastık
+        scr_AudioToggle("Music");
         }
-    if keyboard_check_pressed(sounds_key)  //Sesler tuşuna bastık
-        {
-        scr_audio_toggle("Sounds");
+    if keyboard_check_pressed(SoundsKey) { //Sesler tuşuna bastık
+        scr_AudioToggle("Sounds");
         }
 }
 </string>
@@ -102,7 +97,7 @@
             <string>///Room End
 
 {
-    audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
+    if !keyboard_check(vk_f4) then audio_stop_all(); //Oda bitişinde bütün sesleri sustur.
 }
 </string>
           </argument>
@@ -129,21 +124,15 @@
             <string>///Music
 
 {
-    if room = rm_Menu
-        {
-        with(obj_MainMenu) 
-            {
-            if menu_current = "New Profile"
-                {
-                if !audio_is_playing(snd_MainMenu) then global.current_music = audio_play_sound(snd_MainMenu,10,true);
-                audio_sound_gain(global.current_music,0.6,0);
+    if room = rm_Menu {
+        with(obj_MainMenu) {
+            if MenuCurrent = "New Profile" {
+                if !audio_is_playing(snd_MainMenu) then global.CurrentMusic = audio_play_sound(snd_MainMenu,10,true);
+                audio_sound_gain(global.CurrentMusic,0.6,0);
                 }
             }
         }
-    else 
-        {
-        scr_music();
-        }
+    else scr_Music("Music");
 }
 </string>
           </argument>

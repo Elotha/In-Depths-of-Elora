@@ -1,20 +1,19 @@
 ///Volumes
 
 {
-    switch(argument0)
-        {
+    switch(argument0) {
         case "Master":
-            if audio_is_playing(global.current_music) then audio_sound_gain(global.current_music,0.7*(global.music_volume/10)*(global.master_volume/10),0);
-            audio[MASTER_VOLUME] = "MASTER VOLUME: " + "<" + string(global.master_volume) + "/10" + ">";;
+            if audio_is_playing(global.CurrentMusic) then audio_sound_gain(global.CurrentMusic,0.7*(global.MusicVolume/10)*(global.MasterVolume/10),0);
+            with(obj_MainMenu) Audio[MASTER_VOLUME] = "MASTER VOLUME: " + "<" + string(global.MasterVolume) + "/10" + ">";;
             break;
             
         case "Music":
-            if audio_is_playing(global.current_music) then audio_sound_gain(global.current_music,0.7*(global.music_volume/10)*(global.master_volume/10),0);
-            audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "<" + string(global.music_volume) + "/10" + ">";;
+            if audio_is_playing(global.CurrentMusic) then audio_sound_gain(global.CurrentMusic,0.7*(global.MusicVolume/10)*(global.MasterVolume/10),0);
+            with(obj_MainMenu) Audio[MUSIC_VOLUME] = "MUSIC VOLUME: " + "<" + string(global.MusicVolume) + "/10" + ">";;
             break;
             
         case "Sounds":
-            audio[SOUNDS_VOLUME] = "SOUNDS VOLUME: " + "<" + string(global.sounds_volume) + "/10" + ">";;
+            with(obj_MainMenu) Audio[SOUNDS_VOLUME] = "SOUNDS VOLUME: " + "<" + string(global.SoundsVolume) + "/10" + ">";;
             break;
             
         }

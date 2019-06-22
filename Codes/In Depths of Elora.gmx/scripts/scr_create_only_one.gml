@@ -5,14 +5,9 @@
 //argument2: yaratılacak obje
 
 {
-    if instance_number(argument2) = 0
-        {
-        var inst = instance_create(argument0,argument1,argument2);
-        
-        return inst;
+    if instance_number(argument2) = 0 {
+        var Inst = instance_create(argument0,argument1,argument2);
+        return Inst;
         }
-    else
-        {
-        return noone;
-        }
+    else return noone;
 }

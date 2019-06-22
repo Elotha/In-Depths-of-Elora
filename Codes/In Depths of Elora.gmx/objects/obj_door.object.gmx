@@ -29,9 +29,9 @@
 
 {
     image_speed = 0;
-    distant = true;
-    distant_previous = true;
-    col = make_colour_rgb(112,97,166);
+    Distant = true;
+    DistantPrevious = true;
+    Col = make_colour_rgb(112,97,166);
     alarm[0] = 120;
     depth = CHARACTER+50;
 }
@@ -60,14 +60,11 @@
             <string>///Distance Control
 
 {
-    if point_distance(x+8,y+14,obj_CharacterParent.x,obj_CharacterParent.y) &lt; 128 then distant = false; else distant = true;
+    if point_distance(x+8,y+14,obj_CharacterParent.x,obj_CharacterParent.y) &lt; 128 then Distant = false; else Distant = true;
 
-    if distant != distant_previous
-        {
-        if !distant
-            {
-            switch(sprite_index)
-                {
+    if Distant != DistantPrevious {
+        if !Distant {
+            switch(sprite_index) {
                 case spr_DoorFormation:
                     image_speed = 1/5;
                     break;
@@ -79,10 +76,8 @@
                     break;
                 }
             }
-        if distant
-            {
-            switch(sprite_index)
-                {
+        if Distant {
+            switch(sprite_index) {
                 case spr_DoorFormation:
                     if image_index &gt; 0 then image_speed = -1/5; else image_speed = 0;
                     break;
@@ -100,7 +95,7 @@
                 }
             }
         }
-    distant_previous = distant;
+    DistantPrevious = Distant;
     alarm[0] = 30;
 }
 </string>
@@ -128,7 +123,7 @@
             <string>///Light
 
 {
-    create_light(128,col,x+8,y+14);
+    create_light(128,Col,x+8,y+14);
 }
 </string>
           </argument>
@@ -155,37 +150,28 @@
             <string>///Animation End
 
 {
-    if image_speed = -1/5
-        {
-        if distant
-            {
-            if sprite_index = spr_DoorFormation 
-                {
+    if image_speed = -1/5 {
+        if Distant {
+            if sprite_index = spr_DoorFormation  {
                 image_speed = 0;
                 image_index = 0;
                 }
-            if sprite_index = spr_DoorOpening
-                {
+            if sprite_index = spr_DoorOpening {
                 sprite_index = spr_DoorFormation;
                 image_index = image_number-1;
                 }            
             }
         }
-    if sign(image_speed) = 1
-        {
-        if sprite_index = spr_DoorOpening
-            {
-            if !distant then sprite_index = spr_Door;
+    if sign(image_speed) = 1 {
+        if sprite_index = spr_DoorOpening {
+            if !Distant then sprite_index = spr_Door;
             }
             
-        if sprite_index = spr_DoorFormation
-            {
-            if !distant &amp;&amp; obj_HUD.key_number &gt;= obj_HUD.key_max
-                {
+        if sprite_index = spr_DoorFormation {
+            if !Distant &amp;&amp; obj_HUD.KeyNumber &gt;= obj_HUD.KeyMax {
                 sprite_index = spr_DoorOpening;
                 }
-            if !distant &amp;&amp; obj_HUD.key_number != obj_HUD.key_max
-                {
+            if !Distant &amp;&amp; obj_HUD.KeyNumber != obj_HUD.KeyMax {
                 image_speed = 0;
                 image_index = image_number-1;
                 }

@@ -28,8 +28,8 @@
             <string>///Create
 
 {
-    falling_speed = global.falling_speed;
-    falling_limit = global.falling_limit;
+    FallingSpeed = global.FallingSpeed;
+    FallingLimit = global.FallingLimit;
 }
 </string>
           </argument>
@@ -56,7 +56,7 @@
             <string>///Death Alpha
 
 {
-    scr_monster_death_alpha();
+    scr_MonsterDeathAlpha();
 }
 </string>
           </argument>
@@ -81,10 +81,9 @@
           <argument>
             <kind>1</kind>
             <string>///Step
-
+/*
 {
-    if sprite_index = spr_MinyooDeath
-        {
+    if sprite_index = spr_MinyooDeath {
         scr_vertical_movement(false,false);
         scr_horizontal_movement(false);
         scr_friction();

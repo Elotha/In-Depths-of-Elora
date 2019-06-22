@@ -29,8 +29,7 @@
 
 {
     image_speed = 1/10;;
-    for(var i = 0; y+i+sprite_get_height(spr_Waterfall2) &lt; room_height; i += sprite_get_height(spr_Waterfall3))
-        {
+    for(var i = 0; y+i+sprite_get_height(spr_Waterfall2) &lt; room_height; i += sprite_get_height(spr_Waterfall3)) {
         instance_create(x,y+i+sprite_get_height(spr_Waterfall2),obj_Waterfall3);
         }
     depth = WATERFALL2;

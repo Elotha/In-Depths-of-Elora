@@ -55,15 +55,12 @@
             <string>///Left Released
 
 {
-    if image_index = 2
-        {
-        if image_xscale = 1
-            {
-            if obj_Journal.achievements_page &lt; obj_Journal.achievements_page_max then image_index = 1; else image_index = 0;
+    if image_index = 2 {
+        if image_xscale = 1 {
+            if obj_Journal.AchievementsPage &lt; obj_Journal.AchievementsPageMax then image_index = 1; else image_index = 0;
             }
-        else if image_xscale = -1
-            {
-            if obj_Journal.achievements_page &gt; 0 then image_index = 1; else image_index = 0;
+        else if image_xscale = -1 {
+            if obj_Journal.AchievementsPage &gt; 0 then image_index = 1; else image_index = 0;
             }
         }
 }
@@ -92,29 +89,21 @@
             <string>///Image Index
 
 {
-    if image_index = 1
-        {
+    if image_index = 1 {
         image_index = 2;
-        if image_xscale = 1 //Sağdaki ok
-            {
-            if obj_Journal.achievements_page &lt; obj_Journal.achievements_page_max then obj_Journal.achievements_page++;
-            with(obj_Journal.achievements_arrow[1]) image_index = 1;
-            with(obj_JournalAchievementsSquare) 
-                {
-                number += 16;
-                if number &gt;= obj_Journal.achievements_max
-                    {
-                    sprite_index = -1;
-                    }
+        if image_xscale = 1 { //Sağdaki ok
+            if obj_Journal.AchievementsPage &lt; obj_Journal.AchievementsPageMax then obj_Journal.AchievementsPage++;
+            with(obj_Journal.AchievementsArrow[1]) image_index = 1;
+            with(obj_JournalAchievementsSquare)  {
+                Number += 16;
+                if Number &gt;= obj_Journal.AchievementsMax then sprite_index = -1;
                 }
             }
-        else if image_xscale = -1 then if obj_Journal.achievements_page &gt; 0 //Soldaki ok
-            {
-            obj_Journal.achievements_page--;
-            with(obj_Journal.achievements_arrow[0]) image_index = 1;        
-            with(obj_JournalAchievementsSquare) 
-                {
-                number -= 16;
+        else if image_xscale = -1 then if obj_Journal.AchievementsPage &gt; 0 { //Soldaki ok
+            obj_Journal.AchievementsPage--;
+            with(obj_Journal.AchievementsArrow[0]) image_index = 1;        
+            with(obj_JournalAchievementsSquare)  {
+                Number -= 16;
                 sprite_index = spr_JournalAchievements;
                 }
             }

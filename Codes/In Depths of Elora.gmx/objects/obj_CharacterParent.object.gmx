@@ -29,8 +29,8 @@
 
 {
     depth = CHARACTER;
-    falling_speed = global.falling_speed;
-    falling_limit = global.falling_limit;
+    FallingSpeed = global.FallingSpeed;
+    FallingLimit = global.FallingLimit;
 }
 </string>
           </argument>

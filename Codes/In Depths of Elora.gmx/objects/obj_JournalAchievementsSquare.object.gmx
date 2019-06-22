@@ -56,10 +56,7 @@
 
 {
     if sprite_index = -1 then exit;
-    with(obj_Journal)
-        {
-        achievement_number = other.number;
-        }
+    with(obj_Journal) AchievementNumber = other.Number;
 }
 </string>
           </argument>

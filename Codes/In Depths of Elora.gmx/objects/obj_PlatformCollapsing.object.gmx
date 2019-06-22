@@ -28,7 +28,7 @@
             <string>///Create
 
 {
-    collapsed = 0;
+    CollSpeed = 0;
     image_speed = 0;
     depth = PLATFORM;
 }
@@ -57,10 +57,9 @@
             <string>///Detection
 
 {
-    if collapsed != 0 then exit;
-    if collision_rectangle(x,y,x+32,y-4,obj_Character,false,true)
-        {
-        collapsed = 1;
+    if CollSpeed != 0 then exit;
+    if collision_rectangle(x,y,x+32,y-4,obj_Character,false,true) {
+        CollSpeed = 1;
         image_speed = 1/6;
         }
 }
@@ -89,7 +88,7 @@
             <string>///Animation End
 
 {
-    collapsed = 2;
+    CollSpeed = 2;
     image_speed = 0;
     image_index = image_number-1;
     destroy(collision_line(x+16,y+16,x+16,y+48,obj_Block,false,true));

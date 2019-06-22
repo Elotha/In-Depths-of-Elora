@@ -28,8 +28,8 @@
             <string>///Light Potion
 
 {
-    light_size_new -= (light_potion*150);
-    light_potion = 0;
+    LightSizeNew -= (LightPotion*150);
+    LightPotion = 0;
     alarm[0] = 1;
 }
 </string>
@@ -57,18 +57,13 @@
             <string>///Light Potion
 
 {
-    if light_size &lt; light_size_new
-        {
-        light_size++;
+    if LightSize &lt; LightSizeNew {
+        LightSize++;
         alarm[0] = 1;
         }
-    else if light_size &gt; light_size_new
-        {
-        light_size--;
+    else if LightSize &gt; LightSizeNew {
+        LightSize--;
         alarm[0] = 1;
-        }
-    else if light_size = light_size_new
-        {
         }
 }
 </string>
@@ -96,11 +91,10 @@
             <string>///Light
 
 {
-    if instance_number(obj_CharacterParent) != 0
-        {
+    if instance_number(obj_CharacterParent) != 0 {
         x = obj_CharacterParent.x;
         y = obj_CharacterParent.y;
-        create_light(light_size,c_white,x,y);
+        create_light(LightSize,c_white,x,y);
         }
 }
 </string>
@@ -125,27 +119,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Depth and Light Size
+            <string>///Depth and Light Size Depending on the Room
 
 {
     depth = obj_Light.depth;
     
-    switch(room)
-        {
+    switch(room) {
         case rm_Gist:
-            light_size = 352; //Işığın temel büyüklüğü.
+            LightSize = 352; //Işığın temel büyüklüğü.
             break;
         
         case rm_Gist2:
-            light_size = 256; 
+            LightSize = 256; 
             break;
             
         default:
-            light_size = 352;
+            LightSize = 352;
         }
         
-    light_size_new = light_size;
-    light_potion = 0; //Kaç tane light potion içtik?
+    LightSizeNew = LightSize;
+    LightPotion = 0; //Kaç tane light potion içtik?
 }
 </string>
           </argument>

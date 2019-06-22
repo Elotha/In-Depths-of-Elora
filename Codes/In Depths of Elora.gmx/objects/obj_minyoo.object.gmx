@@ -28,21 +28,35 @@
             <string>///Create
 
 {
-    teleport = false;
+    Teleport = false;
     hspeed = sign(image_xscale);
-    left_x = -36;
-    right_x = 36;
-    detect_y = 80;
+    LeftX = -36;
+    RightX = 36;
+    DetectY = 80;
     image_speed = 1/6;
-    damage = 20;
+    Damage = 20;
     alarm[0] = 1;
-    light_size = 24;
-    col = make_colour_rgb(173,182,139);
-    event_inherited();
+    
+    /*LightSize = 24;
+    Col = make_colour_rgb(173,182,139);*/
 }
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="2" enumb="0">
@@ -65,10 +79,7 @@
             <string>///Key Monster
 
 {
-    with(obj_KeyMonster)
-        {
-        if monster_id = other.id then other.key_monster = id;
-        }
+    with(obj_KeyMonster) if MonsterID = other.id then other.KeyMonster = id;
 }
 </string>
           </argument>
@@ -93,10 +104,10 @@
           <argument>
             <kind>1</kind>
             <string>///Light
-
+/*
 {
     if sprite_index != spr_MinyooWalk then exit;
-    create_light(light_size,col,x+image_xscale*17,y+1);
+    create_light(LightSize,Col,x+image_xscale*17,y+1);
 }
 </string>
           </argument>
@@ -123,17 +134,15 @@
             <string>///Death
 
 {
-        
-    if sprite_index = spr_MinyooDeath
-        {
+    if sprite_index = spr_MinyooDeath {
         vspeed = 0;
         hspeed = 0;
-        scr_vertical_movement(false,false);
-        scr_horizontal_movement(false);
-        scr_friction();
+        //scr_vertical_movement(false,false);
+        //scr_horizontal_movement(false);
+        //scr_friction();
         exit;
         }
-    else scr_vertical_movement(false,false);
+    //else scr_vertical_movement(false,false);
 }
 </string>
           </argument>
@@ -158,54 +167,46 @@
             <string>///Step
 
 {
-    if gravity != 0 //Bloğa değme anı
-        {
-        var block = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+sprite_get_width(sprite_index)/2,y+abs(sprite_height)+vspeed,obj_Block,false,true);
-        if block != noone
-            {
+    if gravity != 0 { //Bloğa değme anı
+        var Block = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+sprite_get_width(sprite_index)/2,y+abs(sprite_height)+vspeed,obj_Block,false,true);
+        if Block != noone {
             vspeed = 0;
-            y += distance_to_object(block);
+            y += distance_to_object(Block);
             hspeed = image_xscale;
-            teleport = false;
+            Teleport = false;
             gravity = 0;
             image_speed = 1/6;
             }
         }
     
-    if !teleport //Karakter tespiti
-        {
-        var char = collision_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+detect_y,obj_Character,false,true);
-        if char != noone &amp;&amp; !char.invincibility &amp;&amp; char.y &gt; y
-            {
-            teleport = true;
+    if !Teleport { //Karakter tespiti
+        var Character = collision_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+DetectY,obj_Character,false,true);
+        if Character != noone &amp;&amp; !Character.Invincibility &amp;&amp; Character.y &gt; y {
+            Teleport = true;
             sprite_index = spr_MinyooTeleportation;
             image_speed = 1/3;
             image_index = 0;
             speed = 0;
-            var block = collision_line(x,y,x,y+24,obj_Block,false,true);
-            var i = (block.image_yscale*8)+16;
-            dist_step = i/((1/image_speed)*image_number);
+            var Block = collision_line(x,y,x,y+24,obj_Block,false,true);
+            var i = (Block.image_yscale*8)+16;
+            DistStep = i/((1/image_speed)*image_number);
             exit;
             }
             
-        var block_left = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+left_x,y+24,obj_Block,false,true);
-        var block_right = collision_rectangle(x+sprite_get_width(sprite_index)/2,y,x+right_x,y+24,obj_Block,false,true);
-        if (block_left != noone &amp;&amp; block_right = noone)
-            {
+        var BlockLeft = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+LeftX,y+24,obj_Block,false,true);
+        var BlockRight = collision_rectangle(x+sprite_get_width(sprite_index)/2,y,x+RightX,y+24,obj_Block,false,true);
+        if (BlockLeft != noone &amp;&amp; BlockRight = noone) {
             hspeed = -abs(hspeed);
             image_xscale = -abs(image_xscale);
             }
             
-        if block_left = noone &amp;&amp; block_right != noone
-            {
+        if BlockLeft = noone &amp;&amp; BlockRight != noone {
             hspeed = abs(hspeed);
             image_xscale = abs(image_xscale);
             }
         
-        var coll2 = collision_line(x+((sprite_get_width(sprite_index)/2-8)*image_xscale),y-sprite_yoffset+16,x+((sprite_get_width(sprite_index)/2+16)*image_xscale),y-sprite_yoffset+16,obj_Block,false,true);
-        if coll2 != noone &amp;&amp; coll2 != block_left &amp;&amp; coll2 != block_right
-            {
-            
+        var Coll2 = collision_line(x+((sprite_get_width(sprite_index)/2-8)*image_xscale),y-sprite_yoffset+16,x+((sprite_get_width(sprite_index)/2+16)*image_xscale),y-sprite_yoffset+16,obj_Block,false,true);
+        if Coll2 != noone &amp;&amp; Coll2 != BlockLeft &amp;&amp; Coll2 != BlockRight {
             hspeed = -hspeed;
             image_xscale = -image_xscale;
             }
@@ -236,11 +237,10 @@
             <string>///Death
 
 {
-    if other.object_index = obj_Palpus || (other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion)
-        {
-        scr_monster_death(spr_MinyooDeath);
-        h_speed = lengthdir_x(7,90+(30*image_xscale));
-        v_speed = lengthdir_y(7,90+(30*image_xscale));
+    if other.object_index = obj_Palpus || (other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion) {
+        scr_MonsterDeath(spr_MinyooDeath);
+        HSpeed = lengthdir_x(7,90+(30*image_xscale));
+        VSpeed = lengthdir_y(7,90+(30*image_xscale));
         image_speed = 1/3;
         }
 }
@@ -269,9 +269,9 @@
             <string>///Death
 
 {
-    scr_monster_death(spr_MinyooDeath);
-    h_speed = lengthdir_x(4,90+(40*image_xscale));
-    v_speed = lengthdir_y(4,90+(40*image_xscale));
+    scr_MonsterDeath(spr_MinyooDeath);
+    HSpeed = lengthdir_x(4,90+(40*image_xscale));
+    VSpeed = lengthdir_y(4,90+(40*image_xscale));
     image_speed = 1/3;
 }
 </string>
@@ -299,20 +299,18 @@
             <string>///Animation End
 
 {
-    if sprite_index = spr_MinyooDeath then scr_monster_corpse();
+    if sprite_index = spr_MinyooDeath then scr_MonsterCorpse();
             
-    if sprite_index = spr_MinyooTeleportation2
-        {
+    if sprite_index = spr_MinyooTeleportation2 {
         sprite_index = spr_MinyooWalk;
         image_speed = 0;
         gravity_direction = 270;
-        gravity = global.falling_speed;
+        gravity = global.FallingSpeed;
         }
         
-    if sprite_index = spr_MinyooTeleportation
-        {
-        var block = collision_line(x,y,x,y+24,obj_Block,false,true);
-        var i = (block.image_yscale*8)+16;
+    if sprite_index = spr_MinyooTeleportation {
+        var Block = collision_line(x,y,x,y+24,obj_Block,false,true);
+        var i = (Block.image_yscale*8)+16;
         y += i;
         sprite_index = spr_MinyooTeleportation2;
         image_index = 0;
@@ -347,13 +345,13 @@
 
 {
     draw_self();
-    if draw
-        {draw_set_colour(c_green);
-        draw_rectangle(x-sprite_get_width(sprite_index)/2,y,x+left_x,y+24,true);
-        draw_rectangle(x+sprite_get_width(sprite_index)/2,y,x+right_x,y+24,true);
+    if Draw {
+        draw_set_colour(c_green);
+        draw_rectangle(x-sprite_get_width(sprite_index)/2,y,x+LeftX,y+24,true);
+        draw_rectangle(x+sprite_get_width(sprite_index)/2,y,x+RightX,y+24,true);
         
         draw_set_colour(c_yellow);
-        draw_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+detect_y,true);
+        draw_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+DetectY,true);
         
         draw_set_colour(c_lime);
         draw_line(x+((sprite_get_width(sprite_index)/2-8)*image_xscale),y-sprite_yoffset+16,x+((sprite_get_width(sprite_index)/2+16)*image_xscale),y-sprite_yoffset+16);

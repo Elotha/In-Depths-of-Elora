@@ -30,35 +30,30 @@
 {
     //Burada aşağı ya da yukarı tuşlarına bastığımız zaman kamerada oluşan değişim uygulanıyor.
     if instance_number(obj_Character) = 0 then exit;
-    if !obj_Character.movement_permission then camera = "Stable";
-    else
-        {
-        if keyboard_check(obj_Character.control[controlkeys.cameraup]) then camera = "Up";
-        else if keyboard_check(obj_Character.control[controlkeys.cameradown]) then camera = "Down";
-        else camera = "Stable";
+    if !obj_Character.MovementPermission then Camera = "Stable";
+    else {
+        if keyboard_check(obj_Character.Control[ControlKeys.CameraUp]) then Camera = "Up";
+        else if keyboard_check(obj_Character.Control[ControlKeys.CameraDown]) then Camera = "Down";
+        else Camera = "Stable";
         }
     
-    if camera = "Up" 
-        {
-        camera_y = -96;
+    if Camera = "Up"  {
+        CameraY = -96;
         }
-    else if camera = "Down" 
-        {
-        camera_y = 96;
+    else if Camera = "Down"  {
+        CameraY = 96;
         }
-    else if camera = "Stable"
-        {
-        camera_y = 0;
+    else if Camera = "Stable" {
+        CameraY = 0;
         }
         
     //Buaradaki clampin amacı, kamera objesinin odanın sınırlarına ulaşmasını engellemektir.
     x = clamp(x,0+view_wview[0]/2,room_width-view_wview[0]/2);
     y = clamp(y,0+view_hview[0]/2,room_height-view_hview[0]/2);
         
-    if instance_number(obj_Character) != 0 //Odada bir karakter var mı? Karakter yoksa hata verir çünkü.
-        {
+    if instance_number(obj_Character) != 0 { //Odada bir karakter var mı? Karakter yoksa hata verir çünkü.
         x += (obj_Character.x - x) * .1; 
-        y += (clamp(obj_Character.y,0+view_hview[0]/2,room_height-view_hview[0]/2)+camera_y - y) * .1;
+        y += (clamp(obj_Character.y,0+view_hview[0]/2,room_height-view_hview[0]/2)+CameraY - y) * .1;
         }
      /*   
     x = clamp(x,0+view_wview[0]/2,room_width-view_wview[0]/2);
@@ -91,18 +86,16 @@
             <string>///Create
 
 {
-    if instance_number(obj_Character) != 0
-        {
+    if instance_number(obj_Character) != 0 {
         x = obj_Character.x;
         y = obj_Character.y;
         }
-    else
-        {
+    else {
         x = obj_StartPoint.x;
         y = obj_StartPoint.y;        
         }
-    camera = "Stable"; //"Stable" durumu, kamerayı hareket ettirmek için aşağı-yukarı tuşlarını kullanmadığımız anlamına geliyor.
-    camera_y = 0; //"Stable" durumundan çıkarsak camera_y, değişim değerini tutacak. Şimdilik 0.
+    Camera = "Stable"; //"Stable" durumu, kamerayı hareket ettirmek için aşağı-yukarı tuşlarını kullanmadığımız anlamına geliyor.
+    CameraY = 0; //"Stable" durumundan çıkarsak camera_y, değişim değerini tutacak. Şimdilik 0.
     alarm[0] = 30;
 }
 </string>

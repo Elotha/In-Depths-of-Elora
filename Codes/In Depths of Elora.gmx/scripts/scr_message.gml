@@ -1,5 +1,5 @@
 ///Message
 
 {
-    show_message("gihi");
+    if global.MessagePermission then show_message("gihi");
 }

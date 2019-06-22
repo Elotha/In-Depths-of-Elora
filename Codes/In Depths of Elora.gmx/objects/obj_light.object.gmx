@@ -28,11 +28,11 @@
             <string>///Create
 
 {
-    globalvar light; 
-    globalvar light_list;
-    light = surface_create(view_wview,view_hview); 
+    globalvar Light; 
+    globalvar LightList;
+    Light = surface_create(view_wview,view_hview); 
     depth = MONSTER-50;
-    light_list = ds_list_create();
+    LightList = ds_list_create();
 }
 </string>
           </argument>
@@ -59,7 +59,7 @@
             <string>///Destroy The List
 
 {
-    ds_list_destroy(light_list);
+    ds_list_destroy(LightList);
 }
 </string>
           </argument>
@@ -86,8 +86,8 @@
             <string>///Step
 
 {
-    if !surface_exists(light) then light = surface_create(view_wview,view_hview);
-    surface_set_target(light);
+    if !surface_exists(Light) then Light = surface_create(view_wview,view_hview);
+    surface_set_target(Light);
     draw_set_colour(c_ltgray);
     draw_rectangle(0,0,view_wview,view_hview,false);
     surface_reset_target();
@@ -119,30 +119,29 @@
 {
     draw_set_blend_mode(bm_subtract);
     
-    surface_set_target(light);
-    var str, size, col, xx, yy, list_size;
-    list_size = ds_list_size(light_list);
-    repeat(list_size)
-        {
-        str = ds_list_find_value(light_list,0);
+    surface_set_target(Light);
+    var Str, Size, Col, xx, yy, ListSize;
+    ListSize = ds_list_size(LightList);
+    repeat(ListSize) {
+        Str = ds_list_find_value(LightList,0);
         
-        size = real(string_copy(str,1,string_pos(",",str)-1));
-        str = string_delete(str,1,string_pos(",",str));
+        Size = real(string_copy(Str,1,string_pos(",",Str)-1));
+        Str = string_delete(Str,1,string_pos(",",Str));
         
-        col = real(string_copy(str,1,string_pos(",",str)-1));
-        str = string_delete(str,1,string_pos(",",str));
+        Col = real(string_copy(Str,1,string_pos(",",Str)-1));
+        Str = string_delete(Str,1,string_pos(",",Str));
         
-        xx = real(string_copy(str,1,string_pos(",",str)-1));
-        str = string_delete(str,1,string_pos(",",str));
+        xx = real(string_copy(Str,1,string_pos(",",Str)-1));
+        Str = string_delete(Str,1,string_pos(",",Str));
         
-        yy = real(string_copy(str,1,string_pos(",",str)-1));
+        yy = real(string_copy(Str,1,string_pos(",",Str)-1));
         
-        ds_list_delete(light_list,0);
-        draw_circle_colour(-view_xview+xx,-view_yview+yy,size,col,c_black,false);
+        ds_list_delete(LightList,0);
+        draw_circle_colour(-view_xview+xx,-view_yview+yy,Size,Col,c_black,false);
         }
     surface_reset_target();
     
-    draw_surface(light,view_xview,view_yview);
+    draw_surface(Light,view_xview,view_yview);
     draw_set_blend_mode(bm_normal);
 }
 </string>

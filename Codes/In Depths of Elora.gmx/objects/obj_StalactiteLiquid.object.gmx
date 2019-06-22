@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Image Speed and Depth
+            <string>///Image Speed
 
 {
     image_speed = 1/6;

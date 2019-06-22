@@ -29,9 +29,9 @@
 
 {
     image_speed = 1/6;
-    damage = 20;
-    light_size = 0;
-    col = make_colour_hsv(60,240,200);
+    Damage = 20;
+    LightSize = 0;
+    Col = make_colour_hsv(60,240,200);
 }
 </string>
           </argument>
@@ -72,8 +72,8 @@
             <string>///Light
 
 {
-    if light_size &lt; 64 then light_size++;
-    create_light(light_size,col,x+24,y);
+    if LightSize &lt; 64 then LightSize++;
+    create_light(LightSize,Col,x+24,y);
 }
 </string>
           </argument>

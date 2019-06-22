@@ -28,7 +28,7 @@
             <string>///Damage and Depth
 
 {
-    damage = 20;
+    Damage = 20;
     depth = ENVIRONMENT;
 }
 </string>

@@ -30,11 +30,13 @@
 {
     image_speed = 1/6;
     
-    var liquid_left = collision_point(x-16,y+16,obj_Liquid,false,true);
-    var liquid_right = collision_point(x+48,y+16,obj_Liquid,false,true);
+    var LiquidLeft = collision_point(x-16,y+16,obj_Liquid,false,true);
+    var LiquidRight = collision_point(x+48,y+16,obj_Liquid,false,true);
     
-    if liquid_left = noone &amp;&amp; liquid_right != noone then sprite_index = spr_LiquidLeft;
-    if liquid_left != noone &amp;&amp; liquid_right = noone then sprite_index = spr_LiquidRight;
+    if LiquidLeft = noone &amp;&amp; LiquidRight != noone then sprite_index = spr_LiquidLeft;
+    if LiquidLeft != noone &amp;&amp; LiquidRight = noone then sprite_index = spr_LiquidRight;
+    
+    Damage = 40;
 }
 </string>
           </argument>

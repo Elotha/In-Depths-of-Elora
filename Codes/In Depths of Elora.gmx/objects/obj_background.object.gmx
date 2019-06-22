@@ -33,42 +33,37 @@
     background_x[0] = view_xview[0] * 0.325;
     background_y[0] = view_yview[0] * 0.325;
     
-    with(obj_Layer1_Up)
-        {
+    with(obj_Layer1_Up) {
         x = (view_xview[0] * 0.150)+ww;
         y = (view_yview[0] * 0.150);
         }
     
-    with(obj_Layer1_Down)
-        {
+    with(obj_Layer1_Down) {
         x = (view_xview[0] * 0.150)+ww;
         y = (view_yview[0] * 0.150)+room_height;
         }
-    with(obj_Waterfall1)
-        {
+        
+    with(obj_Waterfall1) {
         x = (view_xview[0] * 0.325)+xstart;
         y = (view_yview[0] * 0.325)+ystart;
         }
-    with(obj_Layer2_Up)
-        {
+        
+    with(obj_Layer2_Up) {
         x = (view_xview[0] * 0.250)+ww;
         y = (view_yview[0] * 0.250);
         }
     
-    with(obj_Layer2_Down)
-        {
+    with(obj_Layer2_Down) {
         x = (view_xview[0] * 0.250)+ww;
         y = (view_yview[0] * 0.250)+room_height;
         }
     
-    with(obj_Waterfall2)
-        {
+    with(obj_Waterfall2) {
         x = (view_xview[0] * 0.325)+xstart;
         y = (view_yview[0] * 0.325)+ystart;
         }
     
-    with(obj_Waterfall3)
-        {
+    with(obj_Waterfall3) {
         x = (view_xview[0] * 0.325)+xstart;
         y = (view_yview[0] * 0.325)+ystart;
         }
@@ -97,22 +92,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create Backgrounds
+            <string>///Create BackgroUnDs
 
 {
     var i = -1;
     var ww = sprite_get_width(spr_Layer1_Up1);
-    var ly1_up, ly1_down, ly2_up, ly2_down;
+    var Ly1_Up, Ly1_Down, Ly2_Up, Ly2_Down;
     repeat(floor(room_width/ww)+2)
         {
-        ly1_up = instance_create(0+(i*ww),0,obj_Layer1_Up);
-        ly1_up.ww = i*ww;
-        ly1_down = instance_create(0+(i*ww),room_height,obj_Layer1_Down);
-        ly1_down.ww = i*ww;
-        ly2_up = instance_create(0+(i*ww),0,obj_Layer2_Up);
-        ly2_up.ww = i*ww;
-        ly2_down = instance_create(0+(i*ww),0,obj_Layer2_Down);
-        ly2_down.ww = i*ww;
+        Ly1_Up = instance_create(0+(i*ww),0,obj_Layer1_Up);
+        Ly1_Up.ww = i*ww;
+        Ly1_Down = instance_create(0+(i*ww),room_height,obj_Layer1_Down);
+        Ly1_Down.ww = i*ww;
+        Ly2_Up = instance_create(0+(i*ww),0,obj_Layer2_Up);
+        Ly2_Up.ww = i*ww;
+        Ly2_Down = instance_create(0+(i*ww),0,obj_Layer2_Down);
+        Ly2_Down.ww = i*ww;
         i++;
         }
 }

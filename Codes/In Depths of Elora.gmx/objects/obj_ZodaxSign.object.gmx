@@ -28,8 +28,8 @@
             <string>///Create
 
 {
-    light_size = 128;
-    color = make_colour_rgb(201,255,243);
+    LightSize = 128;
+    Color = make_colour_rgb(201,255,243);
     image_speed = 1/6;
     depth = ENVIRONMENT;
 }
@@ -58,7 +58,7 @@
             <string>///Light
 
 {
-    create_light(light_size,color,x+16,y-6);
+    create_light(LightSize,Color,x+16,y-6);
 }
 </string>
           </argument>

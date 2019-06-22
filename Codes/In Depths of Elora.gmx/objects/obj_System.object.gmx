@@ -29,31 +29,26 @@
 
 {
     randomize();
-    global.timing_platform = 160; //Timing platformların bekleme süresi
-    global.force_start = false; //Karakter başlama noktasında doğsun mu?
-    global.falling_speed = 0.25; //Global yerçekimi değeri
-    global.falling_limit = 15; //Maksimum düşme hızı
-    global.checkpoint = -1; //Henüz checkpoint almadık
-    global.temp_number = 0;
+    global.TimingPlatform = 160; //Timing platformların bekleme süresi
+    global.ForceStart = false; //Karakter başlama noktasında doğsun mu?
+    global.FallingSpeed = 0.25; //Global yerçekimi değeri
+    global.FallingLimit = 15; //Maksimum düşme hızı
+    global.Checkpoint = -1; //Henüz checkpoint almadık
+    global.TempNumber = 0;
     
     var i = 0;
-    while room_exists(i) 
-        {
-        i++;
-        }
-    for (var k = 0; k &lt; i; k++)
-        {
-        global.first_start[k] = 0;
-        }
+    while room_exists(i) i++;
+    for (var k = 0; k &lt; i; k++) global.FirstStart[k] = 0;
        
     window_set_cursor(cr_none);
     
-    ini_open(current_profile + "_config.ini");
-    journal_key = ord(ini_read_string("Controls",controlkeys.journal,vk_tab));
+    //Journal için hangi tuşun atandığını sapta
+    ini_open(CurrentProfile + "_Config.ini");
+    JournalKey = ord(ini_read_string("Controls",ControlKeys.Journal,ord('J')));
     ini_close();
     
-    globalvar magical_sight;
-    magical_sight = false;
+    globalvar MagicalSight;
+    MagicalSight = false;
     
 }
 </string>
@@ -81,7 +76,7 @@
             <string>///First Start
 
 {
-    global.first_start[room]++;
+    global.FirstStart[room]++;
 }
 </string>
           </argument>
@@ -135,14 +130,15 @@
             <string>///Journal
 
 {
-    if keyboard_check_pressed(journal_key) //Journal açılsın ya da kapansın
-        {
-        if instance_number(obj_Journal) = 0 then instance_create(x,y,obj_Journal);
+    if keyboard_check_pressed(JournalKey) { //Journal açılsın ya da kapansın
+        if instance_number(obj_Journal) = 0 &amp;&amp; instance_number(obj_Character) = 1 then with(obj_Character) {
+            if MovementPermission &amp;&amp; JumpPermission &amp;&amp; !scr_IfDash() &amp;&amp; BlockDown != noone then instance_create(x,y,obj_Journal);
+            if MagicalSight then scr_MagicalSightClose();
+            MovementPermission = false;
+            }
         }
-    else if keyboard_check_pressed(vk_escape) //Mola menüsü açılsın
-        {
-        if instance_number(obj_Journal) = 0
-            {
+    else if keyboard_check_pressed(vk_escape) {//Mola menüsü açılsın
+        if instance_number(obj_Journal) = 0 {
             if instance_number(obj_Pause) = 0 then instance_create(0,0,obj_Pause);
             }     
         }
@@ -172,9 +168,8 @@
             <string>///Checkpoint
 
 {
-    if global.first_start[room] = 0
-        {
-        global.checkpoint = -1; //Henüz bir checkpoint almadık
+    if global.FirstStart[room] = 0 {
+        global.Checkpoint = -1; //Henüz bir checkpoint almadık
         alarm[0] = 1;
         }
 }
@@ -203,8 +198,8 @@
             <string>///Game End
 
 {
-    if file_exists("temp.ini") then file_delete("temp.ini");
-    font_delete(fnt_menu);
+    if file_exists("Temp.ini") then file_delete("Temp.ini");
+    font_delete(FontMenu);
 }
 </string>
           </argument>

@@ -29,29 +29,29 @@
 
 {
     image_speed = 1/6;
-    global.hud_color = make_color_rgb(230,217,211);
+    global.HUDColor = make_color_rgb(230,217,211);
+    HUDColor = global.HUDColor;
     xy = 32;
     depth = INTERFACE2;
-    potion_text[0] = -1;
-    potion_text_full[0] = -1;
-    count[0] = 1;
-    potion_dir[0] = -1;
-    for(var a = 0; a &lt; 10; a++)
-        {
-        potion_text_length[a] = a*160;
-        length[a] = 0;
-        start_point[a] = 0;
+    PotionText[0] = -1;
+    PotionTextFull[0] = -1;
+    Count[0] = 1;
+    PotionDir[0] = -1;
+    for(var a = 0; a &lt; 10; a++) {
+        PotionTextLength[a] = a*160;
+        Length[a] = 0;
+        StartPoint[a] = 0;
         }
-    timing = -1;
-    width = string_width("+ Light Radius Increased!");
-    color = make_color_rgb(255,236,214);
+    Timing = -1;
+    Width = string_width("+ Light Radius Increased!");
+    Color = make_color_rgb(255,236,214);
     
-    hud_key = global.control[controlkeys.hud];
-    ini_open(current_profile + "_config.ini");
-    hud = ini_read_real("Gameplay","Hud",0);
+    HUDKey = global.Control[ControlKeys.HUD];
+    ini_open(CurrentProfile + "_Config.ini");
+    HUD = ini_read_real("Gameplay","HUD",0);
     ini_close();
-    if hud = ALWAYS_SHOW then hud_alpha = 1;
-    else hud_alpha = 0;
+    if HUD = ALWAYS_SHOW then HUDAlpha = 1;
+    else HUDAlpha = 0;
     ww = display_get_gui_width();
     hh = display_get_gui_height();
 }
@@ -75,14 +75,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Lives
+            <string>///Lives &amp; Health
 
 {
-    lives = 5; //Hak sayımız
-    global.health_max = 120; //Maksimum canımız
-    health = global.health_max; //Mevcut canımız
-    depth = INTERFACE1;
-    hud_color = global.hud_color;
+    globalvar Lives, Health;
+    Lives = 5; //Hak sayımız
+    global.HealthMax = 120; //Maksimum canımız
+    Health = global.HealthMax; //Mevcut canımız
 }
 </string>
           </argument>
@@ -104,13 +103,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Score
+            <string>///Magic Essence
 
 {
-    score = 0;
-    score_checkpoint = score;
-    depth = INTERFACE1;
-    hud_color = global.hud_color;
+    globalvar MagicEssence;
+    MagicEssence = 0;
+    MagicEssenceCheckpoint = MagicEssence;
 }
 </string>
           </argument>
@@ -137,9 +135,8 @@
             <string>///HUD Alpha-
 
 {
-    if hud_alpha &gt; 0
-        {
-        hud_alpha -= 0.1;
+    if HUDAlpha &gt; 0 {
+        HUDAlpha -= 0.1;
         alarm[1] = 1;
         }
 }
@@ -168,7 +165,7 @@
             <string>///Number of Keys
 
 {
-    key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster);
+    KeyMax = instance_number(obj_Key)+instance_number(obj_KeyMonster);
 }
 </string>
           </argument>
@@ -195,23 +192,17 @@
             <string>///Step
 
 {
-    for(var i = 0; i &lt; array_length_1d(timing); i++) //Potion text
-        {
-        if timing[i] != -1 then timing[i]--;
-        if timing[i] = 0
-            {
-            scr_potiontext(i);
-            }
+    for(var i = 0; i &lt; array_length_1d(Timing); i++) {//Potion text
+        if Timing[i] != -1 then Timing[i]--;
+        if Timing[i] = 0 then scr_PotionText(i);
         }
         
-    switch(hud)
-        {
+    switch(HUD) {
         case ONLY_HUDKEY:
-            if keyboard_check(hud_key)
-                {
-                if hud_alpha &lt; 1 then hud_alpha += 0.1;
+            if keyboard_check(HUDKey) {
+                if HUDAlpha &lt; 1 then HUDAlpha += 0.1;
                 }
-            else if hud_alpha &gt; 0 then hud_alpha -= 0.1;
+            else if HUDAlpha &gt; 0 then HUDAlpha -= 0.1;
             break;
         }
 }
@@ -240,14 +231,12 @@
             <string>///Keys
 
 {
-    key_number = 0; //Mevcut anahtar sayımız
-    key_checkpoint = key_number;
-    key_max = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
-    global.key_sound = 4;
-    depth = INTERFACE1;
-    hud_color = global.hud_color;
+    KeyNumber = 0; //Mevcut anahtar sayımız
+    KeyCheckpoint = KeyNumber;
+    KeyMax = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
+    global.KeySound = 4;
     
-    alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_key_monster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
+    alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_KeyMonster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
 }
 </string>
           </argument>
@@ -299,31 +288,26 @@
             <string>///HUD
 
 {
-    if hud_alpha &gt; 0 //HUD gözüküyor mu?
-        {
-        draw_set_alpha(hud_alpha);
-        draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,hud_alpha);
-        draw_sprite_part_ext(spr_HP,0,0,0,43+health,48,xy,xy,2,2,c_white,hud_alpha);
-        draw_sprite_ext(spr_LifeStone,-1,xy+16,xy+21,1.5,1.5,0,c_white,hud_alpha);
+    if HUDAlpha &gt; 0 { //HUD gözüküyor mu?
+        draw_set_alpha(HUDAlpha);
+        draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,HUDAlpha);
+        draw_sprite_part_ext(spr_HP,0,0,0,43+Health,48,xy,xy,2,2,c_white,HUDAlpha);
+        draw_sprite_ext(spr_LifeStone,-1,xy+8,xy+21,1.5,1.5,0,c_white,HUDAlpha);
         }
     else exit;
         
-    var pottext = false;
-    for(var k = 0; k &lt; array_length_1d(potion_text_full); k++)
-        {
-        if potion_text_full[k] != -1 then pottext = true;
+    var PotText = false;
+    for(var k = 0; k &lt; array_length_1d(PotionTextFull); k++) {
+        if PotionTextFull[k] != -1 then PotText = true;
         }
-    if pottext
-        {
-        draw_set_colour(color);
+    if PotText {
+        draw_set_colour(Color);
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         draw_set_font(fnt_Potion);
-        for(var i = 0; i &lt; array_length_1d(potion_text); i++)
-            {
-            if potion_text[i] != -1
-                {
-                draw_text(360+potion_text_length[i],44,potion_text[i]);
+        for(var i = 0; i &lt; array_length_1d(PotionText); i++) {
+            if PotionText[i] != -1 {
+                draw_text(360+PotionTextLength[i],44,PotionText[i]);
                 }
             }
         }
@@ -354,8 +338,8 @@
 {
     draw_set_font(fnt_Calibri_HUD);
     draw_set_valign(fa_top);
-    draw_set_colour(hud_color);
-    draw_text(obj_HUD.xy+51,obj_HUD.xy+34,"X " + string(lives));
+    draw_set_colour(HUDColor);
+    draw_text(obj_HUD.xy+51,obj_HUD.xy+34,"X " + string(Lives));
 }
 </string>
           </argument>
@@ -377,13 +361,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Score
+            <string>///Magic Essence
 
 {
     draw_set_font(fnt_Calibri_HUD2);
-    draw_set_colour(hud_color);
+    draw_set_colour(HUDColor);
     draw_set_valign(fa_top);
-    draw_text(obj_HUD.xy+126,obj_HUD.xy+62,string(score));
+    draw_text(obj_HUD.xy+126,obj_HUD.xy+62,string(MagicEssence));
 }
 </string>
           </argument>
@@ -409,9 +393,9 @@
 
 {
     draw_set_font(fnt_Calibri_HUD2);
-    draw_set_colour(hud_color);
+    draw_set_colour(HUDColor);
     draw_set_valign(fa_top);
-    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(key_number) + " / " + string(key_max));
+    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(KeyNumber) + " / " + string(KeyMax));
 }
 </string>
           </argument>

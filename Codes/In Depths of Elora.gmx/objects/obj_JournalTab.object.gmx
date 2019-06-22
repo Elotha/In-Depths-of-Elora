@@ -29,7 +29,7 @@
 
 {
     image_speed = 0;
-    selected = false;
+    Selected = false;
 }
 </string>
           </argument>
@@ -110,22 +110,17 @@
             <string>///Left Pressed
 
 {
-    if !selected
-        {
-        with(obj_Journal)
-            {
-            for(var i = 0; i &lt; array_length_1d(main_tabs); i++)
-                {
-                with(main_tabs[i])
-                    {
-                    selected = false;
+    if !Selected {
+        with(obj_Journal) {
+            for(var i = 0; i &lt; array_length_1d(MainTabs); i++) {
+                with(MainTabs[i]) {
+                    Selected = false;
                     image_index = 0;
                     }
                 }
-            scr_journal_clear();
-            tab_current = other.type;
-            switch(tab_current)
-                {
+            scr_JournalClear();
+            TabCurrent = other.Type;
+            switch(TabCurrent) {
                 case "Last Dialogues":
                     event_user(1);
                     break;
@@ -139,7 +134,7 @@
                     break;
                 }
             }
-        selected = true;
+        Selected = true;
         image_index = 2;
         }
 }

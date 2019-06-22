@@ -29,11 +29,11 @@
 
 {
     image_speed = 0;
-    img_speed = 1/6;
+    ImageSpeed = 1/6;
     mask_index = -1;
-    squirt = false;
-    dance_index = 0;
-    alarm[0] = 1/img_speed;
+    Squirt = false;
+    DanceIndex = 0;
+    alarm[0] = 1/ImageSpeed;
 }
 </string>
           </argument>
@@ -74,26 +74,22 @@
             <string>///Image Index
 
 {
-    if ++dance_index = 30
-        {
-        squirt = !squirt;
-        dance_index -= 30;
-        if !magical_sight 
-            {
-            if squirt
-                {
+    if ++DanceIndex = 30 {
+        Squirt = !Squirt;
+        DanceIndex -= 30;
+        if !MagicalSight  {
+            if Squirt {
                 sprite_index = spr_PlantSquirt;
                 mask_index = sprite_index;
                 }
-            else 
-                {
+            else {
                 sprite_index = spr_PlantDance;
                 mask_index = -1;
                 }
             }
         }
-    alarm[0] = 1/img_speed;
-    image_index = dance_index;
+    alarm[0] = 1/ImageSpeed;
+    image_index = DanceIndex;
 }
 </string>
           </argument>
@@ -120,27 +116,23 @@
             <string>///Magical Sight
 
 {
-    if magical_sight
-        {
+    if MagicalSight {
         sprite_index = spr_PlantDance;
         image_blend = c_aqua;
         mask_index = -1;
-        image_index = dance_index;
+        image_index = DanceIndex;
         }
-    else
-        {
+    else {
         image_blend = c_white;
-        if squirt
-            {
+        if Squirt {
             sprite_index = spr_PlantSquirt;
             mask_index = sprite_index;
-            image_index = dance_index;
+            image_index = DanceIndex;
             }
-        else 
-            {
+        else  {
             sprite_index = spr_PlantDance;
             mask_index = -1;
-            image_index = dance_index;
+            image_index = DanceIndex;
             }
         }
 }

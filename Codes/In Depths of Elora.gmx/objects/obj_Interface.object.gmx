@@ -55,10 +55,9 @@
 //Bu parent objesinin tek amacı, itemlerin yukarı aşağı sallanmasıdır.
 
 {
-    spd = 0.6;
-    frc = 0.02;
-    motion_set(90,spd);
-    friction = frc;
+    Speed = 0.6;
+    motion_set(90,Speed);
+    friction = 0.02;
 }
 </string>
           </argument>
@@ -85,7 +84,7 @@
             <string>///Speed
 
 {
-    motion_set(90,spd);
+    motion_set(90,Speed);
 }
 </string>
           </argument>
@@ -113,10 +112,9 @@
 
 {
     if friction = 0 then exit;
-    if speed = 0
-        {
+    if speed = 0 {
         direction = direction+180 mod 360;
-        speed = spd;
+        speed = Speed;
         }
 }
 </string>

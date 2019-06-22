@@ -29,7 +29,7 @@
 
 {
     image_speed = 1/6;
-    active = false;
+    Active = false;
     depth = ENVIRONMENT;
 }
 </string>
@@ -57,9 +57,8 @@
             <string>///Collision
 
 {
-    if !active
-        {
-        active = true;
+    if !Active {
+        Active = true;
         sprite_index = spr_SpikeFlowerActivation;
         image_index = 0;
         }

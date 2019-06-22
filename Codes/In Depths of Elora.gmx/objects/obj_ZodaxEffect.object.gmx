@@ -28,25 +28,25 @@
             <string>///Particles
 
 {
-    spd = 0;
-    spd_change = 0.25;
+    Speed = 0;
+    SpeedChange = 0.25;
     i = 0;
-    zodax_effect = part_system_create();
-    part_system_depth(zodax_effect,-100);
-    particle_zodax = part_type_create();
-    part_type_sprite(particle_zodax,spr_ParticlePixel,false,false,false);
-    part_type_size(particle_zodax,1,1,0,0);
-    part_type_speed(particle_zodax,0.2,0.5,0.02,0.05);
-    part_type_direction(particle_zodax,0,360,0,0);
-    part_type_gravity(particle_zodax,0,270);
-    part_type_colour_hsv(particle_zodax,110,155,0,255,240,255);
-    part_type_life(particle_zodax,20,40);
-    part_type_alpha2(particle_zodax,0.6,0);
-    part_system_position(zodax_effect,x,y);
+    ZodaxEffect = part_system_create();
+    part_system_depth(ZodaxEffect,-100);
+    ZodaxParticle = part_type_create();
+    part_type_sprite(ZodaxParticle,spr_ParticlePixel,false,false,false);
+    part_type_size(ZodaxParticle,1,1,0,0);
+    part_type_speed(ZodaxParticle,0.2,0.5,0.02,0.05);
+    part_type_direction(ZodaxParticle,0,360,0,0);
+    part_type_gravity(ZodaxParticle,0,270);
+    part_type_colour_hsv(ZodaxParticle,110,155,0,255,240,255);
+    part_type_life(ZodaxParticle,20,40);
+    part_type_alpha2(ZodaxParticle,0.6,0);
+    part_system_position(ZodaxEffect,x,y);
     
-    zodax_emitter = part_emitter_create(zodax_effect);
-    part_emitter_region(zodax_effect,zodax_emitter,-32,32,-24,8,ps_shape_rectangle,ps_distr_gaussian);
-    part_emitter_stream(zodax_effect,zodax_emitter,particle_zodax,1);
+    ZodaxEmitter = part_emitter_create(ZodaxEffect);
+    part_emitter_region(ZodaxEffect,ZodaxEmitter,-32,32,-24,8,ps_shape_rectangle,ps_distr_gaussian);
+    part_emitter_stream(ZodaxEffect,ZodaxEmitter,ZodaxParticle,1);
     
     alarm[0] = 48;
     depth = ITEM;
@@ -77,9 +77,9 @@
             <string>///Destroy
 
 {
-    part_emitter_destroy(zodax_effect,zodax_emitter);
-    part_type_destroy(particle_zodax);
-    part_system_destroy(zodax_effect);
+    part_emitter_destroy(ZodaxEffect,ZodaxEmitter);
+    part_type_destroy(ZodaxParticle);
+    part_system_destroy(ZodaxEffect);
 }
 </string>
           </argument>

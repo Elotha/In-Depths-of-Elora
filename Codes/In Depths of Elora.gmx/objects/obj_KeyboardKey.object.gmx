@@ -28,8 +28,8 @@
             <string>///Create
 
 {
-    key = "";
-    text = "";
+    Key = "";
+    Text = "";
 }
 </string>
           </argument>
@@ -75,11 +75,11 @@
     draw_set_halign(fa_center);
     draw_set_font(fnt_Calibri_8);
     draw_set_colour(c_black);
-    draw_text(x+8,y+7,key);
+    draw_text(x+8,y+7,Key);
     draw_set_colour(c_white);
     draw_set_halign(fa_left);
     draw_set_font(fnt_Interact);
-    draw_text(x+sprite_width+4,y+8,text);
+    draw_text(x+sprite_width+4,y+8,Text);
     draw_set_valign(fa_top);
 }
 </string>

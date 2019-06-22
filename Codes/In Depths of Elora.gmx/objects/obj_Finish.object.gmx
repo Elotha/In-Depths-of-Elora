@@ -32,11 +32,11 @@
     destroy(obj_Background);
     destroy(obj_Audio);
     destroy(obj_HUD);
-    destroy(obj_KeyEffect2);
-    destroy(obj_KeyEffect3);
-    destroy(obj_ZodaxEffect);
     destroy(obj_Particles);
-    destroy(obj_LightBug_Creator);
+    destroy(obj_LightBugCreator);
+    destroy(obj_CharacterLight);
+    
+    scr_Clear();
     
     display_set_gui_size(640,360);
 }

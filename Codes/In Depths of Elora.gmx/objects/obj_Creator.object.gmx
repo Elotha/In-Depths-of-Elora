@@ -38,7 +38,7 @@
     create_only_one(0,0,obj_Light);
     create_only_one(0,0,obj_HUD);
     create_only_one(0,0,obj_Particles);
-    create_only_one(0,0,obj_LightBug_Creator);
+    create_only_one(0,0,obj_LightBugCreator);
 }
 </string>
           </argument>
@@ -76,7 +76,7 @@
     create_only_one(0,0,obj_Light);
     create_only_one(0,0,obj_HUD);
     create_only_one(0,0,obj_Particles);
-    create_only_one(0,0,obj_LightBug_Creator);
+    create_only_one(0,0,obj_LightBugCreator);
 }
 </string>
           </argument>

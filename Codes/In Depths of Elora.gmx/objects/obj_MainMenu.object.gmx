@@ -28,118 +28,123 @@
             <string>///Create
 
 {
-    scr_back_to_menu(); //Gereksiz objeleri sil
-    globalvar fnt_menu, font_string, current_profile, sounds_list;
-    fnt_menu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
-    font = fnt_menu;
-    font_string[0] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;+*"';
-    font_string[1] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    scr_BackToMenu(); //Gereksiz objeleri sil
+    globalvar FontMenu, FontString, CurrentProfile, SoundsList;
+    FontMenu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
+    Font = FontMenu; //Local değişken kullanmak için
+    FontString[0] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;+*"';
+    FontString[1] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     
     image_speed = 1/5;
     display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
-    start_game = false;
-    alpha = 0;
-    start_alpha = true;
-    draw_set_alpha(1);
+    StartGame = false;
+    Alpha = 0;
+    StartAlpha = true;
+    draw_set_alpha(Alpha);
     
-    global.current_music = snd_MainMenu;
-    sounds_list = ds_list_create();
+    global.CurrentMusic = snd_MainMenu;
+    SoundsList = ds_list_create();
     
-    selected[0] = 0.5;
-    for(var i = 1; i &lt; 12; i++)
-        {
-        selected[i] = 0;
+    Selected[0] = 0.5;
+    for(var i = 1; i &lt; 12; i++) {
+        Selected[i] = 0;
         }
-    selected_total = 5;
-    selected_number = 0;
+    SelectedTotal = 5;
+    SelectedNumber = 0;
     
-    show_first = "";
-    show_last = "";
-    offset = 0;
+    ShowFirst = "";
+    ShowLast = "";
+    Offset = 0;
     
     
-    main_menu[STARTGAME] = "START GAME";
-    main_menu[SETTINGS] = "SETTINGS";
-    main_menu[JOURNAL] = "JOURNAL";
-    main_menu[PROFILES] = "PROFILES";
-    main_menu[EXIT] = "EXIT";
+    MainMenu[STARTGAME] = "START GAME";
+    MainMenu[SETTINGS] = "SETTINGS";
+    MainMenu[JOURNAL] = "JOURNAL";
+    MainMenu[PROFILES] = "PROFILES";
+    MainMenu[EXIT] = "EXIT";
     
-    settings[CONTROLS] = "CONTROLS";
-    settings[GAMEPLAY] = "GAMEPLAY";
-    settings[GRAPHICS] = "GRAPHICS";
-    settings[AUDIO] = "AUDIO";
-    settings[SET_BACK] = "BACK";
+    Settings[CONTROLS] = "CONTROLS";
+    Settings[GAMEPLAY] = "GAMEPLAY";
+    Settings[GRAPHICS] = "GRAPHICS";
+    Settings[AUDIO] = "AUDIO";
+    Settings[SET_BACK] = "BACK";
     
-    enum controlkeys
-        {
-        left,
-        right,
-        jump,
-        cameraup,
-        cameradown,
-        interact,
-        journal,
-        hud,
-        music,
-        sounds,
-        cont_default,
-        back
+    enum ControlKeys {
+        Left,
+        Right,
+        Jump,
+        Dash,
+        MagicalSight,
+        ManaPotion,
+        CameraUp,
+        CameraDown,
+        Interact,
+        Journal,
+        HUD,
+        Music,
+        Sounds,
+        Defaults,
+        Back
         }
         
-    control_change = false; //Herhangi bir kontrol değiştiriliyor mu?
-    control_check = false; //Atanmamış tuş var mı?
+    ControlChange = false; //Herhangi bir kontrol değiştiriliyor mu?
+    ControlCheck = false; //Atanmamış tuş var mı?
     
-    hud[ALWAYS_SHOW] = "ALWAYS SHOW";
-    hud[ONLY_INTERACT] = "ONLY WHEN INTERACT";
-    hud[ONLY_HUDKEY] = "ONLY WHEN HOLD THE HUD KEY";
-    hud[HUD_NEVER] = "NEVER";
+    HUD[ALWAYS_SHOW] = "ALWAYS SHOW";
+    HUD[ONLY_INTERACT] = "ONLY WHEN INTERACT";
+    HUD[ONLY_HUDKEY] = "ONLY WHEN HOLD THE HUD KEY";
+    HUD[HUD_NEVER] = "NEVER";
     
-    on_startup[STARTUP_MENU] = "MENU";
-    on_startup[STARTUP_CONT] = "CONTINUE";
+    OnStartup[STARTUP_MENU] = "MENU";
+    OnStartup[STARTUP_CONT] = "CONTINUE";
     
-    dialog_speed[SPEED1] = "1";
-    dialog_speed[SPEED2] = "2";
-    dialog_speed[SPEED4] = "4";
-    dialog_speed[SPEED8] = "8";
+    DialogSpeed[SPEED1] = "1";
+    DialogSpeed[SPEED2] = "2";
+    DialogSpeed[SPEED4] = "4";
+    DialogSpeed[SPEED8] = "8";
     
-    language[ENGLISH] = "ENGLISH";
-    language[TURKISH] = "TURKISH";
+    Language[ENGLISH] = "ENGLISH";
+    Language[TURKISH] = "TURKISH";
     
-    speedrun_timer[OFF] = "OFF";
-    speedrun_timer[ON] = "ON";
+    SpeedrunTimer[OFF] = "OFF";
+    SpeedrunTimer[ON] = "ON";
     
-    v_sync[ON] = "ON";
-    v_sync[OFF] = "OFF";
+    VSync[ON] = "ON";
+    VSync[OFF] = "OFF";
     
-    fullscreen[ON] = "ON";
-    fullscreen[OFF] = "OFF";
+    Fullscreen[ON] = "ON";
+    Fullscreen[OFF] = "OFF";
     
-    resolution[R1920X1080] = "1920 X 1080";
-    resolution[R1600X900] = "1600 X 900";
+    Resolution[R1920X1080] = "1920 X 1080";
+    Resolution[R1600X900] = "1600 X 900";
     
-    graphics_quality[QUALITY_HIGH] = "HIGH";
-    graphics_quality[QUALITY_LOW] = "LOW";
+    GraphicsQuality[QUALITY_HIGH] = "HIGH";
+    GraphicsQuality[QUALITY_LOW] = "LOW";
     
-    global.v_sync = ON;
-    game_is_started = true;
-    if !scr_profile_load() //Önceden oluşturulmuş bir profil varsa yükle, yoksa aşağıdaki kodları çalıştır
-        {
-        global.music = true;
-        global.sounds = true;
-        description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
-        new_profile = "";
-        keyboard_string = new_profile;
-        menu_current = "New Profile";
-        v_sync_current = ON;
-        on_startup_current = STARTUP_MENU;
+    global.VSync = ON;
+    MenuCreated = true;
+    if !scr_ProfileLoad() { //Önceden oluşturulmuş bir profil varsa yükle, yoksa aşağıdaki kodları çalıştır
+        global.Music = true;
+        global.Sounds = true;
+        global.MasterVolume = 10;
+        global.MusicVolume = 10;
+        global.SoundsVolume = 10;
+        Description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+        NewProfile = "";
+        keyboard_string = NewProfile;
+        MenuCurrent = "New Profile";
+        VSyncCurrent = ON;
+        OnStartupCurrent = STARTUP_MENU;
         }
-    else menu_current = "Main Menu";
-    //display_reset(0,v_sync_current);
-    button_current = 0;
+    else MenuCurrent = "Main Menu";
+    //display_reset(0,v_syncCurrent);
+    ButtonCurrent = 0;
     
-    scr_profile_names();
+    scr_ProfileNames();
     
-    global.frame_rate = 1/6; //Genel animasyon hızı
+    global.FrameRate = 1/6; //Genel animasyon hızı
+    
+    QuickStart = false; //On Startup: Continue durumu için
 }
 </string>
           </argument>
@@ -193,16 +198,15 @@
             <string>///Description
 
 {
-    switch(menu_current)
-        {
+    switch(MenuCurrent) {
         case "New Profile":
-            if total = 0 then description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
-            else description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
+            if Total = 0 then Description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+            else Description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
             break;
         
         case "Controls":
-            if description = "Default control settings applied." then description = "Press &lt;Enter&gt; to change key.";
-            else description = "Press any key to assign, press &lt;ESC&gt; to cancel. Some keys are not allowed.";
+            if Description = "Default control settings applied." then Description = "Press &lt;Enter&gt; to change key.";
+            else Description = "Press any key to assign, press &lt;ESC&gt; to cancel. Some keys are not allowed.";
             break;   
         }
 }
@@ -231,22 +235,19 @@
             <string>///Start
 
 {
-    if start_game //Oyuna başlama tuşuna bastık
-        {
-        if sprite_index = spr_MenuBackground &amp;&amp; (image_index &gt; 9 &amp;&amp; image_index &lt; 11)
-            {
+    if StartGame { //Oyuna başlama tuşuna bastık
+        if sprite_index = spr_MenuBackground &amp;&amp; (image_index &gt; 9 &amp;&amp; image_index &lt; 11) {
             sprite_index = spr_MenuBackground_StartGame;
             image_index = 0;
-            image_speed = global.frame_rate;
+            image_speed = global.FrameRate;
             }
-        if alpha &gt; 0 then alpha -= 0.05;
-        else if alarm[1] = -1 then alarm[1] = 60;
+        if Alpha &gt; 0 then Alpha -= 0.05;
+        else if alarm[1] = -1 then alarm[1] = 60; //Texture group load
         exit;
         }
         
-    if start_alpha //Menü yeni açılıyorsa
-        {
-        if alpha &lt; 1 then alpha += 0.025; else start_alpha = false;
+    if StartAlpha { //Menü yeni açılıyorsa
+        if Alpha &lt; 1 then Alpha += 0.025; else StartAlpha = false;
         }
 }
 </string>
@@ -272,19 +273,15 @@
             <string>///Control Change
 
 {
-    if control_change
-        {
-        if keyboard_check_pressed(vk_escape)
-            {
-            control_change = false;
-            description = "Press &lt;Enter&gt; to change key.";
+    if ControlChange {
+        if keyboard_check_pressed(vk_escape) {
+            ControlChange = false;
+            Description = "Press &lt;Enter&gt; to change key.";
             }
-        else if keyboard_check_pressed(vk_anykey)
-            {
-            if scr_control_load(button_current,false)
-                {
-                control_change = false;
-                description = "Press &lt;Enter&gt; to change key.";
+        else if keyboard_check_pressed(vk_anykey) {
+            if scr_ControlLoad(ButtonCurrent,false) {
+                ControlChange = false;
+                Description = "Press &lt;Enter&gt; to change key.";
                 }
             }
         exit;
@@ -313,21 +310,17 @@
             <string>///Profile Name
 
 {
-    if menu_current = "New Profile"
-        {
-        if keyboard_check_pressed(vk_backspace)
-            {
-            new_profile = string_copy(new_profile,1,string_length(new_profile)-1);
-            keyboard_string = new_profile;
+    if MenuCurrent = "New Profile" {
+        if keyboard_check_pressed(vk_backspace) {
+            NewProfile = string_copy(NewProfile,1,string_length(NewProfile)-1);
+            keyboard_string = NewProfile;
             }
-        else if keyboard_check_pressed(vk_anykey) &amp;&amp; !keyboard_check_pressed(vk_enter) &amp;&amp; !keyboard_check_pressed(vk_escape)
-            {
-            if string_count(string_upper(keyboard_lastchar),font_string[1]) != 0
-                {
-                new_profile = string_copy(string_upper(keyboard_string),1,16);
-                keyboard_string = new_profile;
+        else if keyboard_check_pressed(vk_anykey) &amp;&amp; !keyboard_check_pressed(vk_enter) &amp;&amp; !keyboard_check_pressed(vk_escape) {
+            if string_count(string_upper(keyboard_lastchar),FontString[1]) != 0 {
+                NewProfile = string_copy(string_upper(keyboard_string),1,16);
+                keyboard_string = NewProfile;
                 }
-            else keyboard_string = new_profile;
+            else keyboard_string = NewProfile;
             }
         }
 }
@@ -354,66 +347,56 @@
             <string>///Down and Up
 
 {        
-    if menu_current != "New Profile"
-        {
-        var dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
-        if dir = -1
-            {
-            if selected_number = 0
+    if MenuCurrent != "New Profile" {
+        var Dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));
+        if Dir = -1 {
+            if SelectedNumber = 0
                 {
-                selected[0] = 0;
-                selected[selected_total-1] = 0.5;
-                selected_number = selected_total-1;
-                button_current = selected_number;
-                if selected_total &gt; 5
-                    {
-                    offset = selected_total-5;
-                    show_first = "!";
-                    show_last = "";
+                Selected[0] = 0;
+                Selected[SelectedTotal-1] = 0.5;
+                SelectedNumber = SelectedTotal-1;
+                ButtonCurrent = SelectedNumber;
+                if SelectedTotal &gt; 5 {
+                    Offset = SelectedTotal-5;
+                    ShowFirst = "!";
+                    ShowLast = "";
                     }
                 }
-            else
-                {
-                selected[selected_number--] = 0;
-                selected[selected_number] = 0.5;
-                button_current = selected_number;
-                if selected_total &gt; 5
-                    {
-                    if selected_number &lt; selected_total-5 then show_last = "$";
-                    if offset &gt; 0 &amp;&amp; selected_number &lt; offset then offset--;
-                    if offset = 0 then show_first = "";
+            else {
+                Selected[SelectedNumber--] = 0;
+                Selected[SelectedNumber] = 0.5;
+                ButtonCurrent = SelectedNumber;
+                if SelectedTotal &gt; 5 {
+                    if SelectedNumber &lt; SelectedTotal-5 then ShowLast = "$";
+                    if Offset &gt; 0 &amp;&amp; SelectedNumber &lt; Offset then Offset--;
+                    if Offset = 0 then ShowFirst = "";
                     }
                 }
             }
-        else if dir = 1
-            {
-            if selected_number = selected_total-1
-                {
-                selected[selected_total-1] = 0;
-                selected[0] = 0.5;
-                selected_number = 0;
-                button_current = selected_number;
-                if selected_total &gt; 5
-                    {
-                    show_first = "";
-                    show_last = "$";
-                    offset = 0;
+        else if Dir = 1 {
+            if SelectedNumber = SelectedTotal-1 {
+                Selected[SelectedTotal-1] = 0;
+                Selected[0] = 0.5;
+                SelectedNumber = 0;
+                ButtonCurrent = SelectedNumber;
+                if SelectedTotal &gt; 5 {
+                    ShowFirst = "";
+                    ShowLast = "$";
+                    Offset = 0;
                     }
                 }
-            else
-                {
-                selected[selected_number++] = 0;
-                selected[selected_number] = 0.5;
-                button_current = selected_number;
-                if selected_total &gt; 5
-                    {
-                    if selected_number &gt;= 5 then show_first = "!";
-                    if selected_number-offset &gt; 4 &amp;&amp; offset &lt; selected_total-4 then offset++;
-                    if offset = selected_total-5 then show_last = "";
+            else {
+                Selected[SelectedNumber++] = 0;
+                Selected[SelectedNumber] = 0.5;
+                ButtonCurrent = SelectedNumber;
+                if SelectedTotal &gt; 5 {
+                    if SelectedNumber &gt;= 5 then ShowFirst = "!";
+                    if SelectedNumber-Offset &gt; 4 &amp;&amp; Offset &lt; SelectedTotal-4 then Offset++;
+                    if Offset = SelectedTotal-5 then ShowLast = "";
                     }
                 }
             }
-        if dir != 0 exit;
+        if Dir != 0 exit;
         }
 }
 </string>
@@ -439,113 +422,101 @@
             <string>///Left and Right
 
 {
-    var left = keyboard_check_pressed(vk_left);
-    var right = keyboard_check_pressed(vk_right);
-    dirc = right-left;
-    if keyboard_check_pressed(vk_enter) then dirc = 1;
-    if dirc != 0
-        {
-        switch(menu_current)
-            {
+    var Left = keyboard_check_pressed(vk_left);
+    var Right = keyboard_check_pressed(vk_right);
+    Dirc = Right-Left;
+    if keyboard_check_pressed(vk_enter) then Dirc = 1;
+    if Dirc != 0 {
+        switch(MenuCurrent) {
             case "Gameplay": 
-                switch(button_current)
-                    {
-                    case HUD:
-                        gameplay[HUD] = scr_change_button(dirc,hud,gameplay[HUD],"HUD: ","Gameplay","Hud");
+                switch(ButtonCurrent) {
+                    case HUD_GP:
+                        Gameplay[HUD_GP] = scr_ChangeButton(Dirc,HUD,Gameplay[HUD_GP],"HUD: ","Gameplay","Hud");
                         break;
                         
                     case ONSTARTUP:
-                        gameplay[ONSTARTUP] = scr_change_button(dirc,on_startup,gameplay[ONSTARTUP],"ON STARTUP: ","Gameplay","On Startup");
+                        Gameplay[ONSTARTUP] = scr_ChangeButton(Dirc,OnStartup,Gameplay[ONSTARTUP],"ON STARTUP: ","Gameplay","On Startup");
                         break;
                         
                     case DIALOGSPEED:
-                        gameplay[DIALOGSPEED] = scr_change_button(dirc,dialog_speed,gameplay[DIALOGSPEED],"DIALOG SPEED: ","Gameplay","Dialog Speed");
+                        Gameplay[DIALOGSPEED] = scr_ChangeButton(Dirc,DialogSpeed,Gameplay[DIALOGSPEED],"DIALOG SPEED: ","Gameplay","Dialog Speed");
                         break;
                         
                     case LANGUAGE:
-                        gameplay[LANGUAGE] = scr_change_button(dirc,language,gameplay[LANGUAGE],"LANGUAGE: ","Gameplay","Language");
+                        Gameplay[LANGUAGE] = scr_ChangeButton(Dirc,Language,Gameplay[LANGUAGE],"LANGUAGE: ","Gameplay","Language");
                         break;
                         
                     case SPEEDRUN:
-                        gameplay[SPEEDRUN] = scr_change_button(dirc,speedrun_timer,gameplay[SPEEDRUN],"SPEEDRUN TIMER: ","Gameplay","Speedrun Timer");
+                        Gameplay[SPEEDRUN] = scr_ChangeButton(Dirc,SpeedrunTimer,Gameplay[SPEEDRUN],"SPEEDRUN TIMER: ","Gameplay","Speedrun Timer");
                         break;
                     }
                 break;
                     
             case "Graphics": 
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case V_SYNC:
-                        graphics[V_SYNC] = scr_change_button(dirc,v_sync,graphics[V_SYNC],"V-SYNC: ","Graphics","V-Sync");
-                        ini_open(current_profile + "_config.ini");
+                        Graphics[V_SYNC] = scr_ChangeButton(Dirc,VSync,Graphics[V_SYNC],"V-SYNC: ","Graphics","V-Sync");
+                        ini_open(CurrentProfile + "_Config.ini");
                         display_reset(0,ini_read_real("Graphics","V-Sync",ON));
                         ini_close();
                         break;
                         
                     case FULLSCREEN:
-                        graphics[FULLSCREEN] = scr_change_button(dirc,fullscreen,graphics[FULLSCREEN],"FULLSCREEN: ","Graphics","Fullscreen");
-                        ini_open(current_profile + "_config.ini");
+                        Graphics[FULLSCREEN] = scr_ChangeButton(Dirc,Fullscreen,Graphics[FULLSCREEN],"FULLSCREEN: ","Graphics","Fullscreen");
+                        ini_open(CurrentProfile + "_Config.ini");
                         window_set_fullscreen(ini_read_real("Graphics","Fullscreen","ON"));
                         ini_close();
                         break;
                         
                     case RESOLUTION:
-                        graphics[RESOLUTION] = scr_change_button(dirc,resolution,graphics[RESOLUTION],"RESOLUTION: ","Graphics","Resolution");
+                        Graphics[RESOLUTION] = scr_ChangeButton(Dirc,Resolution,Graphics[RESOLUTION],"RESOLUTION: ","Graphics","Resolution");
                         break;
                         
                     case GRAP_QUALITY:
-                        graphics[GRAP_QUALITY] = scr_change_button(dirc,graphics_quality,graphics[GRAP_QUALITY],"GRAPHICS QUALITY: ","Graphics","Quality");
+                        Graphics[GRAP_QUALITY] = scr_ChangeButton(Dirc,GraphicsQuality,Graphics[GRAP_QUALITY],"GRAPHICS QUALITY: ","Graphics","Quality");
                         break;
                     }
                 break;
                 
             case "Audio":
-                ini_open(current_profile +"_config.ini");
-                if !keyboard_check_pressed(vk_enter) then switch(button_current)
-                    {
+                ini_open(CurrentProfile +"_Config.ini");
+                if !keyboard_check_pressed(vk_enter) then switch(ButtonCurrent) {
                     case MASTER_VOLUME:
-                        if global.master_volume = 0 &amp;&amp; dirc = 1
-                            {
-                            global.master_volume = 1;
-                            scr_music();
+                        if global.MasterVolume = 0 &amp;&amp; Dirc = 1 {
+                            global.MasterVolume = 1;
+                            scr_Music("Master");
                             }
-                        else if global.master_volume = 1 &amp;&amp; dirc = -1
-                            {
-                            global.master_volume = 0;
-                            scr_music();
-                            global.master_volume_last = 10;
+                        else if global.MasterVolume = 1 &amp;&amp; Dirc = -1 {
+                            global.MasterVolume = 0;
+                            scr_Music("Master");
+                            global.MasterVolumeLast = 10;
                             }
-                        else global.master_volume = clamp(global.master_volume+(1*dirc),0,10);    
-                        ini_write_real("Audio","Master",global.master_volume);
-                        scr_volumes("Master");
+                        else global.MasterVolume = clamp(global.MasterVolume+(1*Dirc),0,10);    
+                        ini_write_real("Audio","Master",global.MasterVolume);
                         break;
                         
                     case MUSIC_VOLUME:
-                        if global.music_volume = 0 &amp;&amp; dirc = 1
-                            {
-                            global.music_volume = 1;
-                            scr_music();
+                        if global.MusicVolume = 0 &amp;&amp; Dirc = 1 {
+                            global.MusicVolume = 1;
+                            scr_Music("Music");
                             }
-                        else if global.music_volume = 1 &amp;&amp; dirc = -1
-                            {
-                            global.music_volume = 0;
-                            scr_music();
-                            global.music_volume_last = 10;
+                        else if global.MusicVolume = 1 &amp;&amp; Dirc = -1 {
+                            global.MusicVolume = 0;
+                            scr_Music("Music");
+                            global.MusicVolumeLast = 10;
                             }
-                        else global.music_volume = clamp(global.music_volume+(1*dirc),0,10);
-                        ini_write_real("Audio","Music",global.music_volume);
-                        scr_volumes("Music");
+                        else global.MusicVolume = clamp(global.MusicVolume+(1*Dirc),0,10);
+                        ini_write_real("Audio","Music",global.MusicVolume);
                         break;
                         
                     case SOUNDS_VOLUME:
-                        if global.sounds_volume = 1 &amp;&amp; dirc = -1
-                            {
-                            global.sounds_volume = 0
-                            global.music_volume_last = 10;
+                        if global.SoundsVolume = 1 &amp;&amp; Dirc = -1  {
+                            global.SoundsVolume = 0
+                            global.MusicVolumeLast = 10;
                             }
-                        else global.sounds_volume = clamp(global.sounds_volume+(1*dirc),0,10);
-                        ini_write_real("Audio","Sounds",global.sounds_volume);
-                        scr_volumes("Sounds");
+                        else global.SoundsVolume = clamp(global.SoundsVolume+(1*Dirc),0,10);
+                        ini_write_real("Audio","Sounds",global.SoundsVolume);
+                        scr_Volumes("Sounds");
                         break;
                         
                     }
@@ -553,14 +524,12 @@
                 break;
             
             case "Profiles":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case CURRENT_PROFILE:
-                        if total &gt; 1
-                            {
-                            profiles[CURRENT_PROFILE] = scr_change_button(dirc,profile,profiles[CURRENT_PROFILE],"CURRENT PROFILE: ","Profiles","Current Number");
-                            scr_profile_load();
-                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + string_upper(current_profile);
+                        if Total &gt; 1 {
+                            Profiles[CURRENT_PROFILE] = scr_ChangeButton(Dirc,Profile,Profiles[CURRENT_PROFILE],"CURRENT PROFILE: ","Profiles","Current Number");
+                            scr_ProfileLoad();
+                            DeleteProfile[0] = "YES, DELETE THIS PROFILE: " + string_upper(CurrentProfile);
                             break;
                             }
                     }
@@ -592,28 +561,20 @@
             <string>///Enter
 
 {
-    if keyboard_check_pressed(vk_enter) //Enter'a Basılırsa
-        {
-        switch(menu_current)
-            {
+    if keyboard_check_pressed(vk_enter) { //Enter'a Basılırsa
+        switch(MenuCurrent) {
             case "New Profile":
-                if new_profile != ""
-                    {
-                    scr_profile_new();
-                    }
+                if NewProfile != "" then scr_ProfileNew();
                 break;
                 
             case "Main Menu":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case STARTGAME:
-                        start_game = true;
+                        StartGame = true;
                         if !audio_group_is_loaded(InGame) then audio_group_load(InGame);
-                        if sprite_index = spr_MenuBackground
-                            {
+                        if sprite_index = spr_MenuBackground {
                             if image_index &gt; 10 then image_speed = -image_speed;
-                            else if image_index = 10
-                                {
+                            else if image_index = 10 {
                                 sprite_index = spr_MenuBackground_StartGame;
                                 image_index = 0;
                                 }
@@ -622,16 +583,16 @@
                         break;
                         
                     case SETTINGS:
-                        menu_current = "Settings";
-                        scr_change_menu(settings,0);
+                        MenuCurrent = "Settings";
+                        scr_ChangeMenu(Settings,0);
                         break;
                         
                     case JOURNAL:
                         break;
                         
                     case PROFILES:
-                        menu_current = "Profiles";
-                        scr_change_menu(profiles,0);
+                        MenuCurrent = "Profiles";
+                        scr_ChangeMenu(Profiles,0);
                         break;
                         
                     case EXIT:
@@ -642,166 +603,156 @@
                 break;
                 
             case "Settings":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case CONTROLS:
-                        menu_current = "Controls";
-                        scr_change_menu(controls,0);
-                        description = "Press &lt;Enter&gt; to change key.";
+                        MenuCurrent = "Controls";
+                        scr_ChangeMenu(Controls,0);
+                        Description = "Press &lt;Enter&gt; to change key.";
                         break;
                         
                     case GAMEPLAY:
-                        menu_current = "Gameplay";
-                        scr_change_menu(gameplay,0);
+                        MenuCurrent = "Gameplay";
+                        scr_ChangeMenu(Gameplay,0);
                         break;
                         
                     case GRAPHICS:
-                        menu_current = "Graphics";
-                        scr_change_menu(graphics,0);
+                        MenuCurrent = "Graphics";
+                        scr_ChangeMenu(Graphics,0);
                         break;
                         
                     case AUDIO:
-                        menu_current = "Audio";
-                        scr_change_menu(audio,0);
+                        MenuCurrent = "Audio";
+                        scr_ChangeMenu(Audio,0);
                         break;
                         
                     case SET_BACK:
-                        menu_current = "Main Menu";
-                        scr_change_menu(main_menu,SETTINGS);
+                        MenuCurrent = "Main Menu";
+                        scr_ChangeMenu(MainMenu,SETTINGS);
                         break;
                         
                     }
                 break;
                 
             case "Controls":
-                switch(button_current)
-                    {
-                    case controlkeys.cont_default:
-                        scr_control_defaults();
-                        description = "Default control settings applied.";
+                switch(ButtonCurrent) {
+                    case ControlKeys.Defaults:
+                        scr_ControlDefaults();
+                        scr_ControlStrings();
+                        Description = "Default control Settings applied.";
                         alarm[0] = 120;
                         break;
                         
-                    case controlkeys.back:
-                        if control_check
-                            {
-                            description = "Cannot be empty keys!";
+                    case ControlKeys.Back:
+                        if ControlCheck {
+                            Description = "Cannot be empty keys!";
                             alarm[0] = 120;
                             break;
                             }
-                        menu_current = "Settings";
-                        scr_change_menu(settings,0);
-                        description = "";
+                        MenuCurrent = "Settings";
+                        scr_ChangeMenu(Settings,0);
+                        Description = "";
                         break;
                         
                     default:
-                        control_change = true;
-                        description = "Press any key to assign, press &lt;ESC&gt; to cancel. Some keys are not allowed.";
+                        ControlChange = true;
+                        Description = "Press any key to assign, press &lt;ESC&gt; to cancel. Some keys are not allowed.";
                     }
                 break;
                 
             case "Gameplay":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case GAMEP_BACK:
-                        menu_current = "Settings";
-                        scr_change_menu(settings,1);
+                        MenuCurrent = "Settings";
+                        scr_ChangeMenu(Settings,1);
                         break;
                     }
                 break;
                 
             case "Graphics":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case GRAP_BACK:
-                        menu_current = "Settings";
-                        scr_change_menu(settings,2);
+                        MenuCurrent = "Settings";
+                        scr_ChangeMenu(Settings,2);
                         break;
                     }
                 break;
                 
             case "Audio":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case MASTER_VOLUME:
-                        scr_audio_toggle("Master");
+                        scr_AudioToggle("Master");
                         break;
                         
                     case MUSIC_VOLUME:
-                        scr_audio_toggle("Music");
+                        scr_AudioToggle("Music");
                         break;
                         
                     case SOUNDS_VOLUME:
-                        scr_audio_toggle("Sounds");
+                        scr_AudioToggle("Sounds");
                         break;
                         
                     case AUDIO_BACK:
-                        menu_current = "Settings";
-                        scr_change_menu(settings,3);
+                        MenuCurrent = "Settings";
+                        scr_ChangeMenu(Settings,3);
                         break;
                     }
                 break;
                 
             case "Profiles":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case CREATE_PROFILE:
-                        description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
-                        new_profile = "";
-                        keyboard_string = new_profile;
-                        menu_current = "New Profile";
+                        Description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
+                        NewProfile = "";
+                        keyboard_string = NewProfile;
+                        MenuCurrent = "New Profile";
                         break;
                         
                     case DELETE_PROFILE:
-                        menu_current = "Delete Profile";
-                        scr_change_menu(delete_profile,0);
+                        MenuCurrent = "Delete Profile";
+                        scr_ChangeMenu(DeleteProfile,0);
                         break;
                         
                     case PROFILES_BACK:
-                        menu_current = "Main Menu";
-                        scr_change_menu(main_menu,3);
+                        MenuCurrent = "Main Menu";
+                        scr_ChangeMenu(MainMenu,3);
                         break;
                     }
                 break;
                 
             case "Delete Profile":
-                switch(button_current)
-                    {
+                switch(ButtonCurrent) {
                     case DELETE_IT:
-                        ini_open("profiles.ini");
-                        current_profile_number = ini_read_real("Profiles","Current Number",0);
-                        file_delete(current_profile + "_config.ini");
-                        file_delete(current_profile + ".ini");
-                        for(var j = current_profile_number; j &lt; total-1; j++)
-                            {
+                        ini_open("Profiles.ini");
+                        CurrentProfileNumber = ini_read_real("Profiles","Current Number",0);
+                        file_delete(CurrentProfile + "_Config.ini");
+                        file_delete(CurrentProfile + ".ini");
+                        for(var j = CurrentProfileNumber; j &lt; Total-1; j++) {
                             ini_write_string("Profiles",j,ini_read_string("Profiles",j+1,""));
                             }
-                        ini_key_delete("Profiles",total-1);
-                        if current_profile_number = total-1 then current_profile_number--;
-                        ini_write_real("Profiles","Current Number",current_profile_number);
-                        ini_write_real("Profiles","Total",--total);
+                        ini_key_delete("Profiles",Total-1);
+                        if CurrentProfileNumber = Total-1 then CurrentProfileNumber--;
+                        ini_write_real("Profiles","Current Number",CurrentProfileNumber);
+                        ini_write_real("Profiles","Total",--Total);
                         ini_close();
-                        if total = 0
-                            {
-                            file_delete("profiles.ini");
-                            description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
-                            new_profile = "";
-                            keyboard_string = new_profile;
-                            menu_current = "New Profile";
+                        if Total = 0 {
+                            file_delete("Profiles.ini");
+                            Description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to return to desktop. ";
+                            NewProfile = "";
+                            keyboard_string = NewProfile;
+                            MenuCurrent = "New Profile";
                             }
-                        else
-                            {
-                            scr_profile_load();
-                            scr_profile_names();
-                            menu_current = "Profiles";
-                            scr_change_menu(profiles,2);
-                            delete_profile[0] = "YES, DELETE THIS PROFILE: " + string_upper(current_profile);
+                        else {
+                            scr_ProfileLoad();
+                            scr_ProfileNames();
+                            MenuCurrent = "Profiles";
+                            scr_ChangeMenu(Profiles,2);
+                            DeleteProfile[0] = "YES, DELETE THIS PROFILE: " + string_upper(CurrentProfile);
                             }
                         break;
                         
                     case CANCEL_IT:
-                        menu_current = "Profiles";
-                        scr_change_menu(profiles,2);
+                        MenuCurrent = "Profiles";
+                        scr_ChangeMenu(Profiles,2);
                         break;
                     }
                 break;
@@ -832,59 +783,55 @@
             <string>///Escape
 
 {
-    if keyboard_check_pressed(vk_escape)
-        {
-        switch(menu_current)
-            {
+    if keyboard_check_pressed(vk_escape) {
+        switch(MenuCurrent) {
             case "New Profile":
-                if total = 0 then game_end(); //Esc'ye basılırsa oyunu kapat
-                else 
-                    {
-                    description = "";
-                    menu_current = "Profiles";
-                    scr_change_menu(profiles,1);
+                if Total = 0 then game_end(); //Esc'ye basılırsa oyunu kapat
+                else  {
+                    Description = "";
+                    MenuCurrent = "Profiles";
+                    scr_ChangeMenu(Profiles,1);
                     }
                 break;
                 
             case "Settings":
-                menu_current = "Main Menu";
-                scr_change_menu(main_menu,SETTINGS);
+                MenuCurrent = "Main Menu";
+                scr_ChangeMenu(MainMenu,SETTINGS);
                 break;
                 
             case "Controls":
-                if control_check
-                    {
-                    description = "Cannot be empty keys!";
+                if ControlCheck {
+                    Description = "Cannot be empty keys!";
                     alarm[0] = 120;
                     break;
                     }
-                menu_current = "Settings";
-                scr_change_menu(main_menu,CONTROLS);
+                MenuCurrent = "Settings";
+                scr_ChangeMenu(MainMenu,CONTROLS);
                 break;
                 
             case "Gameplay":
-                menu_current = "Settings";
-                scr_change_menu(main_menu,GAMEPLAY);
+                MenuCurrent = "Settings";
+                scr_ChangeMenu(MainMenu,GAMEPLAY);
                 break;
                 
             case "Graphics":
-                menu_current = "Settings";
-                scr_change_menu(main_menu,GRAPHICS);
+                MenuCurrent = "Settings";
+                scr_ChangeMenu(MainMenu,GRAPHICS);
                 break;
                 
             case "Audio":
-                menu_current = "Settings";
-                scr_change_menu(main_menu,AUDIO);
+                MenuCurrent = "Settings";
+                scr_ChangeMenu(MainMenu,AUDIO);
                 break;
                 
             case "Profiles":
-                menu_current = "Main Menu";
-                scr_change_menu(main_menu,PROFILES);
+                MenuCurrent = "Main Menu";
+                scr_ChangeMenu(MainMenu,PROFILES);
                 break;
                 
             case "Delete Profile":
-                menu_current = "Profiles";
-                scr_change_menu(profiles,DELETE_PROFILE);
+                MenuCurrent = "Profiles";
+                scr_ChangeMenu(Profiles,DELETE_PROFILE);
                 break;
             }
         exit;
@@ -915,7 +862,34 @@
             <string>///Global Controls
 
 {
-    scr_control_globals(true);
+    if MenuCurrent != "New Profile" then scr_ControlGlobals(true);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Music
+
+{
+    if !StartGame then scr_Music("Music");
 }
 </string>
           </argument>
@@ -939,14 +913,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Game Start
+            <string>///On Startup: Continue
 
 {
-    if on_startup_current = STARTUP_CONT
-        {
-        room_goto_next();
-        exit;
+    with(obj_MenuHeadParent) image_alpha = 0;
+    if OnStartupCurrent = STARTUP_CONT {
+        QuickStart = true;
+        StartGame = true;
+        StartAlpha = false;
+        Alpha = 1;
+        draw_set_alpha(Alpha);
+        if !audio_group_is_loaded(InGame) then audio_group_load(InGame);
+        if sprite_index = spr_MenuBackground {
+            if image_index &gt; 10 then image_speed = -image_speed;
+            else if image_index = 10 {
+                sprite_index = spr_MenuBackground_StartGame;
+                image_index = 0;
+                }
+            }
         }
+    else {
+        with(obj_MenuHeadParent) alarm[2] = 1;
+        }
+        
 }
 </string>
           </argument>
@@ -973,56 +962,84 @@
             <string>///Menus &amp; Description
 
 {
-    draw_set_font(font);
+    draw_set_font(Font);
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
     draw_set_colour(c_white);
     
-    switch(menu_current)
-        {
+        
+    if StartGame { //Start Game tuşuna bastıysak
+        draw_text_colour(room_width/2,room_height-64,"LOADING...",c_white,c_white,c_white,c_white,1-Alpha);
+        if QuickStart then exit;
+        }
+    
+    switch(MenuCurrent) {
         case "Main Menu":
-            scr_draw_menu(main_menu);
+            scr_DrawMenu(MainMenu);
             break;
         
         case "Settings":
-            scr_draw_menu(settings);
+            scr_DrawMenu(Settings);
             break;
         
         case "Profiles":
-            scr_draw_menu(profiles);
+            scr_DrawMenu(Profiles);
             break;
         
         case "Controls":
-            scr_draw_menu(controls);
+            scr_DrawMenu(Controls);
             break;
         
         case "Gameplay":
-            scr_draw_menu(gameplay);
+            scr_DrawMenu(Gameplay);
             break;
         
         case "Graphics":
-            scr_draw_menu(graphics);
+            scr_DrawMenu(Graphics);
             break;
         
         case "Audio":
-            scr_draw_menu(audio);
+            scr_DrawMenu(Audio);
             break;
             
         case "New Profile":
-            draw_text(room_width/2,176,"CREATE A NEW PROFILE: " + new_profile);
+            draw_set_alpha(Alpha);
+            draw_text(room_width/2,176,"CREATE A NEW PROFILE: " + NewProfile);
             break;
             
         case "Delete Profile":
-            scr_draw_menu(delete_profile);
+            scr_DrawMenu(DeleteProfile);
             break;
         
         }
         
-    if description != ""
-        {
-        scr_draw_description(description);
+    if Description != "" {
+        scr_DrawDescription(Description);
         }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_message(global.QuickStart);
 </string>
           </argument>
         </arguments>

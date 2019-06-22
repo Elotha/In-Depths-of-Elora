@@ -28,9 +28,11 @@
             <string>///Create
 
 {
-    editor_mode = true;
-    global.immortality = false;
-    global.draw = false; //Debug Draw modu
+    EditorMode = true; //Editör modu
+    global.Immortality = false; //Ölümsüzlük modu
+    global.Draw = false; //Debug Draw modu
+    global.MessagePermission = true; //Debug mesajı çıkabilir mi?
+    Debug = false; //Debug overlay modu
 }
 </string>
           </argument>
@@ -57,117 +59,103 @@
             <string>///Everything
 
 {
-    if room = rm_Menu then if obj_MainMenu.menu_current = "Controls" || obj_MainMenu.menu_current = "New Profile" then exit;
     if keyboard_check_pressed(vk_f12) then game_end(); //Oyunu kapat
-    if keyboard_check_pressed(vk_f5) //Oyunu yeniden başlat
-        {
-        scr_clear();
+    if keyboard_check_pressed(vk_f5) { //Oyunu yeniden başlat
+        scr_Clear();
         audio_stop_all();
         game_restart();
         exit;
         }
-    if keyboard_check_pressed(vk_f1) //Editör modunu aç-kapa
-        {
-        if keyboard_check(vk_control) then editor_mode = reverse(editor_mode);
+    if keyboard_check_pressed(vk_f1) { //Editör modunu aç-kapa
+        if keyboard_check(vk_control) then EditorMode = !EditorMode;
         }
         
-    if keyboard_check_pressed(vk_f2)
-        {
-        debug = !debug;
-        show_debug_overlay(debug);
+    if keyboard_check_pressed(vk_f2) { //Debug overlay modu
+        Debug = !Debug;
+        show_debug_overlay(Debug);
         }
         
-    if keyboard_check_pressed(vk_f11) //Screenshot
-        {
+    if keyboard_check_pressed(vk_f11) { //Screenshot
         var i = 0;
-        while file_exists("screenshot_" + string(i) + ".png") i++;
-        screen_save("screenshot_" + string(i) + ".png");
+        while file_exists("Screenshot_" + string(i) + ".png") i++;
+        screen_save("Screenshot_" + string(i) + ".png");
         }
         
-    if !editor_mode then exit; //Editör modu kapalıysa devam etme
+    if !EditorMode then exit; //Editör modu kapalıysa devam etme
     
-    if keyboard_check_pressed(vk_f4) //Bölümü yeniden başlat
-        {
-        scr_clear();
+    if room = rm_Menu then if obj_MainMenu.MenuCurrent = "Controls" || obj_MainMenu.MenuCurrent = "New Profile" then exit;
+    
+    if keyboard_check_pressed(vk_f4) { //Bölümü yeniden başlat
+        scr_Clear();
         room_restart();
         exit;
         }
         
-    if keyboard_check_pressed(vk_add) //Sonraki odaya git
-        {
-        if room_exists(room_next(room))
-            {
-            scr_clear();
+    if keyboard_check_pressed(vk_add) { //Sonraki odaya git
+        if room_exists(room_next(room)) {
+            scr_Clear();
             room_goto_next();
             exit;
             }
         }
-    if keyboard_check_pressed(vk_subtract) //Önceki odaya git
-        {
-        if room_exists(room_previous(room))
-            {
-            scr_clear();
+    if keyboard_check_pressed(vk_subtract) { //Önceki odaya git
+        if room_exists(room_previous(room)) {
+            scr_Clear();
             room_goto_previous();
             exit;
             }
         }
-    if menu then exit;
+        
+    if keyboard_check_pressed(vk_f7) { //global.Message permission
+        global.MessagePermission = !global.MessagePermission;
+        }
     
-    if keyboard_check_pressed(vk_f3) //Oyunu yavaşlat ya da normal hızına getir
-        {
+    if keyboard_check_pressed(vk_f3) { //Oyunu yavaşlat ya da normal hızına getir
         if room_speed = 60 then room_speed = 2; else room_speed = 60;
         }
         
-    if keyboard_check_pressed(ord('Y')) //Anahtar kazan
-        {
-        with(obj_HUD) key_number++;
+    if Menu then exit;
+        
+    if keyboard_check_pressed(ord('Y')) { //Anahtar kazan
+        with(obj_HUD) KeyNumber++;
         }
         
-     if keyboard_check_pressed(ord('X')) //Global draw modunu aç-kapa
-        {
-        global.draw = reverse(global.draw);
-        with(obj_CharacterParent) draw = global.draw;
-        with(obj_Monster) draw = global.draw;
+     if keyboard_check_pressed(ord('X')) { //Global draw modunu aç-kapa
+        global.Draw = !global.Draw;
+        with(obj_CharacterParent) Draw = global.Draw;
+        with(obj_Monster) Draw = global.Draw;
         }
         
-     if keyboard_check_pressed(ord('V')) //Blokları görünür-görünmez yap
-        {
-        with(obj_Block) visible = reverse(visible);
+     if keyboard_check_pressed(ord('V')) { //Blokları görünür-görünmez yap
+        with(obj_Block) if !object_is_ancestor(id.object_index,obj_PlatformThinParent) visible = !visible;
         }
         
-     if keyboard_check_pressed(ord('P')) //Karakteri zorla doğdur - serbest doğdur
-        {
-        global.force_start = reverse(global.force_start);
+     if keyboard_check_pressed(ord('P')) { //Karakteri zorla doğdur - serbest doğdur
+        global.ForceStart = !global.ForceStart;
         }
         
-     if keyboard_check_pressed(ord('L')) //Hak sayısını arttır ve canı fulle
-        {
-        lives++;
-        health = global.health_max;
+     if keyboard_check_pressed(ord('L')) { //Hak sayısını arttır ve canı fulle
+        Lives++;
+        Health = global.HealthMax;
         }
         
-     if keyboard_check_pressed(ord('I')) //Ölümsüzlüğü aç-kapa
-        {
-        global.immortality = reverse(global.immortality);
+     if keyboard_check_pressed(ord('I')) { //Ölümsüzlüğü aç-kapa
+        global.Immortality = !global.Immortality;
         }
         
-     if keyboard_check(ord('C')) //V-Sync
-        {
-        with(obj_System)
-            {
-            v_sync = !v_sync;
-            display_reset(0,v_sync);
+     if keyboard_check(ord('C')) { //V-Sync
+        with(obj_System) {
+            VSync = !VSync;
+            display_reset(0,VSync);
             }
         }
         
-     if keyboard_check(ord('O')) //Canı azalt
-        {
-        health--;
-        with (obj_Character) if health &lt;= 0
-            {
-            var death = instance_create(x,y,obj_CharacterDeath);
-            death.image_xscale = image_xscale;
-            lives--;
+     if keyboard_check(ord('O')) { //Canı azalt
+        Health--;
+        with (obj_Character) if Health &lt;= 0 {
+            var Death = instance_create(x,y,obj_CharacterDeath);
+            Death.image_xscale = image_xscale;
+            Lives--;
             instance_destroy();
             }
         }
@@ -197,16 +185,7 @@
             <string>///Menu Room
 
 {
-    menu = (room == rm_Menu);
-    ini_open("config.ini");
-    if ini_section_exists("Config") then debug = ini_read_real("Config","Debug",0);
-    else
-        {
-        ini_write_real("Config","Debug",false);
-        debug = false;
-        }
-    show_debug_overlay(debug);
-    ini_close();
+    Menu = (room == rm_Menu);
 }
 </string>
           </argument>

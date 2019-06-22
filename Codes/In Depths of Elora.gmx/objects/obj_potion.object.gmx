@@ -30,7 +30,7 @@
 {
     sprite_index = choose(spr_PotionHP_Small,spr_PotionHP_Big,spr_PotionResistance,spr_PotionLight);
     image_speed = 1/6;
-    col = make_colour_rgb(255,255,212);
+    Col = make_colour_rgb(255,255,212);
 }
 </string>
           </argument>
@@ -71,7 +71,7 @@
             <string>///Light Potion
 
 {
-    if sprite_index = spr_PotionLight then create_light(32,col,x+16,y+16);
+    if sprite_index = spr_PotionLight then create_light(32,Col,x+16,y+16);
 }
 </string>
           </argument>

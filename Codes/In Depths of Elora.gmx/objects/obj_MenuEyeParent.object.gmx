@@ -28,7 +28,7 @@
             <string>///Image Speed
 
 {
-    img_spd = 1/5;
+    ImageSpeed = 1/5;
     image_speed = 0;
     alarm[0] = irandom_range(room_speed*1.5,room_speed*4);
 }
@@ -57,7 +57,7 @@
             <string>///Image Speed
 
 {
-    image_speed = img_spd;
+    image_speed = ImageSpeed;
     alarm[0] = irandom_range(room_speed*4,room_speed*10);
 }
 </string>

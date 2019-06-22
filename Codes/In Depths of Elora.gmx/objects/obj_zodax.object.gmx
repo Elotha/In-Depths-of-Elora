@@ -28,29 +28,44 @@
             <string>///Create
 //
 //times_max değeri kaç kez git gel yapacağını belirtir.
-//tel_x değeri ışınlanacağı yerin x koordinatını belirtir.
-//tel_y değeri ışınlanacağı yerin y koordinatını belirtir.
+//Tel_x değeri ışınlanacağı yerin x koordinatını belirtir.
+//Tel_y değeri ışınlanacağı yerin y koordinatını belirtir.
 //image_xscale değeri, zodaxın hangi yöne bakacağını belirtir.
 
 {
     image_speed = 1/6;
-    teleport_x = 0;
-    teleport_y = 0;
-    tel_x = xstart;
-    tel_y = ystart;
-    count = 0;
-    times = 0;
-    times_max = 4;
-    teleport = false;
-    coefficient = 1;
+    TeleportX = 0;
+    TeleportY = 0;    
+    Count = 0;
+    Times = 0;
+    TimesMax = 4;
+    Teleport = false;
+    Coefficient = 1;
     image_xscale = -1;
     alarm[0] = 1;
-    damage = 20;
-    event_inherited();
+    Damage = 20;
+    
+    //Placeholders
+    TelX = xstart;
+    TelY = ystart;
 }
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="2" enumb="1">
@@ -100,8 +115,8 @@
             <string>///Teleport
 
 {
-    teleport_x = tel_x-xstart;
-    teleport_y = tel_y-ystart;
+    TeleportX = TelX-xstart;
+    TeleportY = TelY-ystart;
     hspeed = sign(image_xscale);
 }
 </string>
@@ -129,13 +144,11 @@
             <string>///Step
 
 {
-    if teleport then exit;
-    if place_meeting(x+(16*sign(image_xscale)),y,obj_ZodaxSign)
-        {
-        times++;
-        if times = times_max
-            {
-            teleport = true;
+    if Teleport then exit;
+    if place_meeting(x+(16*sign(image_xscale)),y,obj_ZodaxSign) {
+        Times++;
+        if Times = TimesMax {
+            Teleport = true;
             speed = 0;
             sprite_index = spr_ZodaxTeleportation;
             image_index = 0;
@@ -173,7 +186,7 @@
 
 {
     if !other.object_index = obj_Damast then exit;
-    scr_monster_death(spr_ZodaxDeath);
+    scr_MonsterDeath(spr_ZodaxDeath);
     alarm[0] = -1;
 }
 </string>
@@ -201,7 +214,7 @@
             <string>///Monster Death
 
 {
-    scr_monster_death(spr_ZodaxDeath);
+    scr_MonsterDeath(spr_ZodaxDeath);
     alarm[0] = -1;
 }
 </string>
@@ -229,44 +242,36 @@
             <string>///Animation End
 
 {
-    if sprite_index = spr_ZodaxTeleportation
-        {
-        if sign(image_speed) = 1
-            {
+    if sprite_index = spr_ZodaxTeleportation {
+        if sign(image_speed) = 1 {
             image_speed = 0;
             image_index = image_number-1;
-            if sign(coefficient) = 1
-                {
-                x += teleport_x*coefficient;
-                y += teleport_y*coefficient;
+            if sign(Coefficient) = 1 {
+                x += TeleportX*Coefficient;
+                y += TeleportY*Coefficient;
                 }
-            else
-                {
+            else {
                 x = xstart;
                 y = ystart;
                 }
-            coefficient = coefficient*-1;
+            Coefficient = Coefficient*-1;
             image_xscale = -image_xscale;
             alarm[1] = 60;
-            var effect = instance_create(x,y,obj_ZodaxEffect);
-            effect.alarm[0] = effect.alarm[0]+60;
+            var Effect = instance_create(x,y,obj_ZodaxEffect);
+            Effect.alarm[0] = Effect.alarm[0]+60;
             }
             
-        if sign(image_speed) = -1
-            {
+        if sign(image_speed) = -1 {
             sprite_index = spr_ZodaxWalk;
             image_speed = 1/6;
             image_index = 0;
             hspeed = sign(image_xscale);
-            teleport = false;
-            times = 0;
+            Teleport = false;
+            Times = 0;
             }
         }
         
-    if sprite_index = spr_ZodaxDeath
-        {
-        scr_monster_corpse();
-        }
+    if sprite_index = spr_ZodaxDeath then scr_MonsterCorpse();
 }
 </string>
           </argument>

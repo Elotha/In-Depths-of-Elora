@@ -33,10 +33,10 @@
     yy1 = y+12;
     xx2 = x+sprite_width+12;
     yy2 = y+sprite_height+48;
-    blend_col = make_colour_rgb(230,142,146);
-    dir_perm = false;
-    count = 0;
-    damage = 20;
+    BlendCol = make_colour_rgb(230,142,146);
+    DirPerm = false;
+    Count = 0;
+    Damage = 20;
     depth = PLATFORM+50;
 }
 </string>
@@ -78,7 +78,7 @@
             <string>///Direction Permission
 
 {
-    dir_perm = true;
+    DirPerm = true;
     motion_set(point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y),2);
     friction = 0;
 }
@@ -107,16 +107,14 @@
             <string>///Explosion
 
 {
-    if count = 8
-        {
+    if Count = 8 {
         sprite_index = spr_DamastExplosion;
         speed = 0;
-        image_blend = blend_col;
+        image_blend = BlendCol;
         }
-    else
-        {
-        if image_blend = blend_col then image_blend = c_white; else image_blend = blend_col;
-        count++;
+    else {
+        if image_blend = BlendCol then image_blend = c_white; else image_blend = BlendCol;
+        Count++;
         alarm[0] = 12;
         }
 }
@@ -145,11 +143,9 @@
             <string>///Detect Character
 
 {
-    if sprite_index = spr_DamastIdle
-        {
-        var cha = collision_rectangle(xx1,yy1,xx2,yy2,obj_Character,false,true);
-        if cha != noone
-            {
+    if sprite_index = spr_DamastIdle {
+        var Character = collision_rectangle(xx1,yy1,xx2,yy2,obj_Character,false,true);
+        if Character != noone {
             motion_set(270,3);
             sprite_index = spr_DamastFly;
             depth = MONSTER;
@@ -158,17 +154,16 @@
             alarm[1] = 30;
             }
         }
-    if sprite_index = spr_DamastFly &amp;&amp; dir_perm
-        {
-        var diff = angle_difference(direction, point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y));
-        speed -= abs(diff/50);
+        
+    if sprite_index = spr_DamastFly &amp;&amp; DirPerm {
+        var Diff = angle_difference(direction, point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y));
+        speed -= abs(Diff/50);
         direction = point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y);
         if speed &lt; 3 then speed += 0.075;
         speed = clamp(speed,0,3);
         }
         
-    if sprite_index = spr_DamastExplosion
-        {
+    if sprite_index = spr_DamastExplosion  {
         speed = 0;
         }
 }
@@ -198,8 +193,8 @@
 
 {
     if other.object_index = obj_Damast then exit;
-    scr_monster_death(spr_DamastExplosion);
-    image_blend = blend_col;
+    scr_MonsterDeath(spr_DamastExplosion);
+    image_blend = BlendCol;
     alarm[0] = -1;
 }
 </string>
@@ -228,9 +223,9 @@
 
 {
     if sprite_index = spr_DamastExplosion then exit;
-    scr_monster_death(spr_DamastExplosion);
+    scr_MonsterDeath(spr_DamastExplosion);
     speed = 0;
-    image_blend = blend_col;
+    image_blend = BlendCol;
     alarm[0] = -1;
 }
 </string>
@@ -258,8 +253,8 @@
             <string>///Monster Death
 
 {
-    scr_monster_death(spr_DamastExplosion);
-    image_blend = blend_col;
+    scr_MonsterDeath(spr_DamastExplosion);
+    image_blend = BlendCol;
     alarm[0] = -1;
 }
 </string>
@@ -315,8 +310,7 @@
 
 {
     draw_self();
-    if draw
-        {
+    if Draw {
         draw_set_colour(c_yellow);
         draw_rectangle(xx1,yy1,xx2,yy2,true);
         }

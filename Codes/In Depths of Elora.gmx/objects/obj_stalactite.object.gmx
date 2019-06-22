@@ -31,18 +31,18 @@
     image_speed = 0;
     sprite_index = spr_Mask_32x32;
     
-    var stalactite_left = collision_point(x-8,y+16,obj_Stalactite,false,true);
-    var stalactite_right = collision_point(x+48,y+16,obj_Stalactite,false,true);
+    var StalactiteLeft = collision_point(x-8,y+16,obj_Stalactite,false,true);
+    var StalactiteRight = collision_point(x+48,y+16,obj_Stalactite,false,true);
     
-    if stalactite_left = noone &amp;&amp; stalactite_right != noone then sprr = spr_StalactiteLeft;
-    else if stalactite_left != noone &amp;&amp; stalactite_right = noone then sprr = spr_StalactiteRight;
-    else sprr = spr_StalactiteMiddle;
+    if StalactiteLeft = noone &amp;&amp; StalactiteRight != noone then Spr = spr_StalactiteLeft;
+    else if StalactiteLeft != noone &amp;&amp; StalactiteRight = noone then Spr = spr_StalactiteRight;
+    else Spr = spr_StalactiteMiddle;
     
-    if sprr = spr_StalactiteMiddle then img = choose(irandom(sprite_get_number(spr_StalactiteMiddle)-1));
-    else img = 0;
+    if Spr = spr_StalactiteMiddle then Img = choose(irandom(sprite_get_number(spr_StalactiteMiddle)-1));
+    else Img = 0;
     
     depth = PLATFORM+50;
-    damage = 10;
+    Damage = 10;
     
     alarm[0] = 1;
 }
@@ -71,8 +71,8 @@
             <string>///Sprite
 
 {
-    sprite_index = sprr;
-    image_index = img;
+    sprite_index = Spr;
+    image_index = Img;
 }
 </string>
           </argument>

@@ -28,9 +28,8 @@
             <string>///Game Start
 
 {
-    globalvar scorepoint_effect;
-    globalvar particle_key;
-    scorepoint_effect[0] = -1;
+    global.MagicEssenceEfect[0] = -1;
+    globalvar ParticleKey;
 }
 </string>
           </argument>
