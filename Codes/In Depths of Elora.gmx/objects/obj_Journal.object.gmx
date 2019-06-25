@@ -42,6 +42,9 @@
     ww = display_get_gui_width();
     hh = display_get_gui_height();
     JournalKey = global.Control[ControlKeys.Journal];
+    
+    global.Focus = "Journal";
+    obj_Character.Focus = global.Focus;
 
 }
 </string>
@@ -70,7 +73,14 @@
 
 {
     cursor_sprite = -1;
-    with(obj_CharacterParent) MovementPermission = true;
+    //if room != rm_Journal {
+        global.Focus = "Character";
+        with(obj_Character) {
+            Focus = global.Focus;
+            MovementPermission = true;
+            JumpPermission = true;
+            }
+        //}
 }
 </string>
           </argument>
@@ -97,9 +107,7 @@
             <string>///Journal Key
 
 {
-    if keyboard_check_pressed(JournalKey) &amp;&amp; JournalDir != -1 {
-        JournalDir = -1;
-        }
+    if keyboard_check_pressed(JournalKey) scr_JournalClose();
 }
 </string>
           </argument>

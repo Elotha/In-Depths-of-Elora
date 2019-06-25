@@ -62,11 +62,7 @@ Sarkýtlar
 
 ------ YAPILACAKLAR ------
 
-Gidip gelen platformlar için alttan yukarý çýkýlabilme.
-
 Wall jump. // Double jump kaldrýlabilir.
-
-Kontrol tuþlarý deðiþtirilebilmeli.
 
 Ana karakterin ölüm animasyonu düzeltilecek.
 

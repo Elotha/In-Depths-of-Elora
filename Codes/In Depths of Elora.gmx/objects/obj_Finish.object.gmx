@@ -32,7 +32,6 @@
     destroy(obj_Background);
     destroy(obj_Audio);
     destroy(obj_HUD);
-    destroy(obj_Particles);
     destroy(obj_LightBugCreator);
     destroy(obj_CharacterLight);
     

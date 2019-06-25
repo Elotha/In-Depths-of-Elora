@@ -1,5 +1,3 @@
-Dash ve space'e bastýkça daha yükseðe zýplama mekanikleri eklensin.
-
 Minyoo'nun üstünden geçersek minyoo tavandaki platforma ýþýnlansýn.
 
 Platform kararmasý görselliði yapýlabilir. 

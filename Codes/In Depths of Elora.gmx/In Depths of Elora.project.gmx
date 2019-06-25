@@ -195,6 +195,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\ts_Platforms</background>
+    <background>background\ts_Platfforms2</background>
     <background>background\ts_PlatformsBlue</background>
     <background>background\ts_Platforms_Variations</background>
     <background>background\ts_PlatformsVariations32x32</background>
@@ -251,6 +252,8 @@
       <script>scripts\scr_JournalClear.gml</script>
       <script>scripts\scr_LastDialoguesUpdate.gml</script>
       <script>scripts\scr_LastDialoguesDraw.gml</script>
+      <script>scripts\scr_JournalInput.gml</script>
+      <script>scripts\scr_JournalClose.gml</script>
     </scripts>
     <scripts name="Magical Sight">
       <script>scripts\scr_MagicalSight.gml</script>
@@ -263,10 +266,11 @@
       <script>scripts\scr_Dash.gml</script>
       <script>scripts\scr_VerticalMovement.gml</script>
       <script>scripts\scr_HorizontalMovement.gml</script>
+      <script>scripts\scr_Damage.gml</script>
       <script>scripts\scr_Death.gml</script>
       <script>scripts\scr_IfDash.gml</script>
-      <script>scripts\scr_PermissionCheck.gml</script>
       <script>scripts\scr_SpriteControl.gml</script>
+      <script>scripts\scr_Reborn.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -289,7 +293,6 @@
       <object>objects\obj_Camera</object>
       <object>objects\obj_Light</object>
       <object>objects\obj_HUD</object>
-      <object>objects\obj_Particles</object>
       <object>objects\obj_LightBugCreator</object>
       <object>objects\obj_Block</object>
       <object>objects\obj_PlatformThinParent</object>
@@ -298,9 +301,7 @@
     </objects>
     <objects name="Character">
       <object>objects\obj_StartPoint</object>
-      <object>objects\obj_CharacterParent</object>
       <object>objects\obj_Character</object>
-      <object>objects\obj_CharacterDeath</object>
       <object>objects\obj_CharacterLight</object>
     </objects>
     <objects name="Environmental Elements">
@@ -398,8 +399,8 @@
     <room>rooms\rm_Menu</room>
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_Finish</room>
     <room>rooms\rm_TestChamber</room>
+    <room>rooms\rm_Finish</room>
     <room>rooms\rm_Level1</room>
     <room>rooms\rm_Base</room>
     <room>rooms\rm_Temp</room>

@@ -60,7 +60,7 @@
             <string>///Distance Control
 
 {
-    if point_distance(x+8,y+14,obj_CharacterParent.x,obj_CharacterParent.y) &lt; 128 then Distant = false; else Distant = true;
+    if point_distance(x+8,y+14,obj_Character.x,obj_Character.y) &lt; 128 then Distant = false; else Distant = true;
 
     if Distant != DistantPrevious {
         if !Distant {

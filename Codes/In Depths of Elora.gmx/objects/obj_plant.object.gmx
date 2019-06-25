@@ -77,7 +77,7 @@
     if ++DanceIndex = 30 {
         Squirt = !Squirt;
         DanceIndex -= 30;
-        if !MagicalSight  {
+        if !obj_Character.MagicalSight  {
             if Squirt {
                 sprite_index = spr_PlantSquirt;
                 mask_index = sprite_index;
@@ -116,7 +116,7 @@
             <string>///Magical Sight
 
 {
-    if MagicalSight {
+    if obj_Character.MagicalSight {
         sprite_index = spr_PlantDance;
         image_blend = c_aqua;
         mask_index = -1;

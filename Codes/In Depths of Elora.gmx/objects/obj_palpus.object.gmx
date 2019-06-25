@@ -106,7 +106,7 @@
 
 {
     image_speed = FrameRate;
-    if x &lt; obj_CharacterParent.x then image_xscale = -1; else image_xscale = +1;
+    if x &lt; obj_Character.x then image_xscale = -1; else image_xscale = +1;
 }
 </string>
           </argument>

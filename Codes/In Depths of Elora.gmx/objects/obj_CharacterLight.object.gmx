@@ -91,9 +91,9 @@
             <string>///Light
 
 {
-    if instance_number(obj_CharacterParent) != 0 {
-        x = obj_CharacterParent.x;
-        y = obj_CharacterParent.y;
+    if instance_number(obj_Character) != 0 {
+        x = obj_Character.x;
+        y = obj_Character.y;
         create_light(LightSize,c_white,x,y);
         }
 }

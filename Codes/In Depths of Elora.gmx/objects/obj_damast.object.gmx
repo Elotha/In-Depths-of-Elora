@@ -79,7 +79,7 @@
 
 {
     DirPerm = true;
-    motion_set(point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y),2);
+    motion_set(point_direction(x+16,y+16,obj_Character.x,obj_Character.y),2);
     friction = 0;
 }
 </string>
@@ -156,9 +156,9 @@
         }
         
     if sprite_index = spr_DamastFly &amp;&amp; DirPerm {
-        var Diff = angle_difference(direction, point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y));
+        var Diff = angle_difference(direction, point_direction(x+16,y+16,obj_Character.x,obj_Character.y));
         speed -= abs(Diff/50);
-        direction = point_direction(x+16,y+16,obj_CharacterParent.x,obj_CharacterParent.y);
+        direction = point_direction(x+16,y+16,obj_Character.x,obj_Character.y);
         if speed &lt; 3 then speed += 0.075;
         speed = clamp(speed,0,3);
         }

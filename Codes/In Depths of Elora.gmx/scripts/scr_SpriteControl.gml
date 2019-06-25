@@ -1,7 +1,8 @@
 ///Sprite Control
 
 {
-    if SpriteLock then exit;
+    if Focus = "Death" then exit;
+    if SpriteLock then exit; //Canımız yanmışsa ve canımızın yanma spriteında kitlenmişse çalıştırma
     if MagicalSight then if sprite_index = spr_DamastFly then exit; //Damasta dönüşmüşsek çalıştırma
     if HSpeed != 0 then image_xscale = sign(HSpeed); //Yatay hareket varsa simetriyi yatay hıza göre ayarla
     if BlockDown != noone && BlockCenter = noone { //Yerdeysek

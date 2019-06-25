@@ -86,6 +86,8 @@
     if room = rm_Menu then if obj_MainMenu.MenuCurrent = "Controls" || obj_MainMenu.MenuCurrent = "New Profile" then exit;
     
     if keyboard_check_pressed(vk_f4) { //Bölümü yeniden başlat
+        with(obj_HUD)  Health = global.HealthMax;
+        global.Checkpoint = -1;            
         scr_Clear();
         room_restart();
         exit;
@@ -122,7 +124,7 @@
         
      if keyboard_check_pressed(ord('X')) { //Global draw modunu aç-kapa
         global.Draw = !global.Draw;
-        with(obj_CharacterParent) Draw = global.Draw;
+        with(obj_Character) Draw = global.Draw;
         with(obj_Monster) Draw = global.Draw;
         }
         
@@ -135,8 +137,8 @@
         }
         
      if keyboard_check_pressed(ord('L')) { //Hak sayısını arttır ve canı fulle
-        Lives++;
-        Health = global.HealthMax;
+        obj_HUD.Lives++;
+        obj_HUD.Health = global.HealthMax;
         }
         
      if keyboard_check_pressed(ord('I')) { //Ölümsüzlüğü aç-kapa
@@ -151,12 +153,11 @@
         }
         
      if keyboard_check(ord('O')) { //Canı azalt
-        Health--;
-        with (obj_Character) if Health &lt;= 0 {
-            var Death = instance_create(x,y,obj_CharacterDeath);
-            Death.image_xscale = image_xscale;
-            Lives--;
-            instance_destroy();
+        obj_HUD.Health--;
+        if obj_HUD.Health &lt;= 0 then with (obj_Character) {
+            scr_Death();
+            scr_HUDInteract(); //Eğer HUD sadece etkileşim anında gözükür olarak ayarlanmışsa
+            if MagicalSight then scr_MagicalSightClose();
             }
         }
 }

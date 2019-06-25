@@ -2,7 +2,7 @@
 
 {
     //Büyü görüşü modu
-    if keyboard_check_pressed(Control[ControlKeys.MagicalSight]) && (MovementPermission or Dash){ //Açma Kapama
+    if keyboard_check_pressed(Control[ControlKeys.MagicalSight]) && (MovementPermission or Dash) && Focus = "Character" { //Açma Kapama
         if !MagicalSight && MagicalSightTime > 10 { //Kapalıysa
             MagicalSight = true;
             image_blend = c_aqua;
@@ -29,9 +29,9 @@
     if MagicalSight { //Açıksa zamanı azalt
         if --MagicalSightTime = 0 then scr_MagicalSightClose();
         }
-    else if keyboard_check_pressed(Control[ControlKeys.ManaPotion]) && MovementPermission { //Büyü görüşünde değilsek, mana potion tuşuna basarsak ve hareket özgürlüğümüz varsa
-        if MagicEssence > 0 && !MagicalSight && MagicalSightTime != MagicalSightTimeMax {
-            MagicEssence--;
+    else if keyboard_check_pressed(Control[ControlKeys.ManaPotion]) && Focus = "Character" { //Büyü görüşünde değilsek, mana potion tuşuna basarsak ve hareket özgürlüğümüz varsa
+        if obj_HUD.MagicEssence > 0 && !MagicalSight && MagicalSightTime != MagicalSightTimeMax {
+            obj_HUD.MagicEssence--;
             MagicalSightTime = MagicalSightTimeMax;
             alarm[4] = -1;
             }

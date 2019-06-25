@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_CharacterParent</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -40,7 +40,9 @@
     BlockDown = noone;
     BlockCenter = noone;
     BlockHor = noone;
-    Facing = 1; //Image X Scale
+    depth = CHARACTER;
+    FallingSpeed = global.FallingSpeed; //Düşme ivmesi
+    FallingLimit = global.FallingLimit; //Maksimum düşme hızı
     
     //Zıplama
     JumpSpeed = -5.8; //Zıplama hızı
@@ -70,7 +72,9 @@
     //Diğer Değişkenler
     Resistance = 1; //Direnç
     StepCount[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
-    Health = global.HealthMax;
+    obj_HUD.Health = global.HealthMax;
+    global.Focus = "Character"; //Kontrol odağını karakter yap
+    Focus = global.Focus;
     
     //Büyü görüşü modu
     MagicalSight = false; //Aktivasyon
@@ -84,6 +88,11 @@
     
     scr_ControlGlobals(false); //Kontrolleri çek
     
+    //Journal için hangi tuşun atandığını sapta
+    ini_open(CurrentProfile + "_Config.ini");
+    JournalKey = ord(ini_read_string("Controls",ControlKeys.Journal,ord('J')));
+    ini_close();
+    
     with(obj_Camera) { //Kamerayı karaktere sabitle
         x = other.x;
         y = other.y;
@@ -94,20 +103,6 @@
 </string>
           </argument>
         </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="2" enumb="5">
@@ -284,16 +279,16 @@
 
 {
     LastSprite = sprite_index;
-    if sprite_index != spr_CharacterDoor {
-        scr_MagicalSight();
-        scr_HorizontalInputs();
-        scr_Dash();
-        scr_VerticalMovement();
-        scr_HorizontalMovement();
-        scr_Death();
-        scr_SpriteControl();
-        //scr_SoundControl();
-        }
+    if Focus = "Death" or Focus = "Door" then exit; //Ölmüşsek veya kapıdan geçiyorsak çalıştırma
+    scr_JournalInput();
+    scr_MagicalSight();
+    scr_HorizontalInputs();
+    scr_Dash();
+    scr_VerticalMovement();
+    scr_HorizontalMovement();
+    scr_Damage();
+    scr_SpriteControl();
+    //scr_SoundControl();
 }
 </string>
           </argument>
@@ -323,13 +318,13 @@
     switch(other.sprite_index) {
         case spr_PotionHP_Big:
             scr_Potion(snd_PotionHP_Big,c_red,"+ Health Points!");
-            Health = global.HealthMax;
+            obj_HUD.Health = global.HealthMax;
             scr_HUDInteract();
             break;
             
         case spr_PotionHP_Small:
-            Health += 20;
-            if Health &gt; global.HealthMax then Health = global.HealthMax;
+            obj_HUD.Health += 20;
+            if obj_HUD.Health &gt; global.HealthMax then obj_HUD.Health = global.HealthMax;
             scr_Potion(snd_PotionHP_Big,c_red,"+ Health Points!");
             scr_HUDInteract();
             break;
@@ -435,7 +430,7 @@
     scr_PlaySound(snd_LifeStone);
     var Effect = instance_create(other.x+16,other.y+16,obj_ItemEffect);
     with(Effect) image_blend = c_red;
-    Lives++;
+    obj_HUD.Lives++;
     destroy(other);
     scr_HUDInteract();
 }
@@ -465,7 +460,7 @@
 
 {
     //if global.sounds then audio_play_sound(snd_ScoreStone,1,false);
-    MagicEssence++;
+    obj_HUD.MagicEssence++;
     with(other) {
         instance_destroy();
         var Effect = instance_create(x+16,y+16,obj_ItemEffect);
@@ -499,15 +494,12 @@
             <string>///Door
 
 {
-    if other.sprite_index = spr_Door &amp;&amp; sprite_index != spr_CharacterDoor {
+    if other.sprite_index = spr_Door &amp;&amp; Focus = "Character" {
+        global.Focus = "Door";
+        Focus = global.Focus;
         sprite_index = spr_CharacterDoor;
-        MovementPermission = false;
-        JumpPermission = false;
-        VSpeed = 0;
-        HSpeed = 0;
         image_speed = 1/6;
         image_index = 0;
-        //x = other.x-9;
         }
 }
 </string>
@@ -573,7 +565,29 @@
             <string>///Animation End
 
 {
-    if sprite_index = spr_CharacterDoor then if room_exists(room_next(room)) then room_goto_next();
+    if sprite_index = spr_CharacterDoor { //Kapıdan geçme animasyonu bitmişse
+        if room_exists(room_next(room)) then room_goto_next();
+        }
+    else if sprite_index = spr_CharacterDeath { //Ölme animasyonu bitmişse
+        if obj_HUD.Lives &gt; 0 { //Hala canımız var
+            scr_Clear();
+            if global.Checkpoint = -1 { //Checkpoint açmadık
+                x = obj_StartPoint.x;
+                y = obj_StartPoint.y;
+                }
+            else { //Checkpoint açtık
+                x = global.Checkpoint.x+40;
+                y = global.Checkpoint.y+40;
+                }
+            scr_ExistenceCheck(); //Objeleri checkpointte kaydedilen hale getir
+            with(obj_HUD)  {
+                KeyNumber = KeyCheckpoint;
+                MagicEssence = MagicEssenceCheckpoint;
+                }
+            scr_Reborn();
+            }
+        else game_restart(); //Canımız kalmamış
+        }
 }
 </string>
           </argument>

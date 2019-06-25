@@ -2,7 +2,7 @@
 
 {
     //İnputlar
-    if MovementPermission {
+    if MovementPermission && Focus = "Character" {
         var LeftPress, RightPress;
         LeftPress = keyboard_check(Control[ControlKeys.Left]);
         RightPress = keyboard_check(Control[ControlKeys.Right]);

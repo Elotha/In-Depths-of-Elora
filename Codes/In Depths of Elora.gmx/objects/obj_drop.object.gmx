@@ -31,7 +31,7 @@
     gravity = 0.25;
     gravity_direction = 270;
     Damage = 10;
-    if MagicalSight then image_blend = c_aqua;
+    if instance_number(obj_Character) != 0 then if obj_Character.MagicalSight then image_blend = c_aqua;
 }
 </string>
           </argument>

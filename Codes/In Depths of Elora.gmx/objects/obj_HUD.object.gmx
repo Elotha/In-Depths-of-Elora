@@ -78,7 +78,6 @@
             <string>///Lives &amp; Health
 
 {
-    globalvar Lives, Health;
     Lives = 5; //Hak sayımız
     global.HealthMax = 120; //Maksimum canımız
     Health = global.HealthMax; //Mevcut canımız
@@ -106,7 +105,6 @@
             <string>///Magic Essence
 
 {
-    globalvar MagicEssence;
     MagicEssence = 0;
     MagicEssenceCheckpoint = MagicEssence;
 }
