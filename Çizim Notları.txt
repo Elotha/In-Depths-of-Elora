@@ -1,0 +1,28 @@
+Checkpoint ile etkileþimi belli eden bir efekt animasyonu gerekiyor.
+
+Kýrmýzý kristal küçültülecek.
+
+Kontrastý arttýrmak için renkler düzenlenecek.
+
+Minyoonun yukarý ýþýnlanma animasyonu çizilecek.
+
+Gümüþ ve mor anahtarlar çizilecek.
+
+HUD'a mana eklenecek.
+
+Mana çeken bitki, mana çekme animasyonu ve doyma animasyonu çizilecek.
+
+Palpuslara sývý sýçratma efekti eklenecek.
+
+
+------ Magical Sight çizimleri ------
+
+Magical sighta girdiðimizi gösteren, karakter üstünde bir efekt olabilir.
+
+Ana karakterin magical sight halindeki animasyonlarýnda renkler ayarlanacak.
+
+Canavarlarýn ve bitkilerin içindeki büyü taþý ve animasyonu çizilecek.
+
+Parlayan büyü özü çizilecek (Mavi taþ).
+
+Double jump esnasýnda, yaptýðýmýz yerde minik bir efekt çýkmasý gerekiyor. Eðer altýmýzda büyü bulutu varsa büyü bulutu ile olan etkileþim efekti çizilmeli.

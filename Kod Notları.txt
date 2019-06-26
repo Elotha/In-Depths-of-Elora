@@ -1,0 +1,51 @@
+------ Yeni Eklenti Görevleri ------
+
+Journalda tuþlar kodlanacak (Last dialogues kýsmý hariç).
+
+Journaldaki objelerin ekrana sabitlenmesi kodlanacak.
+
+Damastýn explosion hasarý ayarlanacak.
+
+Checkpointe efekt lazým.
+
+Anahtar plantlarýn içine düþebilmesine çözüm bulunacak. (Belki anahtarlar biz yaklaþýnca bize doðru gelebilirler)
+
+Pause -> Settings.
+
+Anahtar - block iliþkisi güncellenecek.
+
+Tekil platformlardan aþaðý basarak düþme tuþu kontrollere eklenecek.
+
+
+
+------ Düzenleme Görevleri ------
+
+Sprite kontrolü güncellenecek.
+
+Image_speeed - hareket hýzý iliþkisi kurulabilir.
+
+Damage için yön verme kodlanacak.
+
+Beulian için mask spriteý eklenecek.
+
+
+
+------ Bug Çözme Görevleri ------
+
+Alt Tab durumunda görüntü bozuluyor.
+
+Sesler ayný anda geleceði zaman bug oluyor.
+
+Minyoo'larýn magical efekti buglý.
+
+Pause menüde alpha ayarý bozulmuþ olabilir.
+
+Health bar bozuk. (Yeni HUD çizildiði zaman düzenlenir)
+
+
+
+------ Optimizasyon Görevleri ------
+
+Globalvar'lar düzeltilebilir.
+
+Display deðiþimleri minimize edilecek.
