@@ -6,6 +6,7 @@
 {
     DashCooldown = 1;
     Dash = false;
+    MagicalInteraction = Other.object_index;
     switch(Other.object_index) {
         case obj_Beulian:
             switch(image_xscale*Other.image_xscale) {

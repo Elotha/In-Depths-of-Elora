@@ -13,23 +13,33 @@
     
     if Invincibility then exit; //Canımız zaten yanmışsa veya yanamayacak durumdaysa çalıştırma
     
+    //Büyü görüşü modunda bir ruh taşına çarptık mı?
+    if MagicalSight {
+        var SoulStone = instance_place(x,y,obj_SoulStone);
+        if SoulStone != noone {
+            if Dash { //Ruh taşına dash atmışsak
+                Other = SoulStone.MonsterID;
+                scr_MagicalInteraction();
+                exit;
+                }
+            }
+        }
+    
     //Bir canavara çarptık mı?
     var Monster = instance_place(x,y,obj_Monster);
-    if Monster != noone {
-        if MagicalSight && Dash { //Büyü görüşü modunda bir canavara dashledik mi?
-            Other = Monster;
-            scr_MagicalInteraction();
-            exit;
-            }
-        else if global.Immortality then exit; //Ölümsüzlük modu açıksa ve büyü görüşünde bir canavara dashlememişsek çalıştırma
-        }
         
     //Herhangi bir şeye çarptıysak
     Other = noone;
-    if Monster != noone then Other = Monster;
-    else if Environment != noone then Other = Environment;
+    if MagicalSight { //Büyü görüşü modunda canavarlar bize zarar vermez
+        if SoulStone != noone then Other = SoulStone.MonsterID;
+        else if Environment != noone then Other = Environment;
+        }
+    else {
+        if Monster != noone then Other = Monster;
+        else if Environment != noone then Other = Environment;
+        }
     
-    if Other != noone {
+    if Other != noone { //Çarptığımız şey ile etkileşime girecek miyiz?
         if Other.object_index = obj_MagicalPlant && !MagicalSight then exit; //Eğer büyü görüşünde değilsek ve Magical Plant'a çarpmışsak çalıştırma
         if Other.object_index = obj_Minyoo && Other.sprite_index = spr_MinyooLines then exit; //Minyoo yukarı uçuyorsa çalıştırma
         obj_HUD.Health = max(0,obj_HUD.Health-(Other.Damage*Resistance));

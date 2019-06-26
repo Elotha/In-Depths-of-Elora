@@ -22,6 +22,7 @@
                 if tt = ts_Platforms then tile_set_background(Tiles[i],ts_PlatformsBlue);
                 else if tt = ts_Liquid then tile_set_background(Tiles[i],ts_LiquidBlue);
                 }
+            scr_SoulStones(true);
             }
         else scr_MagicalSightClose();
         }

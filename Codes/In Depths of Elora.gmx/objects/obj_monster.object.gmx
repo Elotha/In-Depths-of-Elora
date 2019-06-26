@@ -39,6 +39,7 @@
     Friction = global.Friction;
     Draw = global.Draw;
     InitialXScale = image_xscale;
+    SoulStone = -1;
 }
 </string>
           </argument>
@@ -135,6 +136,7 @@
             break;
         }
     if Item != 0 then with(Item) scr_Checkpoint(false);
+    if SoulStone != -1 then destroy(SoulStone);
 }
 </string>
           </argument>

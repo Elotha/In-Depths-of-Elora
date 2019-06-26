@@ -64,7 +64,6 @@
     <instance objName="obj_PlatformTiming" x="704" y="608" name="inst_99066ECC" locked="0" code="alarm[0] = alarm[0]*1.8;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="160" y="608" name="inst_51F5AC61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="104" y="504" name="inst_C704F90D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="868" y="520" name="inst_22570B8F" locked="0" code="" scaleX="27" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Minyoo" x="640" y="704" name="inst_322A264F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="640" y="544" name="inst_B8898385" locked="0" code="alarm[0] = alarm[0]*1.6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformTiming" x="736" y="416" name="inst_F7DF6A47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

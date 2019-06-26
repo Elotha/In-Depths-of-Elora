@@ -194,6 +194,9 @@
       <sprite>sprites\spr_SoulStone</sprite>
       <sprite>sprites\spr_MS_PlantDance</sprite>
       <sprite>sprites\spr_MS_PlantSquirt</sprite>
+      <sprite>sprites\spr_MagicalMinyooTelUp</sprite>
+      <sprite>sprites\spr_MagicalMinyooWalk</sprite>
+      <sprite>sprites\spr_MagicalMinyooLines</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -255,6 +258,8 @@
       <script>scripts\scr_MagicalSightClose.gml</script>
       <script>scripts\scr_MagicalJump.gml</script>
       <script>scripts\scr_MagicalInteraction.gml</script>
+      <script>scripts\scr_MagicalMovement.gml</script>
+      <script>scripts\scr_SoulStones.gml</script>
     </scripts>
     <scripts name="Menu">
       <script>scripts\scr_DrawMenu.gml</script>
@@ -399,6 +404,7 @@
     </objects>
     <objects name="Magical Sight">
       <object>objects\obj_MagicalPlant</object>
+      <object>objects\obj_SoulStone</object>
     </objects>
   </objects>
   <rooms name="rooms">

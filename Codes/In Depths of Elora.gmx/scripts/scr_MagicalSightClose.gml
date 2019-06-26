@@ -2,6 +2,7 @@
 
 {
     MagicalSight = false;
+    MagicalInteraction = -1;
     image_blend = c_white;
     alarm[4] = MagicalSightCooldown;
     with(obj_Environment)  {
@@ -20,4 +21,5 @@
         if tt = ts_PlatformsBlue then tile_set_background(Tiles[i],ts_Platforms);
         else if tt = ts_LiquidBlue then tile_set_background(Tiles[i],ts_Liquid);
         }
+    scr_SoulStones(false);
 }

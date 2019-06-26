@@ -84,6 +84,7 @@
     MagicalSightRegeneration = 2*room_speed; //Otomatik olarak ne kadar dolacaK?
     MagicalSightRegenSpeed = 1; //Tekrar dolma hızı
     MagicalSightCount = 0; //Alarm çalıştırma sayısı
+    MagicalInteraction = -1; //Büyü görüşünde bir canavara dash attık mı?
     
     
     scr_ControlGlobals(false); //Kontrolleri çek
