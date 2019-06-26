@@ -106,7 +106,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///Controls
 
 {
     var Dir = (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'))) - (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W')));

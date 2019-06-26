@@ -75,10 +75,10 @@
     ControlString[ControlKeys.MagicalSight] = ini_read_string("Controls",ControlKeys.MagicalSight,"F");
     scr_ControlLoad(ControlKeys.MagicalSight,true);
     
-    ControlString[ControlKeys.CameraUp] = ini_read_string("Controls",ControlKeys.CameraUp,"UP ARROW");
+    ControlString[ControlKeys.CameraUp] = ini_read_string("Controls",ControlKeys.CameraUp,"W");
     scr_ControlLoad(ControlKeys.CameraUp,true);    
     
-    ControlString[ControlKeys.CameraDown] = ini_read_string("Controls",ControlKeys.CameraDown,"DOWN ARROW");
+    ControlString[ControlKeys.CameraDown] = ini_read_string("Controls",ControlKeys.CameraDown,"S");
     scr_ControlLoad(ControlKeys.CameraDown,true);
     
     ControlString[ControlKeys.Interact] = ini_read_string("Controls",ControlKeys.Interact,"E");

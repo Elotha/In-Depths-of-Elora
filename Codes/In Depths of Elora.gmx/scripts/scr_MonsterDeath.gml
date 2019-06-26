@@ -9,4 +9,10 @@
     image_index = 0;
     speed = 0;
     scr_Checkpoint(true);
+    
+    if argument0 = spr_MinyooDeath {
+        HSpeed = lengthdir_x(6,90+(50*image_xscale));
+        VSpeed = lengthdir_y(6,90+(50*image_xscale));
+        image_speed = 1/3;
+        }
 }

@@ -33,6 +33,7 @@
     global.ForceStart = false; //Karakter başlama noktasında doğsun mu?
     global.FallingSpeed = 0.25; //Global yerçekimi değeri
     global.FallingLimit = 15; //Maksimum düşme hızı
+    global.Friction = -0.25; //Yatay sürtünme kuvveti
     global.Checkpoint = -1; //Henüz checkpoint almadık
     global.TempNumber = 0;
     //global.Focus = "Cutscene"; //Oyunun kontrol odağı

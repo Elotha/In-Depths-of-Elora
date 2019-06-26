@@ -29,13 +29,14 @@
 
 {
     Teleport = false;
-    hspeed = sign(image_xscale);
     LeftX = -36;
     RightX = 36;
-    DetectY = 80;
+    DetectY = 60;
     image_speed = 1/6;
     Damage = 20;
     alarm[0] = 1;
+    HSpeed = sign(image_xscale);
+    VSpeed = 0;
     
     /*LightSize = 24;
     Col = make_colour_rgb(173,182,139);*/
@@ -135,14 +136,10 @@
 
 {
     if sprite_index = spr_MinyooDeath {
-        vspeed = 0;
-        hspeed = 0;
-        //scr_vertical_movement(false,false);
-        //scr_horizontal_movement(false);
-        //scr_friction();
+        scr_MonsterVertical(true);
+        scr_MonsterHorizontal(true);
         exit;
         }
-    //else scr_vertical_movement(false,false);
 }
 </string>
           </argument>
@@ -164,52 +161,151 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///Control
 
 {
-    if gravity != 0 { //Bloğa değme anı
-        var Block = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+sprite_get_width(sprite_index)/2,y+abs(sprite_height)+vspeed,obj_Block,false,true);
-        if Block != noone {
-            vspeed = 0;
-            y += distance_to_object(Block);
-            hspeed = image_xscale;
-            Teleport = false;
-            gravity = 0;
-            image_speed = 1/6;
-            }
-        }
+    if sprite_index = spr_MinyooWalk or sprite_index = spr_MinyooLines {
     
-    if !Teleport { //Karakter tespiti
-        var Character = collision_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+DetectY,obj_Character,false,true);
-        if Character != noone &amp;&amp; !Character.Invincibility &amp;&amp; Character.y &gt; y {
-            Teleport = true;
-            sprite_index = spr_MinyooTeleportation;
-            image_speed = 1/3;
-            image_index = 0;
-            speed = 0;
-            var Block = collision_line(x,y,x,y+24,obj_Block,false,true);
-            var i = (Block.image_yscale*8)+16;
-            DistStep = i/((1/image_speed)*image_number);
-            exit;
+        //Gittiğimiz yönde blok var mı?
+        var Spd;
+        if VSpeed != 0 then Spd = sign(VSpeed);
+        else Spd = image_yscale;
+        BlockVer = instance_place(x,y+ceil(abs(VSpeed))*Spd+Spd,obj_Block);
+        
+        //Düşüyor muyuz?
+        if BlockVer = noone {
+            if abs(VSpeed) &lt; FallingLimit {
+                VSpeed += FallingSpeed*Spd;
+                }
             }
             
-        var BlockLeft = collision_rectangle(x-sprite_get_width(sprite_index)/2,y,x+LeftX,y+24,obj_Block,false,true);
-        var BlockRight = collision_rectangle(x+sprite_get_width(sprite_index)/2,y,x+RightX,y+24,obj_Block,false,true);
+        //Yere geldik mi?
+        if sign(VSpeed) != 0 {
+            if BlockVer != noone {
+                if object_is_ancestor(BlockVer.object_index,obj_PlatformThinParent) &amp;&amp; sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
+                    y = BlockVer.y-8;
+                    sprite_index = spr_MinyooTeleportationUp2;
+                    image_index = 0;
+                    image_speed = 1/3;
+                    VSpeed = 0;
+                    HSpeed = 0;
+                    exit;
+                    }
+                if sign(VSpeed) = -1 { //Yukarı doğru gidiyorsa sprite ve derinlik ayarlamalarını yap
+                    image_yscale = -1;
+                    depth = PLATFORM+50;
+                    }
+                move_contact_all(180+(90*sign(VSpeed)),ceil(abs(VSpeed)));
+                sprite_index = spr_MinyooWalk;
+                VSpeed = 0;
+                HSpeed = image_xscale;
+                Teleport = false;
+                image_speed = 1/6;
+                }
+            }
+            
+    //Hareketi gerçekleştir
+    y += VSpeed;
+    }
+    
+    if !Teleport &amp;&amp; BlockVer != noone &amp;&amp; abs(VSpeed) &lt; 1 {
+        //Karakter tespiti
+        var Character;
+        Character = collision_rectangle(x-16,bbox_bottom,x+16,y+DetectY,obj_Character,false,true); //Aşağıya doğru karakter tespiti
+        if Character != noone {
+            if !Character.Invincibility &amp;&amp; Character.y &gt; y { //Karakter tespit edilmeye müsait mi ve aşağıda olduğuna emin miyiz?
+                if image_yscale = -1 { //Bloğun altında geziniyor
+                    image_yscale = 1;
+                    image_speed = 0; 
+                    y += 2;
+                    depth = MONSTER;
+                    }
+                else { //Bloğun üstünde geziniyor
+                    sprite_index = spr_MinyooTeleportationDown;
+                    image_speed = 1/3;
+                    }
+                Teleport = true;
+                VSpeed = 0;
+                HSpeed = 0;
+                image_index = 0;
+                exit;
+                }
+            }
+        else {
+            if image_yscale = 1 {
+                Character = collision_rectangle(x-16,bbox_top,x+16,bbox_top-DetectY,obj_Character,false,true); //Yukarı doğru karakter tespiti
+                if Character != noone {
+                    if !Character.Invincibility &amp;&amp; Character.y &lt; y { //Karakter tespit edilmeye müsait mi ve yukarıda olduğuna emin miyiz?
+                        Teleport = true;
+                        VSpeed = 0;
+                        HSpeed = 0;
+                        image_index = 0;
+                        sprite_index = spr_MinyooTeleportationUp;
+                        image_speed = 1/3;
+                        exit;
+                        }
+                    }
+                }
+            }
+            
+        //Gittiği yönde blok bitiyor mu?
+        var BlockLeft = collision_rectangle(x-24,y,x+LeftX,y+(24*image_yscale),obj_Block,false,true);
+        var BlockRight = collision_rectangle(x+24,y,x+RightX,y+(24*image_yscale),obj_Block,false,true);
         if (BlockLeft != noone &amp;&amp; BlockRight = noone) {
-            hspeed = -abs(hspeed);
-            image_xscale = -abs(image_xscale);
+            HSpeed = -1;
+            image_xscale = -1;
             }
             
         if BlockLeft = noone &amp;&amp; BlockRight != noone {
-            hspeed = abs(hspeed);
-            image_xscale = abs(image_xscale);
+            HSpeed = 1;
+            image_xscale = 1;
             }
-        
-        var Coll2 = collision_line(x+((sprite_get_width(sprite_index)/2-8)*image_xscale),y-sprite_yoffset+16,x+((sprite_get_width(sprite_index)/2+16)*image_xscale),y-sprite_yoffset+16,obj_Block,false,true);
-        if Coll2 != noone &amp;&amp; Coll2 != BlockLeft &amp;&amp; Coll2 != BlockRight {
-            hspeed = -hspeed;
-            image_xscale = -image_xscale;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Movement
+
+{
+    if !Teleport {
+        //Altında blok yoksa sürtünmeden etkilensin
+         if BlockVer = noone {
+            if HSpeed &gt; 0 then HSpeed = max(HSpeed+Friction*sign(HSpeed),0);
+            if HSpeed &lt; 0 then HSpeed = min(HSpeed+Friction*sign(HSpeed),0);
             }
+            
+        //Gittiği yatay yön serbest mi?
+        if abs(HSpeed) &gt; 0 {
+            BlockHor = instance_place(x+HSpeed+sign(HSpeed),y,obj_Block);
+            if BlockHor != noone {
+                move_contact_all(90+(90*-sign(HSpeed)),HSpeed);
+                if VSpeed = 0 {
+                    image_xscale = -image_xscale;
+                    HSpeed = image_xscale;
+                    }
+                }
+            }
+            
+        //Yatay hareketi gerçekleştir
+        x += HSpeed;
         }
 }
 </string>
@@ -239,10 +335,34 @@
 {
     if other.object_index = obj_Palpus || (other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion) {
         scr_MonsterDeath(spr_MinyooDeath);
-        HSpeed = lengthdir_x(7,90+(30*image_xscale));
-        VSpeed = lengthdir_y(7,90+(30*image_xscale));
-        image_speed = 1/3;
         }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Geyser">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Death
+
+{
+    scr_MonsterDeath(spr_MinyooDeath);
 }
 </string>
           </argument>
@@ -270,9 +390,6 @@
 
 {
     scr_MonsterDeath(spr_MinyooDeath);
-    HSpeed = lengthdir_x(4,90+(40*image_xscale));
-    VSpeed = lengthdir_y(4,90+(40*image_xscale));
-    image_speed = 1/3;
 }
 </string>
           </argument>
@@ -299,25 +416,38 @@
             <string>///Animation End
 
 {
-    if sprite_index = spr_MinyooDeath then scr_MonsterCorpse();
+    switch(sprite_index) {
+        case spr_MinyooDeath: //Ölüyor
+            scr_MonsterCorpse();
+            break;
+        
+        case spr_MinyooTeleportationDown2: //Aşağı düşmeye başlama
+            sprite_index = spr_MinyooWalk;
+            image_speed = 0;
+            break;
+        
+        case spr_MinyooTeleportationDown:  //Aşağısındaki bloğu ışınlanarak atlatma
+            var Block = instance_place(x,y+8,obj_Block);
+            var i = 48;
+            if Block != noone then i = max((Block.image_yscale*8)+16,48);
+            y += i;
+            sprite_index = spr_MinyooTeleportationDown2;
+            image_index = 0;
+            image_speed = 1/3;
+            break;
             
-    if sprite_index = spr_MinyooTeleportation2 {
-        sprite_index = spr_MinyooWalk;
-        image_speed = 0;
-        gravity_direction = 270;
-        gravity = global.FallingSpeed;
-        }
-        
-    if sprite_index = spr_MinyooTeleportation {
-        var Block = collision_line(x,y,x,y+24,obj_Block,false,true);
-        var i = (Block.image_yscale*8)+16;
-        y += i;
-        sprite_index = spr_MinyooTeleportation2;
-        image_index = 0;
-        image_speed = 1/3;
-        }
-        
-    
+        case spr_MinyooTeleportationUp: //Yukarı yükselmeye başlayacak
+            sprite_index = spr_MinyooLines;
+            VSpeed -= FallingSpeed;
+            break;
+            
+        case spr_MinyooTeleportationUp2: //Yukarı doğru ince bir bloktan atladı ve oluştu
+            sprite_index = spr_MinyooWalk;
+            HSpeed = image_xscale;
+            image_speed = 1/6;
+            Teleport = false;
+            break;            
+        }    
 }
 </string>
           </argument>
@@ -347,14 +477,18 @@
     draw_self();
     if Draw {
         draw_set_colour(c_green);
-        draw_rectangle(x-sprite_get_width(sprite_index)/2,y,x+LeftX,y+24,true);
-        draw_rectangle(x+sprite_get_width(sprite_index)/2,y,x+RightX,y+24,true);
+        draw_rectangle(x-24,y,x+LeftX,y+24*image_yscale,true);
+        draw_rectangle(x+24,y,x+RightX,y+24*image_yscale,true);
         
         draw_set_colour(c_yellow);
-        draw_rectangle(x-sprite_get_width(sprite_index)/2+8,bbox_bottom,x+sprite_get_width(sprite_index)/2-8,y+DetectY,true);
+        draw_rectangle(x-24+8,bbox_bottom,x+24-8,y+DetectY,true);
+        draw_rectangle(x-24+8,bbox_top,x+24-8,bbox_top-DetectY,true);
         
         draw_set_colour(c_lime);
-        draw_line(x+((sprite_get_width(sprite_index)/2-8)*image_xscale),y-sprite_yoffset+16,x+((sprite_get_width(sprite_index)/2+16)*image_xscale),y-sprite_yoffset+16);
+        draw_line(x+((24-8)*image_xscale),y,x+((24+16)*image_xscale),y);
+        
+        draw_set_colour(c_white);
+        draw_rectangle(x-24,y,x+24,y+(12*sign(vspeed))+vspeed,true);
         }
 }
 </string>

@@ -35,12 +35,12 @@
     VSpeed = 0; //Dikey hız
     HorLimit = 4; //Yatay hız sınırı
     HorAcceleration = 0.5; //Yatay ivme
-    Friction = -0.25; //Yatay sürtünme kuvveti
     BlockUp = noone;
     BlockDown = noone;
     BlockCenter = noone;
     BlockHor = noone;
     depth = CHARACTER;
+    Friction = global.Friction; //Yatay sürtünme kuvveti
     FallingSpeed = global.FallingSpeed; //Düşme ivmesi
     FallingLimit = global.FallingLimit; //Maksimum düşme hızı
     
@@ -72,7 +72,7 @@
     //Diğer Değişkenler
     Resistance = 1; //Direnç
     StepCount[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
-    obj_HUD.Health = global.HealthMax;
+    if instance_number(obj_HUD) != 0 then obj_HUD.Health = global.HealthMax;
     global.Focus = "Character"; //Kontrol odağını karakter yap
     Focus = global.Focus;
     
@@ -658,12 +658,7 @@
     if Draw {
         draw_set_colour(c_white);
         draw_set_font(fnt_Calibri_8);
-        draw_text(300,40,"VSpeed: " + string(VSpeed));
-        draw_text(300,55,"HSpeed: " + string(HSpeed));
-        draw_text(300,70,"BlockDown: " + string(BlockDown != noone));
-        draw_text(300,85,"BlockUp: " + string(BlockUp != noone));
-        draw_text(300,100,"BlockHor: " + string(BlockHor != noone));
-        draw_text(300,115,"BlockCenter: " + string(BlockCenter != noone));
+        
         }
     
     display_set_gui_size(ww,hh);

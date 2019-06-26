@@ -26,8 +26,8 @@ Canavar ýþýnlama büyüsü düþünülebilir.
 
 Anahtar pusulasý olabilir. Bu anahtar pusulasý, altýn anahtarýn ne yönde olduðunu bir cooldown ile gösterirken, diðer anahtarlarýn yerini göstermese de bulunduðu bölümde kaç tane olduðunu gösterebilir.
 
-Dash özelliði eklenebilir.
-
 Sadece büyü görüþünde ve sadece normal dünyada görünen kapýlar olabilir.
 
 Minyonun yukarý ýþýnlayabilme özelliðini normalde geçemediðimiz dar yerlerden geçmek için kullanabiliriz.
+
+Damastýn hayat döngüsünün düþünülmesi lazým.

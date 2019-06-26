@@ -112,9 +112,12 @@
       <sprite>sprites\spr_ZodaxTeleportation</sprite>
       <sprite>sprites\spr_ZodaxDeath</sprite>
       <sprite>sprites\spr_MinyooWalk</sprite>
-      <sprite>sprites\spr_MinyooTeleportation</sprite>
-      <sprite>sprites\spr_MinyooTeleportation2</sprite>
+      <sprite>sprites\spr_MinyooTeleportationDown</sprite>
+      <sprite>sprites\spr_MinyooTeleportationDown2</sprite>
+      <sprite>sprites\spr_MinyooTeleportationUp</sprite>
+      <sprite>sprites\spr_MinyooTeleportationUp2</sprite>
       <sprite>sprites\spr_MinyooDeath</sprite>
+      <sprite>sprites\spr_MinyooLines</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_PotionHP_Big</sprite>
@@ -215,6 +218,9 @@
       <script>scripts\scr_MonsterDeath.gml</script>
       <script>scripts\scr_MonsterCorpse.gml</script>
       <script>scripts\scr_MonsterDeathAlpha.gml</script>
+      <script>scripts\scr_MonsterVertical.gml</script>
+      <script>scripts\scr_MonsterHorizontal.gml</script>
+      <script>scripts\scr_MonsterMovement.gml</script>
     </scripts>
     <scripts name="Music and Sounds">
       <script>scripts\scr_SoundControl.gml</script>
@@ -397,9 +403,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Menu</room>
+    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Finish</room>
     <room>rooms\rm_Level1</room>
     <room>rooms\rm_Base</room>
@@ -437,7 +443,7 @@
     <constant name="GRAP_QUALITY">3</constant>
     <constant name="GRAPHICS">2</constant>
     <constant name="HUD_NEVER">3</constant>
-    <constant name="HUD_GP">0</constant>
+    <constant name="HUD_GP">1</constant>
     <constant name="INTERFACE1">-400</constant>
     <constant name="INTERFACE2">-300</constant>
     <constant name="ITEM">100</constant>
@@ -452,7 +458,7 @@
     <constant name="ON">1</constant>
     <constant name="ONLY_HUDKEY">2</constant>
     <constant name="ONLY_INTERACT">1</constant>
-    <constant name="ONSTARTUP">1</constant>
+    <constant name="ONSTARTUP">0</constant>
     <constant name="PLATFORM">400</constant>
     <constant name="PROFILES_BACK">3</constant>
     <constant name="PROFILES">3</constant>

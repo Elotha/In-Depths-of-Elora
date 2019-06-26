@@ -36,10 +36,9 @@
     if object_index != obj_Damast then depth = MONSTER;
     FallingSpeed = global.FallingSpeed;
     FallingLimit = global.FallingLimit;
+    Friction = global.Friction;
     Draw = global.Draw;
     InitialXScale = image_xscale;
-    VSpeed = 0;
-    HSpeed = 0;
 }
 </string>
           </argument>

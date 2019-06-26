@@ -27,12 +27,12 @@
     Control[ControlKeys.ManaPotion] = ord('R');
     ini_write_string("Controls",ControlKeys.ManaPotion,ControlString[ControlKeys.ManaPotion]);
     
-    ControlString[ControlKeys.CameraUp] = "UP ARROW";
-    Control[ControlKeys.CameraUp] = vk_up;
+    ControlString[ControlKeys.CameraUp] = "W";
+    Control[ControlKeys.CameraUp] = ord("W");
     ini_write_string("Controls",ControlKeys.CameraUp,ControlString[ControlKeys.CameraUp]);
     
-    ControlString[ControlKeys.CameraDown] = "DOWN ARROW";
-    Control[ControlKeys.CameraDown] = vk_down;
+    ControlString[ControlKeys.CameraDown] = "S";
+    Control[ControlKeys.CameraDown] = ord("S");
     ini_write_string("Controls",ControlKeys.CameraDown,ControlString[ControlKeys.CameraDown]);
     
     ControlString[ControlKeys.Interact] = "E";

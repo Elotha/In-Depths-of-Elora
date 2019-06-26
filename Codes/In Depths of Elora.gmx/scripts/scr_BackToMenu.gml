@@ -8,4 +8,5 @@
     destroy(obj_System);
     destroy(obj_LightBugCreator);
     destroy(obj_CharacterLight);
+    destroy(obj_Light);
 }

@@ -38,6 +38,7 @@
     mask_index = spr_CharacterMask;
     BlockDown = instance_place(x,y+VSpeed+1,obj_Block);
     BlockCenter = instance_place(x,y,obj_PlatformThinParent);
+    BlockDownThin = instance_place(x,y+1,obj_PlatformThinParent);
         
     //Düşüyor muyuz?
     if BlockDown = noone or (BlockDown != noone && BlockCenter != noone && BlockDown = BlockCenter) {
@@ -74,6 +75,13 @@
                 y += -distance_to_object(BlockUp)+1;
                 VSpeed = 0;
                 }
+            }
+        }
+        
+    //İnce platformlardan aşağı inme
+    if BlockDown != noone && BlockCenter = noone && BlockDownThin != noone {
+        if keyboard_check_pressed(vk_down) {
+            y++;
             }
         }
         
