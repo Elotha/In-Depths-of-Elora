@@ -37,6 +37,7 @@
     alarm[0] = 1;
     HSpeed = sign(image_xscale);
     VSpeed = 0;
+    HorLimit = 1;
     
     /*LightSize = 24;
     Col = make_colour_rgb(173,182,139);*/
@@ -137,7 +138,7 @@
 {
     if sprite_index = spr_MinyooDeath {
         scr_MonsterVertical(true);
-        scr_MonsterHorizontal(true);
+        scr_MonsterHorizontal(true,false);
         exit;
         }
 }
@@ -161,7 +162,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Control
+            <string>///Vertical Movement &amp; Control
 
 {
     if sprite_index = spr_MinyooWalk or sprite_index = spr_MinyooLines {
@@ -195,7 +196,7 @@
                     image_yscale = -1;
                     depth = PLATFORM+50;
                     }
-                move_contact_all(180+(90*sign(VSpeed)),ceil(abs(VSpeed)));
+                move_contact_solid(180+(90*sign(VSpeed)),ceil(abs(VSpeed)));
                 sprite_index = spr_MinyooWalk;
                 VSpeed = 0;
                 HSpeed = image_xscale;
@@ -296,7 +297,7 @@
         if abs(HSpeed) &gt; 0 {
             BlockHor = instance_place(x+HSpeed+sign(HSpeed),y,obj_Block);
             if BlockHor != noone {
-                move_contact_all(90+(90*-sign(HSpeed)),HSpeed);
+                move_contact_solid(90+(90*-sign(HSpeed)),HSpeed);
                 if VSpeed = 0 {
                     image_xscale = -image_xscale;
                     HSpeed = image_xscale;

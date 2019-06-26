@@ -214,13 +214,14 @@
       <script>scripts\scr_light.gml</script>
       <script>scripts\scr_message.gml</script>
     </scripts>
-    <scripts name="Monsters">
-      <script>scripts\scr_MonsterDeath.gml</script>
-      <script>scripts\scr_MonsterCorpse.gml</script>
-      <script>scripts\scr_MonsterDeathAlpha.gml</script>
-      <script>scripts\scr_MonsterVertical.gml</script>
-      <script>scripts\scr_MonsterHorizontal.gml</script>
-      <script>scripts\scr_MonsterMovement.gml</script>
+    <scripts name="General">
+      <script>scripts\scr_Clear.gml</script>
+      <script>scripts\scr_Potion.gml</script>
+      <script>scripts\scr_PotionText.gml</script>
+      <script>scripts\scr_PotionTextLength.gml</script>
+      <script>scripts\scr_Checkpoint.gml</script>
+      <script>scripts\scr_ExistenceCheck.gml</script>
+      <script>scripts\scr_HUDInteract.gml</script>
     </scripts>
     <scripts name="Music and Sounds">
       <script>scripts\scr_SoundControl.gml</script>
@@ -230,14 +231,30 @@
       <script>scripts\scr_Volumes.gml</script>
       <script>scripts\scr_AudioToggle.gml</script>
     </scripts>
-    <scripts name="General">
-      <script>scripts\scr_Clear.gml</script>
-      <script>scripts\scr_Potion.gml</script>
-      <script>scripts\scr_PotionText.gml</script>
-      <script>scripts\scr_PotionTextLength.gml</script>
-      <script>scripts\scr_Checkpoint.gml</script>
-      <script>scripts\scr_ExistenceCheck.gml</script>
-      <script>scripts\scr_HUDInteract.gml</script>
+    <scripts name="Movement">
+      <script>scripts\scr_HorizontalInputs.gml</script>
+      <script>scripts\scr_Dash.gml</script>
+      <script>scripts\scr_VerticalMovement.gml</script>
+      <script>scripts\scr_HorizontalMovement.gml</script>
+      <script>scripts\scr_Damage.gml</script>
+      <script>scripts\scr_Death.gml</script>
+      <script>scripts\scr_IfDash.gml</script>
+      <script>scripts\scr_SpriteControl.gml</script>
+      <script>scripts\scr_Reborn.gml</script>
+    </scripts>
+    <scripts name="Monsters">
+      <script>scripts\scr_MonsterDeath.gml</script>
+      <script>scripts\scr_MonsterCorpse.gml</script>
+      <script>scripts\scr_MonsterDeathAlpha.gml</script>
+      <script>scripts\scr_MonsterVertical.gml</script>
+      <script>scripts\scr_MonsterHorizontal.gml</script>
+      <script>scripts\scr_MonsterMovement.gml</script>
+    </scripts>
+    <scripts name="Magical Sight">
+      <script>scripts\scr_MagicalSight.gml</script>
+      <script>scripts\scr_MagicalSightClose.gml</script>
+      <script>scripts\scr_MagicalJump.gml</script>
+      <script>scripts\scr_MagicalInteraction.gml</script>
     </scripts>
     <scripts name="Menu">
       <script>scripts\scr_DrawMenu.gml</script>
@@ -261,23 +278,6 @@
       <script>scripts\scr_JournalInput.gml</script>
       <script>scripts\scr_JournalClose.gml</script>
     </scripts>
-    <scripts name="Magical Sight">
-      <script>scripts\scr_MagicalSight.gml</script>
-      <script>scripts\scr_MagicalSightClose.gml</script>
-      <script>scripts\scr_MagicalJump.gml</script>
-      <script>scripts\scr_MagicalInteraction.gml</script>
-    </scripts>
-    <scripts name="Movement">
-      <script>scripts\scr_HorizontalInputs.gml</script>
-      <script>scripts\scr_Dash.gml</script>
-      <script>scripts\scr_VerticalMovement.gml</script>
-      <script>scripts\scr_HorizontalMovement.gml</script>
-      <script>scripts\scr_Damage.gml</script>
-      <script>scripts\scr_Death.gml</script>
-      <script>scripts\scr_IfDash.gml</script>
-      <script>scripts\scr_SpriteControl.gml</script>
-      <script>scripts\scr_Reborn.gml</script>
-    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Calibri_HUD2</font>
@@ -300,10 +300,10 @@
       <object>objects\obj_Light</object>
       <object>objects\obj_HUD</object>
       <object>objects\obj_LightBugCreator</object>
+      <object>objects\obj_Finish</object>
       <object>objects\obj_Block</object>
       <object>objects\obj_PlatformThinParent</object>
       <object>objects\obj_PlatformThin</object>
-      <object>objects\obj_Finish</object>
     </objects>
     <objects name="Character">
       <object>objects\obj_StartPoint</object>

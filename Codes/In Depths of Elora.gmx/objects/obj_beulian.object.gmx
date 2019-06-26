@@ -26,21 +26,24 @@
           <argument>
             <kind>1</kind>
             <string>///Create
-//
+
 //range değeri beulian'ın ne kadar uzağa gidip geri döneceğini belirtir. (range*16 piksel)
 
 {
     image_speed = 1/6;
-    alarm[1] = 1;
-    Pursuit = false;
-    motion_set(0,1);
+    Pursuit = false; //Takipte mi değil mi?
+    Damage = 20;
+    SecondArrow = false;
+    HSpeed = 1;
+    VSpeed = 0;
+    HorLimit = 1;
+    Proximity = false; //Ana karakter ile arasındaki mesafenin 96 birimden az olup olmadığını kontrol eden değişken
+    
+    //Karakter check değişkenleri
     xx1 = 24;
     yy1 = -20;
     xx2 = 128;
     yy2 = 32;
-    Damage = 20;
-    Collision = false;
-    SecondArrow = false;
 }
 </string>
           </argument>
@@ -61,92 +64,6 @@
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collision
-
-{
-    Collision = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collision
-
-{
-    Collision = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Reverse
-
-{
-    if sprite_index = spr_BeulianAttack {
-        sprite_index = spr_BeulianRun;
-        image_index = 0;
-        }
-    hspeed = -hspeed;
-    image_xscale = -image_xscale;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -164,72 +81,179 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///Vertical Movement
 
 {
-    if sprite_index = spr_BeulianDeath then exit;
-    var Character = collision_rectangle(x+(xx1*image_xscale),y+yy1,x+(xx2*image_xscale),y+yy2,obj_Character,false,true);
-    if Character != noone { //Takip durumunu kontrol et, karakter varsa takibe başla
-        if !Character.Invincibility
-            if !Pursuit {
-                Pursuit = true;
-                image_speed = 1/3;
-                alarm[0] = -1;
-                }
-        }
-    if Pursuit &amp;&amp; instance_number(obj_Character) != 0 { //İvme kazan
-        if speed &lt; 4 then speed += 0.25;
-        if abs(obj_Character.x-x) &lt; 96 {
-            if sprite_index != spr_BeulianAttack {
-                sprite_index = spr_BeulianAttack;
-                image_index = 0;
-                }
-            }
-        }
+    //Altında blok var mı?
+    BlockVer = instance_place(x,y+VSpeed+1,obj_Block);
     
-    if Pursuit { //Takip varsa, okları kontrol et, önündeki ve aşağındaki duvarı kontrol et, karakter görüş alanından çıkarsa takibi bırak
-        var Arrow = instance_place(x,y,obj_BeulianArrow) //Ok kontrolü
-        if Arrow != noone &amp;&amp; !SecondArrow {
-            Arrow.LastDir = Arrow.image_index;
-            Arrow.image_index = 2;
-            SecondArrow = true;
+    //Düşüyor mu?
+    if BlockVer = noone {
+        if VSpeed &lt; FallingLimit {
+            VSpeed += FallingSpeed;
             }
-        var BlockDown = collision_rectangle(x+(21*image_xscale),y+14,x+((32+21)*image_xscale),y+46,obj_Block,false,true); //Aşağıda blok var mı?
-        var BlockAhead = collision_line(x,y+8,x+image_xscale*32,y+8,obj_Block,false,true); //Karşında blok var mı?
-        if Character = noone || (Character != noone &amp;&amp; Character.Invincibility) || BlockDown = noone || BlockAhead != noone { //Karakter görüş alanından çıkmışsa, karakter ölümsüzse veya aşağıda blok yoksa
+        }
+        
+    //Yere geldi mi?
+    if sign(VSpeed) = 1 {
+        if BlockVer != noone {
+            y += distance_to_object(BlockVer)-1;
+            VSpeed = 0;
+            if sprite_index = spr_BeulianDeath then HSpeed = 0; else HSpeed = image_xscale;
+            }
+        }
+        
+    //Hareketi gerçekleştir
+    y += VSpeed;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Control
+
+{
+    if sprite_index != spr_BeulianDeath { //Ölmüşse hiçbir şeyi çalıştırma
+        
+        if VSpeed != 0 &amp;&amp; BlockVer = noone { //Aşağı doğru düşüyorsa
             Pursuit = false;
-            speed = 1;
-            image_speed = 1/6;
-            if sprite_index = spr_BeulianAttack {
+            Proximity = false;
+            scr_MonsterHorizontal(true,true);
+            exit;
+            }
+    
+        //Takip durumunu kontrol et, karakter varsa ve takibe uygunsa takibe başla
+        var Character = collision_rectangle(x+(xx1*image_xscale),y+yy1,x+(xx2*image_xscale),y+yy2,obj_Character,false,true);
+        if !Pursuit {
+            if Character != noone { 
+                if !Character.Invincibility &amp;&amp; !Character.MagicalSight {
+                    Pursuit = true;
+                    HorLimit = 4;
+                    image_speed = 1/3;
+                    }
+                }
+            }
+        
+        if Pursuit { //Takip varsa
+            if Character != noone &amp;&amp; abs(obj_Character.x-x) &lt; 96 { //Karakter yakınlık kontrolü
+                if sprite_index != spr_BeulianAttack {
+                    sprite_index = spr_BeulianAttack;
+                    image_index = 0;
+                    Proximity = true;
+                    }
+                }
+            else Proximity = false;
+            
+            //Ok kontrolü
+            var Arrow = instance_place(x,y,obj_BeulianArrow) 
+            if Arrow != noone &amp;&amp; !SecondArrow {
+                Arrow.LastDir = Arrow.image_index;
+                Arrow.image_index = 2; //Oku geçersiz hale getir
+                SecondArrow = true; //Okların dışına çıktı
+                }
+                
+            var BlockDownAhead = collision_rectangle(x+(21*image_xscale),y+14,x+((32+21)*image_xscale),y+46,obj_Block,false,true); //Aşağıda blok var mı?
+            var BlockAhead = collision_line(x,y+8,x+image_xscale*32,y+8,obj_Block,false,true); //Karşında blok var mı?
+            
+            //Karakter görüş alanından çıkmışsa, karakter ölümsüzse, karşısında blok varsa veya ileri aşağıda blok yoksa
+            if Character = noone || (Character != noone &amp;&amp; Character.Invincibility) || BlockDownAhead = noone || BlockAhead != noone { 
+                Pursuit = false;
+                Proximity = false;
+                HorLimit = 1;
                 sprite_index = spr_BeulianRun;
+                image_speed = 1/6;
                 image_index = 0;
+                if SecondArrow {
+                    image_xscale = -image_xscale;
+                    HSpeed = image_xscale;
+                    }
+                //if BlockDownAhead = noone then HSpeed = 0; //Beulian aşağı düşmemeli
                 }
-            if SecondArrow {
-                hspeed = -hspeed;
+                
+            if Pursuit &amp;&amp; abs(HSpeed) &lt; HorLimit then HSpeed += 0.5*image_xscale; //İvme kazanıyor
+            }
+            
+        else if sprite_index != spr_BeulianAttack { //Takip yoksa ne zaman oklara çarpıp döneceğini kontrol et
+            var Arrow = instance_place(x,y,obj_BeulianArrow)
+            if Arrow != noone {
+                if Arrow.image_index = RIGHT &amp;&amp; image_xscale = -1 {
+                    image_xscale = 1
+                    HSpeed = 1;
+                    }
+                    
+                else if Arrow.image_index = LEFT &amp;&amp; image_xscale = 1 {
+                    image_xscale = -1
+                    HSpeed = -1;
+                    }
+                    
+                else if Arrow.image_index = 2 then with(Arrow) {
+                    image_index = LastDir;
+                    other.SecondArrow = false;
+                    }
+                }
+            }
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Horizontal Movement
+
+{
+    //Altında blok yoksa sürtünmeden etkilensin
+     if BlockVer = noone || sprite_index = spr_BeulianDeath || abs(HSpeed) &gt; HorLimit {
+        if HSpeed &gt; 0 then HSpeed = max(HSpeed+Friction*sign(HSpeed),0);
+        if HSpeed &lt; 0 then HSpeed = min(HSpeed+Friction*sign(HSpeed),0);
+        }
+        
+    //Gittiği yatay yön serbest mi?
+    if abs(HSpeed) &gt; 0 {
+        BlockHor = instance_place(x+floor(abs(HSpeed))*sign(HSpeed)+image_xscale,y,obj_Block);
+        if BlockHor != noone {
+            move_contact_solid(90+(90*-sign(HSpeed)),HSpeed);
+            if VSpeed = 0 &amp;&amp; sprite_index != spr_BeulianDeath {
                 image_xscale = -image_xscale;
+                HSpeed = image_xscale;
                 }
+            else HSpeed = 0;
             }
         }
-    else //Takip yoksa ne zaman oklara çarpıp döneceğini kontrol et
-        {
-        var Arrow = instance_place(x,y,obj_BeulianArrow)
-        if Arrow != noone &amp;&amp; Collision = false {
-            if Arrow.image_index = RIGHT &amp;&amp; image_xscale = -1 {
-                image_xscale = 1
-                hspeed = abs(hspeed);
-                }
-                
-            else if Arrow.image_index = LEFT &amp;&amp; image_xscale = 1 {
-                image_xscale = -1
-                hspeed = -abs(hspeed);
-                }
-                
-            else if Arrow.image_index = 2 then with(Arrow) {
-                image_index = LastDir;
-                other.SecondArrow = false;
-                }
-            }
-        }
+        
+    //Yatay hareketi gerçekleştir
+    x += HSpeed;
 }
 </string>
           </argument>
@@ -256,10 +280,8 @@
             <string>///Monster Death
 
 {
-    if !(other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion) 
-    || !(other.object_index = obj_Minyoo &amp;&amp; other.sprite_index = spr_MinyooTeleportation) then exit;
+    if !(other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion) then exit;
     scr_MonsterDeath(spr_BeulianDeath);
-    alarm[0] = -1;
 }
 </string>
           </argument>
@@ -287,8 +309,6 @@
 
 {
     scr_MonsterDeath(spr_BeulianDeath);
-    if image_speed = 1/3 then image_speed = 1/6;
-    alarm[0] = -1;
 }
 </string>
           </argument>
@@ -316,8 +336,6 @@
 
 {
     scr_MonsterDeath(spr_BeulianDeath);
-    if image_speed = 1/3 then image_speed = 1/6;
-    alarm[0] = -1;
 }
 </string>
           </argument>
@@ -344,11 +362,28 @@
             <string>///Animation End
 
 {
-    if sprite_index = spr_BeulianAttack {
-        sprite_index = spr_BeulianRun;
-        image_index = 0;
+    switch(sprite_index) {
+        case spr_BeulianAttack:
+            if !Proximity { //Artık karakter yakınlık sınırında değilse
+                sprite_index = spr_BeulianRun;
+                }
+                
+            /*if !Pursuit { //Takip bitmişse
+                HorLimit = 1;
+                image_speed = 1/6;
+                image_index = 0;
+                if SecondArrow {
+                    image_xscale = -image_xscale;
+                    HSpeed = image_xscale;
+                    }
+                }*/
+            break;
+            
+        case spr_BeulianDeath:
+            if image_speed != 0 then scr_MonsterCorpse();
+            break;
         }
-    if sprite_index = spr_BeulianDeath &amp;&amp; image_speed != 0 then scr_MonsterCorpse();
+    
 }
 </string>
           </argument>
@@ -382,6 +417,10 @@
         
         draw_set_colour(c_green);
         draw_rectangle(x+(21*image_xscale),y+30,x+((32+21)*image_xscale),y+62,true);
+        
+        draw_set_colour(c_white);
+        draw_set_font(fnt_Calibri_8);
+        draw_text(x,y-32,string(VSpeed));
         }
 }
 </string>

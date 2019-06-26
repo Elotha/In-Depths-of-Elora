@@ -66,15 +66,8 @@
         alarm[0] = 2;
         }
     else if image_index &lt;= 2 {
-        if place_meeting(x,y,obj_Character) or place_meeting(x,y,obj_Monster) {
-            alarm[0] = 5;
-            image_index = 0;
-            exit;
-            }
-        else {
-            instance_create(x,y,obj_PlatformTiming);
-            instance_destroy();
-            }
+        instance_create(x,y,obj_PlatformTiming);
+        instance_destroy();
         }
     
 }

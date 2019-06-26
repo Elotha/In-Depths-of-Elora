@@ -38,6 +38,9 @@
     Count = 0;
     Damage = 20;
     depth = PLATFORM+50;
+    HSpeed = 0;
+    VSpeed = 0;
+    HorLimit = 3;
 }
 </string>
           </argument>
@@ -109,8 +112,8 @@
 {
     if Count = 8 {
         sprite_index = spr_DamastExplosion;
-        speed = 0;
         image_blend = BlendCol;
+        friction = 0.25;
         }
     else {
         if image_blend = BlendCol then image_blend = c_white; else image_blend = BlendCol;
@@ -143,28 +146,26 @@
             <string>///Detect Character
 
 {
-    if sprite_index = spr_DamastIdle {
-        var Character = collision_rectangle(xx1,yy1,xx2,yy2,obj_Character,false,true);
-        if Character != noone {
-            motion_set(270,3);
-            sprite_index = spr_DamastFly;
-            depth = MONSTER;
-            friction = 0.1;
-            alarm[0] = 210;
-            alarm[1] = 30;
+    if !obj_Character.MagicalSight {
+        if sprite_index = spr_DamastIdle { //Karakter tespiti
+            var Character = collision_rectangle(xx1,yy1,xx2,yy2,obj_Character,false,true);
+            if Character != noone {
+                motion_set(270,3);
+                sprite_index = spr_DamastFly;
+                depth = MONSTER;
+                friction = 0.1;
+                alarm[0] = 210; //Patlaması için gereken süre
+                alarm[1] = 30; //Takibe hazır olması için gereken süre
+                }
             }
-        }
-        
-    if sprite_index = spr_DamastFly &amp;&amp; DirPerm {
-        var Diff = angle_difference(direction, point_direction(x+16,y+16,obj_Character.x,obj_Character.y));
-        speed -= abs(Diff/50);
-        direction = point_direction(x+16,y+16,obj_Character.x,obj_Character.y);
-        if speed &lt; 3 then speed += 0.075;
-        speed = clamp(speed,0,3);
-        }
-        
-    if sprite_index = spr_DamastExplosion  {
-        speed = 0;
+            
+        if sprite_index = spr_DamastFly &amp;&amp; DirPerm { //İlk çıkışı yaptı, artık takibe hazır
+            var Diff = angle_difference(direction, point_direction(x+16,y+16,obj_Character.x,obj_Character.y));
+            speed -= abs(Diff/50);
+            direction = point_direction(x+16,y+16,obj_Character.x,obj_Character.y);
+            if speed &lt; 3 then speed += 0.075;
+            speed = clamp(speed,0,3);
+            }
         }
 }
 </string>

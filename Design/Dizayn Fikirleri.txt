@@ -31,3 +31,7 @@ Sadece büyü görüþünde ve sadece normal dünyada görünen kapýlar olabilir.
 Minyonun yukarý ýþýnlayabilme özelliðini normalde geçemediðimiz dar yerlerden geçmek için kullanabiliriz.
 
 Damastýn hayat döngüsünün düþünülmesi lazým.
+
+Magical sight modda yaptýklarýmýzý gören karakterler bize tepki verebilir. (örn. "Wha-?! Sorcerer!")
+
+Diyalog collision noktalarýna yaklaþýrken HUD giderek saydamlaþabilir. Böylece oyuncu, ilerlemeye devam ederse kontrolün bir süreliðine elinden alýnacaðýný ve diyalog gireceðini sezebilir.

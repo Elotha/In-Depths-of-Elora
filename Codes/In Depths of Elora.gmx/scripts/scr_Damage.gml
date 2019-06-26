@@ -31,6 +31,7 @@
     
     if Other != noone {
         if Other.object_index = obj_MagicalPlant && !MagicalSight then exit; //Eğer büyü görüşünde değilsek ve Magical Plant'a çarpmışsak çalıştırma
+        if Other.object_index = obj_Minyoo && Other.sprite_index = spr_MinyooLines then exit; //Minyoo yukarı uçuyorsa çalıştırma
         obj_HUD.Health = max(0,obj_HUD.Health-(Other.Damage*Resistance));
         if obj_HUD.Health > 0 { //Henüz ölmedik
             Invincibility = true;

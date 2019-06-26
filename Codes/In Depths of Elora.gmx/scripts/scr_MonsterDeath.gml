@@ -10,9 +10,20 @@
     speed = 0;
     scr_Checkpoint(true);
     
-    if argument0 = spr_MinyooDeath {
-        HSpeed = lengthdir_x(6,90+(50*image_xscale));
-        VSpeed = lengthdir_y(6,90+(50*image_xscale));
-        image_speed = 1/3;
+    switch(argument0) {
+        case spr_MinyooDeath:
+            HSpeed = lengthdir_x(6,90+(50*image_xscale));
+            VSpeed = lengthdir_y(6,90+(50*image_xscale));
+            image_speed = 1/3;
+            break;
+            
+        case spr_BeulianDeath:
+            if image_speed = 1/3 then image_speed = 1/6;
+            break;
+            
+        case spr_ZodaxDeath:
+            alarm[0] = -1; //Işınlanmayı kapat
+            break;
         }
+        
 }

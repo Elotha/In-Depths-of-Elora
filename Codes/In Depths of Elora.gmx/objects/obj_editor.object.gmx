@@ -130,6 +130,7 @@
         
      if keyboard_check_pressed(ord('V')) { //Blokları görünür-görünmez yap
         with(obj_Block) if !object_is_ancestor(id.object_index,obj_PlatformThinParent) visible = !visible;
+        with(obj_PlatformThin) visible = !visible;
         }
         
      if keyboard_check_pressed(ord('P')) { //Karakteri zorla doğdur - serbest doğdur
