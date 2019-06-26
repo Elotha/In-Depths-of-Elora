@@ -10,7 +10,6 @@
                 if object_index = obj_Plant || object_index = obj_MagicalPlant then event_user(0);
                 else image_blend = c_aqua;
                 }
-            with(obj_Monster) image_blend = c_aqua;
             with(obj_Geyser) image_blend = c_aqua;
             with(obj_Checkpoint) image_blend = c_aqua;
             with(obj_PlatformTiming) image_blend = c_aqua;

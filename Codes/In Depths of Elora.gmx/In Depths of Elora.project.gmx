@@ -195,6 +195,7 @@
       <sprite>sprites\spr_MS_PlantDance</sprite>
       <sprite>sprites\spr_MS_PlantSquirt</sprite>
       <sprite>sprites\spr_MagicalMinyooTelUp</sprite>
+      <sprite>sprites\spr_MagicalMinyooTelUp2</sprite>
       <sprite>sprites\spr_MagicalMinyooWalk</sprite>
       <sprite>sprites\spr_MagicalMinyooLines</sprite>
     </sprites>

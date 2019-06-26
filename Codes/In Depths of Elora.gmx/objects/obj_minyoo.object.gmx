@@ -179,40 +179,42 @@
     }
     
     if !Teleport &amp;&amp; BlockVer != noone &amp;&amp; abs(VSpeed) &lt; 1 {
-        //Karakter tespiti
-        var Character;
-        Character = collision_rectangle(x-16,bbox_bottom,x+16,y+DetectY,obj_Character,false,true); //Aşağıya doğru karakter tespiti
-        if Character != noone {
-            if !Character.Invincibility &amp;&amp; Character.y &gt; y { //Karakter tespit edilmeye müsait mi ve aşağıda olduğuna emin miyiz?
-                if image_yscale = -1 { //Bloğun altında geziniyor
-                    image_yscale = 1;
-                    image_speed = 0; 
-                    y += 2;
-                    depth = MONSTER;
-                    }
-                else { //Bloğun üstünde geziniyor
-                    sprite_index = spr_MinyooTeleportationDown;
-                    image_speed = 1/3;
-                    }
-                Teleport = true;
-                VSpeed = 0;
-                HSpeed = 0;
-                image_index = 0;
-                exit;
-                }
-            }
-        else {
-            if image_yscale = 1 {
-                Character = collision_rectangle(x-16,bbox_top,x+16,bbox_top-DetectY,obj_Character,false,true); //Yukarı doğru karakter tespiti
-                if Character != noone {
-                    if !Character.Invincibility &amp;&amp; Character.y &lt; y { //Karakter tespit edilmeye müsait mi ve yukarıda olduğuna emin miyiz?
-                        Teleport = true;
-                        VSpeed = 0;
-                        HSpeed = 0;
-                        image_index = 0;
-                        sprite_index = spr_MinyooTeleportationUp;
+        if !obj_Character.MagicalSight {
+            //Karakter tespiti
+            var Character;
+            Character = collision_rectangle(x-16,bbox_bottom,x+16,y+DetectY,obj_Character,false,true); //Aşağıya doğru karakter tespiti
+            if Character != noone {
+                if !Character.Invincibility &amp;&amp; Character.y &gt; y { //Karakter tespit edilmeye müsait mi ve aşağıda olduğuna emin miyiz?
+                    if image_yscale = -1 { //Bloğun altında geziniyor
+                        image_yscale = 1;
+                        image_speed = 0; 
+                        y += 2;
+                        depth = MONSTER;
+                        }
+                    else { //Bloğun üstünde geziniyor
+                        sprite_index = spr_MinyooTeleportationDown;
                         image_speed = 1/3;
-                        exit;
+                        }
+                    Teleport = true;
+                    VSpeed = 0;
+                    HSpeed = 0;
+                    image_index = 0;
+                    exit;
+                    }
+                }
+            else {
+                if image_yscale = 1 {
+                    Character = collision_rectangle(x-16,bbox_top,x+16,bbox_top-DetectY,obj_Character,false,true); //Yukarı doğru karakter tespiti
+                    if Character != noone {
+                        if !Character.Invincibility &amp;&amp; Character.y &lt; y { //Karakter tespit edilmeye müsait mi ve yukarıda olduğuna emin miyiz?
+                            Teleport = true;
+                            VSpeed = 0;
+                            HSpeed = 0;
+                            image_index = 0;
+                            sprite_index = spr_MinyooTeleportationUp;
+                            image_speed = 1/3;
+                            exit;
+                            }
                         }
                     }
                 }

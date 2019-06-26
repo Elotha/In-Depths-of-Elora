@@ -187,7 +187,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///PotionText &amp; Hud Key Check
 
 {
     for(var i = 0; i &lt; array_length_1d(Timing); i++) {//Potion text
@@ -337,7 +337,7 @@
     draw_set_font(fnt_Calibri_HUD);
     draw_set_valign(fa_top);
     draw_set_colour(HUDColor);
-    draw_text(obj_HUD.xy+51,obj_HUD.xy+34,"X " + string(Lives));
+    draw_text(xy+64,xy+34,"X " + string(Lives));
 }
 </string>
           </argument>
@@ -365,7 +365,7 @@
     draw_set_font(fnt_Calibri_HUD2);
     draw_set_colour(HUDColor);
     draw_set_valign(fa_top);
-    draw_text(obj_HUD.xy+126,obj_HUD.xy+62,string(MagicEssence));
+    draw_text(xy+126,xy+62+1,string(MagicEssence));
 }
 </string>
           </argument>
@@ -390,10 +390,7 @@
             <string>///Keys
 
 {
-    draw_set_font(fnt_Calibri_HUD2);
-    draw_set_colour(HUDColor);
-    draw_set_valign(fa_top);
-    draw_text(obj_HUD.xy+152,obj_HUD.xy+38,string(KeyNumber) + " / " + string(KeyMax));
+    draw_text(xy+164,xy+40,string(KeyNumber) + " / " + string(KeyMax));
 }
 </string>
           </argument>

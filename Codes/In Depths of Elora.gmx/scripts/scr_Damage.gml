@@ -54,6 +54,7 @@
             
             SpriteLock = true;
             sprite_index = spr_CharacterDamaged;
+            mask_index = sprite_index;
             image_index = 0;
             image_speed = global.FrameRate;
             alarm[2] = (1/image_speed)*image_number+20;
