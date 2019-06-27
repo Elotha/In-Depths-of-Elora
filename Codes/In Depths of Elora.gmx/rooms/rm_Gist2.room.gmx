@@ -153,7 +153,7 @@
     <instance objName="obj_MagicEssence" x="2520" y="72" name="inst_0B4069E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2188" y="168" name="inst_B32047C4" locked="0" code="" scaleX="25" scaleY="40" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2388" y="168" name="inst_E3A1A7EB" locked="0" code="" scaleX="20" scaleY="15" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Zodax" x="2528" y="448" name="inst_9B874715" locked="0" code="TimesMax = 4;&#xA;image_xscale = 1;&#xA;TelX = 2784;&#xA;TelY = 192;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Zodax" x="2528" y="448" name="inst_9B874715" locked="0" code="TimesMax = 2;&#xA;image_xscale = 1;&#xA;TelX = 2784;&#xA;TelY = 192;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ZodaxSign" x="2688" y="448" name="inst_1E70327F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2700" y="200" name="inst_AE2A24F0" locked="0" code="" scaleX="37" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2388" y="456" name="inst_F7C99361" locked="0" code="" scaleX="48" scaleY="11" colour="4294967295" rotation="0"/>
@@ -269,6 +269,7 @@
     <instance objName="obj_PlatformThin" x="1312" y="424" name="inst_90BD3606" locked="0" code="" scaleX="16" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformThin" x="1568" y="168" name="inst_4DA72295" locked="0" code="" scaleX="32" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_PlatformThin" x="3648" y="104" name="inst_9F5BBA6F" locked="0" code="" scaleX="25.5" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Character" x="2756" y="368" name="inst_2450EE8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="768" y="736" w="32" h="32" xo="96" yo="32" id="10001385" name="inst_EC1F4206" depth="400" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

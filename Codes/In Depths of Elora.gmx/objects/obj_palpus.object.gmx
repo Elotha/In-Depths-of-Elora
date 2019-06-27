@@ -38,6 +38,8 @@
     Damage = 20;
     image_speed = 0;
     alarm[1] = 60;
+    HSpeed = 0;
+    VSpeed = 0;
 }
 </string>
           </argument>
@@ -133,17 +135,17 @@
             <string>///Step
 
 {
-    if image_index != 0 &amp;&amp; !Active &amp;&amp; sprite_index = spr_PalpusIdle {
-        var Col1 = collision_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,obj_Character,false,true);
-        var Col2 = collision_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,obj_Damast,false,true);
-        var Col3 = collision_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,obj_Beulian,false,true);
-        if Col1 != noone || Col2 != noone || Col3 != noone {
+    if image_index != 0 &amp;&amp; !Active &amp;&amp; sprite_index = spr_PalpusIdle { //Karakter ya da canlı tespiti
+        var Character = collision_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,obj_Character,false,true);
+        var Damast = collision_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,obj_Damast,false,true);
+        var Beulian = collision_rectangle(x+xx1,y+yy1,x+xx2,y+yy2,obj_Beulian,false,true);
+        if (Character != noone &amp;&amp; !obj_Character.MagicalSight) || Damast != noone || Beulian != noone {
             Active = true;
             image_xscale = -image_xscale;
             }
         }
         
-    if Active &amp;&amp; sprite_index = spr_PalpusIdle {
+    if Active &amp;&amp; sprite_index = spr_PalpusIdle { //Saldırıyorsa sprite ayarlamasını yap
         if image_index &gt; 3 &amp;&amp; image_index &lt; 8 {
             sprite_index = spr_PalpusAttack;
             image_index = 0;
@@ -178,7 +180,7 @@
             <string>///Death
 
 {
-    if other.object_index = obj_Damast {
+    if other.object_index = obj_Damast &amp;&amp; other.sprite_index = spr_DamastExplosion {
         scr_MonsterDeath(spr_PalpusDeath);
         alarm[0] = -1;
         }

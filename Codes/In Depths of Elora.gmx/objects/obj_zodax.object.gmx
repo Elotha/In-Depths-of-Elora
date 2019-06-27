@@ -44,6 +44,9 @@
     image_xscale = -1;
     alarm[0] = 1;
     Damage = 20;
+    HSpeed = 0;
+    VSpeed = 0;
+    HorLimit = 1;
     
     //Placeholders
     TelX = xstart;
@@ -117,7 +120,7 @@
 {
     TeleportX = TelX-xstart;
     TeleportY = TelY-ystart;
-    hspeed = sign(image_xscale);
+    HSpeed = image_xscale;
 }
 </string>
           </argument>
@@ -141,24 +144,117 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Step
+            <string>///Vertical Movement
 
 {
     if Teleport then exit;
-    if place_meeting(x+(16*sign(image_xscale)),y,obj_ZodaxSign) {
+    
+    //Altında blok var mı?
+    BlockVer = instance_place(x,y+VSpeed+1,obj_Block);
+    
+    //Düşüyor mu?
+    if BlockVer = noone {
+        if VSpeed &lt; FallingLimit {
+            VSpeed += FallingSpeed;
+            }
+        }
+        
+    //Yere geldi mi?
+    if sign(VSpeed) = 1 {
+        if BlockVer != noone {
+            move_contact_solid(270,VSpeed);
+            VSpeed = 0;
+            HSpeed = image_xscale;
+            Times = 0;
+            }
+        }
+        
+    //Hareketi gerçekleştir
+    y += VSpeed;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Control
+
+{
+    if place_meeting(x+(16*image_xscale),y,obj_ZodaxSign) {
         Times++;
         if Times = TimesMax {
             Teleport = true;
-            speed = 0;
+            VSpeed = 0;
+            HSpeed = 0;
             sprite_index = spr_ZodaxTeleportation;
             image_index = 0;
             image_speed = 1/6;
             instance_create(x,y,obj_ZodaxEffect);
             exit;
             }
-        hspeed = -hspeed;
         image_xscale = -image_xscale;
+        HSpeed = image_xscale;
         }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Horizontal Movement
+
+{
+    //Altında blok yoksa sürtünmeden etkilensin
+     if BlockVer = noone || sprite_index = spr_ZodaxDeath {
+        if HSpeed &gt; 0 then HSpeed = max(HSpeed+Friction*sign(HSpeed),0);
+        if HSpeed &lt; 0 then HSpeed = min(HSpeed+Friction*sign(HSpeed),0);
+        }
+        
+    //Gittiği yatay yön serbest mi?
+    if abs(HSpeed) &gt; 0 {
+        BlockHor = instance_place(x+floor(abs(HSpeed))*sign(HSpeed)+image_xscale,y,obj_Block);
+        if BlockHor != noone &amp;&amp; BlockVer != noone {
+            move_contact_solid(90+(90*-sign(HSpeed)),HSpeed);
+            if sprite_index != spr_ZodaxDeath {
+                image_xscale = -image_xscale;
+                HSpeed = image_xscale;
+                }
+            else HSpeed = 0;
+            }
+        }
+        
+    //Yatay hareketi gerçekleştir
+    x += HSpeed;
 }
 </string>
           </argument>
@@ -187,7 +283,6 @@
 {
     if !other.object_index = obj_Damast then exit;
     scr_MonsterDeath(spr_ZodaxDeath);
-    alarm[0] = -1;
 }
 </string>
           </argument>
@@ -215,7 +310,6 @@
 
 {
     scr_MonsterDeath(spr_ZodaxDeath);
-    alarm[0] = -1;
 }
 </string>
           </argument>
@@ -265,7 +359,7 @@
             sprite_index = spr_ZodaxWalk;
             image_speed = 1/6;
             image_index = 0;
-            hspeed = sign(image_xscale);
+            HSpeed = image_xscale;
             Teleport = false;
             Times = 0;
             }

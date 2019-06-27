@@ -84,6 +84,7 @@
     MagicalSightRegeneration = 2*room_speed; //Otomatik olarak ne kadar dolacaK?
     MagicalSightRegenSpeed = 1; //Tekrar dolma hızı
     MagicalSightCount = 0; //Alarm çalıştırma sayısı
+    MagicalInteraction = -1; //Büyü görüşünde bir canavara dash attık mı?
     
     
     scr_ControlGlobals(false); //Kontrolleri çek
@@ -282,11 +283,16 @@
     if Focus = "Death" or Focus = "Door" then exit; //Ölmüşsek veya kapıdan geçiyorsak çalıştırma
     scr_JournalInput();
     scr_MagicalSight();
+    if MagicalInteraction != -1 {
+        scr_MagicalMovement();
+        exit;
+        }
     scr_HorizontalInputs();
     scr_Dash();
     scr_VerticalMovement();
     scr_HorizontalMovement();
     scr_Damage();
+    if MagicalInteraction != -1 then exit;
     scr_SpriteControl();
     //scr_SoundControl();
 }
@@ -565,28 +571,48 @@
             <string>///Animation End
 
 {
-    if sprite_index = spr_CharacterDoor { //Kapıdan geçme animasyonu bitmişse
-        if room_exists(room_next(room)) then room_goto_next();
+    switch(sprite_index) {
+        case spr_CharacterDoor: //Kapıdan geçme animasyonu bitmişse
+            if room_exists(room_next(room)) then room_goto_next();
+            break;
+            
+        case spr_CharacterDeath: //Ölme animasyonu bitmişse
+            if obj_HUD.Lives &gt; 0 { //Hala canımız var
+                scr_Clear();
+                if global.Checkpoint = -1 { //Checkpoint açmadık
+                    x = obj_StartPoint.x;
+                    y = obj_StartPoint.y;
+                    }
+                else { //Checkpoint açtık
+                    x = global.Checkpoint.x+40;
+                    y = global.Checkpoint.y+40;
+                    }
+                scr_ExistenceCheck(); //Objeleri checkpointte kaydedilen hale getir
+                with(obj_HUD)  {
+                    KeyNumber = KeyCheckpoint;
+                    MagicEssence = MagicEssenceCheckpoint;
+                    }
+                scr_Reborn();
+                }
+            else game_restart(); //Canımız kalmamış
+            break;
         }
-    else if sprite_index = spr_CharacterDeath { //Ölme animasyonu bitmişse
-        if obj_HUD.Lives &gt; 0 { //Hala canımız var
-            scr_Clear();
-            if global.Checkpoint = -1 { //Checkpoint açmadık
-                x = obj_StartPoint.x;
-                y = obj_StartPoint.y;
-                }
-            else { //Checkpoint açtık
-                x = global.Checkpoint.x+40;
-                y = global.Checkpoint.y+40;
-                }
-            scr_ExistenceCheck(); //Objeleri checkpointte kaydedilen hale getir
-            with(obj_HUD)  {
-                KeyNumber = KeyCheckpoint;
-                MagicEssence = MagicEssenceCheckpoint;
-                }
-            scr_Reborn();
+        
+    if MagicalInteraction != -1 { //Büyü görüşü modunda bir canavarın özelliğini kullanıyorsak
+        switch(sprite_index) {
+            case spr_MagicalMinyooTelUp:
+                sprite_index = spr_MagicalMinyooLines;
+                mask_index = sprite_index;
+                VSpeed = -FallingSpeed;
+                break;
+                
+            case spr_MagicalMinyooTelUp2:
+                sprite_index = spr_MagicalMinyooWalk;
+                mask_index = sprite_index;
+                image_speed = 0;
+                MovementPermission = true;
+                break;
             }
-        else game_restart(); //Canımız kalmamış
         }
 }
 </string>

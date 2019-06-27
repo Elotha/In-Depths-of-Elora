@@ -42,4 +42,5 @@
             }
         }
     if sprite_index != LastSprite then SpriteChange = true; else SpriteChange = false;
+    mask_index = sprite_index;
 }

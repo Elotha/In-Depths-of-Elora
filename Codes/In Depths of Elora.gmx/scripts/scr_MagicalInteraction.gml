@@ -4,8 +4,10 @@
 //image_xscale*Other.image_xscale: ne taraftan temas ettik? 1 ise arkadan, -1 ise önden temas ettik
 
 {
-    DashCooldown = 1;
+    DashCooldown = 0;
     Dash = false;
+    MagicalInteraction = Other.object_index;
+    mask_index = sprite_index;
     switch(Other.object_index) {
         case obj_Beulian:
             switch(image_xscale*Other.image_xscale) {
@@ -18,23 +20,24 @@
             break;
             
         case obj_Minyoo:
+            LeftX = -36;
+            RightX = 36;
             switch(image_xscale*Other.image_xscale) {
                 case 1:
-                    var Block;
-                    for(var i = 1; i < floor((room_height-y)/32); i++) {
-                        Block = collision_rectangle(Other.x-32,Other.y+(i*32),Other.x+32,Other.y+((i+1)*32)+16,obj_Block,false,true);
-                        if Block = noone then break;
-                        }
-                    if Block = noone {
-                        x = Other.x;
-                        y = Other.y+(i*32)+32;
-                        }
+                
                     break;
                     
                 case -1:
-                    y -= 32;
-                    if JumpCount < JumpMax then JumpCount++;
-                    VSpeed = JumpSpeed-2;
+                    MovementPermission = false;
+                    JumpPermission = false;
+                    sprite_index = spr_MagicalMinyooTelUp;
+                    mask_index = sprite_index;
+                    image_index = 0;
+                    image_speed = 1/3;
+                    VSpeed = 0;
+                    HSpeed = 0;
+                    x = Other.x;
+                    y = Other.y;
                     break;
                 }
             break;
@@ -43,6 +46,7 @@
             switch(image_xscale) {
                 case 1:
                     sprite_index = spr_DamastFly;
+                    mask_index = sprite_index;
                     hspeed = 4;
                     VSpeed = 0;
                     HSpeed = 0;
