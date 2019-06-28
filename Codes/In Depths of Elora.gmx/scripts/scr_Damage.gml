@@ -19,9 +19,10 @@
         if SoulStone != noone {
             if Dash { //Ruh taşına dash atmışsak
                 Other = SoulStone.MonsterID;
-                scr_MagicalInteraction();
+                scr_MagicalInteraction(true);
                 exit;
                 }
+            else if global.Immortality then exit; //Büyü görüşü modunda ruh taşına çarptığımızda ölümsüzlük açıksa işlem yapma
             }
         }
     

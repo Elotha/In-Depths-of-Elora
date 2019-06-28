@@ -43,10 +43,8 @@
     //Düşüyor muyuz?
     if BlockDown = noone or (BlockDown != noone && BlockCenter != noone && BlockDown = BlockCenter) {
         if !scr_IfDash() {
-            if !(MagicalSight && sprite_index = spr_DamastFly) {
-                if VSpeed < FallingLimit {
-                    VSpeed += FallingSpeed;
-                    }
+            if VSpeed < FallingLimit {
+                VSpeed += FallingSpeed;
                 }
             }
         }
@@ -80,7 +78,7 @@
         
     //İnce platformlardan aşağı inme
     if BlockDown != noone && BlockCenter = noone && BlockDownThin != noone {
-        if keyboard_check_pressed(vk_down) {
+        if keyboard_check_pressed(Control[ControlKeys.Down]) {
             y++;
             }
         }

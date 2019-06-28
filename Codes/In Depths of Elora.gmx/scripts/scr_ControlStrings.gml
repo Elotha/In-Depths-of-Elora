@@ -3,6 +3,8 @@
 {
     Controls[ControlKeys.Left] = "LEFT: " + ControlString[ControlKeys.Left];
     Controls[ControlKeys.Right] = "RIGHT: " + ControlString[ControlKeys.Right];
+    Controls[ControlKeys.Up] = "UP: " + ControlString[ControlKeys.Up];
+    Controls[ControlKeys.Down] = "DOWN: " + ControlString[ControlKeys.Down];
     Controls[ControlKeys.Jump] = "JUMP: " + ControlString[ControlKeys.Jump];
     Controls[ControlKeys.Dash] = "DASH: " + ControlString[ControlKeys.Dash];
     Controls[ControlKeys.MagicalSight] = "MAGICAL SIGHT: " + ControlString[ControlKeys.MagicalSight];

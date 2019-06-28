@@ -113,6 +113,36 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HUD Alpha++
+
+{
+    if HUDAlpha &lt; 1 {
+        HUDAlpha += 0.25;
+        alarm[2] = 1;
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -130,7 +160,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///HUD Alpha-
+            <string>///HUD Alpha--
 
 {
     if HUDAlpha &gt; 0 {
@@ -291,21 +321,20 @@
         draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,HUDAlpha);
         draw_sprite_part_ext(spr_HP,0,0,0,43+Health,48,xy,xy,2,2,c_white,HUDAlpha);
         draw_sprite_ext(spr_LifeStone,-1,xy+8,xy+21,1.5,1.5,0,c_white,HUDAlpha);
-        }
-    else exit;
         
-    var PotText = false;
-    for(var k = 0; k &lt; array_length_1d(PotionTextFull); k++) {
-        if PotionTextFull[k] != -1 then PotText = true;
-        }
-    if PotText {
-        draw_set_colour(Color);
-        draw_set_valign(fa_top);
-        draw_set_halign(fa_left);
-        draw_set_font(fnt_Potion);
-        for(var i = 0; i &lt; array_length_1d(PotionText); i++) {
-            if PotionText[i] != -1 {
-                draw_text(360+PotionTextLength[i],44,PotionText[i]);
+        var PotText = false;
+        for(var k = 0; k &lt; array_length_1d(PotionTextFull); k++) {
+            if PotionTextFull[k] != -1 then PotText = true;
+            }
+        if PotText {
+            draw_set_colour(Color);
+            draw_set_valign(fa_top);
+            draw_set_halign(fa_left);
+            draw_set_font(fnt_Potion);
+            for(var i = 0; i &lt; array_length_1d(PotionText); i++) {
+                if PotionText[i] != -1 {
+                    draw_text(360+PotionTextLength[i],44,PotionText[i]);
+                    }
                 }
             }
         }
@@ -334,10 +363,12 @@
             <string>///Lives
 
 {
-    draw_set_font(fnt_Calibri_HUD);
-    draw_set_valign(fa_top);
-    draw_set_colour(HUDColor);
-    draw_text(xy+64,xy+34,"X " + string(Lives));
+    if HUDAlpha &gt; 0 {
+        draw_set_font(fnt_Calibri_HUD);
+        draw_set_valign(fa_top);
+        draw_set_colour(HUDColor);
+        draw_text(xy+64,xy+34,"X " + string(Lives));
+        }
 }
 </string>
           </argument>
@@ -362,10 +393,12 @@
             <string>///Magic Essence
 
 {
-    draw_set_font(fnt_Calibri_HUD2);
-    draw_set_colour(HUDColor);
-    draw_set_valign(fa_top);
-    draw_text(xy+126,xy+62+1,string(MagicEssence));
+    if HUDAlpha &gt; 0 {
+        draw_set_font(fnt_Calibri_HUD2);
+        draw_set_colour(HUDColor);
+        draw_set_valign(fa_top);
+        draw_text(xy+126,xy+62+1,string(MagicEssence));
+        }
 }
 </string>
           </argument>
@@ -390,7 +423,7 @@
             <string>///Keys
 
 {
-    draw_text(xy+164,xy+40,string(KeyNumber) + " / " + string(KeyMax));
+    if HUDAlpha &gt; 0 then draw_text(xy+164,xy+40,string(KeyNumber) + " / " + string(KeyMax));
 }
 </string>
           </argument>

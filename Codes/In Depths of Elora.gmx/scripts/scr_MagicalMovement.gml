@@ -1,41 +1,58 @@
 ///Magical Movement
 
 {
+    if keyboard_check_pressed(Control[ControlKeys.Jump]) {
+        scr_MagicalInteractionComeOut();
+        exit;
+        }
     switch(MagicalInteraction){
         case obj_Minyoo:
             switch(sprite_index) {
                 case spr_MagicalMinyooLines:
+                
+                    //Yukarı çıkarken menzil kontrolü
+                    if MinyooGravityDir = -1 {
+                        MinyooRangeCount += abs(VSpeed);
+                         if MinyooRangeCount >= MinyooRange-scr_SpeedResidual(abs(VSpeed)) {
+                            MinyooGravityDir = 1;
+                            }
+                         }
+                
                     //Gittiğimiz yönde blok var mı?
                     BlockVer = instance_place(x,y+VSpeed-1,obj_Block);
                     
                     //Düşüyor muyuz?
                     if BlockVer = noone {
                         if abs(VSpeed) < FallingLimit {
-                            VSpeed -= FallingSpeed;
+                            VSpeed += FallingSpeed*MinyooGravityDir;
+                            if sign(VSpeed) != -1 {
+                                scr_MagicalInteractionComeOut();
+                                MinyooRangeCount = 0;
+                                }
                             }
                         }
-                        
                     //Yere geldik mi?
-                    if sign(VSpeed) = -1 {
+                    if sign(VSpeed) != 0 {
                         if BlockVer != noone {
+                            MinyooRangeCount = 0;
+                            MinyooGravityDir = -1;
+                            HSpeed = 0;
                             if object_is_ancestor(BlockVer.object_index,obj_PlatformThinParent) && sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
                                 y = BlockVer.y-8;
                                 sprite_index = spr_MagicalMinyooTelUp2;
-                                mask_index = sprite_index;
                                 image_index = 0;
                                 image_speed = 1/3;
                                 VSpeed = 0;
-                                HSpeed = 0;
                                 exit;
                                 }
                             if sign(VSpeed) = -1 { //Yukarı doğru gidiyorsa sprite ve derinlik ayarlamalarını yap
                                 image_yscale = -1;
                                 depth = PLATFORM+50;
                                 }
-                            sprite_index = spr_MagicalMinyooWalk;
-                            mask_index = sprite_index;
                             move_contact_solid(90,ceil(abs(VSpeed)));
                             VSpeed = 0;
+                            sprite_index = spr_MagicalMinyooWalk;
+                            image_index = 0;
                             image_speed = 0;
                             MovementPermission = true;
                             }
@@ -47,6 +64,19 @@
                     
                 case spr_MagicalMinyooWalk:
                     if MovementPermission {
+                        if --MagicalInteractionSpace > 0 { //Komut verebilme süresi
+                            if keyboard_check_pressed(Control[ControlKeys.Up]) {
+                                scr_MagicalInteractionMinyoo(-1,false);
+                                MagicalInteractionSpace = 0;
+                                exit;
+                                }
+                            else if keyboard_check_pressed(Control[ControlKeys.Down]) {
+                                scr_MagicalInteractionMinyoo(1,false);
+                                MagicalInteractionSpace = 0;
+                                exit;
+                                }
+                            }
+                            
                         scr_HorizontalInputs();
                         
                         //Gittiğimiz yönde blok bitiyor mu?
@@ -81,10 +111,45 @@
                         //Yatay hareketi gerçekleştir
                         x += HSpeed;
                         }
+                        
+                   else { ///Aşağı düşüyoruz
+                   
+                       //Yukarı çıkarken menzil kontrolü
+                        if MinyooGravityDir = 1 {
+                            MinyooRangeCount += abs(VSpeed);
+                             }
                     
-                    break;
-                
-                }
+                        //Gittiğimiz yönde blok var mı?
+                        BlockVer = instance_place(x,y+VSpeed+1,obj_Block);
+                        
+                        //Düşüyor muyuz?
+                        if BlockVer = noone {
+                            if abs(VSpeed) < FallingLimit {
+                                VSpeed += FallingSpeed*MinyooGravityDir;
+                                }
+                            }
+                        //Yere geldik mi?
+                        if sign(VSpeed) != 0 {
+                            if BlockVer != noone {
+                                //Fall Death MinyooRangeCount = 0;
+                                HSpeed = 0;
+                                move_contact_solid(270,ceil(abs(VSpeed)));
+                                VSpeed = 0;
+                                sprite_index = spr_MagicalMinyooWalk;
+                                image_index = 0;
+                                image_speed = 0;
+                                MovementPermission = true;
+                                depth = MONSTER;
+                                }
+                            }
+                            
+                        //Hareketi gerçekleştir
+                        y += VSpeed;
+                        
+                        break;
+                    
+                    }
             break;
         }
+    }
 }

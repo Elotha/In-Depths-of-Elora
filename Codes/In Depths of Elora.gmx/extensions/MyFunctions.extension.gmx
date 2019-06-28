@@ -46,14 +46,14 @@
       <ProxyFiles/>
       <functions>
         <function>
-          <name>reverse</name>
-          <externalName>scr_reverse</externalName>
+          <name>is_integer</name>
+          <externalName>scr_integer</externalName>
           <kind>11</kind>
-          <help>reverse(var)</help>
+          <help>is_integer(int)</help>
           <returnType>2</returnType>
           <argCount>1</argCount>
           <args>
-            <arg>1</arg>
+            <arg>2</arg>
           </args>
         </function>
         <function>

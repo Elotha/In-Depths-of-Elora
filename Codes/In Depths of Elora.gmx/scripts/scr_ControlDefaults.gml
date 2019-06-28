@@ -11,6 +11,14 @@
     Control[ControlKeys.Right] = vk_right;
     ini_write_string("Controls",ControlKeys.Right,ControlString[ControlKeys.Right]);
     
+    ControlString[ControlKeys.Up] = "UP ARROW";
+    Control[ControlKeys.Up] = vk_up;
+    ini_write_string("Controls",ControlKeys.Up,ControlString[ControlKeys.Up]);
+    
+    ControlString[ControlKeys.Down] = "DOWN ARROW";
+    Control[ControlKeys.Down] = vk_down;
+    ini_write_string("Controls",ControlKeys.Down,ControlString[ControlKeys.Down]);
+    
     ControlString[ControlKeys.Jump] = "SPACE";
     Control[ControlKeys.Jump] = vk_space;
     ini_write_string("Controls",ControlKeys.Jump,ControlString[ControlKeys.Jump]);

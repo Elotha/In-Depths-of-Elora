@@ -38,6 +38,11 @@
     HSpeed = sign(image_xscale);
     VSpeed = 0;
     HorLimit = 1;
+    Range = 12*32+16; //Yukarı çıkabilme sınırı
+    RangeCount = 0; //Yukarı çıkma miktarı
+    FallRange = 288+32;
+    GravityDir = 1; //Yerçekimi yönü
+    FallDeath = false; //Düştüğü zaman ölecek mi?
 }
 </string>
           </argument>
@@ -131,25 +136,45 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Vertical Movement &amp; Control
+            <string>///Vertical Movement
 
 {
     if sprite_index = spr_MinyooWalk or sprite_index = spr_MinyooLines {
-    
-        //Gittiğimiz yönde blok var mı?
-        var Spd;
-        if VSpeed != 0 then Spd = sign(VSpeed);
-        else Spd = image_yscale;
-        BlockVer = instance_place(x,y+ceil(abs(VSpeed))*Spd+Spd,obj_Block);
-        
-        //Düşüyor muyuz?
-        if BlockVer = noone {
-            if abs(VSpeed) &lt; FallingLimit {
-                VSpeed += FallingSpeed*Spd;
+            
+        //Yukarı çıkarken menzil kontrolü
+        if sprite_index = spr_MinyooLines &amp;&amp; GravityDir = -1 {
+            RangeCount += abs(VSpeed);
+             if RangeCount &gt;= Range-scr_SpeedResidual(abs(VSpeed)) {
+                GravityDir = 1;
                 }
             }
             
-        //Yere geldik mi?
+        //Gittiği yönde blok var mı?
+        var Spd;
+        if VSpeed != 0 then Spd = sign(VSpeed);
+        else Spd = image_yscale;
+            
+        BlockVer = instance_place(x,y+ceil(abs(VSpeed))*Spd+Spd,obj_Block);
+        
+        //Düşme hasarı kontrolü
+        if BlockVer = noone &amp;&amp; sprite_index = spr_MinyooWalk &amp;&amp; !FallDeath &amp;&amp; sign(VSpeed) = 1 {
+            RangeCount += abs(VSpeed);
+            if RangeCount &gt; FallRange then FallDeath = true;
+            }
+        
+        //Düşüyor mu?
+        if BlockVer = noone {
+            if abs(VSpeed) &lt; FallingLimit {
+                VSpeed += FallingSpeed*GravityDir;
+                if sprite_index = spr_MinyooLines &amp;&amp;  sign(VSpeed) != -1 {
+                    sprite_index = spr_MinyooWalk;
+                    image_speed = 0;
+                    RangeCount = 0;
+                    }
+                }
+            }
+            
+        //Yere geldi mi?
         if sign(VSpeed) != 0 {
             if BlockVer != noone {
                 if object_is_ancestor(BlockVer.object_index,obj_PlatformThinParent) &amp;&amp; sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
@@ -159,15 +184,27 @@
                     image_speed = 1/3;
                     VSpeed = 0;
                     HSpeed = 0;
+                    GravityDir = 1;
+                    RangeCount = 0;
                     exit;
                     }
                 if sign(VSpeed) = -1 { //Yukarı doğru gidiyorsa sprite ve derinlik ayarlamalarını yap
                     image_yscale = -1;
                     depth = PLATFORM+50;
                     }
+                if sign(VSpeed) = 1 { //Yere gelirken kaç piksel daha gittiğimizi toplama ekle, düşüş hasarını kontrol et
+                    RangeCount += distance_to_object(BlockVer)-1;
+                    if RangeCount &gt; FallRange then FallDeath = true;
+                    }
+                RangeCount = 0;
                 move_contact_solid(180+(90*sign(VSpeed)),ceil(abs(VSpeed)));
-                sprite_index = spr_MinyooWalk;
                 VSpeed = 0;
+                if FallDeath { //Yere düştüğü zaman ölecek mi?
+                    Teleport = false;
+                    scr_MonsterDeath(spr_MinyooDeath);
+                    exit;
+                    }
+                sprite_index = spr_MinyooWalk;
                 HSpeed = image_xscale;
                 Teleport = false;
                 image_speed = 1/6;
@@ -177,7 +214,30 @@
     //Hareketi gerçekleştir
     y += VSpeed;
     }
-    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Control
+
+{
     if !Teleport &amp;&amp; BlockVer != noone &amp;&amp; abs(VSpeed) &lt; 1 {
         if !obj_Character.MagicalSight {
             //Karakter tespiti
@@ -190,13 +250,16 @@
                         image_speed = 0; 
                         y += 2;
                         depth = MONSTER;
+                        VSpeed = FallingSpeed;
+                        GravityDir = 1;
+                        RangeCount = 0;
                         }
                     else { //Bloğun üstünde geziniyor
                         sprite_index = spr_MinyooTeleportationDown;
                         image_speed = 1/3;
+                        VSpeed = 0;
                         }
                     Teleport = true;
-                    VSpeed = 0;
                     HSpeed = 0;
                     image_index = 0;
                     exit;
@@ -254,7 +317,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Movement
+            <string>///Horizontal Movement
 
 {
     if !Teleport {
@@ -396,6 +459,8 @@
         case spr_MinyooTeleportationDown2: //Aşağı düşmeye başlama
             sprite_index = spr_MinyooWalk;
             image_speed = 0;
+            RangeCount = 0;
+            GravityDir = 1;
             break;
         
         case spr_MinyooTeleportationDown:  //Aşağısındaki bloğu ışınlanarak atlatma
@@ -406,11 +471,15 @@
             sprite_index = spr_MinyooTeleportationDown2;
             image_index = 0;
             image_speed = 1/3;
+            RangeCount = 0;
+            GravityDir = 1;
             break;
             
         case spr_MinyooTeleportationUp: //Yukarı yükselmeye başlayacak
             sprite_index = spr_MinyooLines;
             VSpeed -= FallingSpeed;
+            RangeCount = 0;
+            GravityDir = -1;
             break;
             
         case spr_MinyooTeleportationUp2: //Yukarı doğru ince bir bloktan atladı ve oluştu
@@ -418,6 +487,7 @@
             HSpeed = image_xscale;
             image_speed = 1/6;
             Teleport = false;
+            RangeCount = 0;
             break;            
         }    
 }
@@ -448,6 +518,11 @@
 {
     draw_self();
     if Draw {
+        draw_set_colour(c_white);
+        draw_set_font(fnt_Calibri_8);
+        draw_text(x,y-32,"RG: " + string(RangeCount) + " VS: " + string(VSpeed)); 
+        exit;
+    
         draw_set_colour(c_green);
         draw_rectangle(x-24,y,x+LeftX,y+24*image_yscale,true);
         draw_rectangle(x+24,y,x+RightX,y+24*image_yscale,true);
@@ -463,6 +538,52 @@
         draw_rectangle(x-24,y,x+24,y+(12*sign(vspeed))+vspeed,true);
         }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>RangeModifier += 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="49">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>RangeModifier -= 8;
 </string>
           </argument>
         </arguments>

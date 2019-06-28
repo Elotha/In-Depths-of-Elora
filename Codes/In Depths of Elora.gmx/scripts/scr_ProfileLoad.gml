@@ -63,6 +63,12 @@
     ControlString[ControlKeys.Right] = ini_read_string("Controls",ControlKeys.Right,"RIGHT ARROW");    
     scr_ControlLoad(ControlKeys.Right,true);
     
+    ControlString[ControlKeys.Up] = ini_read_string("Controls",ControlKeys.Up,"UP ARROW");    
+    scr_ControlLoad(ControlKeys.Up,true);
+    
+    ControlString[ControlKeys.Down] = ini_read_string("Controls",ControlKeys.Down,"DOWN ARROW");    
+    scr_ControlLoad(ControlKeys.Down,true);
+    
     ControlString[ControlKeys.Jump] = ini_read_string("Controls",ControlKeys.Jump,"SPACE");
     scr_ControlLoad(ControlKeys.Jump,true);
     

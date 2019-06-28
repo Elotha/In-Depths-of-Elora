@@ -45,7 +45,7 @@
     FallingLimit = global.FallingLimit; //Maksimum düşme hızı
     
     //Zıplama
-    JumpSpeed = -5.8; //Zıplama hızı
+    JumpSpeed = -5.6; //Zıplama hızı
     JumpPlus = -0.12;
     JumpCount = 0; //Zıplama sayısı
     JumpMax = 2; //En fazla kaç kere zıplayabiliyoruz?
@@ -85,6 +85,7 @@
     MagicalSightRegenSpeed = 1; //Tekrar dolma hızı
     MagicalSightCount = 0; //Alarm çalıştırma sayısı
     MagicalInteraction = -1; //Büyü görüşünde bir canavara dash attık mı?
+    MagicalInteractionSpace = 0; //Ele geçirdiğimiz canlıya özel komut verebilme boşluğu
     
     
     scr_ControlGlobals(false); //Kontrolleri çek
@@ -600,17 +601,41 @@
         
     if MagicalInteraction != -1 { //Büyü görüşü modunda bir canavarın özelliğini kullanıyorsak
         switch(sprite_index) {
-            case spr_MagicalMinyooTelUp:
+            case spr_MagicalMinyooTelUp: //Yukarı yükselmeye başlıyoruz
                 sprite_index = spr_MagicalMinyooLines;
                 mask_index = sprite_index;
                 VSpeed = -FallingSpeed;
+                if JumpCount &lt; JumpMax then JumpCount++;
+                MinyooRangeCount = 0;
+                MinyooGravityDir = -1;
                 break;
                 
-            case spr_MagicalMinyooTelUp2:
+            case spr_MagicalMinyooTelUp2: //İnce bir platformda oluştuk
                 sprite_index = spr_MagicalMinyooWalk;
                 mask_index = sprite_index;
                 image_speed = 0;
                 MovementPermission = true;
+                break;
+                
+            case spr_MagicalMinyooTelDown: //Platformdan aşağı ışınlanmak üzereyiz
+                if image_yscale = 1 {
+                    y += MinyooBlockY+16;
+                    sprite_index = spr_MagicalMinyooTelDown2;
+                    mask_index = sprite_index;
+                    }
+                else {
+                    y = MinyooBlockY-8;
+                    sprite_index = spr_MagicalMinyooTelUp2;
+                    mask_index = sprite_index;
+                    image_yscale = 1;
+                    depth = MONSTER;
+                    }
+                break;
+                
+            case spr_MagicalMinyooTelDown2: //Platformdan aşağı ışınlanmak üzereyiz
+                sprite_index = spr_MagicalMinyooWalk;
+                mask_index = sprite_index;
+                VSpeed = FallingSpeed;
                 break;
             }
         }

@@ -72,6 +72,8 @@
     enum ControlKeys {
         Left,
         Right,
+        Up,
+        Down,
         Jump,
         Dash,
         MagicalSight,
@@ -431,7 +433,7 @@
             case "Gameplay": 
                 switch(ButtonCurrent) {
                     case HUD_GP:
-                        Gameplay[HUD_GP] = scr_ChangeButton(Dirc,HUD,Gameplay[HUD_GP],"HUD: ","Gameplay","Hud");
+                        Gameplay[HUD_GP] = scr_ChangeButton(Dirc,HUD,Gameplay[HUD_GP],"HUD: ","Gameplay","HUD");
                         break;
                         
                     case ONSTARTUP:

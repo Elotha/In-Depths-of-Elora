@@ -29,7 +29,7 @@
 
 {
     EditorMode = true; //Editör modu
-    global.Immortality = false; //Ölümsüzlük modu
+    global.Immortality = true; //Ölümsüzlük modu
     global.Draw = false; //Debug Draw modu
     global.MessagePermission = true; //Debug mesajı çıkabilir mi?
     Debug = false; //Debug overlay modu
@@ -140,6 +140,10 @@
      if keyboard_check_pressed(ord('L')) { //Hak sayısını arttır ve canı fulle
         obj_HUD.Lives++;
         obj_HUD.Health = global.HealthMax;
+        }
+        
+     if keyboard_check_pressed(ord('B')) {
+        obj_HUD.MagicEssence++;
         }
         
      if keyboard_check_pressed(ord('I')) { //Ölümsüzlüğü aç-kapa
