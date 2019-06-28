@@ -25,21 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Escape
+            <string>///Create
 
 {
+    global.Pause = true;
     screen_save("Light.png");
     PauseScreen = sprite_add("Light.png",1,false,false,0,0);
-    instance_deactivate_all(true);
     image_speed = 1/4;
     ww = display_get_gui_width();
     hh = display_get_gui_height();
+    draw_set_alpha(1);
     
     PauseMenu[0] = "RESUME";
     PauseMenu[1] = "SETTINGS";
     PauseMenu[2] = "MAIN MENU";
     
-    ButtonCurrent = RESUME;
+    ButtonCurrent = EnumPause.Resume;
     
     Font = FontMenu;
     
@@ -50,7 +51,14 @@
     SelectedTotal = 3;
     SelectedNumber = 0;
     
-    //io_clear();
+    with(obj_LightBugCreator) {
+        part_system_automatic_update(LightBugsSystem,false);
+        }
+    
+    instance_deactivate_all(true);
+    instance_activate_object(obj_Editor);
+    instance_activate_object(obj_Audio);
+    instance_activate_object(obj_GameStart);
 }
 </string>
           </argument>
@@ -80,11 +88,44 @@
     sprite_delete(PauseScreen);
     if file_exists("Light.png") then file_delete("Light.png");
     display_set_gui_size(ww,hh);
-    instance_activate_all();
     keyboard_key_release(vk_escape);
-    Pause = false;
+    io_clear();
+    instance_activate_all();
+    if room_persistent then room_persistent = false;
+    with(obj_System) alarm[1] = 15;
+    with(obj_LightBugCreator) {
+        part_system_automatic_update(LightBugsSystem,true);
+        }
+    with(obj_Character) {
+        //Dash preset
+        ini_open(CurrentProfile + "_Config.ini");
+        DashPreset = ini_read_real("Gameplay","Dash Preset",DASHKEY); 
+        ini_close();
+        
+        scr_ControlGlobals(false); //Kontrolleri çek
+        }
 }
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -139,21 +180,30 @@
         }
     if keyboard_check_pressed(vk_enter) {
         switch(ButtonCurrent) {
-            case RESUME:
+            case EnumPause.Resume:
                 instance_destroy();
                 break;
                 
-            case SETTINGS:
+            case EnumPause.Settings:
+                room_persistent = true;
+                global.PersistentRoom = room;
+                global.BackForSettings = true;
+                keyboard_key_release(vk_enter);
+                room_goto(rm_Menu);
                 break;
                 
-            case MAINMENU:
+            case EnumPause.MainMenu:
+                global.BackForSettings = false;
                 instance_destroy();
-                scr_BackToMenu();
                 room_goto(rm_Menu);
                 break;
                 
             }
         }
+    else if keyboard_check_pressed(vk_escape) {
+        instance_destroy();
+        }
+
 }
 </string>
           </argument>
@@ -187,22 +237,6 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>203</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_kill_object</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -220,15 +254,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw
+            <string>///Pause Screen
 
 {
     display_set_gui_size(1920,1080);
     draw_sprite(PauseScreen,0,0,0);
     display_set_gui_size(640,360);
     draw_sprite(spr_BlackView,0,0,0);
-    draw_sprite(sprite_index,image_index,view_wview/2,view_hview/2);
-    draw_set_font(Font);
+    draw_sprite(sprite_index,image_index,view_wview/2+2,view_hview/2);
 }
 </string>
           </argument>
@@ -253,19 +286,13 @@
             <string>///Fonts
 
 {
-    //draw_set_font(Font);
+    draw_set_font(Font);
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
+    draw_set_colour(c_white);
     for(var i = 0; i &lt; array_length_1d(PauseMenu); i++) {
-            //draw_set_alpha(alpha);
-            draw_text_transformed(view_wview[0]/2+6,view_hview[0]/2-32+(i*24),PauseMenu[i],1+Selected[i],1+Selected[i],0);
-            //draw_text(view_wview[0]/2+4,view_hview[0]/2-32+(i*24),pause_menu[i]);
-            /*if selected[i] = 0.5 {
-                draw_sprite(spr_MenuIndicatorLeft,-1,room_width/2-(string_width(pause_menu[i])*1.5+32)/2,166+(i*32));
-                draw_sprite(spr_MenuIndicatorRight,-1,room_width/2+(string_width(pause_menu[i])*1.5+32)/2,166+(i*32));
-                }*/
-            //draw_set_alpha(1);
-            }
+        draw_text_transformed(view_wview[0]/2+5+(Selected[i]*4),view_hview[0]/2-32+(i*24),PauseMenu[i],1+Selected[i],1+Selected[i],0);
+        }
 }
 </string>
           </argument>
@@ -286,33 +313,6 @@
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Escape
-
-{
-    instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
       </action>
     </event>
   </events>

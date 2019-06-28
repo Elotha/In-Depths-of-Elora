@@ -3,8 +3,8 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>-10000</depth>
-  <persistent>0</persistent>
+  <depth>-100</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,15 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Creator of Every System Object
+            <string>///Game Start
 
 {
-    create_only_one(0,0,obj_System);
-    create_only_one(0,0,obj_Background);
-    create_only_one(0,0,obj_Camera);
-    create_only_one(0,0,obj_Light);
-    create_only_one(0,0,obj_HUD);
-    create_only_one(0,0,obj_LightBugCreator);
+    GameStart = true;
 }
 </string>
           </argument>

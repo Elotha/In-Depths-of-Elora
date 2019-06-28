@@ -1,5 +1,5 @@
 ///Controls Load
-//
+
 //argument0: Control[argument0] içindeki constant
 //argument1: iniden okuyorsa true, iniye yazıyorsa false
 

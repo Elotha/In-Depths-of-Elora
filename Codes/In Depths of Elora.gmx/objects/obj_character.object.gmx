@@ -57,6 +57,11 @@
     DashCooldown = 0; //Dash cooldown
     DashCooldownMax = 60; //Dash cooldown süresi
     DashRange = 18; //Maksimum mesafe
+    DashCheck = 0; //Sağa ya da sola iki kez basarak dash atma
+    DashKeyTime = 10; //Alarm[3] için süre
+    ini_open(CurrentProfile + "_Config.ini");
+    DashPreset = ini_read_real("Gameplay","Dash Preset",DASHKEY); //Dash preset
+    ini_close();
     
     //Görsel Değişkenler
     image_speed = 1/6; //Animasyon hızı   
@@ -87,13 +92,7 @@
     MagicalInteraction = -1; //Büyü görüşünde bir canavara dash attık mı?
     MagicalInteractionSpace = 0; //Ele geçirdiğimiz canlıya özel komut verebilme boşluğu
     
-    
     scr_ControlGlobals(false); //Kontrolleri çek
-    
-    //Journal için hangi tuşun atandığını sapta
-    ini_open(CurrentProfile + "_Config.ini");
-    JournalKey = ord(ini_read_string("Controls",ControlKeys.Journal,ord('J')));
-    ini_close();
     
     with(obj_Camera) { //Kamerayı karaktere sabitle
         x = other.x;
@@ -164,6 +163,30 @@
         }
     else MagicalSightCount = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Dash
+
 </string>
           </argument>
         </arguments>
@@ -742,8 +765,6 @@
     draw_self();
     //draw_sprite_ext(sprite_index,image_index,x,y,Facing,image_yscale,image_angle,c_white,image_alpha);
     if Draw {
-        draw_set_colour(c_red);
-        draw_rectangle(x-9,y-17,x+9,y+31,true);
         exit;
         
         //draw_set_colour(c_red); //Yatay

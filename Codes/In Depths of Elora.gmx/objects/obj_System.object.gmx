@@ -38,12 +38,68 @@
     global.TempNumber = 0;
     //global.Focus = "Cutscene"; //Oyunun kontrol odağı
     
+    global.Pause = false;
+    
     var i = 0;
     while room_exists(i) i++;
     for (var k = 0; k &lt; i; k++) global.FirstStart[k] = 0;
        
     window_set_cursor(cr_none);
     
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Game End
+
+{
+    if file_exists("Temp.ini") then file_delete("Temp.ini");
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Global Pause
+
+{
+    global.Pause = false;
 }
 </string>
           </argument>
@@ -77,7 +133,38 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Pause
+
+{
+    if !global.Pause {
+        if keyboard_check_pressed(vk_escape) {
+            if instance_number(obj_Journal) = 0 {
+                if instance_number(obj_Pause) = 0 then instance_create(0,0,obj_Pause); //Mola menüsü açılsın
+                }     
+            }
+        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -104,37 +191,6 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Pause
-
-{
-    if keyboard_check_pressed(vk_escape) {//Mola menüsü açılsın
-        if instance_number(obj_Journal) = 0 {
-            if instance_number(obj_Pause) = 0 then instance_create(0,0,obj_Pause);
-            }     
-        }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
@@ -152,13 +208,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Checkpoint
+            <string>///Checkpoint &amp;&amp; Light Bugs
 
 {
     if global.FirstStart[room] = 0 {
         global.Checkpoint = -1; //Henüz bir checkpoint almadık
         alarm[0] = 1;
         }
+        
+    create_only_one(0,0,obj_LightBugCreator); //Light bugs
 }
 </string>
           </argument>
@@ -185,7 +243,6 @@
             <string>///Game End
 
 {
-    if file_exists("Temp.ini") then file_delete("Temp.ini");
     font_delete(FontMenu);
 }
 </string>

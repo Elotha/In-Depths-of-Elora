@@ -4,8 +4,6 @@
 //argument1: Other lazım mı?
 
 {
-    LeftX = -36;
-    RightX = 36;
     MinyooRange = Other.Range;
     JumpPermission = false;
     if argument1 {
@@ -114,7 +112,7 @@
                     VSpeed = FallingSpeed;
                     HSpeed = 0;            
                     sprite_index = spr_MagicalMinyooWalk;
-                    image_speed = 0;
+                    image_speed = 1/6;
                     image_yscale = 1;
                     break;
                     
@@ -165,6 +163,7 @@
                 case spr_MinyooWalk:
                     sprite_index = spr_MagicalMinyooWalk;
                     mask_index = sprite_index;
+                    image_speed = InteractionID.image_speed;
                     MinyooRangeCount = InteractionID.RangeCount;
                     MinyooGravityDir = InteractionID.GravityDir;
                     VSpeed = InteractionID.VSpeed;

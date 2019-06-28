@@ -53,11 +53,14 @@
         //Gameplay
         ini_open(CurrentProfile + "_Config.ini");
         
+        OnStartupCurrent = STARTUP_MENU;
+        ini_write_real("Gameplay","On Startup",OnStartupCurrent);
+        
         HUDCurrent = ALWAYS_SHOW;
         ini_write_real("Gameplay","HUD",HUDCurrent);
         
-        OnStartupCurrent = STARTUP_MENU;
-        ini_write_real("Gameplay","On Startup",OnStartupCurrent);
+        DashPresetCurrent = DASHKEY;
+        ini_write_real("Gameplay","Dash Preset",DashPresetCurrent);
         
         DialogSpeedCurrent = SPEED2;
         ini_write_real("Gameplay","Dialog Speed",DialogSpeedCurrent);
@@ -65,8 +68,8 @@
         LanguageCurrent = ENGLISH;
         ini_write_real("Gameplay","Language",LanguageCurrent);
         
-        SpeedrunTimerCurrent = OFF;
-        ini_write_real("Gameplay","Speedrun Timer",SpeedrunTimerCurrent);
+        SpeedRunTimerCurrent = OFF;
+        ini_write_real("Gameplay","Speed Run Timer",SpeedRunTimerCurrent);
         
         //Graphics
     
@@ -105,7 +108,7 @@
         Profile[i] = ini_read_string("Profiles",i,"");
         }
     ini_close();
-    Profiles[CURRENT_PROFILE] = "CURRENT PROFILE: " + "<" + string_upper(CurrentProfile) + ">";
+    Profiles[EnumProfiles.Current] = "CURRENT PROFILE: " + "<" + string_upper(CurrentProfile) + ">";
     scr_ProfileStrings();
     
     Description = "";

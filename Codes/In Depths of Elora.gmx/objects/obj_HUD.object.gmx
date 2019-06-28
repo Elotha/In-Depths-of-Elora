@@ -292,6 +292,8 @@
 
 {
     display_set_gui_size(view_wport[0]*2/3,view_hport[0]*2/3);  
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
 }
 </string>
           </argument>
@@ -328,8 +330,6 @@
             }
         if PotText {
             draw_set_colour(Color);
-            draw_set_valign(fa_top);
-            draw_set_halign(fa_left);
             draw_set_font(fnt_Potion);
             for(var i = 0; i &lt; array_length_1d(PotionText); i++) {
                 if PotionText[i] != -1 {
@@ -367,7 +367,7 @@
         draw_set_font(fnt_Calibri_HUD);
         draw_set_valign(fa_top);
         draw_set_colour(HUDColor);
-        draw_text(xy+64,xy+34,"X " + string(Lives));
+        draw_text(xy+50,xy+34,"X " + string(Lives));
         }
 }
 </string>
@@ -397,7 +397,7 @@
         draw_set_font(fnt_Calibri_HUD2);
         draw_set_colour(HUDColor);
         draw_set_valign(fa_top);
-        draw_text(xy+126,xy+62+1,string(MagicEssence));
+        draw_text(xy+122,xy+62+1,string(MagicEssence));
         }
 }
 </string>
@@ -423,7 +423,7 @@
             <string>///Keys
 
 {
-    if HUDAlpha &gt; 0 then draw_text(xy+164,xy+40,string(KeyNumber) + " / " + string(KeyMax));
+    if HUDAlpha &gt; 0 then draw_text(xy+148,xy+40,string(KeyNumber) + " / " + string(KeyMax));
 }
 </string>
           </argument>

@@ -10,6 +10,8 @@ Bütün health bar upgradelerini topla.
 "This one doesn't even exist."
 "Wha-? What achievement?"
 
+"You are a murderer now." -> Kill an Eloran.
+
 
 ------
 

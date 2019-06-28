@@ -1,5 +1,5 @@
 ///Change the Button
-//
+
 //argument0: hangi yöne gidilecek?
 //argument1: hangi array için?
 //argument2: sonucu hangi arrayin içine yazıyoruz?

@@ -28,22 +28,135 @@
             <string>///Create
 
 {
-    scr_BackToMenu(); //Gereksiz objeleri sil
-    globalvar FontMenu, FontString, CurrentProfile, SoundsList;
-    FontMenu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
-    Font = FontMenu; //Local değişken kullanmak için
-    FontString[0] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;+*"';
-    FontString[1] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    if obj_GameStart.GameStart { //Oyun yeni başlamışsa
+        obj_GameStart.GameStart = false;
+        Status = "Game Start"; //Menü objesindeki durum
+        global.BackForSettings = false; //Odaya settings için mi dönüldü?
+        }
+    else if global.BackForSettings {
+         Status = "Back For Settings";
+         }
+    else Status = "Main Menu";
     
+    //Oyun yeni başladıysa
+    if Status = "Game Start" {
+        enum EnumMainMenu {
+            StartGame,
+            Settings,
+            Journal,
+            Profiles,
+            Exit
+            }
+            
+        enum EnumSettings {
+            Controls,
+            Gameplay,
+            Graphics,
+            Audio,
+            Back
+            }
+            
+        enum EnumProfiles {
+            Current,
+            Create,
+            Delete,
+            Back
+            }
+        
+        enum ControlKeys {
+            Left,
+            Right,
+            Up,
+            Down,
+            Jump,
+            Dash,
+            MagicalSight,
+            ManaPotion,
+            CameraUp,
+            CameraDown,
+            Interact,
+            Journal,
+            HUD,
+            Music,
+            Sounds,
+            Defaults,
+            Back
+            }
+            
+        enum EnumGameplay {
+            HUD,
+            OnStartup,
+            DashPreset,
+            DialogSpeed,
+            Language,
+            SpeedRunTimer,
+            Back
+            }
+        
+        enum EnumGraphics {
+            VSync,
+            Fullscreen,
+            Resolution,
+            Quality,
+            Back
+            }
+            
+        enum EnumAudio {
+            Master,
+            Music,
+            Sounds,
+            Back
+            }
+            
+        enum EnumPause {
+            Resume,
+            Settings,
+            MainMenu
+            }
+            
+        globalvar FontMenu, FontString, CurrentProfile, SoundsList;
+        FontMenu = font_add_sprite_ext(spr_MainMenuFont,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;$!+*"',true,2);
+        FontString[0] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-.,%/&lt;&gt;+*"';
+        FontString[1] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    
+        global.FrameRate = 1/6; //Genel animasyon hızı
+        
+        QuickStart = false; //On Startup: Continue durumu için
+    
+        global.CurrentMusic = snd_MainMenu;
+        SoundsList = ds_list_create();
+        }
+        
+    //Settings için dönülmedi
+    if Status != "Back For Settings" { 
+        
+        MainMenu[EnumMainMenu.StartGame] = "START GAME";
+        MainMenu[EnumMainMenu.Settings] = "SETTINGS";
+        MainMenu[EnumMainMenu.Journal] = "JOURNAL";
+        MainMenu[EnumMainMenu.Profiles] = "PROFILES";
+        MainMenu[EnumMainMenu.Exit] = "EXIT";
+        
+        StartAlpha = true;
+        Alpha = 0;
+        }
+        
+    else { //Back For Settings durumu
+        scr_InGameSystemObjects("Suspend"); //Gereksiz objeleri deaktive et
+        StartAlpha = false;
+        Alpha = 1;
+        scr_ControlGlobals(false); //Kontrolleri çek
+        }
+        
+    if Status = "Main Menu" then scr_InGameSystemObjects("Destroy"); //Menüye tamamen dönmüşsek objeleri yok et
+    
+        
+    Font = FontMenu; //Local değişken kullanmak için
     image_speed = 1/5;
     display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
     StartGame = false;
-    Alpha = 0;
-    StartAlpha = true;
     draw_set_alpha(Alpha);
     
-    global.CurrentMusic = snd_MainMenu;
-    SoundsList = ds_list_create();
+    QuickStart = false;
     
     Selected[0] = 0.5;
     for(var i = 1; i &lt; 12; i++) {
@@ -56,60 +169,37 @@
     ShowLast = "";
     Offset = 0;
     
+    Settings[EnumSettings.Controls] = "CONTROLS";
+    Settings[EnumSettings.Gameplay] = "GAMEPLAY";
+    Settings[EnumSettings.Graphics] = "GRAPHICS";
+    Settings[EnumSettings.Audio] = "AUDIO";
+    Settings[EnumSettings.Back] = "BACK";
     
-    MainMenu[STARTGAME] = "START GAME";
-    MainMenu[SETTINGS] = "SETTINGS";
-    MainMenu[JOURNAL] = "JOURNAL";
-    MainMenu[PROFILES] = "PROFILES";
-    MainMenu[EXIT] = "EXIT";
-    
-    Settings[CONTROLS] = "CONTROLS";
-    Settings[GAMEPLAY] = "GAMEPLAY";
-    Settings[GRAPHICS] = "GRAPHICS";
-    Settings[AUDIO] = "AUDIO";
-    Settings[SET_BACK] = "BACK";
-    
-    enum ControlKeys {
-        Left,
-        Right,
-        Up,
-        Down,
-        Jump,
-        Dash,
-        MagicalSight,
-        ManaPotion,
-        CameraUp,
-        CameraDown,
-        Interact,
-        Journal,
-        HUD,
-        Music,
-        Sounds,
-        Defaults,
-        Back
-        }
-        
     ControlChange = false; //Herhangi bir kontrol değiştiriliyor mu?
     ControlCheck = false; //Atanmamış tuş var mı?
+    
+    OnStartup[STARTUP_MENU] = "MENU";
+    OnStartup[STARTUP_CONT] = "CONTINUE";
     
     HUD[ALWAYS_SHOW] = "ALWAYS SHOW";
     HUD[ONLY_INTERACT] = "ONLY WHEN INTERACT";
     HUD[ONLY_HUDKEY] = "ONLY WHEN HOLD THE HUD KEY";
     HUD[HUD_NEVER] = "NEVER";
     
-    OnStartup[STARTUP_MENU] = "MENU";
-    OnStartup[STARTUP_CONT] = "CONTINUE";
+    DashPreset[DASHKEY] = "USE DASH KEY";
+    DashPreset[PRESSTWICE] = "PRESS LEFT OR RIGHT TWICE";
+    DashPreset[DASHBOTH] = "BOTH";
     
     DialogSpeed[SPEED1] = "1";
     DialogSpeed[SPEED2] = "2";
     DialogSpeed[SPEED4] = "4";
-    DialogSpeed[SPEED8] = "8";
+    DialogSpeed[IMMIDIATE] = "IMMIDIATE";
     
     Language[ENGLISH] = "ENGLISH";
     Language[TURKISH] = "TURKISH";
     
-    SpeedrunTimer[OFF] = "OFF";
-    SpeedrunTimer[ON] = "ON";
+    SpeedRunTimer[OFF] = "OFF";
+    SpeedRunTimer[ON] = "ON";
     
     VSync[ON] = "ON";
     VSync[OFF] = "OFF";
@@ -138,15 +228,16 @@
         VSyncCurrent = ON;
         OnStartupCurrent = STARTUP_MENU;
         }
-    else MenuCurrent = "Main Menu";
+    else {
+        if Status = "Back For Settings" then MenuCurrent = "Settings";
+        else {
+            MenuCurrent = "Main Menu";
+            scr_ProfileNames();
+            }
+        }
     //display_reset(0,v_syncCurrent);
     ButtonCurrent = 0;
     
-    scr_ProfileNames();
-    
-    global.FrameRate = 1/6; //Genel animasyon hızı
-    
-    QuickStart = false; //On Startup: Continue durumu için
 }
 </string>
           </argument>
@@ -170,10 +261,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Start Game
+            <string>///Audio Groups
+
+//alarm[1] otomatik olarak stepten kuruluyor
 
 {
-    if audio_group_is_loaded(InGame) then room_goto_next();
+    if audio_group_is_loaded(InGame) {
+        room_goto_next();
+        if MenuCurrent != "New Profile" then scr_ControlGlobals(true);
+        scr_InGameSystemObjects("Create");
+        }
 }
 </string>
           </argument>
@@ -432,50 +529,54 @@
         switch(MenuCurrent) {
             case "Gameplay": 
                 switch(ButtonCurrent) {
-                    case HUD_GP:
-                        Gameplay[HUD_GP] = scr_ChangeButton(Dirc,HUD,Gameplay[HUD_GP],"HUD: ","Gameplay","HUD");
+                    case EnumGameplay.HUD:
+                        Gameplay[EnumGameplay.HUD] = scr_ChangeButton(Dirc,HUD,Gameplay[EnumGameplay.HUD],"HUD: ","Gameplay","HUD");
                         break;
                         
-                    case ONSTARTUP:
-                        Gameplay[ONSTARTUP] = scr_ChangeButton(Dirc,OnStartup,Gameplay[ONSTARTUP],"ON STARTUP: ","Gameplay","On Startup");
+                    case EnumGameplay.DashPreset:
+                        Gameplay[EnumGameplay.DashPreset] = scr_ChangeButton(Dirc,DashPreset,Gameplay[EnumGameplay.DashPreset],"DASH PRESET: ","Gameplay","Dash Preset");
                         break;
                         
-                    case DIALOGSPEED:
-                        Gameplay[DIALOGSPEED] = scr_ChangeButton(Dirc,DialogSpeed,Gameplay[DIALOGSPEED],"DIALOG SPEED: ","Gameplay","Dialog Speed");
+                    case EnumGameplay.OnStartup:
+                        Gameplay[EnumGameplay.OnStartup] = scr_ChangeButton(Dirc,OnStartup,Gameplay[EnumGameplay.OnStartup],"ON STARTUP: ","Gameplay","On Startup");
                         break;
                         
-                    case LANGUAGE:
-                        Gameplay[LANGUAGE] = scr_ChangeButton(Dirc,Language,Gameplay[LANGUAGE],"LANGUAGE: ","Gameplay","Language");
+                    case EnumGameplay.DialogSpeed:
+                        Gameplay[EnumGameplay.DialogSpeed] = scr_ChangeButton(Dirc,DialogSpeed,Gameplay[EnumGameplay.DialogSpeed],"DIALOG SPEED: ","Gameplay","Dialog Speed");
                         break;
                         
-                    case SPEEDRUN:
-                        Gameplay[SPEEDRUN] = scr_ChangeButton(Dirc,SpeedrunTimer,Gameplay[SPEEDRUN],"SPEEDRUN TIMER: ","Gameplay","Speedrun Timer");
+                    case EnumGameplay.Language:
+                        Gameplay[EnumGameplay.Language] = scr_ChangeButton(Dirc,Language,Gameplay[EnumGameplay.Language],"LANGUAGE: ","Gameplay","Language");
+                        break;
+                        
+                    case EnumGameplay.SpeedRunTimer:
+                        Gameplay[EnumGameplay.SpeedRunTimer] = scr_ChangeButton(Dirc,SpeedRunTimer,Gameplay[EnumGameplay.SpeedRunTimer],"SPEED RUN TIMER: ","Gameplay","Speed Run Timer");
                         break;
                     }
                 break;
                     
             case "Graphics": 
                 switch(ButtonCurrent) {
-                    case V_SYNC:
-                        Graphics[V_SYNC] = scr_ChangeButton(Dirc,VSync,Graphics[V_SYNC],"V-SYNC: ","Graphics","V-Sync");
+                    case EnumGraphics.VSync:
+                        Graphics[EnumGraphics.VSync] = scr_ChangeButton(Dirc,VSync,Graphics[EnumGraphics.VSync],"V-SYNC: ","Graphics","V-Sync");
                         ini_open(CurrentProfile + "_Config.ini");
                         display_reset(0,ini_read_real("Graphics","V-Sync",ON));
                         ini_close();
                         break;
                         
-                    case FULLSCREEN:
-                        Graphics[FULLSCREEN] = scr_ChangeButton(Dirc,Fullscreen,Graphics[FULLSCREEN],"FULLSCREEN: ","Graphics","Fullscreen");
+                    case EnumGraphics.Fullscreen:
+                        Graphics[EnumGraphics.Fullscreen] = scr_ChangeButton(Dirc,Fullscreen,Graphics[EnumGraphics.Fullscreen],"FULLSCREEN: ","Graphics","Fullscreen");
                         ini_open(CurrentProfile + "_Config.ini");
                         window_set_fullscreen(ini_read_real("Graphics","Fullscreen","ON"));
                         ini_close();
                         break;
                         
-                    case RESOLUTION:
-                        Graphics[RESOLUTION] = scr_ChangeButton(Dirc,Resolution,Graphics[RESOLUTION],"RESOLUTION: ","Graphics","Resolution");
+                    case EnumGraphics.Resolution:
+                        Graphics[EnumGraphics.Resolution] = scr_ChangeButton(Dirc,Resolution,Graphics[EnumGraphics.Resolution],"RESOLUTION: ","Graphics","Resolution");
                         break;
                         
-                    case GRAP_QUALITY:
-                        Graphics[GRAP_QUALITY] = scr_ChangeButton(Dirc,GraphicsQuality,Graphics[GRAP_QUALITY],"GRAPHICS QUALITY: ","Graphics","Quality");
+                    case EnumGraphics.Quality:
+                        Graphics[EnumGraphics.Quality] = scr_ChangeButton(Dirc,GraphicsQuality,Graphics[EnumGraphics.Quality],"GRAPHICS QUALITY: ","Graphics","Quality");
                         break;
                     }
                 break;
@@ -483,7 +584,7 @@
             case "Audio":
                 ini_open(CurrentProfile +"_Config.ini");
                 if !keyboard_check_pressed(vk_enter) then switch(ButtonCurrent) {
-                    case MASTER_VOLUME:
+                    case EnumAudio.Master:
                         if global.MasterVolume = 0 &amp;&amp; Dirc = 1 {
                             global.MasterVolume = 1;
                             scr_Music("Master");
@@ -493,11 +594,14 @@
                             scr_Music("Master");
                             global.MasterVolumeLast = 10;
                             }
-                        else global.MasterVolume = clamp(global.MasterVolume+(1*Dirc),0,10);    
+                        else {
+                            global.MasterVolume = clamp(global.MasterVolume+(1*Dirc),0,10);    
+                            scr_Volumes("Master");
+                            }
                         ini_write_real("Audio","Master",global.MasterVolume);
                         break;
                         
-                    case MUSIC_VOLUME:
+                    case EnumAudio.Music:
                         if global.MusicVolume = 0 &amp;&amp; Dirc = 1 {
                             global.MusicVolume = 1;
                             scr_Music("Music");
@@ -507,11 +611,14 @@
                             scr_Music("Music");
                             global.MusicVolumeLast = 10;
                             }
-                        else global.MusicVolume = clamp(global.MusicVolume+(1*Dirc),0,10);
+                        else {
+                            global.MusicVolume = clamp(global.MusicVolume+(1*Dirc),0,10);
+                            scr_Volumes("Music");
+                            }
                         ini_write_real("Audio","Music",global.MusicVolume);
                         break;
                         
-                    case SOUNDS_VOLUME:
+                    case EnumAudio.Sounds:
                         if global.SoundsVolume = 1 &amp;&amp; Dirc = -1  {
                             global.SoundsVolume = 0
                             global.MusicVolumeLast = 10;
@@ -527,9 +634,9 @@
             
             case "Profiles":
                 switch(ButtonCurrent) {
-                    case CURRENT_PROFILE:
+                    case EnumProfiles.Current:
                         if Total &gt; 1 {
-                            Profiles[CURRENT_PROFILE] = scr_ChangeButton(Dirc,Profile,Profiles[CURRENT_PROFILE],"CURRENT PROFILE: ","Profiles","Current Number");
+                            Profiles[EnumProfiles.Current] = scr_ChangeButton(Dirc,Profile,Profiles[EnumProfiles.Current],"CURRENT PROFILE: ","Profiles","Current Number");
                             scr_ProfileLoad();
                             DeleteProfile[0] = "YES, DELETE THIS PROFILE: " + string_upper(CurrentProfile);
                             break;
@@ -571,7 +678,7 @@
                 
             case "Main Menu":
                 switch(ButtonCurrent) {
-                    case STARTGAME:
+                    case EnumMainMenu.StartGame:
                         StartGame = true;
                         if !audio_group_is_loaded(InGame) then audio_group_load(InGame);
                         if sprite_index = spr_MenuBackground {
@@ -584,20 +691,20 @@
                         with(obj_MenuHeadParent) alarm[1] = 1;
                         break;
                         
-                    case SETTINGS:
+                    case EnumMainMenu.Settings:
                         MenuCurrent = "Settings";
                         scr_ChangeMenu(Settings,0);
                         break;
                         
-                    case JOURNAL:
+                    case EnumMainMenu.Journal:
                         break;
                         
-                    case PROFILES:
+                    case EnumMainMenu.Profiles:
                         MenuCurrent = "Profiles";
                         scr_ChangeMenu(Profiles,0);
                         break;
                         
-                    case EXIT:
+                    case EnumMainMenu.Exit:
                         game_end();
                         break;
                         
@@ -605,31 +712,37 @@
                 break;
                 
             case "Settings":
-                switch(ButtonCurrent) {
-                    case CONTROLS:
+                switch(ButtonCurrent) { 
+                    case EnumSettings.Controls:
                         MenuCurrent = "Controls";
                         scr_ChangeMenu(Controls,0);
                         Description = "Press &lt;Enter&gt; to change key.";
                         break;
                         
-                    case GAMEPLAY:
+                    case EnumSettings.Gameplay:
                         MenuCurrent = "Gameplay";
                         scr_ChangeMenu(Gameplay,0);
                         break;
                         
-                    case GRAPHICS:
+                    case EnumSettings.Graphics:
                         MenuCurrent = "Graphics";
                         scr_ChangeMenu(Graphics,0);
                         break;
                         
-                    case AUDIO:
+                    case EnumSettings.Audio:
                         MenuCurrent = "Audio";
                         scr_ChangeMenu(Audio,0);
                         break;
                         
-                    case SET_BACK:
-                        MenuCurrent = "Main Menu";
-                        scr_ChangeMenu(MainMenu,SETTINGS);
+                    case EnumSettings.Back:
+                        if Status != "Back For Settings" {
+                            MenuCurrent = "Main Menu";
+                            scr_ChangeMenu(MainMenu,EnumMainMenu.Settings);
+                            }
+                        else {
+                            room_goto(global.PersistentRoom);
+                            exit;
+                            }
                         break;
                         
                     }
@@ -651,7 +764,7 @@
                             break;
                             }
                         MenuCurrent = "Settings";
-                        scr_ChangeMenu(Settings,0);
+                        scr_ChangeMenu(Settings,EnumSettings.Controls);
                         Description = "";
                         break;
                         
@@ -663,60 +776,60 @@
                 
             case "Gameplay":
                 switch(ButtonCurrent) {
-                    case GAMEP_BACK:
+                    case EnumGameplay.Back:
                         MenuCurrent = "Settings";
-                        scr_ChangeMenu(Settings,1);
+                        scr_ChangeMenu(Settings,EnumSettings.Gameplay);
                         break;
                     }
                 break;
                 
             case "Graphics":
                 switch(ButtonCurrent) {
-                    case GRAP_BACK:
+                    case EnumGraphics.Back:
                         MenuCurrent = "Settings";
-                        scr_ChangeMenu(Settings,2);
+                        scr_ChangeMenu(Settings,EnumSettings.Graphics);
                         break;
                     }
                 break;
                 
             case "Audio":
                 switch(ButtonCurrent) {
-                    case MASTER_VOLUME:
+                    case EnumAudio.Master:
                         scr_AudioToggle("Master");
                         break;
                         
-                    case MUSIC_VOLUME:
+                    case EnumAudio.Music:
                         scr_AudioToggle("Music");
                         break;
                         
-                    case SOUNDS_VOLUME:
+                    case EnumAudio.Sounds:
                         scr_AudioToggle("Sounds");
                         break;
                         
-                    case AUDIO_BACK:
+                    case EnumAudio.Back:
                         MenuCurrent = "Settings";
-                        scr_ChangeMenu(Settings,3);
+                        scr_ChangeMenu(Settings,EnumSettings.Audio);
                         break;
                     }
                 break;
                 
             case "Profiles":
                 switch(ButtonCurrent) {
-                    case CREATE_PROFILE:
+                    case EnumProfiles.Create:
                         Description = "Please enter a profile name. You can only use letters and numbers. #Press &lt;Enter&gt; to create. Press &lt;ESC&gt; to cancel. ";
                         NewProfile = "";
                         keyboard_string = NewProfile;
                         MenuCurrent = "New Profile";
                         break;
                         
-                    case DELETE_PROFILE:
+                    case EnumProfiles.Delete:
                         MenuCurrent = "Delete Profile";
                         scr_ChangeMenu(DeleteProfile,0);
                         break;
                         
-                    case PROFILES_BACK:
+                    case EnumProfiles.Back:
                         MenuCurrent = "Main Menu";
-                        scr_ChangeMenu(MainMenu,3);
+                        scr_ChangeMenu(MainMenu,EnumMainMenu.Profiles);
                         break;
                     }
                 break;
@@ -747,14 +860,14 @@
                             scr_ProfileLoad();
                             scr_ProfileNames();
                             MenuCurrent = "Profiles";
-                            scr_ChangeMenu(Profiles,2);
+                            scr_ChangeMenu(Profiles,EnumProfiles.Delete);
                             DeleteProfile[0] = "YES, DELETE THIS PROFILE: " + string_upper(CurrentProfile);
                             }
                         break;
                         
                     case CANCEL_IT:
                         MenuCurrent = "Profiles";
-                        scr_ChangeMenu(Profiles,2);
+                        scr_ChangeMenu(Profiles,EnumProfiles.Delete);
                         break;
                     }
                 break;
@@ -792,13 +905,19 @@
                 else  {
                     Description = "";
                     MenuCurrent = "Profiles";
-                    scr_ChangeMenu(Profiles,1);
+                    scr_ChangeMenu(Profiles,EnumProfiles.Create);
                     }
                 break;
                 
             case "Settings":
-                MenuCurrent = "Main Menu";
-                scr_ChangeMenu(MainMenu,SETTINGS);
+                if Status != "Back For Settings" {
+                    MenuCurrent = "Main Menu";
+                    scr_ChangeMenu(MainMenu,EnumMainMenu.Settings);
+                    }
+                else {
+                    room_goto(global.PersistentRoom);
+                    exit;
+                    }
                 break;
                 
             case "Controls":
@@ -808,32 +927,32 @@
                     break;
                     }
                 MenuCurrent = "Settings";
-                scr_ChangeMenu(MainMenu,CONTROLS);
+                scr_ChangeMenu(Settings,EnumSettings.Controls);
                 break;
                 
             case "Gameplay":
                 MenuCurrent = "Settings";
-                scr_ChangeMenu(MainMenu,GAMEPLAY);
+                scr_ChangeMenu(Settings,EnumSettings.Gameplay);
                 break;
                 
             case "Graphics":
                 MenuCurrent = "Settings";
-                scr_ChangeMenu(MainMenu,GRAPHICS);
+                scr_ChangeMenu(Settings,EnumSettings.Graphics);
                 break;
                 
             case "Audio":
                 MenuCurrent = "Settings";
-                scr_ChangeMenu(MainMenu,AUDIO);
+                scr_ChangeMenu(Settings,EnumSettings.Audio);
                 break;
                 
             case "Profiles":
                 MenuCurrent = "Main Menu";
-                scr_ChangeMenu(MainMenu,PROFILES);
+                scr_ChangeMenu(MainMenu,EnumMainMenu.Profiles);
                 break;
                 
             case "Delete Profile":
                 MenuCurrent = "Profiles";
-                scr_ChangeMenu(Profiles,DELETE_PROFILE);
+                scr_ChangeMenu(Profiles,EnumProfiles.Delete);
                 break;
             }
         exit;
@@ -861,10 +980,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Global Controls
+            <string>///Global Controls &amp;&amp; Back For Settings
 
 {
-    if MenuCurrent != "New Profile" then scr_ControlGlobals(true);
+    if global.BackForSettings {
+        scr_InGameSystemObjects("Reactivate");
+        scr_ControlGlobals(true);
+        }
+    
+    obj_Audio.MusicKey = Control[ControlKeys.Music];
+    obj_Audio.SoundsKey = Control[ControlKeys.Sounds];
 }
 </string>
           </argument>
@@ -936,8 +1061,7 @@
         }
     else {
         with(obj_MenuHeadParent) alarm[2] = 1;
-        }
-        
+        }     
 }
 </string>
           </argument>
@@ -971,7 +1095,7 @@
     
         
     if StartGame { //Start Game tuşuna bastıysak
-        draw_text_colour(room_width/2,room_height-64,"LOADING...",c_white,c_white,c_white,c_white,1-Alpha);
+        draw_text_colour(room_width/2+5,room_height-64,"LOADING...",c_white,c_white,c_white,c_white,1-Alpha);
         if QuickStart then exit;
         }
     
