@@ -29,7 +29,7 @@
 
 {
     EditorMode = true; //Editör modu
-    global.Immortality = true; //Ölümsüzlük modu
+    global.Immortality = false; //Ölümsüzlük modu
     global.Draw = false; //Debug Draw modu
     global.MessagePermission = true; //Debug mesajı çıkabilir mi?
     Debug = false; //Debug overlay modu
