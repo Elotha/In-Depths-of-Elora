@@ -56,7 +56,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Alpha-
+            <string>///Alpha--
 
 {
     if image_alpha &gt; 0 {

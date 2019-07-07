@@ -294,7 +294,7 @@
   <fonts name="fonts">
     <font>fonts\fnt_Calibri_HUD2</font>
     <font>fonts\fnt_Calibri_HUD</font>
-    <font>fonts\fnt_Calibri_Profile</font>
+    <font>fonts\fnt_Description</font>
     <font>fonts\fnt_AchievementTitle</font>
     <font>fonts\fnt_AchievementDescription</font>
     <font>fonts\fnt_Potion</font>
