@@ -8,7 +8,7 @@
         }
     else with(LastDialoguesArrow[0]) NextIndex = 0;
     display_set_gui_size(view_wport[0],view_hport[0]);
-    draw_set_font(fnt_AchievementDescription);
+    draw_set_font(fnt_LastDialoguesDescription);
     
     var Limit = view_hport[0]/2+360;
     var YPoint = view_hport[0]/2-278;

@@ -418,25 +418,25 @@
             
             display_set_gui_size(view_wport[0],view_hport[0]);
             
-            draw_set_font(fnt_AchievementTitle);
+            draw_set_font(fnt_StatisticsTitle);
             draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-SprH*2+16)*3,"- " + StatisticsQuestions[StatisticsOffset],c_black,c_black,c_black,c_black,JournalAlpha);
-            draw_set_font(fnt_AchievementDescription);
+            draw_set_font(fnt_StatisticsDescription);
             draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-SprH*2+32)*3,"   " + string(StatisticsAnswers[StatisticsOffset]),c_black,c_black,c_black,c_black,JournalAlpha);
             
-            draw_set_font(fnt_AchievementTitle);
+            draw_set_font(fnt_StatisticsTitle);
             draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-SprH+22)*3,"- " + StatisticsQuestions[StatisticsOffset+1],c_black,c_black,c_black,c_black,JournalAlpha);
-            draw_set_font(fnt_AchievementDescription);
+            draw_set_font(fnt_StatisticsDescription);
             draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(-SprH+22+16)*3,"   " + string(StatisticsAnswers[StatisticsOffset+1]),c_black,c_black,c_black,c_black,JournalAlpha);
             
-            draw_set_font(fnt_AchievementTitle);
+            draw_set_font(fnt_StatisticsTitle);
             draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(28*3),"- " + StatisticsQuestions[StatisticsOffset+2],c_black,c_black,c_black,c_black,JournalAlpha);
-            draw_set_font(fnt_AchievementDescription);
+            draw_set_font(fnt_StatisticsDescription);
             draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(28+16)*3,"   " + string(StatisticsAnswers[StatisticsOffset+2]),c_black,c_black,c_black,c_black,JournalAlpha);
             
             if StatisticsOffset &lt; StatisticsMax {
-                draw_set_font(fnt_AchievementTitle);
+                draw_set_font(fnt_StatisticsTitle);
                 draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(+SprH*2-8)*3,"- " + StatisticsQuestions[StatisticsOffset+3],c_black,c_black,c_black,c_black,JournalAlpha/2);
-                draw_set_font(fnt_AchievementDescription);
+                draw_set_font(fnt_StatisticsDescription);
                 draw_text_colour(view_wport[0]/2-218,view_hport[0]/2+(+SprH*2-8+16)*3,"   " + string(StatisticsAnswers[StatisticsOffset+3]),c_black,c_black,c_black,c_black,JournalAlpha/2);
                 }            
         }

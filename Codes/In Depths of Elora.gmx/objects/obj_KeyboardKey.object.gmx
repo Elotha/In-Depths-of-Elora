@@ -73,7 +73,7 @@
     draw_self();
     draw_set_valign(fa_center);
     draw_set_halign(fa_center);
-    draw_set_font(fnt_Calibri_8);
+    draw_set_font(fnt_Debug);
     draw_set_colour(c_black);
     draw_text(x+8,y+7,Key);
     draw_set_colour(c_white);

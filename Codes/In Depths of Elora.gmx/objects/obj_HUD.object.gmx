@@ -364,7 +364,7 @@
 
 {
     if HUDAlpha &gt; 0 {
-        draw_set_font(fnt_Calibri_HUD);
+        draw_set_font(fnt_Lives);
         draw_set_valign(fa_top);
         draw_set_colour(HUDColor);
         draw_text(xy+50,xy+34,"X " + string(Lives));
@@ -394,7 +394,7 @@
 
 {
     if HUDAlpha &gt; 0 {
-        draw_set_font(fnt_Calibri_HUD2);
+        draw_set_font(fnt_MagicEssenceAndKeys);
         draw_set_colour(HUDColor);
         draw_set_valign(fa_top);
         draw_text(xy+122,xy+62+1,string(MagicEssence));

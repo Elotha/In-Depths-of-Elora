@@ -3,3 +3,5 @@ Yavru palpus.
 Belirli isimlerde profil açýlmasý. (Elora isminde açmaya çalýþýrsan "Greed of Power" baþarýmý açýlýyor.)
 
 Müzik, bir bölümde belirli bir yerdeyken biterse loop olmayabilir. Pixo "It's so silence..." þeklinde bir yorum yapar ve oradan çýktýðý zaman müzik tekrar baþlar.
+
+Paskalya yumurtalarý eklenebilir.

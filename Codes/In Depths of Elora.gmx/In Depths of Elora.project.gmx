@@ -292,13 +292,16 @@
     </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\fnt_Calibri_HUD2</font>
-    <font>fonts\fnt_Calibri_HUD</font>
+    <font>fonts\fnt_Lives</font>
+    <font>fonts\fnt_MagicEssenceAndKeys</font>
     <font>fonts\fnt_Description</font>
     <font>fonts\fnt_AchievementTitle</font>
     <font>fonts\fnt_AchievementDescription</font>
+    <font>fonts\fnt_LastDialoguesDescription</font>
+    <font>fonts\fnt_StatisticsTitle</font>
+    <font>fonts\fnt_StatisticsDescription</font>
     <font>fonts\fnt_Potion</font>
-    <font>fonts\fnt_Calibri_8</font>
+    <font>fonts\fnt_Debug</font>
     <font>fonts\fnt_Interact</font>
   </fonts>
   <objects name="objects">
@@ -360,7 +363,6 @@
       <object>objects\obj_Zodax</object>
       <object>objects\obj_Minyoo</object>
       <object>objects\obj_MonsterCorpse</object>
-      <object>objects\obj_MonsterCloud</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_Item</object>
@@ -424,11 +426,10 @@
     <room>rooms\rm_Base</room>
     <room>rooms\rm_Temp</room>
   </rooms>
-  <constants number="43">
+  <constants number="42">
     <constant name="ALWAYS_SHOW">0</constant>
     <constant name="BACKGROUND1">600</constant>
     <constant name="BACKGROUND2">800</constant>
-    <constant name="BACKGROUND3">1000</constant>
     <constant name="CANCEL_IT">1</constant>
     <constant name="CAVEWALL">500</constant>
     <constant name="CHARACTER">300</constant>

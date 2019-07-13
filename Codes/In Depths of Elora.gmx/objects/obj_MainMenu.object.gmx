@@ -187,7 +187,7 @@
     HUD[HUD_NEVER] = "NEVER";
     
     DashPreset[DASHKEY] = "USE DASH KEY";
-    DashPreset[PRESSTWICE] = "PRESS LEFT OR RIGHT TWICE";
+    DashPreset[PRESSTWICE] = "PRESS LEFT OR RIGHT KEY TWICE";
     DashPreset[DASHBOTH] = "BOTH";
     
     DialogSpeed[SPEED1] = "1";

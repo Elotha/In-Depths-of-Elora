@@ -419,7 +419,7 @@
         draw_rectangle(x+(21*image_xscale),y+30,x+((32+21)*image_xscale),y+62,true);
         
         draw_set_colour(c_white);
-        draw_set_font(fnt_Calibri_8);
+        draw_set_font(fnt_Debug);
         draw_text(x,y-32,string(VSpeed));
         }
 }

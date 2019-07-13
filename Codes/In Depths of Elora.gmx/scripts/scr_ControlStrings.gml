@@ -13,7 +13,7 @@
     Controls[ControlKeys.CameraDown] = "CAMERA DOWN: " + ControlString[ControlKeys.CameraDown];
     Controls[ControlKeys.Journal] = "JOURNAL: " + ControlString[ControlKeys.Journal];
     Controls[ControlKeys.Interact] = "INTERACT: " + ControlString[ControlKeys.Interact];
-    Controls[ControlKeys.HUD] = "HUD KEY: " + ControlString[ControlKeys.HUD];
+    Controls[ControlKeys.HUD] = "HUD: " + ControlString[ControlKeys.HUD];
     Controls[ControlKeys.Music] = "MUSIC ON/OFF: " + ControlString[ControlKeys.Music];
     Controls[ControlKeys.Sounds] = "SOUND EFFECTS ON/OFF: " + ControlString[ControlKeys.Sounds];
     Controls[ControlKeys.Defaults] = "RETURN TO DEFAULTS";

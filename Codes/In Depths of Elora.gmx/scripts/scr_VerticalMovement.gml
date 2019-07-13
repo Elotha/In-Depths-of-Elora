@@ -7,7 +7,7 @@
             if JumpCount < JumpMax {
                 if keyboard_check_pressed(Control[ControlKeys.Jump]) {
                     if JumpCount++ = 1 { //İkinci kez zıplıyorsak
-                        alarm[1] = -1; //Hayalet platform
+                        alarm[1] = -1; //Hayalet blok
                         var MagJump = scr_MagicalJump(); //Büyülü zıplayış var mı?
                         if MagJump > 0 then VSpeed = JumpSpeed-1-(MagJump*0.5); else VSpeed = JumpSpeed;
                         sprite_index = spr_CharacterDoubleJump;
@@ -44,6 +44,7 @@
     if BlockDown = noone or (BlockDown != noone && BlockCenter != noone && BlockDown = BlockCenter) {
         if !scr_IfDash() {
             if VSpeed < FallingLimit {
+                if JumpCount = 0 && alarm[1] = -1 then alarm[1] = 10; //Hayalet blok
                 VSpeed += FallingSpeed;
                 }
             }

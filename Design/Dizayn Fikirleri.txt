@@ -20,18 +20,26 @@ Uzun süre anahtar bulamama durumunda oyuncuya ipucu verilebilir.
 
 Journaldaki büyücü biraz esprili olabilir. Bir easter egg yerleþtirilebilir. Mesela bir buton olur, bu butona basýnca bütün journal silinir. Oyuncu bir anlýðýna kalp krizi geçirir. Ama aslýnda büyücü þaka yapmýþtýr.
 
-Immidiate dialog seçeneði eklenmesi gerek.
-
 Canavar ýþýnlama büyüsü düþünülebilir.
 
 Anahtar pusulasý olabilir. Bu anahtar pusulasý, altýn anahtarýn ne yönde olduðunu bir cooldown ile gösterirken, diðer anahtarlarýn yerini göstermese de bulunduðu bölümde kaç tane olduðunu gösterebilir.
 
-Sadece büyü görüþünde ve sadece normal dünyada görünen kapýlar olabilir.
+Sadece büyülü dünya modunda ve sadece fiziksel dünyada görünen kapýlar olabilir.
 
 Minyonun yukarý ýþýnlayabilme özelliðini normalde geçemediðimiz dar yerlerden geçmek için kullanabiliriz.
 
 Damastýn hayat döngüsünün düþünülmesi lazým.
 
-Magical sight modda yaptýklarýmýzý gören karakterler bize tepki verebilir. (örn. "Wha-?! Sorcerer!")
+Büyülü dünya modunda yaptýklarýmýzý gören karakterler bize tepki verebilir. (örn. "Wha-?! Sorcerer!")
 
 Diyalog collision noktalarýna yaklaþýrken HUD giderek saydamlaþabilir. Böylece oyuncu, ilerlemeye devam ederse kontrolün bir süreliðine elinden alýnacaðýný ve diyalog gireceðini sezebilir.
+
+Bize büyülü görüþ moduna girmemizi saðlayan itemi hediye eden karakter, aslýnda Elora'nýn bir büyüsü olabilir. Bir paskalya yumurtasý bu noktada yerleþtirilebilir.
+
+Karakterler bize item verirse ve bu itemler bir journal girdisi yaratýyorsa, oyuncu diyalog devam ederken journala girmeye çalýþýrsa karakterler "don't be rude, we are still talking" gibi bir tepki verebilir.
+
+Canavarlarýn tekrar tekrar kullanýlmasýný gerektiren durumlarda canavarlar için nestler yapýlabilir.
+
+Paskalya yumurtasý olarak bir ya da birkaç canavarýn içine not koyabilirim.
+
+Hak taþý, tamamen büyülü dünya içine saklanabilir. Oyuncu için bulmasý zor bir þey haline gelir böylece.

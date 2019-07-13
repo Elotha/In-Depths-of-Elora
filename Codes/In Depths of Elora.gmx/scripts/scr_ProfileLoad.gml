@@ -115,9 +115,9 @@
     
     //Gameplay
     
+    OnStartupCurrent = ini_read_real("Gameplay","On Startup",STARTUP_MENU);    
     HUDCurrent = ini_read_real("Gameplay","HUD",ALWAYS_SHOW);
     DashPresetCurrent = ini_read_real("Gameplay","Dash Preset",DASHKEY);
-    OnStartupCurrent = ini_read_real("Gameplay","On Startup",STARTUP_MENU);    
     DialogSpeedCurrent = ini_read_real("Gameplay","Dialog Speed",2);    
     LanguageCurrent = ini_read_real("Gameplay","Language",ENGLISH);    
     SpeedRunTimerCurrent = ini_read_real("Gameplay","Speed Run Timer",OFF);

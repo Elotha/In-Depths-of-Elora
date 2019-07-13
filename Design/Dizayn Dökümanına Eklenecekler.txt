@@ -1,0 +1,57 @@
+Kontroller
+
+Pixo'nun temel sistemi (yerçekimi, hasar alma, ölme vb)
+
+Profil ve ini sistemi
+
+Kontrol noktasý ve yedekleme
+
+Ýtemler (potionlar, notlar, büyü özleri)
+
+Anahtarlar, kapýlar, anahtar pusulalarý, canavar anahtarý
+
+Diyalog sistemi
+
+Büyülü görüþ modu 
+
+Saðlýk, hak, mana vb. sistemleri
+
+Göstergeler
+
+Derinlikler
+
+Elora arkaplaný
+
+Dünya arkaplaný
+
+Pixo arkaplaný
+
+Hak taþý (bize hak veren)
+
+Yaþam taþý (Elora'nýn merkezindeki)
+
+Canavarlar
+
+Bitkiler
+
+Çevresel elementler (dikenler, sarkýtlar, sývý, zodax aðacý)
+
+Büyülü etkileþimler
+
+Saðlýk geliþtirme noktalarý
+
+Karakterler
+
+Diyaloglar
+
+Tomarýn girdileri
+
+Bölüm þablonlarý ve bölümler arasý geçiþ elementleri
+
+Baþarýmlar
+
+Paskalya yumurtalarý
+
+Ýlginç yapýlar
+
+Arkaplan görselleri
