@@ -418,9 +418,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Menu</room>
+    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Gist</room>
     <room>rooms\rm_Gist2</room>
-    <room>rooms\rm_TestChamber</room>
     <room>rooms\rm_Finish</room>
     <room>rooms\rm_Level1</room>
     <room>rooms\rm_Base</room>

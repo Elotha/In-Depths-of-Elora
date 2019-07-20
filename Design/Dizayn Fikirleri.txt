@@ -34,7 +34,7 @@ Büyülü dünya modunda yaptýklarýmýzý gören karakterler bize tepki verebilir. (örn
 
 Diyalog collision noktalarýna yaklaþýrken HUD giderek saydamlaþabilir. Böylece oyuncu, ilerlemeye devam ederse kontrolün bir süreliðine elinden alýnacaðýný ve diyalog gireceðini sezebilir.
 
-Bize büyülü görüþ moduna girmemizi saðlayan itemi hediye eden karakter, aslýnda Elora'nýn bir büyüsü olabilir. Bir paskalya yumurtasý bu noktada yerleþtirilebilir.
+Bize büyülü görüþ moduna girmemizi saðlayan itemi hediye eden karakter, aslýnda Elora'nýn bir büyüsü olabilir. Bir paskalya yumurtasý bu noktada yerleþtirilebilir. Ayný zamanda bu karakter karþýmýza bir sürü kez çýkarak bize lordan parçalar sunabilir.
 
 Karakterler bize item verirse ve bu itemler bir journal girdisi yaratýyorsa, oyuncu diyalog devam ederken journala girmeye çalýþýrsa karakterler "don't be rude, we are still talking" gibi bir tepki verebilir.
 
@@ -43,3 +43,35 @@ Canavarlarýn tekrar tekrar kullanýlmasýný gerektiren durumlarda canavarlar için 
 Paskalya yumurtasý olarak bir ya da birkaç canavarýn içine not koyabilirim.
 
 Hak taþý, tamamen büyülü dünya içine saklanabilir. Oyuncu için bulmasý zor bir þey haline gelir böylece.
+
+Sadece büyülü dünya modunda görülebilen anahtarlar, ayný zamanda canavarlara da verilebilir. Sadece büyülü dünya modunda bu canavarlarýn o anahtarlara sahip olduðunu görürüz. Hatta damastýn içine girip büyülü etkileþim yaratarak, damastý duvarlara çarptýrdýðýmýzda büyülü anahtarý varsa düþebilir. 
+
+Canavarlarýn büyülü dünya modunda taþlarý görünmesin, onun yerine kendileri mavi renkte görünsün. Pixo fiziksel dünyada olmasa da tetiklenmeler devam etsin. Bir canavarýn özelliðini kaç kere kullanabiliyor olduðumuz renk ile belirtilsin. Renk en parlak mavideyken özellik kullanýma müsaittir. Mavinin parlaklýðý azaldýkça da kullaným hakký azalýr.
+
+Ateþ edebilen bir bitkinin olmasý gerekiyor.
+
+Sadece fiziksel dünyada görünebilen ve sadece büyülü dünyada görülebilen bloklar olacak.
+
+Canavarlarý öldürdüðümüz zaman belki anahtar direkt bize gelebilir.
+
+Oyuncuya bir bölümde dash preseti deðiþtirebileceði direkt ekrana yazýlarak ifade edilebilir.
+
+Checkpoint noktasýnýn büyülü etkileþimi zaman ile ilgili olabilir.
+
+Kaçýncý anahtar olduðuna göre ses incelsin.
+
+Ateþ eden canavarlar olabilir ve bu canavarlar ele geçirilebilir. Belki pot, anahtar gibi þeylere ateþ edildiðinde bunlar JJ2'deki gibi yere düþebilir.
+
+Býraktýðýn ruha tekrar deðersen geri alabilme olabilir.
+
+Yok edilen bazý kapýlar yok edildikten kýsa bir süre sonra geri gelsin, böylece damast çarptýrma ve ruh býrakma mantýklý bir kombo olur.
+
+Canavarlarýn healthi olsun.
+
+Ýçine girdiðin yaratýk ile etkileþime giremeyelim.
+
+Düþen dikitler olsun.
+
+"Return to Last Checkpoint" seçeneðinin eklenmesi gerek.
+
+Bazý yerlerde siyah anahtar ve mavi anahtar üst üste konulabilir. Oyuncu büyük ihtimalle fark etmez.

@@ -1,0 +1,41 @@
+canavarlarýn invulnerable anlarý var
+
+bir yerde canavar çýkýp çýkmadýðýný ara sýra göz ile kontrol etme
+
+kutudan bomba çýkarsa bombadan kaçmak (sandýk ve içinden çýkan yaratýk düþünülebilir)
+
+canavarlarýn patternýný anlamak (özellikle bosslarýn) ve ona göre doðru zamanda doðru yerde olup doðru zamanda zýplamak
+
+normalde havada gezen ama vurunca platformlarda gezmeye baþlayan canavar
+
+sana doðru zýplayan yaratýklardan doðru þekilde kaçman veya zamanýnda vurman gerekiyor
+
+dondurma silahý güzel detay
+
+------
+
+yürüdüðünde kýrýlan bloklar
+
+kýrýlabilir bloðun üstüne item koymak
+
+düþen þeylerden zamanýnda kaçma
+
+dönen platformlara zamanýnda çýkabilme
+
+nereye gideceðini bulabilmek
+
+hýzlý görmek (özellikle secretlarý toplamak için tek seferlik þanslarýn oluyor)
+
+oyunda lootlama zevki var
+
+bazý canavarlarda birden fazla vurmanýn gerekmesi
+
+bir canavara yakalanýnca tuþlarýn ters çalýþmasý
+
+zamanlý olarak çýkan dikenler
+
+mermi resource managementý
+
+canavarlarý doðru açýlardan vurabilmek
+
+kancalara zýplarken doðru oranda saða - sola gitmen gerekiyor

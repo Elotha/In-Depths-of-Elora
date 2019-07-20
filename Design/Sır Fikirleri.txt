@@ -1,0 +1,1 @@
+Bir bölümdeyken, bölümün tabanýnda bir minyoonun aþaðý indiðini görürüz. Böylece aþaðýda bir þeyler olduðu oyuncuya ipucu olarak verilmiþ olur.
