@@ -29,6 +29,7 @@
 
 {
     global.Pause = true;
+    global.Focus = "Interface";
     screen_save("Light.png");
     PauseScreen = sprite_add("Light.png",1,false,false,0,0);
     image_speed = 1/4;

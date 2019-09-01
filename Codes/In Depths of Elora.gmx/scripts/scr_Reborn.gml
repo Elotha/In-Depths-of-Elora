@@ -30,13 +30,13 @@
     
     //Diğer Değişkenler
     Resistance = 1; //Direnç
-    obj_HUD.Health = global.HealthMax;
+    obj_HUD.SoulPower = obj_HUD.SoulPowerMax;
     global.Focus = "Character"; //Kontrol odağını karakter yap
     Focus = global.Focus;
     
     //Büyü görüşü modu
     MagicalSight = false; //Aktivasyon
-    MagicalSightTime = MagicalSightTimeMax; //Kalan kullanım
+    //MagicalSightTime = MagicalSightTimeMax; //Kalan kullanım
     MagicalSightCount = 0; //Alarm çalıştırma sayısı
     
     with(obj_Camera) { //Kamerayı karaktere sabitle

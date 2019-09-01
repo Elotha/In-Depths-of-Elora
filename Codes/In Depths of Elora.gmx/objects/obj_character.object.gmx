@@ -77,9 +77,11 @@
     //Diğer Değişkenler
     Resistance = 1; //Direnç
     StepCount[0] = -1; //Sesler için kaç step geçtiğini kontrol eden array
-    if instance_number(obj_HUD) != 0 then obj_HUD.Health = global.HealthMax;
+    if instance_number(obj_HUD) != 0 then obj_HUD.SoulPower = obj_HUD.SoulPowerMax;
     global.Focus = "Character"; //Kontrol odağını karakter yap
     Focus = global.Focus;
+    DoorIDPrevious = -1;
+    DoorKey = false;
     
     //Büyü görüşü modu
     MagicalSight = false; //Aktivasyon
@@ -100,6 +102,9 @@
         }
         
     create_only_one(x,y,obj_CharacterLight); //Işığı yarat
+    
+    
+    global.HSV = 180;
 }
 </string>
           </argument>
@@ -154,10 +159,12 @@
 
 {
     if ++MagicalSightCount &lt; MagicalSightRegeneration {
-        if MagicalSightTime &lt; MagicalSightTimeMax then MagicalSightTime++;
-        else {
-            MagicalSightCount = 0;
-            exit;
+        with(obj_HUD) {
+            if SoulPower &lt; SoulPowerMax then SoulPower++;
+            else {
+                other.MagicalSightCount = 0;
+                exit;
+                }
             }
         alarm[4] = MagicalSightRegenSpeed;
         }
@@ -319,6 +326,116 @@
     if MagicalInteraction != -1 then exit;
     scr_SpriteControl();
     //scr_SoundControl();
+    scr_DoorCheck();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_KeyParent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Key
+
+{
+    with(other) {
+        if !visible then exit;
+        switch(object_index) {
+            case obj_KeyGolden:
+                obj_HUD.KeyNumber[GOLDEN]++;
+                var Effect = instance_create(x+16,y+16,obj_GoldenKeyEffect);
+                if global.KeySound != 4 then global.KeySound++; else global.KeySound = 1;
+                scr_PlaySound(asset_get_index("snd_Key" + string(global.KeySound)));
+                break;
+                
+            case obj_KeySilver:
+                obj_HUD.KeyNumber[SILVER]++;
+                var Effect = instance_create(x+16,y+16,obj_KeyEffectOthers);
+                Effect.KeyType = SILVER;
+                scr_PlaySound(snd_Key1);
+                break;
+                
+            case obj_KeyGray:
+                obj_HUD.KeyNumber[GRAY]++;
+                var Effect = instance_create(x+16,y+16,obj_KeyEffectOthers);
+                Effect.KeyType = GRAY;
+                scr_PlaySound(snd_Key1);
+                break;
+                
+            case obj_KeyBlue:
+                obj_HUD.KeyNumber[BLUE]++;
+                var Effect = instance_create(x+16,y+16,obj_KeyEffectOthers);
+                Effect.KeyType = BLUE;
+                scr_PlaySound(snd_Key1);
+                break;
+            }
+        
+        if !KeyMonster then scr_Checkpoint(true);
+        instance_destroy();
+        }
+    scr_HUDInteract();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_DoorGolden">
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Door
+
+{
+    if other.sprite_index = spr_Door &amp;&amp; Focus = "Character" {
+        global.Focus = "Door";
+        Focus = global.Focus;
+        sprite_index = spr_CharacterDoor;
+        image_speed = 1/6;
+        image_index = 0;
+        }
 }
 </string>
           </argument>
@@ -347,15 +464,15 @@
 {
     switch(other.sprite_index) {
         case spr_PotionHP_Big:
-            scr_Potion(snd_PotionHP_Big,c_red,"+ Health Points!");
-            obj_HUD.Health = global.HealthMax;
+            scr_Potion(snd_PotionHP_Big,c_red,"+ Soul Power Points!");
+            obj_HUD.SoulPower = obj_HUD.SoulPowerMax;
             scr_HUDInteract();
             break;
             
         case spr_PotionHP_Small:
-            obj_HUD.Health += 20;
-            if obj_HUD.Health &gt; global.HealthMax then obj_HUD.Health = global.HealthMax;
-            scr_Potion(snd_PotionHP_Big,c_red,"+ Health Points!");
+            obj_HUD.SoulPower += 20;
+            if obj_HUD.SoulPower &gt; obj_HUD.SoulPowerMax then obj_HUD.SoulPower = obj_HUD.SoulPowerMax;
+            scr_Potion(snd_PotionHP_Big,c_red,"+ Soul Power Points!");
             scr_HUDInteract();
             break;
             
@@ -395,42 +512,6 @@
             
         }
     destroy(other);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_Key">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Key
-
-{
-    with(other) {
-        instance_destroy();
-        instance_create(x+16,y+16,obj_KeyEffect);
-        if global.KeySound != 4 then global.KeySound++; else global.KeySound = 1;
-        scr_PlaySound(asset_get_index("snd_Key" + string(global.KeySound)));
-        
-        obj_HUD.KeyNumber++;
-        if !KeyMonster then scr_Checkpoint(true);
-        }
-    scr_HUDInteract();
 }
 </string>
           </argument>
@@ -490,7 +571,10 @@
 
 {
     //if global.sounds then audio_play_sound(snd_ScoreStone,1,false);
-    obj_HUD.MagicEssence++;
+    with(obj_HUD) {
+        MagicEssence++;
+        SoulPower = min(SoulPower+40,SoulPowerMax);
+        }
     with(other) {
         instance_destroy();
         var Effect = instance_create(x+16,y+16,obj_ItemEffect);
@@ -498,39 +582,6 @@
         scr_Checkpoint(true);
         }
     scr_HUDInteract();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_Door">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Door
-
-{
-    if other.sprite_index = spr_Door &amp;&amp; Focus = "Character" {
-        global.Focus = "Door";
-        Focus = global.Focus;
-        sprite_index = spr_CharacterDoor;
-        image_speed = 1/6;
-        image_index = 0;
-        }
 }
 </string>
           </argument>
@@ -566,7 +617,7 @@
     if file_exists("Temp.ini") then file_delete("Temp.ini");
     global.TempNumber = 0;
     with(obj_HUD) {
-        KeyCheckpoint = KeyNumber;
+        KeyCheckpoint = KeyNumber[GOLDEN];
         MagicEssenceCheckpoint = MagicEssence;
         }
 }
@@ -613,7 +664,7 @@
                     }
                 scr_ExistenceCheck(); //Objeleri checkpointte kaydedilen hale getir
                 with(obj_HUD)  {
-                    KeyNumber = KeyCheckpoint;
+                    KeyNumber[GOLDEN] = KeyCheckpoint;
                     MagicEssence = MagicEssenceCheckpoint;
                     }
                 scr_Reborn();
@@ -718,21 +769,16 @@
             <string>///Draw GUI
 
 {
+
     var ww = display_get_gui_width();
     var hh = display_get_gui_height();
-    display_set_gui_size(view_wport[0],view_hport[0]);
-    draw_set_colour(c_black);
-    draw_rectangle(view_wport[0]/2-MagicalSightTime,view_hport[0]/2-460-16,view_wport[0]/2+MagicalSightTime,view_hport[0]/2-460,true);
-    
-    draw_set_colour(c_blue);
-    draw_rectangle(view_wport[0]/2-MagicalSightTime+1,view_hport[0]/2-460+1-16,view_wport[0]/2+MagicalSightTime-1,view_hport[0]/2-460-1,false);
     
     display_set_gui_size(view_wport[0]/3,view_hport[0]/3);
     
     if Draw {
         draw_set_colour(c_white);
         draw_set_font(fnt_Debug);
-        
+        draw_text(600,100,global.HSV);
         }
     
     display_set_gui_size(ww,hh);
@@ -779,6 +825,60 @@
         draw_set_colour(c_yellow); //Dikey
         draw_rectangle(x-BottomX,y-12,x+BottomX,bbox_top+VSpeed,true);
         }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="52">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Down
+
+{
+    global.HSV -= 5;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="51">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Up
+
+{
+    global.HSV += 5;
 }
 </string>
           </argument>

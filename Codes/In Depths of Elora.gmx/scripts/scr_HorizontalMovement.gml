@@ -15,7 +15,8 @@
     //Gittiğimiz yatay yön serbest mi?
     if abs(HSpeed) > 0 {
         BlockHor = instance_place(x+floor(abs(HSpeed))*sign(HSpeed)+sign(HSpeed),y,obj_Block);
-        if BlockHor != noone && !object_is_ancestor(BlockHor.object_index,obj_PlatformThinParent) {
+        if BlockHor != noone then if (BlockHor.object_index = obj_BlockTimingBlue && !MagicalSight) or (BlockHor.object_index = obj_BlockTimingGray && MagicalSight) then BlockHor = noone;
+        if BlockHor != noone then if !object_is_ancestor(BlockHor.object_index,obj_BlockThinParent) {
             move_contact_solid(90+(90*-sign(HSpeed)),HSpeed);
             Dash = false;
             HSpeed = 0;

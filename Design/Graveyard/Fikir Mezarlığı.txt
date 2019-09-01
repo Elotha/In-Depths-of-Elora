@@ -1,0 +1,28 @@
+Topladýðýmýz mavi elmaslarý yerlilerden notlar satýn almak için kullanabiliriz. Böylece hikaye parçalarý da açýlmýþ olur.
+
+Zodax'ýn ruhani meyve emdiði aðaç, oyuncu tarafýndan yok edilebilir olarak tasarlanabilir. Böylece yok edildiðinde, o aðacýn özünden yapýlan bir yemeðin bilgisi açýlmýþ olur.
+
+Score pointler, oyunun sonunda ekstra bölümleri açmak için kullanýlacak. Belirli miktar bir skora gelirsek ve oyun sonunda deðerli taþý çalmayý reddedersek, yerli halktan birileri bizimle konuþacak. Bize yeni bir görev verecekler ve üç bölüm daha oynama þansýný elde edeceðiz. Bu iþ sonunda belki oyunun yapýmcýlarý ile tanýþýlabilir.
+
+Bloklarýn yanýnda yuva yapmýþ solucan tarzýnda bir yaratýk olabilir. Yanýndan geçtiðimiz zaman dýþarý çýkýp saldýrýr. Damastý çarptýrmak için kullanýlabilir.
+
+Ana menüdeki "Journal" bölümü aracýlýðýyla oyuncu topladýðý hikaye parçalarýný okuyabilsin. Ayný zamanda bu alana, oyunu oynamadan daha fazla hikaye açmak isteyenler için bir mini-oyun eklenebilir. Mini-oyun oyundan sadece birkaç parça ileride olabilecek þekilde kýsýtlanabilir.
+
+Zodax'ý öldürünce büyü özü (mavi taþlar) düþsün.
+
+Canavar ýþýnlama büyüsü düþünülebilir.
+
+Minyonun yukarý ýþýnlayabilme özelliðini normalde geçemediðimiz dar yerlerden geçmek için kullanabiliriz.
+
+Yok edilen bazý kapýlar yok edildikten kýsa bir süre sonra geri gelsin, böylece damast çarptýrma ve ruh býrakma mantýklý bir kombo olur.
+
+Checkpoint noktasýnýn büyülü etkileþimi zaman ile ilgili olabilir.
+
+Ateþ eden canavarlar olabilir ve bu canavarlar ele geçirilebilir. Belki pot, anahtar gibi þeylere ateþ edildiðinde bunlar JJ2'deki gibi yere düþebilir.
+
+Hak taþý, tamamen büyülü dünya içine saklanabilir. Oyuncu için bulmasý zor bir þey haline gelir böylece.
+
+Temas sýrasýnda giden can yenilenmiyor ama zodax azar azar hasar verdiði için yenilenme yapabiliyorsun fiziksel dünyada.
+
+Taþ düþünülebilir.
+

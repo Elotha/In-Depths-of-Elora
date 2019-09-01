@@ -57,44 +57,36 @@
       <sprite>sprites\spr_CharacterMask</sprite>
     </sprites>
     <sprites name="Environmental Elements">
-      <sprite>sprites\spr_Block</sprite>
-      <sprite>sprites\spr_PlatformThin</sprite>
-      <sprite>sprites\spr_WallJump</sprite>
-      <sprite>sprites\spr_PlatformTiming</sprite>
-      <sprite>sprites\spr_PlatformTiming2</sprite>
-      <sprite>sprites\spr_PlatformCollapsing</sprite>
-      <sprite>sprites\spr_Spikes</sprite>
-      <sprite>sprites\spr_SpikesLeft</sprite>
-      <sprite>sprites\spr_SpikesRight</sprite>
+      <sprite>sprites\spr_Checkpoint</sprite>
+      <sprite>sprites\spr_CheckpointBlooming</sprite>
+      <sprite>sprites\spr_Drop</sprite>
+      <sprite>sprites\spr_Geyser</sprite>
+      <sprite>sprites\spr_LightBug</sprite>
       <sprite>sprites\spr_LiquidLeft</sprite>
       <sprite>sprites\spr_LiquidMiddle</sprite>
       <sprite>sprites\spr_LiquidRight</sprite>
-      <sprite>sprites\spr_PlantDance</sprite>
-      <sprite>sprites\spr_PlantSquirt</sprite>
-      <sprite>sprites\spr_StalactiteLiquid</sprite>
-      <sprite>sprites\spr_Drop</sprite>
-      <sprite>sprites\spr_Stream</sprite>
-      <sprite>sprites\spr_LightBug</sprite>
-      <sprite>sprites\spr_Geyser</sprite>
-      <sprite>sprites\spr_SpikeFlowerIdle</sprite>
-      <sprite>sprites\spr_SpikeFlowerActivation</sprite>
-      <sprite>sprites\spr_SpikeFlowerActive</sprite>
-      <sprite>sprites\spr_Checkpoint</sprite>
-      <sprite>sprites\spr_CheckpointBlooming</sprite>
-      <sprite>sprites\spr_DoorFormation</sprite>
-      <sprite>sprites\spr_DoorOpening</sprite>
-      <sprite>sprites\spr_Door</sprite>
-      <sprite>sprites\spr_ZodaxBush</sprite>
-      <sprite>sprites\spr_Boulder</sprite>
+      <sprite>sprites\spr_Spikes</sprite>
+      <sprite>sprites\spr_SpikesLeft</sprite>
+      <sprite>sprites\spr_SpikesRight</sprite>
       <sprite>sprites\spr_StalactiteLeft</sprite>
+      <sprite>sprites\spr_StalactiteLiquid</sprite>
       <sprite>sprites\spr_StalactiteMiddle</sprite>
       <sprite>sprites\spr_StalactiteRight</sprite>
+      <sprite>sprites\spr_Stream</sprite>
       <sprite>sprites\spr_WallSpikesLeft</sprite>
-      <sprite>sprites\spr_WallSpikesRight</sprite>
-      <sprite>sprites\spr_WallSpikesLeft_UpperL</sprite>
       <sprite>sprites\spr_wallSpikesLeft_LowerL</sprite>
-      <sprite>sprites\spr_WallSpikesRight_UpperL</sprite>
+      <sprite>sprites\spr_WallSpikesLeft_UpperL</sprite>
+      <sprite>sprites\spr_WallSpikesRight</sprite>
       <sprite>sprites\spr_WallSpikesRight_LowerL</sprite>
+      <sprite>sprites\spr_WallSpikesRight_UpperL</sprite>
+    </sprites>
+    <sprites name="Plants">
+      <sprite>sprites\spr_PlantDance</sprite>
+      <sprite>sprites\spr_PlantSquirt</sprite>
+      <sprite>sprites\spr_SpikeFlowerActivation</sprite>
+      <sprite>sprites\spr_SpikeFlowerIdle</sprite>
+      <sprite>sprites\spr_SpikeFlowerActive</sprite>
+      <sprite>sprites\spr_ZodaxBush</sprite>
     </sprites>
     <sprites name="Monsters">
       <sprite>sprites\spr_DamastIdle</sprite>
@@ -124,8 +116,6 @@
       <sprite>sprites\spr_PotionHP_Small</sprite>
       <sprite>sprites\spr_PotionLight</sprite>
       <sprite>sprites\spr_PotionResistance</sprite>
-      <sprite>sprites\spr_Key</sprite>
-      <sprite>sprites\spr_KeyMonster</sprite>
       <sprite>sprites\spr_MagicEssence</sprite>
       <sprite>sprites\spr_LifeStone</sprite>
     </sprites>
@@ -141,6 +131,8 @@
       <sprite>sprites\spr_KeyboardSpace</sprite>
       <sprite>sprites\spr_ItemEffect</sprite>
       <sprite>sprites\spr_ParticlePixel</sprite>
+      <sprite>sprites\spr_Keys</sprite>
+      <sprite>sprites\spr_KeysBackground</sprite>
     </sprites>
     <sprites name="Backgrounds">
       <sprite>sprites\spr_Layer1_Up1</sprite>
@@ -155,8 +147,34 @@
       <sprite>sprites\spr_Waterfall2</sprite>
       <sprite>sprites\spr_Waterfall3</sprite>
     </sprites>
-    <sprites name="General">
+    <sprites name="Blocks">
       <sprite>sprites\spr_Mask_32x32</sprite>
+      <sprite>sprites\spr_BlockThin</sprite>
+      <sprite>sprites\spr_Block</sprite>
+      <sprite>sprites\spr_BlockGray</sprite>
+      <sprite>sprites\spr_BlockTiming</sprite>
+      <sprite>sprites\spr_BlockTiming2</sprite>
+      <sprite>sprites\spr_BlockTimingGray</sprite>
+      <sprite>sprites\spr_BlockTimingGray2</sprite>
+      <sprite>sprites\spr_BlockTimingBlue</sprite>
+      <sprite>sprites\spr_BlockTimingBlue2</sprite>
+      <sprite>sprites\spr_PlatformCollapsing</sprite>
+      <sprite>sprites\spr_DoorBlock</sprite>
+    </sprites>
+    <sprites name="Doors &amp; Keys">
+      <sprite>sprites\spr_DoorLock</sprite>
+      <sprite>sprites\spr_DoorGolden</sprite>
+      <sprite>sprites\spr_DoorSilver</sprite>
+      <sprite>sprites\spr_DoorGray</sprite>
+      <sprite>sprites\spr_DoorBlue</sprite>
+      <sprite>sprites\spr_KeyGolden</sprite>
+      <sprite>sprites\spr_KeySilver</sprite>
+      <sprite>sprites\spr_KeyGray</sprite>
+      <sprite>sprites\spr_KeyBlue</sprite>
+      <sprite>sprites\spr_KeyMonsterGolden</sprite>
+      <sprite>sprites\spr_KeyMonsterSilver</sprite>
+      <sprite>sprites\spr_KeyMonsterGray</sprite>
+      <sprite>sprites\spr_KeyMonsterBlue</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_MainMenuFont</sprite>
@@ -204,7 +222,9 @@
   </sprites>
   <backgrounds name="background">
     <background>background\ts_Platforms</background>
-    <background>background\ts_Platfforms2</background>
+    <background>background\ts_PlatformsDeep</background>
+    <background>background\ts_PlatformsSurface</background>
+    <background>background\ts_PlatformsGray</background>
     <background>background\ts_PlatformsBlue</background>
     <background>background\ts_Platforms_Variations</background>
     <background>background\ts_PlatformsVariations32x32</background>
@@ -230,6 +250,7 @@
       <script>scripts\scr_ExistenceCheck.gml</script>
       <script>scripts\scr_HUDInteract.gml</script>
       <script>scripts\scr_SpeedResidual.gml</script>
+      <script>scripts\scr_DoorCheck.gml</script>
     </scripts>
     <scripts name="Music and Sounds">
       <script>scripts\scr_SoundControl.gml</script>
@@ -305,6 +326,12 @@
     <font>fonts\fnt_Interact</font>
   </fonts>
   <objects name="objects">
+    <objects name="Plants">
+      <object>objects\obj_SpikeFlower</object>
+      <object>objects\obj_SpikeFlowerActive</object>
+      <object>objects\obj_Plant</object>
+      <object>objects\obj_ZodaxBush</object>
+    </objects>
     <objects name="System">
       <object>objects\obj_Editor</object>
       <object>objects\obj_GameStart</object>
@@ -316,35 +343,41 @@
       <object>objects\obj_HUD</object>
       <object>objects\obj_LightBugCreator</object>
       <object>objects\obj_Finish</object>
-      <object>objects\obj_Block</object>
-      <object>objects\obj_PlatformThinParent</object>
-      <object>objects\obj_PlatformThin</object>
     </objects>
     <objects name="Character">
       <object>objects\obj_StartPoint</object>
       <object>objects\obj_Character</object>
       <object>objects\obj_CharacterLight</object>
     </objects>
+    <objects name="Blokcs">
+      <object>objects\obj_Block</object>
+      <object>objects\obj_BlockThinParent</object>
+      <object>objects\obj_BlockThin</object>
+      <object>objects\obj_BlockGray</object>
+      <object>objects\obj_PlaceholderGray</object>
+      <object>objects\obj_BlockBlue</object>
+      <object>objects\obj_PlaceholderBlue</object>
+      <object>objects\obj_BlockTiming</object>
+      <object>objects\obj_BlockTiming2</object>
+      <object>objects\obj_BlockTimingGray</object>
+      <object>objects\obj_BlockTimingGray2</object>
+      <object>objects\obj_BlockTimingBlue</object>
+      <object>objects\obj_BlockTimingBlue2</object>
+      <object>objects\obj_DoorBlock</object>
+      <object>objects\obj_DoorBlockPlaceholder</object>
+    </objects>
     <objects name="Environmental Elements">
       <object>objects\obj_Environment</object>
-      <object>objects\obj_PlatformTiming</object>
-      <object>objects\obj_PlatformTiming2</object>
-      <object>objects\obj_PlatformCollapsing</object>
       <object>objects\obj_SpikesParent</object>
       <object>objects\obj_Spikes</object>
       <object>objects\obj_SpikesLeft</object>
       <object>objects\obj_SpikesRight</object>
       <object>objects\obj_Liquid</object>
-      <object>objects\obj_Plant</object>
       <object>objects\obj_StalactiteLiquid</object>
       <object>objects\obj_Drop</object>
       <object>objects\obj_Stream</object>
       <object>objects\obj_Geyser</object>
       <object>objects\obj_Checkpoint</object>
-      <object>objects\obj_SpikeFlower</object>
-      <object>objects\obj_SpikeFlowerActive</object>
-      <object>objects\obj_Door</object>
-      <object>objects\obj_ZodaxSign</object>
       <object>objects\obj_Stalactite</object>
       <object>objects\obj_WallSpikesParent</object>
       <object>objects\obj_WallSpikesLeft</object>
@@ -368,14 +401,10 @@
       <object>objects\obj_Item</object>
       <object>objects\obj_MagicEssence</object>
       <object>objects\obj_LifeStone</object>
-      <object>objects\obj_Key</object>
-      <object>objects\obj_KeyMonster</object>
       <object>objects\obj_Potion</object>
     </objects>
     <objects name="HUD &amp; Effects">
       <object>objects\obj_Interface</object>
-      <object>objects\obj_KeyEffect</object>
-      <object>objects\obj_KeyEffect2</object>
       <object>objects\obj_ZodaxEffect</object>
       <object>objects\obj_ItemEffect</object>
       <object>objects\obj_KeyboardKey</object>
@@ -415,6 +444,23 @@
       <object>objects\obj_MagicalPlant</object>
       <object>objects\obj_SoulStone</object>
     </objects>
+    <objects name="Doors &amp; Keys">
+      <object>objects\obj_DoorParent</object>
+      <object>objects\obj_DoorUnlock</object>
+      <object>objects\obj_DoorGolden</object>
+      <object>objects\obj_DoorSilver</object>
+      <object>objects\obj_DoorGray</object>
+      <object>objects\obj_DoorBlue</object>
+      <object>objects\obj_KeyMonster</object>
+      <object>objects\obj_KeyParent</object>
+      <object>objects\obj_KeyGolden</object>
+      <object>objects\obj_KeySilver</object>
+      <object>objects\obj_KeyGray</object>
+      <object>objects\obj_KeyBlue</object>
+      <object>objects\obj_GoldenKeyEffect</object>
+      <object>objects\obj_GoldenKeyEffect2</object>
+      <object>objects\obj_KeyEffectOthers</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Menu</room>
@@ -426,7 +472,7 @@
     <room>rooms\rm_Base</room>
     <room>rooms\rm_Temp</room>
   </rooms>
-  <constants number="42">
+  <constants number="46">
     <constant name="ALWAYS_SHOW">0</constant>
     <constant name="BACKGROUND1">600</constant>
     <constant name="BACKGROUND2">800</constant>
@@ -469,6 +515,10 @@
     <constant name="TURKISH">1</constant>
     <constant name="WATERFALL1">700</constant>
     <constant name="WATERFALL2">900</constant>
+    <constant name="GOLDEN">0</constant>
+    <constant name="SILVER">1</constant>
+    <constant name="GRAY">2</constant>
+    <constant name="BLUE">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

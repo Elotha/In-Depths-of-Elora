@@ -1,34 +1,8 @@
-Score pointler, oyunun sonunda ekstra bölümleri açmak için kullanýlacak. Belirli miktar bir skora gelirsek ve oyun sonunda deðerli taþý çalmayý reddedersek, yerli halktan birileri bizimle konuþacak. Bize yeni bir görev verecekler ve üç bölüm daha oynama þansýný elde edeceðiz. Bu iþ sonunda belki oyunun yapýmcýlarý ile tanýþýlabilir.
-
-Health bar upgrade noktalarý olabilir.
-
-Zodax'ýn ruhani meyve emdiði aðaç, oyuncu tarafýndan yok edilebilir olarak tasarlanabilir. Böylece yok edildiðinde, o aðacýn özünden yapýlan bir yemeðin bilgisi açýlmýþ olur.
-
-Topladýðýmýz mavi elmaslarý yerlilerden notlar satýn almak için kullanabiliriz. Böylece hikaye parçalarý da açýlmýþ olur.
-
-Geri dönmemizi saðlayan kapýlar da olabilir.
-
-Bloklarýn yanýnda yuva yapmýþ solucan tarzýnda bir yaratýk olabilir. Yanýndan geçtiðimiz zaman dýþarý çýkýp saldýrýr. Damastý çarptýrmak için kullanýlabilir.
-
-Ana menüdeki "Journal" bölümü aracýlýðýyla oyuncu topladýðý hikaye parçalarýný okuyabilsin. Ayný zamanda bu alana, oyunu oynamadan daha fazla hikaye açmak isteyenler için bir mini-oyun eklenebilir. Mini-oyun oyundan sadece birkaç parça ileride olabilecek þekilde kýsýtlanabilir.
-
 Journalý her açtýðýmýzda arkaplanda büyücünün silüeti çýkýp journal hakkýnda bir yorum yapabilir. "It's magical!", "I created it, ha ha!","Isn't it a masterpiece?".
-
-Zodax'ý öldürünce büyü özü (mavi taþlar) düþsün.
 
 Uzun süre anahtar bulamama durumunda oyuncuya ipucu verilebilir.
 
-Journaldaki büyücü biraz esprili olabilir. Bir easter egg yerleþtirilebilir. Mesela bir buton olur, bu butona basýnca bütün journal silinir. Oyuncu bir anlýðýna kalp krizi geçirir. Ama aslýnda büyücü þaka yapmýþtýr.
-
-Canavar ýþýnlama büyüsü düþünülebilir.
-
-Anahtar pusulasý olabilir. Bu anahtar pusulasý, altýn anahtarýn ne yönde olduðunu bir cooldown ile gösterirken, diðer anahtarlarýn yerini göstermese de bulunduðu bölümde kaç tane olduðunu gösterebilir.
-
-Sadece büyülü dünya modunda ve sadece fiziksel dünyada görünen kapýlar olabilir.
-
-Minyonun yukarý ýþýnlayabilme özelliðini normalde geçemediðimiz dar yerlerden geçmek için kullanabiliriz.
-
-Damastýn hayat döngüsünün düþünülmesi lazým.
+Journaldaki büyücü biraz esprili olabilir. Bir paskalya yumurtasý yerleþtirilebilir. Mesela bir buton olur, bu butona basýnca bütün journal silinir. Oyuncu bir anlýðýna kalp krizi geçirir. Ama aslýnda büyücü þaka yapmýþtýr.
 
 Büyülü dünya modunda yaptýklarýmýzý gören karakterler bize tepki verebilir. (örn. "Wha-?! Sorcerer!")
 
@@ -40,38 +14,16 @@ Karakterler bize item verirse ve bu itemler bir journal girdisi yaratýyorsa, oyu
 
 Canavarlarýn tekrar tekrar kullanýlmasýný gerektiren durumlarda canavarlar için nestler yapýlabilir.
 
-Paskalya yumurtasý olarak bir ya da birkaç canavarýn içine not koyabilirim.
-
-Hak taþý, tamamen büyülü dünya içine saklanabilir. Oyuncu için bulmasý zor bir þey haline gelir böylece.
-
-Sadece büyülü dünya modunda görülebilen anahtarlar, ayný zamanda canavarlara da verilebilir. Sadece büyülü dünya modunda bu canavarlarýn o anahtarlara sahip olduðunu görürüz. Hatta damastýn içine girip büyülü etkileþim yaratarak, damastý duvarlara çarptýrdýðýmýzda büyülü anahtarý varsa düþebilir. 
-
 Canavarlarýn büyülü dünya modunda taþlarý görünmesin, onun yerine kendileri mavi renkte görünsün. Pixo fiziksel dünyada olmasa da tetiklenmeler devam etsin. Bir canavarýn özelliðini kaç kere kullanabiliyor olduðumuz renk ile belirtilsin. Renk en parlak mavideyken özellik kullanýma müsaittir. Mavinin parlaklýðý azaldýkça da kullaným hakký azalýr.
-
-Ateþ edebilen bir bitkinin olmasý gerekiyor.
-
-Sadece fiziksel dünyada görünebilen ve sadece büyülü dünyada görülebilen bloklar olacak.
 
 Canavarlarý öldürdüðümüz zaman belki anahtar direkt bize gelebilir.
 
 Oyuncuya bir bölümde dash preseti deðiþtirebileceði direkt ekrana yazýlarak ifade edilebilir.
 
-Checkpoint noktasýnýn büyülü etkileþimi zaman ile ilgili olabilir.
-
-Kaçýncý anahtar olduðuna göre ses incelsin.
-
-Ateþ eden canavarlar olabilir ve bu canavarlar ele geçirilebilir. Belki pot, anahtar gibi þeylere ateþ edildiðinde bunlar JJ2'deki gibi yere düþebilir.
-
-Býraktýðýn ruha tekrar deðersen geri alabilme olabilir.
-
-Yok edilen bazý kapýlar yok edildikten kýsa bir süre sonra geri gelsin, böylece damast çarptýrma ve ruh býrakma mantýklý bir kombo olur.
-
-Canavarlarýn healthi olsun.
-
 Ýçine girdiðin yaratýk ile etkileþime giremeyelim.
 
-Düþen dikitler olsun.
+Oyunu kaydetmek için checkpoint noktalarýnda etkileþim kontrol tuþuna basabiliriz. Bu olay bir miktar ruh gücü yer.
 
-"Return to Last Checkpoint" seçeneðinin eklenmesi gerek.
+Büyülü duman fýþkýrtan çiçeðimsi bitki düþünülebilir.
 
-Bazý yerlerde siyah anahtar ve mavi anahtar üst üste konulabilir. Oyuncu büyük ihtimalle fark etmez.
+Tamamen büyülü dünyaya ait canlýlar olabilir.

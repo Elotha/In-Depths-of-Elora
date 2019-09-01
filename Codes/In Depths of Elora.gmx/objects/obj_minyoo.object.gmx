@@ -177,8 +177,8 @@
         //Yere geldi mi?
         if sign(VSpeed) != 0 {
             if BlockVer != noone {
-                if object_is_ancestor(BlockVer.object_index,obj_PlatformThinParent) &amp;&amp; sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
-                    if BlockVer.object_index = obj_PlatformTiming or (BlockVer.object_index = obj_PlatformThin &amp;&amp; BlockVer.image_xscale = 4) then x = BlockVer.x+16;
+                if object_is_ancestor(BlockVer.object_index,obj_BlockThinParent) &amp;&amp; sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
+                    if BlockVer.object_index = obj_BlockTiming or (BlockVer.object_index = obj_BlockThin &amp;&amp; BlockVer.image_xscale = 4) then x = BlockVer.x+16;
                     y = BlockVer.y-8;
                     sprite_index = spr_MinyooTeleportationUp2;
                     image_index = 0;

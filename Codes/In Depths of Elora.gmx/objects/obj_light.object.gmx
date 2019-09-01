@@ -31,7 +31,7 @@
     globalvar Light; 
     globalvar LightList;
     Light = surface_create(view_wview,view_hview); 
-    depth = MONSTER-50;
+    depth = MONSTER-75;
     LightList = ds_list_create();
 }
 </string>

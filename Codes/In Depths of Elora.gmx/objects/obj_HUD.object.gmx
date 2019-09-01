@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///HUD
+            <string>///Create
 
 {
     image_speed = 1/6;
@@ -45,6 +45,16 @@
     Timing = -1;
     Width = string_width("+ Light Radius Increased!");
     Color = make_color_rgb(255,236,214);
+    
+    DoorCheck = false;
+    KeyShow = -1;
+    KeyReq = -1;
+    KeyAlpha = 0;
+    KeyType = -1;
+    KeyNumber[GOLDEN] = 5;
+    KeyNumber[SILVER] = 6;
+    KeyNumber[GRAY] = 7;
+    KeyNumber[BLUE] = 8;
     
     HUDKey = global.Control[ControlKeys.HUD];
     ini_open(CurrentProfile + "_Config.ini");
@@ -75,12 +85,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Lives &amp; Health
+            <string>///Lives &amp; Soul Power
 
 {
     Lives = 5; //Hak sayımız
-    global.HealthMax = 120; //Maksimum canımız
-    Health = global.HealthMax; //Mevcut canımız
+    SoulPowerMax = 300; //Maksimum canımız
+    SoulPower = SoulPowerMax; //Mevcut canımız
 }
 </string>
           </argument>
@@ -193,7 +203,7 @@
             <string>///Number of Keys
 
 {
-    KeyMax = instance_number(obj_Key)+instance_number(obj_KeyMonster);
+    KeyMax = instance_number(obj_KeyGolden)+instance_number(obj_KeyMonster);
 }
 </string>
           </argument>
@@ -259,9 +269,8 @@
             <string>///Keys
 
 {
-    KeyNumber = 0; //Mevcut anahtar sayımız
-    KeyCheckpoint = KeyNumber;
-    KeyMax = instance_number(obj_Key)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
+    KeyCheckpoint = KeyNumber[GOLDEN];
+    KeyMax = instance_number(obj_KeyGolden)+instance_number(obj_KeyMonster); //Bölümün toplam anahtar sayısı
     global.KeySound = 4;
     
     alarm[0] = 2; //Bu creave eventi çalıştığında henüz ilgili canavarlarda "obj_KeyMonster" oluşmamış oluyor. Bu yüzden iki adım sonra toplam tekrar kontrol edilecek.
@@ -321,7 +330,7 @@
     if HUDAlpha &gt; 0 { //HUD gözüküyor mu?
         draw_set_alpha(HUDAlpha);
         draw_sprite_ext(spr_HUD,-1,xy,xy,2,2,0,c_white,HUDAlpha);
-        draw_sprite_part_ext(spr_HP,0,0,0,43+Health,48,xy,xy,2,2,c_white,HUDAlpha);
+        draw_sprite_part_ext(spr_HP,0,0,0,43+(SoulPower/2.5),48,xy,xy,2,2,c_white,HUDAlpha);
         draw_sprite_ext(spr_LifeStone,-1,xy+8,xy+21,1.5,1.5,0,c_white,HUDAlpha);
         
         var PotText = false;
@@ -423,7 +432,57 @@
             <string>///Keys
 
 {
-    if HUDAlpha &gt; 0 then draw_text(xy+148,xy+40,string(KeyNumber) + " / " + string(KeyMax));
+    if HUDAlpha &gt; 0 then draw_text(xy+148,xy+40,string(KeyNumber[GOLDEN]) + " / " + string(KeyMax));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Keys New
+
+{
+    if KeyAlpha &gt; 0 {
+        display_set_gui_size(640,360);
+        var xx = -24;
+        var yy = -35;
+        draw_set_alpha(KeyAlpha);
+        draw_sprite(spr_KeysBackground,0,obj_Character.x-view_xview[0],obj_Character.y-32-view_yview[0]); //Anahtar arkaplanı
+        draw_sprite(spr_Keys,KeyImage,obj_Character.x+xx-view_xview[0],obj_Character.y+yy-view_yview[0]); //Anahtar sembolü
+        display_set_gui_size(view_wport[0]*2/3,view_hport[0]*2/3);
+        draw_set_font(fnt_MagicEssenceAndKeys);
+        if KeyNumber[KeyType] &lt; KeyReq then draw_set_colour(c_red); else draw_set_colour(c_white);
+        draw_set_valign(fa_center);
+        draw_set_halign(fa_right);
+        draw_text(((obj_Character.x+xx+31)-view_xview[0])*2,((obj_Character.y+yy+3)-view_yview[0])*2,string(KeyNumber[KeyType])); //Sahip olunan anahtar sayısı
+        draw_set_colour(c_white);
+        draw_set_halign(fa_left);
+        draw_text(((obj_Character.x+xx+33)-view_xview[0])*2,((obj_Character.y+yy+3)-view_yview[0])*2," / "); //Eğik çizgi
+        draw_text(((obj_Character.x+xx+41)-view_xview[0])*2,((obj_Character.y+yy+3)-view_yview[0])*2,string(KeyReq)); //Gerekli anahtar sayısı
+        draw_set_valign(fa_top);
+        
+        draw_set_alpha(1);
+        }
+    
+    if DoorCheck {
+        if KeyAlpha &lt; 1 then KeyAlpha += 0.1;
+        }
+    else if KeyAlpha &gt; 0 then KeyAlpha -= 0.1;
 }
 </string>
           </argument>

@@ -55,15 +55,15 @@
     <instance objName="obj_Block" x="0" y="0" name="inst_52C6EF79" locked="0" code="" scaleX="2.5" scaleY="41" colour="4294967295" rotation="0"/>
     <instance objName="obj_StartPoint" x="128" y="576" name="inst_759FA39B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="0" y="328" name="inst_9C9B3142" locked="0" code="" scaleX="22.5" scaleY="23" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="640" y="160" name="inst_1445E33F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_KeyGolden" x="640" y="160" name="inst_1445E33F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="608" y="672" name="inst_9FB94140" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="640" y="672" name="inst_2ACE970D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="672" y="672" name="inst_99A39946" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="596" y="712" name="inst_0DFAFD49" locked="0" code="" scaleX="15" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="692" y="424" name="inst_922981E3" locked="0" code="" scaleX="16" scaleY="11" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="960" y="576" name="inst_C8EA396D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockTiming" x="960" y="576" name="inst_C8EA396D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="1152" y="384" name="inst_C6583CA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="1024" y="128" name="inst_1FCF588B" locked="0" code="alarm[0] = alarm[0]*1.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockTiming" x="1024" y="128" name="inst_1FCF588B" locked="0" code="alarm[0] = alarm[0]*1.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_LifeStone" x="1024" y="96" name="inst_DA85ACC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="716" y="680" name="inst_FC7CCCA6" locked="0" code="" scaleX="44" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="908" y="0" name="inst_FCED5E1D" locked="0" code="" scaleX="9" scaleY="48" colour="4294967295" rotation="0"/>
@@ -74,7 +74,7 @@
     <instance objName="obj_Block" x="1324" y="328" name="inst_BE47C6F7" locked="0" code="" scaleX="13" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1268" y="584" name="inst_A9B33D86" locked="0" code="" scaleX="8" scaleY="23" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="1332" y="680" name="inst_99167433" locked="0" code="" scaleX="44" scaleY="11" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="4320" y="640" name="inst_10D2B925" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_DoorGolden" x="4320" y="640" name="inst_10D2B925" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_MagicEssence" x="552" y="576" name="inst_25E50A09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_MagicEssence" x="576" y="576" name="inst_C0FCE3D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_MagicEssence" x="576" y="600" name="inst_788085E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -132,8 +132,8 @@
     <instance objName="obj_Spikes" x="1792" y="416" name="inst_3A794F55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="1792" y="416" name="inst_75E8F14F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="1792" y="416" name="inst_4789CF67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="1648" y="368" name="inst_9D4C77F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="1664" y="288" name="inst_1032D000" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_KeyGolden" x="1648" y="368" name="inst_9D4C77F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockTiming" x="1664" y="288" name="inst_1032D000" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Potion" x="2072" y="304" name="inst_DC248B93" locked="0" code="sprite_index = spr_PotionHP_Small;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Beulian" x="2048" y="160" name="inst_E4D0AFE4" locked="0" code="Drop = &quot;Key&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Geyser" x="1856" y="128" name="inst_A5FA0112" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -181,7 +181,7 @@
     <instance objName="obj_MagicEssence" x="2232" y="360" name="inst_351DECFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="2688" y="608" name="inst_D3B172CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Plant" x="2752" y="608" name="inst_9B9A87F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Key" x="2720" y="640" name="inst_63A5FE93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_KeyGolden" x="2720" y="640" name="inst_63A5FE93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2196" y="288" name="inst_1B4A4454" locked="0" code="" scaleX="16" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2324" y="232" name="inst_528C8888" locked="0" code="" scaleX="36" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2508" y="200" name="inst_0461F50A" locked="0" code="" scaleX="13" scaleY="4" colour="4294967295" rotation="0"/>
@@ -191,7 +191,7 @@
     <instance objName="obj_Block" x="2284" y="488" name="inst_544697A2" locked="0" code="" scaleX="69" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2196" y="680" name="inst_C7A53BF6" locked="0" code="" scaleX="93" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Checkpoint" x="2976" y="224" name="inst_02EA0EF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="2880" y="192" name="inst_3F481266" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockTiming" x="2880" y="192" name="inst_3F481266" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_LifeStone" x="3088" y="64" name="inst_FDA177F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_MagicEssence" x="2856" y="48" name="inst_A4DE30D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_MagicEssence" x="2880" y="48" name="inst_8A3C3AEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -264,8 +264,8 @@
     <instance objName="obj_Spikes" x="3232" y="640" name="inst_40FB47BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="3232" y="640" name="inst_20DD3240" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Spikes" x="3232" y="640" name="inst_EFBB6AB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="3232" y="288" name="inst_70B61DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformTiming" x="3312" y="192" name="inst_B83E5FAE" locked="0" code="alarm[0] = alarm[0]*1.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockTiming" x="3232" y="288" name="inst_70B61DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockTiming" x="3312" y="192" name="inst_B83E5FAE" locked="0" code="alarm[0] = alarm[0]*1.4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Potion" x="3344" y="48" name="inst_A1C9AE3F" locked="0" code="sprite_index = spr_PotionResistance;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2836" y="392" name="inst_5BD2002D" locked="0" code="" scaleX="4" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="2836" y="0" name="inst_0A5FFF70" locked="0" code="" scaleX="71" scaleY="4" colour="4294967295" rotation="0"/>
@@ -350,11 +350,11 @@
     <instance objName="obj_BeulianArrow" x="1968" y="192" name="inst_6CB0A6D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="532" y="488" name="inst_41C804FC" locked="0" code="" scaleX="20" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_MagicalPlant" x="1192" y="384" name="inst_8688A118" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformThin" x="3812" y="168" name="inst_F67D0636" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformThin" x="3908" y="168" name="inst_9FA936B6" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformThin" x="4004" y="168" name="inst_3943DD4E" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformThin" x="1028" y="264" name="inst_0924136E" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_PlatformThin" x="3444" y="584" name="inst_362C992E" locked="0" code="" scaleX="21" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockThin" x="3812" y="168" name="inst_F67D0636" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockThin" x="3908" y="168" name="inst_9FA936B6" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockThin" x="4004" y="168" name="inst_3943DD4E" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockThin" x="1028" y="264" name="inst_0924136E" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_BlockThin" x="3444" y="584" name="inst_362C992E" locked="0" code="" scaleX="21" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="0" y="512" name="inst_3DF0B7A4" locked="0" code="" scaleX="2.5" scaleY="21" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="268" y="584" name="inst_20A86405" locked="0" code="" scaleX="16" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_Block" x="428" y="200" name="inst_67A56229" locked="0" code="" scaleX="12" scaleY="15" colour="4294967295" rotation="0"/>

@@ -3,3 +3,5 @@ Belirli isimlerde profil açýlmasý. (Elora isminde açmaya çalýþýrsan "Greed of Po
 Müzik, bir bölümde belirli bir yerdeyken biterse loop olmayabilir. Pixo "It's so silence..." þeklinde bir yorum yapar ve oradan çýktýðý zaman müzik tekrar baþlar.
 
 Paskalya yumurtalarý eklenebilir.
+
+Ýlk bölümde henüz büyülü dünya moduna geçemiyoruz. Bu özelliði kazandýktan sonra geri ilk bölüme dönersek, daha önceden gidemediðimiz bir yere gidebiliriz.

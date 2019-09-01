@@ -37,8 +37,8 @@
                             MinyooRangeCount = 0;
                             MinyooGravityDir = -1;
                             HSpeed = 0;
-                            if object_is_ancestor(BlockVer.object_index,obj_PlatformThinParent) && sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
-                                if BlockVer.object_index = obj_PlatformTiming or (BlockVer.object_index = obj_PlatformThin && BlockVer.image_xscale = 4) then x = BlockVer.x+16;
+                            if object_is_ancestor(BlockVer.object_index,obj_BlockThinParent) && sign(VSpeed) = -1 { //İnce bir platforma aşağıdan yukarıya doğru denk gelmişse
+                                if BlockVer.object_index = obj_BlockTiming or (BlockVer.object_index = obj_BlockThin && BlockVer.image_xscale = 4) then x = BlockVer.x+16;
                                 y = BlockVer.y-8;
                                 sprite_index = spr_MagicalMinyooTelUp2;
                                 image_index = 0;

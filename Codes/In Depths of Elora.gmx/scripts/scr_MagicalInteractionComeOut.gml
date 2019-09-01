@@ -9,7 +9,7 @@
         image_yscale = 1;
         var BlockCheck = instance_place(x,y,obj_Block); //Bir bloğun içine sıkıştık mı?
         if BlockCheck != noone {
-            if !object_is_ancestor(BlockCheck,obj_PlatformThinParent) { //İnce platformsa boşver
+            if !object_is_ancestor(BlockCheck,obj_BlockThinParent) { //İnce platformsa boşver
                 var CollUp = collision_rectangle(x-9,y-16,x+9,y-18,obj_Block,false,true);
                 var CollDown = collision_rectangle(x-9,y+29,x+9,y+31,obj_Block,false,true);
                 if CollUp != noone && CollDown = noone { //Yukarıdan sıkıştık
@@ -37,8 +37,8 @@
         //Altımızda blok var mı?
         mask_index = spr_CharacterMask;
         BlockDown = instance_place(x,y+VSpeed+1,obj_Block);
-        BlockCenter = instance_place(x,y,obj_PlatformThinParent);
-        BlockDownThin = instance_place(x,y+1,obj_PlatformThinParent);
+        BlockCenter = instance_place(x,y,obj_BlockThinParent);
+        BlockDownThin = instance_place(x,y+1,obj_BlockThinParent);
             
         //Düşüyor muyuz?
         if BlockDown = noone or (BlockDown != noone && BlockCenter != noone && BlockDown = BlockCenter) {

@@ -24,7 +24,7 @@
         }
     ini_close();
     file_delete("Temp.ini");
-    with(obj_Key) if KeyMonster then KeyMonster = false;
+    with(obj_KeyParent) if KeyMonster then KeyMonster = false;
     global.TempNumber = 0;
     with(obj_Monster) {
         x = xstart;

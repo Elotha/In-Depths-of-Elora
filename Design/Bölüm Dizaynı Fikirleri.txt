@@ -1,1 +1,5 @@
 Ýlk bölümde altýn anahtar ve altýn kapý birbirlerine yakýn olarak konulabilir. Böylece anahtarý aldýðýmýzda çýkan ýþýk hüzmesinin kapýya gittiði anlaþýlýr.
+
+Birkaç bölüme, net bir þekilde görülebilecek yerlerde geçici olarak kapatýlan geçitler yapýlabilir. Böylece oyun update edildiði zaman bu geçitler açýlýr ve oyuncular normal bir playthrough içerisinde yeni içeriðe ulaþabilirler.
+
+Bazý yerlerde siyah anahtar ve mavi anahtar üst üste konulabilir. Oyuncu büyük ihtimalle fark etmez.

@@ -1,0 +1,15 @@
+Dans eden çiçek // büyülü versiyonu
+
+Spiky flower
+
+Zodax aðacý
+
+Ateþ eden bitki
+
+Kontrol noktasý bitkisi // Büyülü etkileþim anýnda yukarý - aþaðý tuþlarý ile bitkiyi açýp kapatabiliriz belki. Kapattýðýmýz zaman checkpoint inaktif hale gelir.
+
+Bloklarýn altýnda asýlý duran küre þeklindeki bitkiler. bunlara deðince ruh gücünü arttýrýyorlar, sönüyorlar, bir süre sonra geri yanýyorlar.
+
+(sabit duran bitkiler aslýnda iþe yarayabilir. eðer bloklarýn yanýna ve altýna konulursa, sabit durmak isteyebiliriz)
+
+Belki bazý bitkiler saklanmak amaçlý kullanýlabilir? Saklanmamýzý gerektirecek bir canavar üretilebilir. Menziline girdiðimiz zaman bizi avlamaya geliyordur.

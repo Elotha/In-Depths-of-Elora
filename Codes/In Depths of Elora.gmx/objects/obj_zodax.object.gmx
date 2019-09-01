@@ -195,7 +195,7 @@
             <string>///Control
 
 {
-    if place_meeting(x+(16*image_xscale),y,obj_ZodaxSign) {
+    if place_meeting(x+(16*image_xscale),y,obj_ZodaxBush) {
         Times++;
         if Times = TimesMax {
             Teleport = true;
