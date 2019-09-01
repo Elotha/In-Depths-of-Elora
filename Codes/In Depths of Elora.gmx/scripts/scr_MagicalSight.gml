@@ -47,7 +47,7 @@
         else scr_MagicalSightClose();
         }
         
-    /*if MagicalSight { //Açıksa zamanı azalt
+    if MagicalSight { //Açıksa zamanı azalt
         if --obj_HUD.SoulPower = 0 then scr_MagicalSightClose();
         }
     else if keyboard_check_pressed(Control[ControlKeys.ManaPotion]) && Focus = "Character" { //Büyü görüşünde değilsek, mana potion tuşuna basarsak ve hareket özgürlüğümüz varsa
@@ -56,6 +56,6 @@
             obj_HUD.SoulPower = min(obj_HUD.SoulPower+40,obj_HUD.SoulPowerMax);
             alarm[4] = -1;
             }
-        }*/
+        }
 
 }

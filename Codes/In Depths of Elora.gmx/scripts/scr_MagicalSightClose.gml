@@ -4,7 +4,7 @@
     scr_MagicalInteractionComeOut();
     MagicalSight = false;
     image_blend = c_white;
-    alarm[4] = MagicalSightCooldown;
+    if !Invincibility then alarm[4] = MagicalSightCooldown;
     with(obj_Environment)  {
         if object_index = obj_Plant || object_index = obj_MagicalPlant then event_user(0);
         else image_blend = c_white;

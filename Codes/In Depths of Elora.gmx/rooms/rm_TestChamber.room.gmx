@@ -101,6 +101,14 @@
     <instance objName="obj_KeyGolden" x="1344" y="352" name="inst_3FA123D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_KeySilver" x="1312" y="352" name="inst_AE6C8E0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Minyoo" x="1056" y="704" name="inst_63C66837" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="696" y="504" name="inst_57E2710B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="720" y="504" name="inst_3BD321B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="744" y="504" name="inst_1797A44D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="768" y="504" name="inst_E98748C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="768" y="528" name="inst_75E89708" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="744" y="528" name="inst_6C625C25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="720" y="528" name="inst_AA6CC003" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_MagicEssence" x="696" y="528" name="inst_124CE0F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="ts_Platforms" x="800" y="704" w="32" h="32" xo="96" yo="0" id="10001605" name="inst_642E8E99" depth="400" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

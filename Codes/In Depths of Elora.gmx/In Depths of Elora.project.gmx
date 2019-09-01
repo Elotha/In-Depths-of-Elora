@@ -288,6 +288,7 @@
       <script>scripts\scr_MagicalInteractionComeOut.gml</script>
       <script>scripts\scr_MagicalInteractionMinyoo.gml</script>
       <script>scripts\scr_SoulPiece.gml</script>
+      <script>scripts\scr_SoulPieceReturn.gml</script>
     </scripts>
     <scripts name="Menu">
       <script>scripts\scr_DrawMenu.gml</script>

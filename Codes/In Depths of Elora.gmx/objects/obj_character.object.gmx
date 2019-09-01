@@ -95,6 +95,8 @@
     MagicalInteractionSpace = 0; //Ele geçirdiğimiz canlıya özel komut verebilme boşluğu
     SoulPiece = false; //Ruh parçası aktif mi?
     SoulPieceID = noone; //Ruh parçası nesnesi
+    SoulPieceCount = 0; //Tuş kilidi
+    SoulPieceCollision = false; //Çarpışma kontrolü
     
     scr_ControlGlobals(false); //Kontrolleri çek
     
@@ -313,6 +315,7 @@
     if Focus = "Death" or Focus = "Door" then exit; //Ölmüşsek veya kapıdan geçiyorsak çalıştırma
     scr_JournalInput();
     scr_MagicalSight();
+    scr_DoorCheck();
     scr_SoulPiece();
     if MagicalInteraction != -1 {
         scr_MagicalMovement();
@@ -326,7 +329,6 @@
     if MagicalInteraction != -1 then exit;
     scr_SpriteControl();
     //scr_SoundControl();
-    scr_DoorCheck();
 }
 </string>
           </argument>
