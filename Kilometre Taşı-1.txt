@@ -1,0 +1,6 @@
+Canavar: Minyoo
+Klasör: Bitkiler (ateþ eden bitki, rg dolduran bitki)
+Bitki: Zodax Aðacý
+
+Sistem: Büyülü Etkileþimler
+Mekanik: Büyülü Etkileþimden Çýkma 

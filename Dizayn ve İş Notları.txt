@@ -1,19 +1,15 @@
-Palpus'un görünümü tartýþýlacak.
+Büyülü dünya modundan ya da büyülü etkileþimden çýkarken bastýðýmýz yön tuþuna göre çýkalým.
 
-Zodax aðacýnda meyve bitince solsun. Zodaxa dönüþüp bu aðaçlarý sömürebilelim.
+Canlýlarýn içine girdiðimizde tutorial modu açýksa canlýlarýn üstünde tuþlar ve tuþlarýn ne iþe yaradýðý yazsýn. Örneðin zodaxýn içine girdiðimizde zodaxýn üstünde "<F> ATTACK" ve  "<+> <-> TELEPORT" yazmasý gibi. (+ - tuþlarý yön oklarý yerine kullanýlmýþtýr)
 
-Beulin olup koþmak ve saldýrmak için bir neden gerekiyor. (Belki saldýrmak yerine direkt kafayý önde tutarak koþabilir? hatta belki bir boynuzu vardýr. böylece koþarak hasar verebilir ve bir þeyleri kýrabilir)
+Ruh gücü doldurma noktalarý dizayn edilecek. Bu noktalar deðdiðimiz gibi etkilerse eðer, o zaman büyülü modu uzatma amaçlý da kullanýlabilir. belki tepeden sarkan küreler gibi bir þey olabilir.
 
-Ateþ eden bitki eklenecek.
+"Not enough soul power!" yazýsý, gücümüzün yetmediði bir özellik kullanmaya çalýþtýðýmýz zamanlarda yukarýda bildirim olarak çýkabilir.
 
-Bir ya da iki canavar daha lazým:
+Büyülü deþ atarken bir þeyleri es geçmek istiyorsak belki deþ tuþuna basmaya devam edebiliriz.
 
-Kýrýlabilen tekil bloklar yan yana konulduðunda topluca yýkýlmalarý lazým.
+Damastýn hayat döngüsünün düþünülmesi lazým. Damast yuvasý kullanýlacak mý, karar verilecek.
 
-Taþ düþünülebilir.
+Otomatik R noktalarý.
 
-Yanlamasýna kýrýlabilen bloklar olabilir.
-
-Canavarlarýn yerlerini deðiþtirebilen bir canavar lazým.
-
-Meteora dönüþüp arkasýnda trail býrakan balon canavar.
+Analitik deðerleri eklenecek.

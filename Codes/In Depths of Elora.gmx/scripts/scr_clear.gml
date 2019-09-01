@@ -1,7 +1,7 @@
 ///Clear
 
 {
-    destroy(obj_KeyEffect);
-    destroy(obj_KeyEffect2);
-    destroy(obj_ZodaxEffect);
+    destroy(obj_GoldenKeyEffect);
+    destroy(obj_GoldenKeyEffect2);
+    destroy(obj_KeyEffectOthers);
 }

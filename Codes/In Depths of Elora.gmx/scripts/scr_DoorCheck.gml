@@ -43,10 +43,9 @@
                         break;
                     }
                 obj_HUD.KeyReq = DoorID.KeyReq;
-                obj_HUD.DoorCheck = true;
                 if DoorID.Locked then if obj_HUD.KeyNumber[obj_HUD.KeyType] >= obj_HUD.KeyReq then DoorKey = true; else DoorKey = false;
-                obj_HUD.DoorCheck = true;
                 }
+            obj_HUD.DoorCheck = true;
             if keyboard_check_pressed(Control[ControlKeys.Interact]) { //Kapıyı açma mekaniği
                 if DoorKey {
                     DoorID.Unlock = true;

@@ -93,6 +93,8 @@
     MagicalSightCount = 0; //Alarm çalıştırma sayısı
     MagicalInteraction = -1; //Büyü görüşünde bir canavara dash attık mı?
     MagicalInteractionSpace = 0; //Ele geçirdiğimiz canlıya özel komut verebilme boşluğu
+    SoulPiece = false; //Ruh parçası aktif mi?
+    SoulPieceID = noone; //Ruh parçası nesnesi
     
     scr_ControlGlobals(false); //Kontrolleri çek
     
@@ -102,9 +104,6 @@
         }
         
     create_only_one(x,y,obj_CharacterLight); //Işığı yarat
-    
-    
-    global.HSV = 180;
 }
 </string>
           </argument>
@@ -314,6 +313,7 @@
     if Focus = "Death" or Focus = "Door" then exit; //Ölmüşsek veya kapıdan geçiyorsak çalıştırma
     scr_JournalInput();
     scr_MagicalSight();
+    scr_SoulPiece();
     if MagicalInteraction != -1 {
         scr_MagicalMovement();
         exit;
@@ -825,60 +825,6 @@
         draw_set_colour(c_yellow); //Dikey
         draw_rectangle(x-BottomX,y-12,x+BottomX,bbox_top+VSpeed,true);
         }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="52">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Down
-
-{
-    global.HSV -= 5;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="51">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Up
-
-{
-    global.HSV += 5;
 }
 </string>
           </argument>

@@ -1,0 +1,40 @@
+------ Çizimler ------
+
+Deþ. // Büyülü deþ dönüþümü. // Deþ atýp atamayacaðýmýzý gösteren görsellik.
+
+Yeni pot þekli.
+
+Kapý.
+
+Farklý renklerde anahtarlar.
+
+
+Beulin koþma ve atak.
+
+Minyoo'nun yukarý ýþýnlanmasý
+
+Sarada.
+
+Bloki.
+
+Asido.
+
+Ari.
+
+Ateþ eden bitki.
+
+Venüs çiçeði.
+
+
+
+------ Kodlar ------
+
+Kýrýlabilen bloklar.
+
+Ruh parçasý.
+
+Büyülü etkileþimler. // Etkileþimden çýkma.
+
+Canavar ve bitkilerin davranýþ modeli.
+
+Minyoo magical interaction için bloklardan atlama limiti konulacak.

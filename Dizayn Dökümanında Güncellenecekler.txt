@@ -1,0 +1,26 @@
+"Tomarýn girdileri" yazýldýktan sonra itemlerdeki "notlar" kýsmýna her notun girdisi yazýlacak.
+
+"Tomarýn girdileri" kýsmý yazýldýktan sonra bu girdileri açmaya neden olan þeyler için ilgili baþlýklardan referans verilecek.
+
+"Diyaloglar" kýsmý yazýldýktan sonra "karakterler" kýsmý güncellenecek.
+
+Karakterler ve arkaplan hikayeleri bittikten sonra "büyülü dünya modunun açýlmasý" bölümü güncellenecek.
+
+"Baþarýmlar" ve "paskalya yumurtalarý" kýsmý yazýldýktan sonra ilgili her baþlýkta bu baþarým ve paskalya yumurtalarýna referans verilecek.
+
+"Büyülü etkileþimler" bitirildiði zaman "kontroller" kýsmý güncellenecek.
+
+"Bölüm þablonlarý" doldurulduktan sonra "bölümlere özel tutulan bilgiler" kýsmý doldurulacak.
+
+"Zorluk dereceleri" ayarlarý belirlendikten sonra bu ayarlardan etkilenen baþlýklar güncellenecek.
+
+
+
+
+Etkileþilebilir bütün varlýklar girildikten sonra "derinlikler" kýsmý güncellenecek.
+
+Bütün her þey hazýr olduktan sonra "mekaniklerin görsel etkileri" ve "ses efektleri" dahil edilecek.
+
+Türkçe çeviriler eklenecek.
+
+Yazým hatalarý ve cümle düþüklükleri için baþtan sona kontrol yapýlacak. Ayný zamanda gerekli maddelendirmeler ve kalýn yazýlar da eklenecek.

@@ -37,4 +37,9 @@
         if tt = ts_PlatformsBlue then tile_set_background(Tiles[i],ts_Platforms);
         else if tt = ts_LiquidBlue then tile_set_background(Tiles[i],ts_Liquid);
         }
+        
+    if SoulPiece {
+        destroy(SoulPieceID);
+        SoulPiece = false;
+        }
 }

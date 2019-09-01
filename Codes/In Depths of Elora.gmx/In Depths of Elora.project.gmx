@@ -287,7 +287,7 @@
       <script>scripts\scr_MagicalMovement.gml</script>
       <script>scripts\scr_MagicalInteractionComeOut.gml</script>
       <script>scripts\scr_MagicalInteractionMinyoo.gml</script>
-      <script>scripts\scr_SoulStones.gml</script>
+      <script>scripts\scr_SoulPiece.gml</script>
     </scripts>
     <scripts name="Menu">
       <script>scripts\scr_DrawMenu.gml</script>
@@ -348,6 +348,7 @@
       <object>objects\obj_StartPoint</object>
       <object>objects\obj_Character</object>
       <object>objects\obj_CharacterLight</object>
+      <object>objects\obj_SoulPiece</object>
     </objects>
     <objects name="Blokcs">
       <object>objects\obj_Block</object>

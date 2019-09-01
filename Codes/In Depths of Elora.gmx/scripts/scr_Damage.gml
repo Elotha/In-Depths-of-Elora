@@ -13,32 +13,25 @@
     
     if Invincibility then exit; //Canımız zaten yanmışsa veya yanamayacak durumdaysa çalıştırma
     
+    //Bir canavara çarptık mı?
+    var Monster = instance_place(x,y,obj_Monster);
+    
     //Büyü görüşü modunda bir ruh taşına çarptık mı?
     if MagicalSight {
-        var SoulStone = instance_place(x,y,obj_SoulStone);
-        if SoulStone != noone {
-            if Dash { //Ruh taşına dash atmışsak
-                Other = SoulStone.MonsterID;
+        if Dash { //Ruh taşına dash atmışsak
+            if Monster != noone {
+                Other = Monster;
                 scr_MagicalInteraction(true);
                 exit;
                 }
-            else if global.Immortality then exit; //Büyü görüşü modunda ruh taşına çarptığımızda ölümsüzlük açıksa işlem yapma
             }
+        else if global.Immortality then exit; //Büyü görüşü modunda ruh taşına çarptığımızda ölümsüzlük açıksa işlem yapma
         }
-    
-    //Bir canavara çarptık mı?
-    var Monster = instance_place(x,y,obj_Monster);
         
     //Herhangi bir şeye çarptıysak
     Other = noone;
-    if MagicalSight { //Büyü görüşü modunda canavarlar bize zarar vermez
-        if SoulStone != noone then Other = SoulStone.MonsterID;
-        else if Environment != noone then Other = Environment;
-        }
-    else {
-        if Monster != noone then Other = Monster;
-        else if Environment != noone then Other = Environment;
-        }
+    if Monster != noone then Other = Monster;
+    else if Environment != noone then Other = Environment;
     
     if Other != noone { //Çarptığımız şey ile etkileşime girecek miyiz?
         if Other.object_index = obj_MagicalPlant && !MagicalSight then exit; //Eğer büyü görüşünde değilsek ve Magical Plant'a çarpmışsak çalıştırma

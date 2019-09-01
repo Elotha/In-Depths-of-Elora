@@ -36,7 +36,6 @@
     
     //Büyü görüşü modu
     MagicalSight = false; //Aktivasyon
-    //MagicalSightTime = MagicalSightTimeMax; //Kalan kullanım
     MagicalSightCount = 0; //Alarm çalıştırma sayısı
     
     with(obj_Camera) { //Kamerayı karaktere sabitle
